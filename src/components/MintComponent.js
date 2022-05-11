@@ -188,7 +188,12 @@ const MintComponent = () => {
                 </div>
               </div>
               <div>
-                <button onClick={onMintPressed}>Mint Now</button>
+                <button
+                  onClick={onMintPressed}
+                  disabled={quantity > 0 ? false : true}
+                >
+                  Mint Now
+                </button>
               </div>
             </div>
           </div>
