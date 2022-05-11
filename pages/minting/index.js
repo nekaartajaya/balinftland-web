@@ -1,3 +1,7 @@
-export default function MintingPage() {
-  return <a>Minting Page</a>;
-}
+import MintComponent from "../../src/components/MintComponent";
+
+const MintPage = () => {
+  return <MintComponent />;
+};
+
+export default MintPage;
