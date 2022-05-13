@@ -5,6 +5,7 @@ import Image from "next/image";
 import {
   connectWallet,
   getCurrentWalletConnected,
+  mintDigilandNFT,
 } from "../helpers/metamask-interact";
 
 const MintComponent = () => {
@@ -63,12 +64,15 @@ const MintComponent = () => {
     setWallet(walletResponse.address);
   };
 
-  const onMintPressed = () => {
+  const onMintPressed = async () => {
     if (quantity <= maxQuantity - mintedQuantity) {
       //call metamask here to mint
       console.log(`minted ${quantity} NFTs!`);
       let tempMinted = mintedQuantity + quantity;
       setMintedQuantity(tempMinted);
+
+      const { status } = await mintDigilandNFT(quantity);
+      setStatus(status);
     }
   };
 
