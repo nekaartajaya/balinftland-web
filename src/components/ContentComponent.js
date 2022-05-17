@@ -1,6 +1,5 @@
-import { useState } from "react";
-
 import Image from "next/image";
+import styles from "../../styles/ContentComponent.module.css";
 
 const ContentComponent = ({
   onIncrement,
@@ -16,18 +15,16 @@ const ContentComponent = ({
 }) => {
   return (
     <div id="content">
-      <div style={{ minWidth: 330 }}>
-        <div>
+      <div className={styles.container}>
+        <div className={styles.leftColumn}>
           <Image src="/RoomDesktop.svg" alt="Room-NFT" height={30} width={30} />
-          <div>
-            <h3>LIMA BEACH NFT</h3>
-            <p>Mint Price</p>
-            <p>2000 USDC</p>
-            <p>Total Supply</p>
-            <p>250/250</p>
-          </div>
+          <h3>LIMA BEACH NFT</h3>
+          <p>Mint Price</p>
+          <p>2000 USDC</p>
+          <p>Total Supply</p>
+          <p>250/250</p>
         </div>
-        <div>
+        <div className={styles.rightColumn}>
           <div>
             <div>
               <div>
