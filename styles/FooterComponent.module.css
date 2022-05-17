@@ -1,0 +1,42 @@
+.footer {
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 40px;
+}
+
+.info {
+  display: flex;
+  gap: 64px;
+  margin-left: auto;
+}
+
+.discover {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 16px;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 16px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 16px;
+}
+
+.contactIcons {
+  display: flex;
+  gap: 16px;
+  margin-left: 490px;
+}
