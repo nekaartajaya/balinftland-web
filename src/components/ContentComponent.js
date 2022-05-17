@@ -55,21 +55,23 @@ const ContentComponent = ({
               />
 
               <div className={styles.containerReferralCode}>
-                <button onClick={onDecrement}>
-                  <span>−</span>
-                </button>
-                <input
-                  type="number"
-                  name="custom-input-number"
-                  value={quantity}
-                  onChange={onChangeQuantity}
-                ></input>
-                <button onClick={onIncrement}>
-                  <span>+</span>
-                </button>
-                <p>
+                <div>
+                  <button onClick={onDecrement}>
+                    <span>−</span>
+                  </button>
+                  <input
+                    type="number"
+                    name="custom-input-number"
+                    value={quantity}
+                    onChange={onChangeQuantity}
+                  ></input>
+                  <button onClick={onIncrement}>
+                    <span>+</span>
+                  </button>
+                </div>
+                <label>
                   Total <span>6,000 USDC</span>
-                </p>
+                </label>
               </div>
 
               <div>
@@ -83,17 +85,19 @@ const ContentComponent = ({
               </div>
             </div>
 
-            <p>
-              Wallet address :{" "}
-              {walletAddress && walletAddress.length > 0 ? (
-                String(walletAddress).substring(0, 6) +
-                "..." +
-                String(walletAddress).substring(38)
-              ) : (
-                <span>Not connected</span>
-              )}
-            </p>
-            <p>Minted supply : {mintedQuantity}</p>
+            <div className={styles.mintStatus}>
+              <label>
+                Wallet address :{" "}
+                {walletAddress && walletAddress.length > 0 ? (
+                  String(walletAddress).substring(0, 6) +
+                  "..." +
+                  String(walletAddress).substring(38)
+                ) : (
+                  <span>Not connected</span>
+                )}
+              </label>
+              <label>Minted supply : {mintedQuantity}</label>
+            </div>
 
             <div>
               <button
