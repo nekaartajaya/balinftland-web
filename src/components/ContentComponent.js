@@ -17,7 +17,7 @@ const ContentComponent = ({
     <div id="content">
       <div className={styles.container}>
         <div className={styles.leftColumn}>
-          <Image src="/RoomDesktop.svg" alt="Room-NFT" height={30} width={30} />
+          <Image src="/Hexagon.svg" alt="NFT-display" height={30} width={30} />
           <h3>LIMA BEACH NFT</h3>
           <p>Mint Price</p>
           <p>2000 USDC</p>
