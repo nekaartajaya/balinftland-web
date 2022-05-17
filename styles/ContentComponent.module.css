@@ -12,6 +12,8 @@
   padding: 24px;
   gap: 10px;
 
+  text-align: center;
+
   background: #edf4f7;
   border-radius: 8px 0px 0px 8px;
 }
