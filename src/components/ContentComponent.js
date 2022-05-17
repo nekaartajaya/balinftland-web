@@ -11,6 +11,7 @@ const ContentComponent = ({
   mintedQuantity,
   maxQuantity,
   walletAddress,
+  mintStatus,
   onMintPressed,
 }) => {
   return (
@@ -107,6 +108,8 @@ const ContentComponent = ({
                 <span>Mint Now</span>
               </button>
             </div>
+
+            <label>{mintStatus}</label>
           </div>
         </div>
       </div>

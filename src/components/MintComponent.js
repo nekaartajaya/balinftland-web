@@ -10,6 +10,8 @@ const MintComponent = ({ walletAddress }) => {
   const [quantity, setQuantity] = useState(0);
   const [mintedQuantity, setMintedQuantity] = useState(0);
 
+  const [mintStatus, setMintStatus] = useState("");
+
   //Constant state
   const [maxQuantity] = useState(80);
 
@@ -21,7 +23,7 @@ const MintComponent = ({ walletAddress }) => {
       setMintedQuantity(tempMinted);
 
       const { status } = await mintDigilandNFT(quantity);
-      // setStatus(status);
+      setMintStatus(status);
     }
   };
 
@@ -58,6 +60,7 @@ const MintComponent = ({ walletAddress }) => {
           mintedQuantity={mintedQuantity}
           maxQuantity={maxQuantity}
           walletAddress={walletAddress}
+          mintStatus={mintStatus}
           onMintPressed={handleMintPressed}
         />
       </div>

@@ -86,14 +86,16 @@ export const mintDigilandNFT = async (quantity) => {
   console.log({ currentAccount });
   console.log({ contractOwner });
   console.log({ price });
-  const approved = await window.usdcContract.methods.approve(contractOwner, web3.utils.toBN((quantity * price))).send({
-    from: currentAccount,
-  });
+  const approved = await window.usdcContract.methods
+    .approve(contractOwner, web3.utils.toBN(quantity * price))
+    .send({
+      from: currentAccount,
+    });
   let status = approved ? "approved" : "rejected";
 
   return {
     success: approved,
-    status: status
+    status: status,
   };
 
   // //set up your Ethereum transaction
