@@ -3,14 +3,16 @@ import Link from "next/link";
 const NavbarComponent = ({ onConnect, walletAddress }) => {
   return (
     <nav id="navbar">
-      <div className="logo">
+      <div id="logo">
         <img src="/ProperBlockLogo.svg" alt="ProperBlock-logo" />
         <h1>PROPERBLOCK</h1>
       </div>
 
-      <Link href="">whitepaper</Link>
-      <Link href="">how it works</Link>
-      <Link href="">projects</Link>
+      <div className="link">
+        <Link href="">whitepaper</Link>
+        <Link href="">how it works</Link>
+        <Link href="">projects</Link>
+      </div>
 
       <button onClick={onConnect}>
         {walletAddress && walletAddress.length > 0 ? (

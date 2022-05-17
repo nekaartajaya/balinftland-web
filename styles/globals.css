@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap");
 
 body {
   background: #f2f2f2;
   color: #333;
-  font-family: "Nunito";
+  font-family: "Syne";
 }
 
 a {
@@ -26,15 +26,15 @@ nav {
 }
 
 nav a {
-  margin-left: 12px;
+  margin: 0 12px;
+}
+
+nav .link {
+  margin: 0 auto;
 }
 
 nav button {
   margin-left: 12px;
-}
-
-nav .logo {
-  margin-right: auto;
 }
 
 footer {
