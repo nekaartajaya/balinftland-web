@@ -12,18 +12,16 @@ const NavbarComponent = ({ onConnect, walletAddress }) => {
       <Link href="">how it works</Link>
       <Link href="">projects</Link>
 
-      <div>
-        <button onClick={onConnect}>
-          {walletAddress && walletAddress.length > 0 ? (
-            "Connected: " +
-            String(walletAddress).substring(0, 6) +
-            "..." +
-            String(walletAddress).substring(38)
-          ) : (
-            <span>Connect Wallet</span>
-          )}
-        </button>
-      </div>
+      <button onClick={onConnect}>
+        {walletAddress && walletAddress.length > 0 ? (
+          "Connected: " +
+          String(walletAddress).substring(0, 6) +
+          "..." +
+          String(walletAddress).substring(38)
+        ) : (
+          <span>Connect Wallet</span>
+        )}
+      </button>
     </nav>
   );
 };
