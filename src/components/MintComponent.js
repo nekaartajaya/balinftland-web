@@ -6,7 +6,6 @@ import ContentComponent from "./ContentComponent";
 
 const MintComponent = ({ status }) => {
   //State for forms
-  const [isMinted, setMinted] = useState(false);
   const [referralCode, setReferralCode] = useState("");
   const [quantity, setQuantity] = useState(0);
   const [mintedQuantity, setMintedQuantity] = useState(0);
