@@ -4,14 +4,14 @@ const NavbarComponent = ({ onConnect, walletAddress }) => {
   return (
     <nav id="navbar">
       <div id="logo">
-        <img src="/ProperBlockLogo.svg" alt="ProperBlock-logo" />
-        <h1>PROPERBLOCK</h1>
+        <img src="/Digiland_symbol.svg" alt="Digiland-logo" />
       </div>
 
       <div className="link">
         <Link href="">whitepaper</Link>
-        <Link href="">how it works</Link>
-        <Link href="">projects</Link>
+        <Link href="">project</Link>
+        <Link href="">partners</Link>
+        <Link href="">career</Link>
       </div>
 
       <button onClick={onConnect}>
@@ -21,7 +21,7 @@ const NavbarComponent = ({ onConnect, walletAddress }) => {
           "..." +
           String(walletAddress).substring(38)
         ) : (
-          <span>Connect Wallet</span>
+          <span>Connect</span>
         )}
       </button>
     </nav>
