@@ -1,19 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-import {
-  connectWallet,
-  getCurrentWalletConnected,
-  mintDigilandNFT,
-} from "../helpers/metamask-interact";
+import { mintDigilandNFT } from "../helpers/metamask-interact";
 
-import NavbarComponent from "./NavbarComponent";
 import ContentComponent from "./ContentComponent";
-import FooterComponent from "./FooterComponent";
 
-const MintComponent = () => {
+const MintComponent = ({ status }) => {
   //State for forms
-  const [walletAddress, setWallet] = useState("");
-  const [status, setStatus] = useState("");
   const [isMinted, setMinted] = useState(false);
   const [referralCode, setReferralCode] = useState("");
   const [quantity, setQuantity] = useState(0);
@@ -21,50 +13,6 @@ const MintComponent = () => {
 
   //Constant state
   const [maxQuantity] = useState(80);
-
-  const addWalletListener = () => {
-    if (window.ethereum) {
-      window.ethereum.on("accountsChanged", (accounts) => {
-        if (accounts.length > 0) {
-          setWallet(accounts[0]);
-          setStatus("👆🏽 Write a message in the text-field above.");
-        } else {
-          setWallet("");
-          setStatus("🦊 Connect to Metamask using the top right button.");
-        }
-      });
-    } else {
-      setStatus(
-        <p>
-          {" "}
-          🦊{" "}
-          <a target="_blank" href={`https://metamask.io/download.html`}>
-            You must install Metamask, a virtual Ethereum wallet, in your
-            browser.
-          </a>
-        </p>
-      );
-    }
-  };
-
-  const fetchCurrentWallet = async () => {
-    const { address, status } = await getCurrentWalletConnected();
-    return { address, status };
-  };
-
-  useEffect(() => {
-    const { address, status } = fetchCurrentWallet();
-    setWallet(address);
-    setStatus(status);
-
-    addWalletListener();
-  }, []);
-
-  const handleConnect = async () => {
-    const walletResponse = await connectWallet();
-    setStatus(walletResponse.status);
-    setWallet(walletResponse.address);
-  };
 
   const handleMintPressed = async () => {
     if (quantity <= maxQuantity - mintedQuantity) {
@@ -101,11 +49,6 @@ const MintComponent = () => {
   return (
     <>
       <div>
-        <NavbarComponent
-          onConnect={handleConnect}
-          walletAddress={walletAddress}
-        />
-
         <ContentComponent
           onIncrement={handleIncrement}
           onDecrement={handleDecrement}
@@ -118,8 +61,6 @@ const MintComponent = () => {
           status={status}
           onMintPressed={handleMintPressed}
         />
-
-        <FooterComponent />
       </div>
     </>
   );
