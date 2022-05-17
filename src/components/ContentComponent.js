@@ -86,7 +86,7 @@ const ContentComponent = ({
               </div>
             </div>
 
-            <div className={styles.mintStatus}>
+            <div className={styles.walletStatus}>
               <label>
                 Wallet address :{" "}
                 {walletAddress && walletAddress.length > 0 ? (

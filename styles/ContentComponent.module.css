@@ -72,7 +72,7 @@
   margin-bottom: 32px;
 }
 
-.mintStatus {
+.walletStatus {
   display: flex;
   flex-direction: column;
   gap: 8px;
