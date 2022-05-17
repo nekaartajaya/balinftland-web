@@ -64,7 +64,7 @@ const Layout = ({ children }) => {
         onConnect={handleConnect}
         walletAddress={walletAddress}
       />
-      {cloneElement(children, { status: status })}
+      {cloneElement(children, { walletAddress: walletAddress })}
 
       <FooterComponent />
     </div>

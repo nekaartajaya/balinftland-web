@@ -4,7 +4,7 @@ import { mintDigilandNFT } from "../helpers/metamask-interact";
 
 import ContentComponent from "./ContentComponent";
 
-const MintComponent = ({ status }) => {
+const MintComponent = ({ walletAddress }) => {
   //State for forms
   const [referralCode, setReferralCode] = useState("");
   const [quantity, setQuantity] = useState(0);
@@ -57,7 +57,7 @@ const MintComponent = ({ status }) => {
           quantity={quantity}
           mintedQuantity={mintedQuantity}
           maxQuantity={maxQuantity}
-          status={status}
+          walletAddress={walletAddress}
           onMintPressed={handleMintPressed}
         />
       </div>

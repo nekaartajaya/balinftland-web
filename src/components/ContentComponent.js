@@ -10,7 +10,7 @@ const ContentComponent = ({
   quantity,
   mintedQuantity,
   maxQuantity,
-  status,
+  walletAddress,
   onMintPressed,
 }) => {
   return (
@@ -34,56 +34,77 @@ const ContentComponent = ({
           </div>
         </div>
         <div className={styles.rightColumn}>
-          <div>
-            <div>
-              <div>
-                <div>
-                  <h1>STAGE 1 GROUNDING</h1>
-                  <h2>Public Sale Stage 1</h2>
-                  <p>{`${mintedQuantity}/${maxQuantity} Minted`}</p>
-                  <div>
-                    <input
-                      type="text"
-                      name="referral-code"
-                      id="referral-code"
-                      placeholder="Input Referral Code (Optional)"
-                      value={referralCode}
-                      onChange={onChangeReferralCode}
-                    />
-                  </div>
-                </div>
+          <div className={styles.rightColumnContent}>
+            <div className={styles.header}>
+              <h1>PUBLIC SALE STAGE 1</h1>
+              <label>
+                {`${mintedQuantity}/${maxQuantity} Minted`}{" "}
+                <span>Stage 1 supply left</span>
+              </label>
+            </div>
+
+            <div className={styles.inputMint}>
+              <input
+                className={styles.inputReferralCode}
+                type="text"
+                name="referral-code"
+                id="referral-code"
+                placeholder="Input Referral Code (Optional)"
+                value={referralCode}
+                onChange={onChangeReferralCode}
+              />
+
+              <div className={styles.containerReferralCode}>
+                <button onClick={onDecrement}>
+                  <span>−</span>
+                </button>
+                <input
+                  type="number"
+                  name="custom-input-number"
+                  value={quantity}
+                  onChange={onChangeQuantity}
+                ></input>
+                <button onClick={onIncrement}>
+                  <span>+</span>
+                </button>
+                <p>
+                  Total <span>6,000 USDC</span>
+                </p>
               </div>
 
               <div>
-                <div>
-                  <button onClick={onDecrement}>
-                    <span>−</span>
-                  </button>
-                  <input
-                    type="number"
-                    name="custom-input-number"
-                    value={quantity}
-                    onChange={onChangeQuantity}
-                  ></input>
-                  <button onClick={onIncrement}>
-                    <span>+</span>
-                  </button>
-                </div>
+                <input type="checkbox" id="tnc" name="tnc" value="Agreed" />
+                <label for="vehicle1">
+                  I agree with{" "}
+                  <a href="" style={{ color: "#406aff" }}>
+                    terms and conditions
+                  </a>
+                </label>
               </div>
             </div>
+
+            <p>
+              Wallet address :{" "}
+              {walletAddress && walletAddress.length > 0 ? (
+                String(walletAddress).substring(0, 6) +
+                "..." +
+                String(walletAddress).substring(38)
+              ) : (
+                <span>Not connected</span>
+              )}
+            </p>
+            <p>Minted supply : {mintedQuantity}</p>
+
             <div>
               <button
                 onClick={onMintPressed}
                 disabled={quantity > 0 ? false : true}
               >
-                Mint Now
+                <span>Mint Now</span>
               </button>
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        <h1>{status}</h1>
       </div>
     </div>
   );

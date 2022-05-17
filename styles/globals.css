@@ -34,14 +34,14 @@ nav .link {
   text-transform: uppercase;
 }
 
-nav button {
+button {
   background: #406aff;
   border: 1px solid #406aff;
   box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
   border-radius: 8px;
 }
 
-nav span,
+span,
 button {
   font-style: normal;
   font-weight: 700;
@@ -55,6 +55,13 @@ button {
 
   /* White */
   color: #fff;
+}
+
+button:disabled,
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
 }
 
 footer {
