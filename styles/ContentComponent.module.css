@@ -48,6 +48,27 @@
   gap: 32px;
 }
 
+.incrementorButton {
+  /*create perfect circular button*/
+  aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  padding: 0;
+
+  background-color: unset;
+
+  border: 1.5px solid #8f98aa;
+}
+
+.inputQuantity {
+  width: 84px;
+  text-align: center;
+  border: 0;
+
+  background-color: unset;
+}
+
 .header {
   display: flex;
   flex-direction: column;
