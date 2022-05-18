@@ -62,11 +62,10 @@ export const mintDigilandNFT = async (quantity) => {
   const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
   const web3 = createAlchemyWeb3(alchemyKey);
 
-  const contractAddress = "0x5fE5ba58A537a6430e26C248b85a7Dc1AA563087";
+  const contractAddress = "0xE83961E68847104bda71B632A8e7fB2b58881C0B";
   const usdcContractAddress = "0x4DBCdF9B62e891a7cec5A2568C3F4FAF9E8Abe2b";
 
   const tokenId = 1; // Active stage
-  const data = "0x00";
 
   //load smart contract
   window.contract = await new web3.eth.Contract(
@@ -80,26 +79,21 @@ export const mintDigilandNFT = async (quantity) => {
   );
 
   const currentAccount = await window.ethereum.selectedAddress;
-  const contractOwner = await window.contract.methods.owner().call();
   const price = await window.contract.methods.getPrice("1").call();
   console.log({ currentAccount });
-  console.log({ contractOwner });
   console.log({ price });
   const isApproved = await window.usdcContract.methods
-    .approve(contractOwner, web3.utils.toBN(quantity * price))
-    .send({
-      from: currentAccount,
-    });
-  let status = isApproved ? true : false;
+    .approve(contractAddress, web3.utils.toBN(quantity * price))
+    .send({ from: currentAccount });
 
-  console.log({ status });
+  console.log({ isApproved });
 
-  if (status) {
+  if (isApproved) {
     //set up your Ethereum transaction
     const transactionParameters = {
       to: contractAddress, // Required except during contract publications.
       from: window.ethereum.selectedAddress, // must match user's active address.
-      data: window.contract.methods.mint(tokenId, quantity, data).encodeABI(), //make call to NFT smart contract
+      data: window.contract.methods.mint(tokenId, quantity, "0x00").encodeABI(), //make call to NFT smart contract
     };
 
     //sign transaction via Metamask
@@ -123,7 +117,7 @@ export const mintDigilandNFT = async (quantity) => {
   } else {
     return {
       success: isApproved,
-      status: status,
+      status: isApproved,
     };
   }
 };
