@@ -85,43 +85,45 @@ export const mintDigilandNFT = async (quantity) => {
   console.log({ currentAccount });
   console.log({ contractOwner });
   console.log({ price });
-  const approved = await window.usdcContract.methods
+  const isApproved = await window.usdcContract.methods
     .approve(contractOwner, web3.utils.toBN(quantity * price))
     .send({
       from: currentAccount,
     });
-  let status = approved ? "approved" : "rejected";
+  let status = isApproved ? true : false;
 
-  return {
-    success: approved,
-    status: status,
-  };
+  console.log({ status });
 
-  // //set up your Ethereum transaction
-  // const transactionParameters = {
-  //   to: contractAddress, // Required except during contract publications.
-  //   from: window.ethereum.selectedAddress, // must match user's active address.
-  //   data: window.contract.methods.mint(tokenId, quantity, data).encodeABI(), //make call to NFT smart contract
-  // };
+  if (status) {
+    //set up your Ethereum transaction
+    const transactionParameters = {
+      to: contractAddress, // Required except during contract publications.
+      from: window.ethereum.selectedAddress, // must match user's active address.
+      data: window.contract.methods.mint(tokenId, quantity, data).encodeABI(), //make call to NFT smart contract
+    };
 
-  // console.log({ tokenId });
-
-  // //sign transaction via Metamask
-  // try {
-  //   const txHash = await window.ethereum.request({
-  //     method: "eth_sendTransaction",
-  //     params: [transactionParameters],
-  //   });
-  //   return {
-  //     success: true,
-  //     status:
-  //       "✅ Check out your transaction on Etherscan: https://rinkeby.etherscan.io/tx/" +
-  //       txHash,
-  //   };
-  // } catch (error) {
-  //   return {
-  //     success: false,
-  //     status: "😥 Something went wrong: " + error.message,
-  //   };
-  // }
+    //sign transaction via Metamask
+    try {
+      const txHash = await window.ethereum.request({
+        method: "eth_sendTransaction",
+        params: [transactionParameters],
+      });
+      return {
+        success: true,
+        status:
+          "✅ Check out your transaction on Etherscan: https://rinkeby.etherscan.io/tx/" +
+          txHash,
+      };
+    } catch (error) {
+      return {
+        success: false,
+        status: "😥 Something went wrong: " + error.message,
+      };
+    }
+  } else {
+    return {
+      success: isApproved,
+      status: status,
+    };
+  }
 };
