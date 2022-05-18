@@ -35,7 +35,11 @@ const Layout = ({ children }) => {
         <p>
           {" "}
           🦊{" "}
-          <a target="_blank" href={`https://metamask.io/download.html`}>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={`https://metamask.io/download.html`}
+          >
             you must install metamask, a virtual ethereum wallet, in your
             browser.
           </a>

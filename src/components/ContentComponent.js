@@ -56,18 +56,25 @@ const ContentComponent = ({
               />
 
               <div className={styles.containerReferralCode}>
-                <div>
-                  <button onClick={onDecrement}>
-                    <span>−</span>
+                <div style={{ display: "flex" }}>
+                  <button
+                    className={styles.incrementorButton}
+                    onClick={onDecrement}
+                  >
+                    <span style={{ color: "black" }}>−</span>
                   </button>
                   <input
                     type="number"
-                    name="custom-input-number"
+                    name="input-mint-quantity"
+                    className={styles.inputQuantity}
                     value={quantity}
                     onChange={onChangeQuantity}
                   ></input>
-                  <button onClick={onIncrement}>
-                    <span>+</span>
+                  <button
+                    className={styles.incrementorButton}
+                    onClick={onIncrement}
+                  >
+                    <span style={{ color: "black" }}>+</span>
                   </button>
                 </div>
                 <label>
@@ -77,7 +84,7 @@ const ContentComponent = ({
 
               <div>
                 <input type="checkbox" id="tnc" name="tnc" value="Agreed" />
-                <label for="vehicle1">
+                <label htmlFor="tos">
                   I agree with{" "}
                   <a href="" style={{ color: "#406aff" }}>
                     terms and conditions
