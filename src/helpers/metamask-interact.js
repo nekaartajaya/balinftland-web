@@ -60,7 +60,6 @@ export const getCurrentWalletConnected = async () => {
 
 export const mintDigilandNFT = async (quantity) => {
   const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
-  console.log({ alchemyKey });
   const web3 = createAlchemyWeb3(alchemyKey);
 
   const contractAddress = "0x5fE5ba58A537a6430e26C248b85a7Dc1AA563087";
