@@ -6,7 +6,7 @@ const NavbarComponent = ({ onConnect, walletAddress }) => {
     <nav id="navbar">
       <div id="logo">
         <Image
-          src="/Digiland_symbol.svg"
+          src="/Digiland_Symbol.svg"
           width={27}
           height={27}
           alt="Digiland-logo"
