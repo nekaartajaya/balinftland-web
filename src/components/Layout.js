@@ -22,6 +22,7 @@ const Layout = ({ children }) => {
     if (window.ethereum) {
       window.ethereum.on("accountschanged", (accounts) => {
         if (accounts.length > 0) {
+          window.currentAccount = accounts[0];
           setwallet(accounts[0]);
           setstatus("👆🏽 write a message in the text-field above.");
         } else {

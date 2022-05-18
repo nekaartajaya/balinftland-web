@@ -1,5 +1,6 @@
 import { createAlchemyWeb3 } from "@alch/alchemy-web3";
 const contractABI = require("../../contracts/LBSFragment.json");
+const usdcContractABI = require("../../contracts/USDC.json");
 
 export const connectWallet = async () => {
   if (window.ethereum) {
@@ -62,9 +63,10 @@ export const mintDigilandNFT = async (quantity) => {
   console.log({ alchemyKey });
   const web3 = createAlchemyWeb3(alchemyKey);
 
-  const contractAddress = "0x3a0508AF8eCDE61C99083Fbb263d6a99BFe05eCe";
+  const contractAddress = "0x5fE5ba58A537a6430e26C248b85a7Dc1AA563087";
+  const usdcContractAddress = "0x4DBCdF9B62e891a7cec5A2568C3F4FAF9E8Abe2b";
 
-  const tokenId = 4; // Active stage
+  const tokenId = 1; // Active stage
   const data = "0x00";
 
   //load smart contract
@@ -73,31 +75,52 @@ export const mintDigilandNFT = async (quantity) => {
     contractAddress
   ); //loadContract();
 
-  //set up your Ethereum transaction
-  const transactionParameters = {
-    to: contractAddress, // Required except during contract publications.
-    from: window.ethereum.selectedAddress, // must match user's active address.
-    data: window.contract.methods.mint(tokenId, quantity, data).encodeABI(), //make call to NFT smart contract
+  window.usdcContract = await new web3.eth.Contract(
+    usdcContractABI,
+    usdcContractAddress
+  );
+
+  const currentAccount = await window.ethereum.selectedAddress;
+  const contractOwner = await window.contract.methods.owner().call();
+  const price = await window.contract.methods.getPrice("1").call();
+  console.log({ currentAccount });
+  console.log({ contractOwner });
+  console.log({ price });
+  const approved = await window.usdcContract.methods.approve(contractOwner, web3.utils.toBN((quantity * price))).send({
+    from: currentAccount,
+  });
+  let status = approved ? "approved" : "rejected";
+
+  return {
+    success: approved,
+    status: status
   };
 
-  console.log({ tokenId });
+  // //set up your Ethereum transaction
+  // const transactionParameters = {
+  //   to: contractAddress, // Required except during contract publications.
+  //   from: window.ethereum.selectedAddress, // must match user's active address.
+  //   data: window.contract.methods.mint(tokenId, quantity, data).encodeABI(), //make call to NFT smart contract
+  // };
 
-  //sign transaction via Metamask
-  try {
-    const txHash = await window.ethereum.request({
-      method: "eth_sendTransaction",
-      params: [transactionParameters],
-    });
-    return {
-      success: true,
-      status:
-        "✅ Check out your transaction on Etherscan: https://rinkeby.etherscan.io/tx/" +
-        txHash,
-    };
-  } catch (error) {
-    return {
-      success: false,
-      status: "😥 Something went wrong: " + error.message,
-    };
-  }
+  // console.log({ tokenId });
+
+  // //sign transaction via Metamask
+  // try {
+  //   const txHash = await window.ethereum.request({
+  //     method: "eth_sendTransaction",
+  //     params: [transactionParameters],
+  //   });
+  //   return {
+  //     success: true,
+  //     status:
+  //       "✅ Check out your transaction on Etherscan: https://rinkeby.etherscan.io/tx/" +
+  //       txHash,
+  //   };
+  // } catch (error) {
+  //   return {
+  //     success: false,
+  //     status: "😥 Something went wrong: " + error.message,
+  //   };
+  // }
 };

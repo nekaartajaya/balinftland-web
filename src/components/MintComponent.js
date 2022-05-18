@@ -21,7 +21,7 @@ const MintComponent = ({ status }) => {
       setMintedQuantity(tempMinted);
 
       const { status } = await mintDigilandNFT(quantity);
-      setStatus(status);
+      // setStatus(status);
     }
   };
 
