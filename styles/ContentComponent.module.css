@@ -93,6 +93,20 @@
   margin-bottom: 32px;
 }
 
+.greyedOutLabel {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  /* identical to box height, or 21px */
+
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  /* Gray-1 */
+
+  color: #8f98aa;
+}
+
 .walletStatus {
   display: flex;
   flex-direction: column;

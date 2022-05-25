@@ -95,16 +95,19 @@ const ContentComponent = ({
 
             <div className={styles.walletStatus}>
               <label>
-                Wallet address :{" "}
-                {walletAddress && walletAddress.length > 0 ? (
-                  String(walletAddress).substring(0, 6) +
-                  "..." +
-                  String(walletAddress).substring(38)
-                ) : (
-                  <span>Not connected</span>
-                )}
+                Wallet address :
+                <span className={styles.greyedOutLabel}>
+                  {walletAddress && walletAddress.length > 0
+                    ? String(walletAddress).substring(0, 6) +
+                      "..." +
+                      String(walletAddress).substring(38)
+                    : "Not connected"}
+                </span>
               </label>
-              <label>Minted supply : {mintedQuantity}</label>
+              <label>
+                Minted supply :{" "}
+                <span className={styles.greyedOutLabel}>{mintedQuantity}</span>
+              </label>
             </div>
 
             <div>
