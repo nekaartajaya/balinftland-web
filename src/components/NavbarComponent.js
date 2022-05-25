@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import styles from "../../styles/NavbarComponent.module.css";
 
 const NavbarComponent = ({ onConnect, walletAddress }) => {
   return (
@@ -20,11 +21,22 @@ const NavbarComponent = ({ onConnect, walletAddress }) => {
         <Link href="">career</Link>
       </div>
 
+      <label className={styles.walletAddress}>
+        {walletAddress && walletAddress.length > 0 ? (
+          <span>
+            {String(walletAddress).substring(0, 6)}...
+            {String(walletAddress).substring(38)}
+          </span>
+        ) : (
+          <span></span>
+        )}
+      </label>
+
       <button onClick={onConnect}>
         {walletAddress && walletAddress.length > 0 ? (
-          "Connected"
+          <span>Disconnect</span>
         ) : (
-          <span>Connect</span>
+          <span>Mint Yours</span>
         )}
       </button>
     </nav>

@@ -1,0 +1,11 @@
+.walletAddress {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 160%;
+  /* identical to box height, or 26px */
+
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #ffffff;
+}
