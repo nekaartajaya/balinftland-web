@@ -13,6 +13,7 @@ const ContentComponent = ({
   walletAddress,
   mintStatus,
   onMintPressed,
+  onUSDCApprovalPressed,
 }) => {
   return (
     <div id="content">
@@ -93,24 +94,13 @@ const ContentComponent = ({
               </div>
             </div>
 
-            <div className={styles.walletStatus}>
-              <label>
-                Wallet address :
-                <span className={styles.greyedOutLabel400}>
-                  {walletAddress && walletAddress.length > 0
-                    ? String(walletAddress).substring(0, 6) +
-                      "..." +
-                      String(walletAddress).substring(38)
-                    : "Not connected"}
-                </span>
-              </label>
-              <label>
-                Minted supply :{" "}
-                <span className={styles.greyedOutLabel}>{mintedQuantity}</span>
-              </label>
-            </div>
-
-            <div>
+            <div className={styles.buttonContainer}>
+              <button
+                onClick={onUSDCApprovalPressed}
+                disabled={walletAddress.length > 0 ? false : true}
+              >
+                <span>Allow Digilandbali to trade your USDC</span>
+              </button>
               <button
                 onClick={onMintPressed}
                 disabled={quantity > 0 ? false : true}

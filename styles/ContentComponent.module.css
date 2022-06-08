@@ -121,10 +121,9 @@
   color: #8f98aa;
 }
 
-.walletStatus {
+.buttonContainer {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-
-  margin-bottom: 32px;
+  width: fit-content;
+  gap: 12px;
 }

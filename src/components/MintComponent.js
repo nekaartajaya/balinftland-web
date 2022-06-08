@@ -4,7 +4,7 @@ import { mintDigilandNFT } from "../helpers/metamask-interact";
 
 import ContentComponent from "./ContentComponent";
 
-const MintComponent = ({ walletAddress }) => {
+const MintComponent = ({ walletAddress = "" }) => {
   //State for forms
   const [referralCode, setReferralCode] = useState("");
   const [quantity, setQuantity] = useState(0);
@@ -16,6 +16,7 @@ const MintComponent = ({ walletAddress }) => {
   const [maxQuantity] = useState(80);
 
   const handleMintPressed = async () => {
+    //TODO: check first if USDC is approved
     if (quantity <= maxQuantity - mintedQuantity) {
       //call metamask here to mint
       console.log(`minted ${quantity} NFTs!`);
@@ -25,6 +26,10 @@ const MintComponent = ({ walletAddress }) => {
       const { status } = await mintDigilandNFT(quantity);
       setMintStatus(status);
     }
+  };
+
+  const handleUSDCApprovalPressed = () => {
+    console.log("USDC approved");
   };
 
   const handleDecrement = () => {
@@ -62,6 +67,7 @@ const MintComponent = ({ walletAddress }) => {
           walletAddress={walletAddress}
           mintStatus={mintStatus}
           onMintPressed={handleMintPressed}
+          onUSDCApprovedPressed={handleUSDCApprovalPressed}
         />
       </div>
     </>
