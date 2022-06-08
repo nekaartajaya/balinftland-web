@@ -38,7 +38,7 @@ const ContentComponent = ({
           <div className={styles.rightColumnContent}>
             <div className={styles.header}>
               <h1>PUBLIC SALE STAGE 1</h1>
-              <label>
+              <label className={styles.greyedOutLabel700}>
                 {`${mintedQuantity}/${maxQuantity} Minted`}{" "}
                 <span>Stage 1 supply left</span>
               </label>
@@ -96,7 +96,7 @@ const ContentComponent = ({
             <div className={styles.walletStatus}>
               <label>
                 Wallet address :
-                <span className={styles.greyedOutLabel}>
+                <span className={styles.greyedOutLabel400}>
                   {walletAddress && walletAddress.length > 0
                     ? String(walletAddress).substring(0, 6) +
                       "..." +
