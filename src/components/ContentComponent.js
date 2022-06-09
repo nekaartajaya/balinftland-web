@@ -1,5 +1,10 @@
+import React from "react";
+
 import Image from "next/image";
 import styles from "../../styles/ContentComponent.module.css";
+import buttonStyles from "../../styles/Button.module.css";
+
+import { InfoCircle } from "iconsax-react";
 
 const ContentComponent = ({
   onIncrement,
@@ -13,6 +18,7 @@ const ContentComponent = ({
   walletAddress,
   mintStatus,
   onMintPressed,
+  USDCApproved = false,
   onUSDCApprovalPressed,
 }) => {
   return (
@@ -96,10 +102,25 @@ const ContentComponent = ({
 
             <div className={styles.buttonContainer}>
               <button
+                className={
+                  USDCApproved
+                    ? `${buttonStyles.buttonOutlined} ${buttonStyles.buttonOutlinedSuccess}`
+                    : buttonStyles.buttonOutlined
+                }
                 onClick={onUSDCApprovalPressed}
                 disabled={walletAddress.length > 0 ? false : true}
               >
                 <span>Allow Digilandbali to trade your USDC</span>
+                <InfoCircle
+                  color={
+                    walletAddress.length === 0
+                      ? "#808080"
+                      : USDCApproved
+                      ? "#76ce8a"
+                      : "#1f50ff"
+                  }
+                  size="16"
+                />
               </button>
               <button
                 onClick={onMintPressed}

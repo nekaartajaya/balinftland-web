@@ -1,0 +1,55 @@
+.buttonOutlined {
+  background: unset;
+
+  /* Frame 440 */
+  box-sizing: border-box;
+
+  /* Auto layout */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 10px;
+
+  width: fit-content;
+  height: auto;
+
+  /* Blue-1 */
+  border: 1px solid #1f50ff;
+  border-radius: 4px;
+}
+
+.buttonOutlined:disabled > span {
+  color: #fff;
+}
+
+.infoIcon {
+  color: #406aff;
+}
+
+.buttonOutlinedSuccess {
+  border: 1px solid #76ce8a;
+}
+
+.infoIconSuccess {
+  color: #76ce8a;
+}
+
+.buttonOutlined > span {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  /* identical to box height, or 18px */
+
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  /* Blue-1 */
+
+  color: #1f50ff;
+}
+
+.buttonOutlinedSuccess > span {
+  color: #76ce8a;
+}

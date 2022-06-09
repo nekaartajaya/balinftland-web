@@ -67,6 +67,25 @@
   border: 0;
 
   background-color: unset;
+
+  /*remove increment/decrement arrow*/
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.buttonQuantity > span {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 150%;
+  padding: 8px 14px;
+  /* identical to box height, or 21px */
+
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  /* White */
+  color: #fff;
 }
 
 .header {

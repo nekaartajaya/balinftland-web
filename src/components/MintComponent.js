@@ -12,6 +12,8 @@ const MintComponent = ({ walletAddress = "" }) => {
 
   const [mintStatus, setMintStatus] = useState("");
 
+  const [success, setSuccess] = useState(false);
+
   //Constant state
   const [maxQuantity] = useState(80);
 
@@ -30,6 +32,7 @@ const MintComponent = ({ walletAddress = "" }) => {
 
   const handleUSDCApprovalPressed = () => {
     console.log("USDC approved");
+    setSuccess(!success);
   };
 
   const handleDecrement = () => {
@@ -67,7 +70,8 @@ const MintComponent = ({ walletAddress = "" }) => {
           walletAddress={walletAddress}
           mintStatus={mintStatus}
           onMintPressed={handleMintPressed}
-          onUSDCApprovedPressed={handleUSDCApprovalPressed}
+          onUSDCApprovalPressed={handleUSDCApprovalPressed}
+          USDCApproved={success}
         />
       </div>
     </>
