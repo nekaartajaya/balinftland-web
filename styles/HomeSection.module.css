@@ -181,7 +181,7 @@
 
 @media screen and (max-width:425px){
     .titleBig {
-        font-size: 30px;
+        font-size: 38px;
         line-height: 20px;
     }
 
@@ -199,9 +199,9 @@
     }
     .button {
         width: 100%;
-        max-width: 130px;
-        height: 24px;
-        font-size: 8px;
+        max-width: 145px;
+        height: 30px;
+        font-size: 9px;
         padding: 0px 4px;
     }
     .floatingTextContainer{
