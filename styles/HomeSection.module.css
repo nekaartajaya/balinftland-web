@@ -143,6 +143,7 @@
     }
     .imageUnionContainer {
         margin-top: 10px;
+        height: 35px;
     }
     .floatingTextContainer{
         max-width: 200px;
@@ -192,7 +193,6 @@
     }
     .imageUnionContainer {
         margin-top: 0px;
-        height: 35px;
     }
     .buttonContainer{
         margin-bottom: 10px;
