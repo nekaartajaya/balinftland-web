@@ -122,7 +122,7 @@ const AboutSection = () => {
           descText={`We’re bringing together the brightest minds and makers in NFTs-sphere. We dance the cutting edge, we challange the status quo, and we care deeply about giving developers around the globe the product they need to unlock a new world of NFT-enabled possibillities.`}
         />
       </div>
-      <div className="pb-32">
+      <div className="pb-64">
         <HomeTitleSection
           type={'custom'}
           topLeftText={'How'}
