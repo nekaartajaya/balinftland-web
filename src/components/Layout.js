@@ -18,15 +18,15 @@ const Layout = ({children}) => {
       window.ethereum.on('accountschanged', accounts => {
         if (accounts.length > 0) {
           window.currentAccount = accounts[0];
-          setwallet(accounts[0]);
-          setstatus('👆🏽 write a message in the text-field above.');
+          setWallet(accounts[0]);
+          setStatus('👆🏽 write a message in the text-field above.');
         } else {
-          setwallet('');
-          setstatus('🦊 connect to metamask using the top right button.');
+          setWallet('');
+          setStatus('🦊 connect to metamask using the top right button.');
         }
       });
     } else {
-      setstatus(
+      setStatus(
         <p>
           {' '}
           🦊{' '}
