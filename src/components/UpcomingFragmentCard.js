@@ -4,7 +4,7 @@ import styles from '../../styles/UpcomingFragmentCard.module.css';
 const UpcomingFragmentCard = ({type = 'upcoming', imageUrl, imageAlt, title, description}) => {
   return (
     <div className="relative">
-      <img src={'/fragment1.svg'} className="w-full" alt={imageAlt} />
+      <img src={imageUrl} className="w-full" alt={imageAlt} />
       {type === 'upcoming' ? (
         <div className={styles.overlayUp}>
           <div className={styles.textUp}>
@@ -14,8 +14,8 @@ const UpcomingFragmentCard = ({type = 'upcoming', imageUrl, imageAlt, title, des
       ) : (
         <div className={styles.overlay}>
           <div className={styles.text}>
-            <div className={styles.title}>LIMA BEACH SIGNATURE NFT</div>
-            <div className={styles.description}>CANGGU, BALI</div>
+            <div className={styles.title}>{title}</div>
+            <div className={styles.description}>{description}</div>
           </div>
         </div>
       )}

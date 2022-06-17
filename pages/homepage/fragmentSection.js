@@ -15,10 +15,15 @@ const FragmentSection = () => {
         </div>
       </div>
       <div className="grid grid-cols-4 gap-4">
-        <UpcomingFragmentCard type="ongoing" />
-        <UpcomingFragmentCard />
-        <UpcomingFragmentCard />
-        <UpcomingFragmentCard />
+        <UpcomingFragmentCard
+          type="ongoing"
+          title={'LIMA BEACH SIGNATURE NFT'}
+          description={'CANGGU, BALI'}
+          imageUrl={'/fragment1.svg'}
+        />
+        <UpcomingFragmentCard imageUrl={'/fragment1.svg'} />
+        <UpcomingFragmentCard imageUrl={'/fragment1.svg'} />
+        <UpcomingFragmentCard imageUrl={'/fragment1.svg'} />
       </div>
     </section>
   );
