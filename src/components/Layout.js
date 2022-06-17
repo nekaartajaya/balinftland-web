@@ -19,10 +19,10 @@ const Layout = ({children}) => {
         if (accounts.length > 0) {
           window.currentAccount = accounts[0];
           setWallet(accounts[0]);
-          setStatus("👆🏽 write a message in the text-field above.");
+          setStatus('👆🏽 write a message in the text-field above.');
         } else {
-          setWallet("");
-          setStatus("🦊 connect to metamask using the top right button.");
+          setWallet('');
+          setStatus('🦊 connect to metamask using the top right button.');
         }
       });
     } else {
@@ -57,7 +57,7 @@ const Layout = ({children}) => {
       <NavbarComponent onConnect={handleConnect} walletAddress={walletAddress} />
       {cloneElement(children, {walletAddress: walletAddress})}
 
-      {/* <FooterComponent /> */}
+      <FooterComponent />
     </div>
   );
 };
