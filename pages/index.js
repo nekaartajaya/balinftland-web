@@ -20,7 +20,7 @@ export default function Home() {
         <RevealSection />
         <PeopleBehindSection />
         <AdvisorSection />
-        <div className="relative w-full h-[120px] mb-32">
+        <div className="relative w-full h-[120px] mb-12 tablet:mb-32">
           <Image src="/Union.svg" layout="fill" className="w-full h-full relative" alt="tes" />
         </div>
       </div>

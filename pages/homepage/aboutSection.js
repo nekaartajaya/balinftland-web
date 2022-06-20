@@ -162,7 +162,7 @@ const AboutSection = () => {
                 NFT-enabled possibillities.
               </div>
             </div>
-            <div className="w-full mt-[20px] tablet:max-w-[380px] relative tablet:absolute bg-[#3F7DF4] text-[#FFF] p-6 tablet:top-[75%] tablet:left-[15%] desktop:top-[50%] desktop:left-[20%]">
+            <div className="w-full mt-[50px] tablet:mt-0 tablet:max-w-[380px] relative tablet:absolute bg-[#3F7DF4] text-[#FFF] p-6 tablet:top-[75%] tablet:left-[15%] desktop:top-[50%] desktop:left-[20%]">
               {stage.map((item, index) => {
                 return (
                   <div
