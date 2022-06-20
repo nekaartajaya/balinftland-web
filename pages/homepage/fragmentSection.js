@@ -2,11 +2,11 @@ import UpcomingFragmentCard from '../../src/components/UpcomingFragmentCard';
 
 const FragmentSection = () => {
   return (
-    <section className="pb-32">
+    <section className="pb-20 tablet:pb-32">
       <div className="pb-14">
-        <div className="text-base tablet:text-3xl desktop:text-5xl text-[#FFF] font-bold text-center pb-5">
+        <div className="text-xl tablet:text-3xl desktop:text-5xl text-[#FFF] font-bold text-center pb-5">
           Upcoming Fragment Collection
-          <span className="text-base tablet:text-3xl desktop:text-5xl text-[#406aff] p-0">.</span>
+          <span className="text-xl tablet:text-3xl desktop:text-5xl text-[#406aff] p-0">.</span>
         </div>
         <div className="text-[12px] tablet:text-[14px] desktop:text-base text-[#E2E2E2] tablet:px-24 text-center">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate nunc tortor proin
