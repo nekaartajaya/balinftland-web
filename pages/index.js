@@ -16,13 +16,13 @@ export default function Home() {
         <HomeSection />
         <SponsorSection />
         <AboutSection />
-        {/* <FragmentSection />
+        <FragmentSection />
         <RevealSection />
         <PeopleBehindSection />
         <AdvisorSection />
         <div className="relative w-full h-[120px] mb-32">
           <Image src="/Union.svg" layout="fill" className="w-full h-full relative" alt="tes" />
-        </div> */}
+        </div>
       </div>
     </Layout>
   );

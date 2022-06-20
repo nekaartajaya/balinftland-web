@@ -26,7 +26,7 @@ const AboutSection = () => {
 
   return (
     <section className="py-10">
-      <div className="pb-32">
+      <div className="pb-20 tablet:pb-32">
         <HomeTitleSection
           type={'leftImage'}
           topLeftText={'Who'}
@@ -37,7 +37,7 @@ const AboutSection = () => {
           descText={`Digilandbali built by Blockchain Consultant Experts who have handled various projects for 10+ Years, One of Bali's top property developer with 20+ years experience who has built hotels and resorts like Agra Nusa Villas, The Nest in Benoa The Sapphire Cliff Resort and Umalas Signature, and the property will be maintained by world's top hospitality management with 25+ years experience.`}
         />
       </div>
-      <div className="pb-32">
+      <div className="pb-20 tablet:pb-32">
         <HomeTitleSection
           type={'leftImage'}
           topLeftText={'Why'}
@@ -46,7 +46,7 @@ const AboutSection = () => {
           descText={`Digilandbali is a decentralized property developer with no middleman and no high conventional marketing cost. The idea is to create a viable option for the people who are struggling to own a property because of the high cost and unavailability of liquidity.`}
         />
       </div>
-      <div className="pb-32">
+      <div className="pb-20 tablet:pb-32">
         <ImageDescComponent
           imageUrl="/image2.svg"
           imageAlt="Tes"
@@ -56,7 +56,7 @@ const AboutSection = () => {
           }
         />
       </div>
-      <div className="pb-32">
+      <div className="pb-20 tablet:pb-32">
         <div className="relative w-full hidden desktop:block">
           <img src={'/image5.svg'} className="w-full h-auto" alt={'tes'} />
           <div className="text-base text-[#E2E2E2] pt-2 fontFeature">Fragment</div>
@@ -102,7 +102,7 @@ const AboutSection = () => {
           <div className="text-base text-[#E2E2E2] text-right pt-2 fontFeature">Fragment</div>
         </div>
       </div>
-      <div className="pb-32">
+      <div className="pb-20 tablet:pb-32">
         <HomeTitleSection
           type={'leftImage'}
           topLeftText={'What'}
@@ -111,7 +111,7 @@ const AboutSection = () => {
           descText={`We’re bringing together the brightest minds and makers in NFTs-sphere. We dance the cutting edge, we challange the status quo, and we care deeply about giving developers around the globe the product they need to unlock a new world of NFT-enabled possibillities.`}
         />
       </div>
-      <div className="pb-32">
+      <div className="pb-20 tablet:pb-32">
         <ImageDescComponent
           imageUrl="/image1.svg"
           imageAlt="Tes"
@@ -121,7 +121,7 @@ const AboutSection = () => {
           }
         />
       </div>
-      <div className="pb-32">
+      <div className="pb-20 tablet:pb-32">
         <HomeTitleSection
           type={'topImage'}
           imageURL={'/image4.svg'}
@@ -130,7 +130,7 @@ const AboutSection = () => {
           descText={`We’re bringing together the brightest minds and makers in NFTs-sphere. We dance the cutting edge, we challange the status quo, and we care deeply about giving developers around the globe the product they need to unlock a new world of NFT-enabled possibillities.`}
         />
       </div>
-      <div className="pb-32">
+      <div className="pb-20 tablet:pb-32">
         <HomeTitleSection
           type={'topImage'}
           topLeftText={'When'}
@@ -155,7 +155,7 @@ const AboutSection = () => {
               </div>
             </div>
             <div className="w-[100%] tablet:w-[75%] desktop:w-[40%] tablet:pl-[105px] desktop:pl-0">
-              <div className="text-sm leading-[140%] dekstop:text-2xl desktop:leading-9 text-[#FFF] text-justify">
+              <div className="text-[12px] tablet:text-sm leading-[140%] dekstop:text-2xl desktop:leading-9 text-[#FFF] text-justify">
                 We’re bringing together the brightest minds and makers in NFTs-sphere. We dance the
                 cutting edge, we challange the status quo, and we care deeply about giving
                 developers around the globe the product they need to unlock a new world of
