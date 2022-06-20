@@ -18,7 +18,6 @@ a {
 .content {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 80px;
 }
 
 nav {
@@ -101,6 +100,12 @@ input[type='number']::-webkit-outer-spin-button {
   font-size: 48px;
   color: #406aff;
   padding: 0;
+}
+
+@media screen and (max-width: 1280px) {
+  .content {
+    padding: 0 80px;
+  }
 }
 
 @media screen and (max-width: 677px) {

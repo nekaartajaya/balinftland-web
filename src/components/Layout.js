@@ -57,7 +57,7 @@ const Layout = ({children}) => {
       <NavbarComponent onConnect={handleConnect} walletAddress={walletAddress} />
       {cloneElement(children, {walletAddress: walletAddress})}
 
-      <FooterComponent />
+      {/* <FooterComponent /> */}
     </div>
   );
 };

@@ -57,12 +57,12 @@ const AboutSection = () => {
         />
       </div>
       <div className="pb-32">
-        <div className="relative w-full">
+        <div className="relative w-full hidden desktop:block">
           <img src={'/image5.svg'} className="w-full h-auto" alt={'tes'} />
           <div className="text-base text-[#E2E2E2] pt-2 fontFeature">Fragment</div>
         </div>
-        <div className="py-8">
-          <div className="text-center text-[#FFFFFF] font-bold text-[64px] leading-[77px] pb-4 fontFeature">
+        <div className="tablet:py-8">
+          <div className="text-center text-[#FFFFFF] font-bold text-[16px] leading:leading-[25px] tablet:text-[34px] tablet:leading-[50px] desktop:text-[64px] desktop:leading-[77px] pb-4 fontFeature">
             Apartment & Skyvillas
             <br />
             Built in Bali,
@@ -70,18 +70,34 @@ const AboutSection = () => {
             The Lost Paradise
           </div>
           <div className="flex items-center justify-center">
-            <img src="/Discord_White.svg" className="mx-1 w-[36px] h-[36px]" alt="Discord-white" />
-            <img src="/Telegram_White.svg" className="mx-1 w-[36px] h-[36px]" alt="Discord-white" />
-            <img src="/Twitter_White.svg" className="mx-1 w-[36px] h-[36px]" alt="Discord-white" />
-            <img src="/Opensea_White.svg" className="mx-1 w-[36px] h-[36px]" alt="Discord-white" />
-            <div className="text-base underline text-[#E2E2E2] ml-4">
+            <img
+              src="/Discord_White.svg"
+              className="mx-1 w-[16px] h-[16px] tablet:w-[36px] tablet:h-[36px]"
+              alt="Discord-white"
+            />
+            <img
+              src="/Telegram_White.svg"
+              className="mx-1 w-[16px] h-[16px] tablet:w-[36px] tablet:h-[36px]"
+              alt="Discord-white"
+            />
+            <img
+              src="/Twitter_White.svg"
+              className="mx-1 w-[16px] h-[16px] tablet:w-[36px] tablet:h-[36px]"
+              alt="Discord-white"
+            />
+            <img
+              src="/Opensea_White.svg"
+              className="mx-1 w-[16px] h-[16px] tablet:w-[36px] tablet:h-[36px]"
+              alt="Discord-white"
+            />
+            <div className="text-[10px] tablet:text-base underline text-[#E2E2E2] ml-4">
               JOIN THE
               <br />
               COMMUNITY
             </div>
           </div>
         </div>
-        <div className="relative w-full">
+        <div className="relative w-full hidden desktop:block">
           <img src={'/image6.svg'} className="w-full h-auto" alt={'tes'} />
           <div className="text-base text-[#E2E2E2] text-right pt-2 fontFeature">Fragment</div>
         </div>
@@ -122,43 +138,47 @@ const AboutSection = () => {
           descText={`We’re bringing together the brightest minds and makers in NFTs-sphere. We dance the cutting edge, we challange the status quo, and we care deeply about giving developers around the globe the product they need to unlock a new world of NFT-enabled possibillities.`}
         />
       </div>
-      <div className="pb-64">
+      <div className="tablet:pb-80 desktop:pb-64">
         <HomeTitleSection
           type={'custom'}
           topLeftText={'How'}
           topRightText={'Section about how it’s built from minting till become apartments'}
         >
-          <div className="flex items-center">
-            <div className="w-[60%]">
-              <div className="relative max-w-[380px]">
-                <img src={'/image7.svg'} className="w-full h-auto max-w-[380px]" alt={'tes'} />
-                <div className="w-full max-w-[380px] absolute bg-[#3F7DF4] text-[#FFF] p-6 top-[50%] left-[65%]">
-                  {stage.map((item, index) => {
-                    return (
-                      <div
-                        key={index}
-                        className={`flex gap-8 pb-4 mb-4 ${
-                          index < stage.length - 1 ? 'border-b' : ''
-                        }`}
-                      >
-                        <div className="font-bold">{item.name}</div>
-                        <div>{item.desc}</div>
-                      </div>
-                    );
-                  })}
-                  <div className="flex items-center justify-end font-bold mt-[80px]">
-                    <div className="mr-2">Know More</div>
-                    <img src={'/arrowTopRight.svg'} className="w-[10px] h-[10px]" alt={'tes'} />
-                  </div>
-                </div>
+          <div className="tablet:flex text-start desktop:items-center relative">
+            <div className="w-[40%] tablet:w-[25%] desktop:w-[60%] float-left">
+              <div className="desktop:relative max-w-[195px] desktop:max-w-[380px] mr-[15px] tablet:mr-0">
+                <img
+                  src={'/image7.svg'}
+                  className="w-full h-auto max-w-[195px] desktop:max-w-[380px]"
+                  alt={'tes'}
+                />
               </div>
             </div>
-            <div className="w-[40%]">
-              <div className="text-2xl text-[#FFF] leading-9">
+            <div className="w-[100%] tablet:w-[75%] desktop:w-[40%] tablet:pl-[105px] desktop:pl-0">
+              <div className="text-sm leading-[140%] dekstop:text-2xl desktop:leading-9 text-[#FFF] text-justify">
                 We’re bringing together the brightest minds and makers in NFTs-sphere. We dance the
                 cutting edge, we challange the status quo, and we care deeply about giving
                 developers around the globe the product they need to unlock a new world of
                 NFT-enabled possibillities.
+              </div>
+            </div>
+            <div className="w-full mt-[20px] tablet:max-w-[380px] relative tablet:absolute bg-[#3F7DF4] text-[#FFF] p-6 tablet:top-[75%] tablet:left-[15%] desktop:top-[50%] desktop:left-[20%]">
+              {stage.map((item, index) => {
+                return (
+                  <div
+                    key={index}
+                    className={`flex items-center gap-8 pb-4 mb-4 ${
+                      index < stage.length - 1 ? 'border-b' : ''
+                    }`}
+                  >
+                    <div className="font-bold text-sm">{item.name}</div>
+                    <div className="text-[12px]">{item.desc}</div>
+                  </div>
+                );
+              })}
+              <div className="flex items-center justify-end font-bold mt-[50px] desktop:mt-[80px]">
+                <div className="mr-2 text-sm">Know More</div>
+                <img src={'/arrowTopRight.svg'} className="w-[10px] h-[10px]" alt={'tes'} />
               </div>
             </div>
           </div>
