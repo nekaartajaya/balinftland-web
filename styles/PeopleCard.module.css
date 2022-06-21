@@ -18,3 +18,10 @@
   text-align: center;
   color: #c0c0c0;
 }
+
+@media screen and (max-width: 920px) {
+  .name,
+  .position {
+    font-size: 12px;
+  }
+}
