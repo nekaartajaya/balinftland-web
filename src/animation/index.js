@@ -27,7 +27,7 @@ export const fadeInUpText = visible =>
       opacity: visible ? 1 : 0,
       transform: visible ? 'translateY(0%)' : 'translateY(100%)',
     },
-    delay: 300,
+    delay: 200,
     config: {
       duration: 800,
     },
@@ -73,7 +73,7 @@ export const imageWidth = visible =>
     },
     delay: 100,
     config: {
-      duration: 5000,
+      duration: 3000,
       easing: easings.easeOutQuint,
     },
   });

@@ -4,7 +4,7 @@ import {animated} from 'react-spring';
 
 import Image from 'next/image';
 
-import {imageWidth} from '../../src/animation';
+import {fadeIn, imageWidth} from '../../src/animation';
 import HomeTitleSection from '../../src/components/HomeTitleSection';
 import ImageDescComponent from '../../src/components/ImageDescComponent';
 import useIntersectionObserver from '../../src/hooks/useIntersectionObserver';
@@ -14,12 +14,14 @@ const AboutSection = () => {
   const triggerAnimation = {
     imgLeft: useRef(),
     imgRight: useRef(),
+    textCenter: useRef(),
   };
 
   // visible on viewport
   const visibleAnimation = {
     imgLeft: useIntersectionObserver(triggerAnimation.imgLeft, {})?.isIntersecting,
     imgRight: useIntersectionObserver(triggerAnimation.imgRight, {})?.isIntersecting,
+    textCenter: useIntersectionObserver(triggerAnimation.textCenter, {})?.isIntersecting,
   };
 
   const stage = [
@@ -82,7 +84,11 @@ const AboutSection = () => {
           <img src={'/image5.svg'} className="w-full h-auto" alt={'tes'} />
           <div className="text-base text-[#E2E2E2] pt-2 fontFeature">Fragment</div>
         </animated.div>
-        <div className="tablet:py-8">
+        <animated.div
+          className="tablet:py-8"
+          style={fadeIn(visibleAnimation.textCenter)}
+          ref={triggerAnimation.textCenter}
+        >
           <div className="text-center text-[#FFFFFF] font-bold text-[16px] leading:leading-[25px] tablet:text-[34px] tablet:leading-[50px] desktop:text-[64px] desktop:leading-[77px] pb-4 fontFeature">
             Apartment & Skyvillas
             <br />
@@ -117,7 +123,7 @@ const AboutSection = () => {
               COMMUNITY
             </div>
           </div>
-        </div>
+        </animated.div>
         <animated.div
           className="relative w-full hidden desktop:block ml-auto"
           style={imageWidth(visibleAnimation.imgRight)}
