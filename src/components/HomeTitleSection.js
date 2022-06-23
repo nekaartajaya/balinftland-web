@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import {useRef} from 'react';
-import {useSpring, animated, easings} from 'react-spring';
+import {animated} from 'react-spring';
 
 import styles from '../../styles/HomeTitleSection.module.css';
+import {borderWidth, fadeIn, fadeInUpText} from '../animation';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
 const HomeTitleSection = ({
@@ -19,36 +20,12 @@ const HomeTitleSection = ({
   const dataRef = useIntersectionObserver(triggerRef, {
     freezeOnceVisible: true,
   });
-  const fadeIn = useSpring({
-    from: {opacity: 0},
-    to: {opacity: dataRef?.isIntersecting ? 1 : 0},
-    delay: 100,
-    config: {
-      duration: 1200,
-    },
-  });
-  const borderWidth = useSpring({
-    from: {width: '0%'},
-    to: {width: dataRef?.isIntersecting ? '100%' : '0%'},
-    delay: 100,
-    config: {
-      duration: 2000,
-      easing: easings.easeOutQuint,
-    },
-  });
-  const fadeInUp = useSpring({
-    from: {transform: 'translateY(100%)'},
-    to: {transform: dataRef?.isIntersecting ? 'translateY(0%)' : 'translateY(100%)'},
-    delay: 300,
-    config: {
-      duration: 800,
-    },
-  });
+  const visible = dataRef?.isIntersecting;
 
   return (
     <div className={styles.container}>
       <div className="overflow-hidden">
-        <animated.div style={fadeInUp} className={styles.top} ref={triggerRef}>
+        <animated.div className={styles.top} ref={triggerRef} style={fadeInUpText(visible)}>
           <div className={styles.left}>{topLeftText}</div>
           <div className={styles.right}>
             {topRightText}
@@ -57,9 +34,13 @@ const HomeTitleSection = ({
         </animated.div>
       </div>
       <div className="w-full inline-block">
-        <animated.div style={borderWidth} className={styles.border} ref={triggerRef}></animated.div>
+        <animated.div
+          className={styles.border}
+          ref={triggerRef}
+          style={borderWidth(visible)}
+        ></animated.div>
       </div>
-      <animated.div style={fadeIn} ref={triggerRef}>
+      <animated.div ref={triggerRef} style={fadeIn(visible)}>
         {type === 'leftImage' ? (
           <div
             className={`${styles.bottomLeftImage} ${styles.bottom}`}
