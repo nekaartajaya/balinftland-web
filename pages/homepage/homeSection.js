@@ -8,12 +8,16 @@ import useIntersectionObserver from '../../src/hooks/useIntersectionObserver';
 import styles from '../../styles/HomeSection.module.css';
 
 const HomeSection = () => {
-  const triggerRef = useRef();
-  const dataRef = useIntersectionObserver(triggerRef, {
-    freezeOnceVisible: true,
-    rootMargin: '-50%',
-  });
-  const visible = dataRef?.isIntersecting;
+  // animation trigger
+  const triggerAnimation = {
+    floatText: useRef(),
+  };
+
+  // visible on viewport
+  const visibleAnimation = {
+    floatText: useIntersectionObserver(triggerAnimation.floatText, {rootMargin: '-50%'})
+      ?.isIntersecting,
+  };
 
   return (
     <section>
@@ -28,7 +32,7 @@ const HomeSection = () => {
       <div className="relative">
         <animated.div
           className={`${styles.floatingTextContainer} ${styles.floatingText} ${styles.top}`}
-          style={fadeInLeft(visible)}
+          style={fadeInLeft(visibleAnimation.floatText)}
         >
           <div className={styles.title}>NFT Developer Property</div>
           <div className={styles.subtitle}>
@@ -36,12 +40,12 @@ const HomeSection = () => {
             community
           </div>
         </animated.div>
-        <div className={styles.imageMainContainer} ref={triggerRef}>
+        <div className={styles.imageMainContainer} ref={triggerAnimation.floatText}>
           <Image src="/Home.svg" layout="fill" className={styles.imageMain} alt="HomePicture" />
         </div>
         <animated.div
           className={`${styles.floatingTextContainer} ${styles.floatingText} ${styles.bottom}`}
-          style={fadeInRight(visible)}
+          style={fadeInRight(visibleAnimation.floatText)}
         >
           <div className={styles.title}>NFT Developer Property</div>
           <div className={styles.subtitle}>
