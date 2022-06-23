@@ -34,10 +34,11 @@ export const fadeInUpText = visible =>
   });
 export const fadeInLeft = visible =>
   useSpring({
-    from: {opacity: 0, transform: 'translateX(-100%)'},
+    from: {opacity: 0, display: 'none', transform: 'translateX(-100%)'},
     to: {
       opacity: visible ? 1 : 0,
       transform: visible ? 'translateX(0%)' : 'translateX(-100%)',
+      display: visible ? 'flex' : 'none',
     },
     delay: 100,
     config: {
@@ -55,6 +56,24 @@ export const fadeInRight = visible =>
     delay: 100,
     config: {
       duration: 1000,
+      easing: easings.easeOutQuint,
+    },
+  });
+export const imageWidth = visible =>
+  useSpring({
+    from: {
+      maxWidth: '200px',
+      height: '150px',
+      objectFit: 'cover',
+    },
+    to: {
+      maxWidth: visible ? '1366px' : '200px',
+      height: visible ? 'auto' : '150px',
+      objectFit: visible ? 'auto' : 'cover',
+    },
+    delay: 100,
+    config: {
+      duration: 5000,
       easing: easings.easeOutQuint,
     },
   });

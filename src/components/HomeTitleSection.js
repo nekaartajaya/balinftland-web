@@ -17,9 +17,7 @@ const HomeTitleSection = ({
   children,
 }) => {
   const triggerRef = useRef();
-  const dataRef = useIntersectionObserver(triggerRef, {
-    freezeOnceVisible: true,
-  });
+  const dataRef = useIntersectionObserver(triggerRef, {});
   const visible = dataRef?.isIntersecting;
 
   return (

@@ -8,9 +8,7 @@ import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
 const ImageDescComponent = ({imageUrl, imageAlt, title, description}) => {
   const triggerRef = useRef();
-  const dataRef = useIntersectionObserver(triggerRef, {
-    freezeOnceVisible: true,
-  });
+  const dataRef = useIntersectionObserver(triggerRef, {});
   const visible = dataRef?.isIntersecting;
 
   return (
