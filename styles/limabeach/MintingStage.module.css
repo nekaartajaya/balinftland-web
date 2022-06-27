@@ -1,0 +1,195 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 2em;
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 18px;
+
+  width: 100%;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: row;
+  padding: 0.625em;
+}
+
+.text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 80px;
+  gap: 10px;
+
+  width: 100%;
+
+  background: #344054;
+}
+
+.cardContent {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+}
+
+.textMintNow {
+  font-size: 32px;
+  line-height: 38px;
+  text-align: center;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  color: #ffffff;
+}
+
+.imageDescContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 56px;
+
+  max-width: inherit;
+}
+
+.rowImageDescContainer {
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+
+  gap: 5.75em;
+}
+
+.descText {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  color: #e2e2e2;
+}
+
+.descTitle {
+  font-size: 32px;
+  line-height: 38px;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  color: #ffffff;
+}
+
+.rowDescContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.imageContainer {
+  display: flex;
+
+  margin-bottom: 0px;
+}
+
+@media screen and (max-width: 920px) {
+  .root {
+    max-width: 674px;
+  }
+
+  .rowImageDescContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 2em;
+  }
+
+  .imageContainer {
+    display: flex;
+
+    margin-bottom: 0px;
+  }
+
+  .cardContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    max-width: 610px;
+  }
+
+  .text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+  }
+
+  .descTitle {
+    font-size: 16px;
+    line-height: 160%;
+  }
+
+  .descText {
+    font-size: 14px;
+  }
+
+  .textMintNow {
+    font-size: 24px;
+    line-height: 160%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .rowImageDescContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+
+    max-width: inherit;
+  }
+
+  .cardContent {
+    flex-direction: column;
+
+    gap: 2em;
+  }
+
+  .text {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+
+    text-align: center;
+  }
+
+  .descTitle {
+    font-size: 14px;
+    line-height: 150%;
+  }
+
+  .descText {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+  }
+
+  .textMintNow {
+    font-size: 16px;
+    line-height: 160%;
+  }
+}

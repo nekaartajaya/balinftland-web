@@ -1,0 +1,28 @@
+.sneakPeakContainer {
+  gap: 64px;
+
+  width: 100%;
+}
+
+.sneakPeakImageContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+
+  width: 100%;
+}
+
+.imageContainer {
+  width: 308px;
+}
+
+@media screen and (max-width: 425px) {
+  .imageContainer:nth-last-of-type(-n + 2) {
+    display: none;
+  }
+  .sneakPeakImageContainer {
+    width: inherit;
+  }
+}

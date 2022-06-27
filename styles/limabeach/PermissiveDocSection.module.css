@@ -1,0 +1,176 @@
+.root {
+  gap: 24px;
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  min-width: 100%;
+}
+
+.topHeaderContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+
+  width: 100%;
+}
+
+.headerText {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+
+  color: #e2e2e2;
+}
+
+.linkWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px;
+  margin-left: auto;
+  gap: 8px;
+
+  max-width: 398px;
+}
+
+.imageDescContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 160px;
+
+  max-width: 100%;
+}
+
+.singleImageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+}
+
+.imageTitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 150%;
+  /* identical to box height, or 36px */
+
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  color: #ffffff;
+}
+
+.imageText {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  /* or 24px */
+
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* White-2 */
+
+  color: #e2e2e2;
+}
+
+.linkWrapperInvisible {
+  display: none;
+}
+
+.responsiveImg {
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+}
+
+@media screen and (max-width: 920px) {
+  .imageDescContainer {
+    flex-direction: column;
+    align-items: center;
+
+    gap: 16px;
+  }
+}
+
+@media screen and (max-width: 677px) {
+  .root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 24px;
+
+    max-width: inherit;
+  }
+
+  .imageDescContainer {
+    flex-direction: column;
+    align-items: center;
+
+    gap: 16px;
+  }
+
+  .headerText {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+  }
+
+  .imageTitle {
+    font-size: 16px;
+  }
+
+  .imageText {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .root {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 32px;
+
+    max-width: 342px;
+  }
+
+  .headerText {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+  }
+
+  .linkWrapper {
+    display: none;
+  }
+
+  .linkWrapperInvisible {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+
+    max-width: 100%;
+  }
+
+  .imageTitle {
+    font-size: 16px;
+  }
+
+  .imageText {
+    font-size: 12px;
+  }
+}
