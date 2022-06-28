@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 import styles from '../../styles/ContentComponent.module.css';
 
 const ContentComponent = ({
@@ -19,7 +17,7 @@ const ContentComponent = ({
     <div id="content">
       <div className={styles.container}>
         <div className={styles.leftColumn}>
-          <Image src="/Hexagon.svg" alt="NFT image illustration" height={180} width={180} />
+          <img src="/Hexagon.svg" alt="NFT image illustration" className="w-45 h-45" />
           <h3>LIMA BEACH NFT</h3>
           <div>
             <p>Mint Price</p>
