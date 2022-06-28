@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 import styles from '../../styles/FooterComponent.module.css';
 
 const FooterComponent = () => {
@@ -7,7 +5,7 @@ const FooterComponent = () => {
     <footer id="footer" className={styles.footer}>
       <div className={styles.container}>
         <div>
-          <Image src="/Logo_Digilandbali.svg" width={180} height={30} alt="Logo-DigilandBali" />
+          <img src="/Logo_Digilandbali.svg" className="w-45 h-[30px]" alt="Logo-DigilandBali" />
         </div>
         <div className={styles.info}>
           <div className={styles.discover}>
@@ -49,10 +47,10 @@ const FooterComponent = () => {
           </a>
         </label>
         <div className={styles.contactIcons}>
-          <Image src="/Discord_White.svg" width={24} height={24} alt="Discord-white" />
-          <Image src="/Telegram_White.svg" width={24} height={24} alt="Discord-white" />
-          <Image src="/Twitter_White.svg" width={24} height={24} alt="Discord-white" />
-          <Image src="/Opensea_White.svg" width={24} height={24} alt="Discord-white" />
+          <img src="/Discord_White.svg" className="w-6 h-6" alt="Discord-white" />
+          <img src="/Telegram_White.svg" className="w-6 h-6" alt="Discord-white" />
+          <img src="/Twitter_White.svg" className="w-6 h-6" alt="Discord-white" />
+          <img src="/Opensea_White.svg" className="w-6 h-6" alt="Discord-white" />
         </div>
       </div>
     </footer>
