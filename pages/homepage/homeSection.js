@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import {useRef} from 'react';
 import {animated} from 'react-spring';
 
@@ -41,7 +42,7 @@ const HomeSection = () => {
           </div>
         </animated.div>
         <div className={styles.imageMainContainer} ref={triggerAnimation.floatText}>
-          <Image src="/Home.svg" layout="fill" className={styles.imageMain} alt="HomePicture" />
+          <img src="/Home.svg" className={styles.imageMain} alt="HomePicture" />
         </div>
         <animated.div
           className={`${styles.floatingTextContainer} ${styles.floatingText} ${styles.bottom}`}
@@ -59,7 +60,7 @@ const HomeSection = () => {
         <button className={styles.button}>Visit Lima Beach Project</button>
       </div>
       <div className={styles.imageUnionContainer}>
-        <Image src="/Union.svg" layout="fill" className={styles.imageUnion} alt="HomePicture" />
+        <img src="/Union.svg" className={styles.imageUnion} alt="HomePicture" />
       </div>
     </section>
   );

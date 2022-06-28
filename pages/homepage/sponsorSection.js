@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import {useRef} from 'react';
 import {animated} from 'react-spring';
 
@@ -26,13 +27,13 @@ const SponsorSection = () => {
         style={fadeIn(visibleAnimation.sponsor)}
       >
         <div className={styles.imageContainer}>
-          <Image src="/hah.svg" layout="fill" className={styles.image} alt="HomePicture" />
+          <img src="/hah.svg" className={styles.image} alt="HomePicture" />
         </div>
         <div className={styles.imageContainer}>
-          <Image src="/ftm.svg" layout="fill" className={styles.image} alt="HomePicture" />
+          <img src="/ftm.svg" className={styles.image} alt="HomePicture" />
         </div>
         <div className={styles.imageContainer}>
-          <Image src="/hah.svg" layout="fill" className={styles.image} alt="HomePicture" />
+          <img src="/hah.svg" className={styles.image} alt="HomePicture" />
         </div>
       </animated.div>
     </section>
