@@ -10,6 +10,7 @@
     "jsx-a11y/anchor-is-valid": ["warn"],
     "react/display-name": ["warn"],
     "react/no-unescaped-entities": ["warn"],
-    "react/prop-types": ["off"]
+    "react/prop-types": ["off"],
+    "@next/next/no-img-element": ["off"]
   }
 }

@@ -7,6 +7,7 @@ import NavbarComponent from './NavbarComponent';
 const Layout = ({children}) => {
   const [walletAddress, setWallet] = useState('');
   const [status, setStatus] = useState('');
+  const [isOpenNavbar, setIsOpenNavbar] = useState(false);
 
   const fetchCurrentWallet = async () => {
     const {address, status} = await getCurrentWalletConnected();
@@ -53,8 +54,12 @@ const Layout = ({children}) => {
   };
 
   return (
-    <div className="content">
-      <NavbarComponent onConnect={handleConnect} walletAddress={walletAddress} />
+    <div className={`content ${isOpenNavbar ? 'fixed' : ''}`}>
+      <NavbarComponent
+        onConnect={handleConnect}
+        walletAddress={walletAddress}
+        isOpenNav={setIsOpenNavbar}
+      />
       {cloneElement(children, {walletAddress: walletAddress})}
 
       <FooterComponent />
