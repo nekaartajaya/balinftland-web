@@ -135,6 +135,12 @@
   margin-bottom: 0;
 }
 
+@media screen and (max-width: 1199px) {
+  .titleBig {
+    font-size: 80px;
+  }
+}
+
 @media screen and (max-width: 920px) {
   .titleBig {
     font-size: 64px;
