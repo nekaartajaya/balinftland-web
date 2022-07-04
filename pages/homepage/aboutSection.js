@@ -17,8 +17,8 @@ const AboutSection = () => {
 
   // visible on viewport
   const visibleAnimation = {
-    imgLeft: useIntersectionObserver(triggerAnimation.imgLeft, {})?.isIntersecting,
-    imgRight: useIntersectionObserver(triggerAnimation.imgRight, {})?.isIntersecting,
+    imgLeft: useIntersectionObserver(triggerAnimation.imgLeft, {threshold: 1})?.isIntersecting,
+    imgRight: useIntersectionObserver(triggerAnimation.imgRight, {threshold: 1})?.isIntersecting,
     textCenter: useIntersectionObserver(triggerAnimation.textCenter, {})?.isIntersecting,
   };
 
