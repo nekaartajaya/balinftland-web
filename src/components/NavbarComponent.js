@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import Link from 'next/link';
 
@@ -7,10 +7,35 @@ import {ArrowDown2} from 'iconsax-react';
 const NavbarComponent = ({onConnect, walletAddress, isOpenNav}) => {
   const language = ['ENGLISH', 'MANDARIN', 'RUSSIA', 'VIETNAM'];
   const [openNavbar, setOpenNavbar] = useState(false);
+  const [stickyClass, setStickyClass] = useState('');
+
+  const closeNavbar = () => {
+    setOpenNavbar(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', stickNavbar);
+    window.addEventListener('resize', stickNavbar);
+    return () => {
+      window.removeEventListener('scroll', stickNavbar);
+      window.removeEventListener('resize', stickNavbar);
+    };
+  }, []);
+
+  const stickNavbar = () => {
+    if (window !== undefined) {
+      let windowHeight = window.scrollY;
+      let windowWidth = window.innerWidth;
+      if (windowHeight > 136 && windowWidth > 1280) setStickyClass('scrolled');
+      else if (windowHeight > 100 && windowWidth >= 426) setStickyClass('scrolled');
+      else if (windowHeight > 70 && windowWidth < 426) setStickyClass('scrolled');
+      else setStickyClass('');
+    }
+  };
 
   return (
-    <div>
-      <nav className="flex justify-between items-center desktop">
+    <div className={`nav-container ${stickyClass}`}>
+      <nav className="h-[136px] max-w-[1280px] flex justify-between items-center desktop">
         <div id="logo" className="w-[25%]">
           <Link href="/">
             <img
@@ -22,7 +47,7 @@ const NavbarComponent = ({onConnect, walletAddress, isOpenNav}) => {
         </div>
 
         <div className="link flex gap-9 justify-center w-[50%]">
-          <Link href="/">home</Link>
+          <Link href="/#home">home</Link>
           <Link href="">whitepaper</Link>
           <div className="dropdown-menu relative cursor-pointer">
             <div className="flex items-center gap-2">
@@ -71,7 +96,8 @@ const NavbarComponent = ({onConnect, walletAddress, isOpenNav}) => {
       <nav
         className={`h-[70px] tablet:h-[100px] flex justify-between items-center transition transition-colors duration-200 mobile ${
           openNavbar ? 'bg-[#050910]' : 'bg-transparent'
-        }`}>
+        }`}
+      >
         <div id="logo" className="w-[50%]">
           <Link href="/" passHref>
             <div className=" flex items-center text-white text-[12px] tablet:text-[28px] font-bold tracking-wide gap-2">
@@ -96,7 +122,8 @@ const NavbarComponent = ({onConnect, walletAddress, isOpenNav}) => {
               } else {
                 isOpenNav(!openNavbar);
               }
-            }}>
+            }}
+          >
             <img
               src={`${openNavbar ? '/close-icon.svg' : '/hamburger-icon.svg'}`}
               className="w-[18px] tablet:w-[32px]"
@@ -105,21 +132,32 @@ const NavbarComponent = ({onConnect, walletAddress, isOpenNav}) => {
           </button>
         </div>
         <div
-          className={`mobile-inner link text-[16px] tablet:text-[24px] tracking-wide gap-10 right-0 flex flex-col bg-[#050910] w-[100%] h-screen top-[60px] tablet:top-[100px] z-[999] overflow-y-auto ${
+          className={`mobile-inner link text-[16px] tablet:text-[24px] tracking-wide gap-10 right-0 flex flex-col bg-[#050910] w-[100%] h-screen top-[70px] tablet:top-[100px] z-[999] overflow-y-auto ${
             openNavbar ? 'open' : ''
-          }`}>
-          <Link href="/">home</Link>
-          <Link href="">whitepaper</Link>
+          }`}
+        >
+          <Link href="/#home" passHref>
+            <div onClick={() => closeNavbar()}>home</div>
+          </Link>
+          <Link href="">
+            <div onClick={() => closeNavbar()}>whitepaper</div>
+          </Link>
           <div>
             <div>projects</div>
             <div>
               <Link href="/projects/lima-beach" passHref>
-                <div className="hover:text[#FFF] text-[#E2E2E2] font-medium cursor-pointer mt-[26px] px-6">
+                <div
+                  onClick={() => closeNavbar()}
+                  className="hover:text[#FFF] text-[#E2E2E2] font-medium cursor-pointer mt-[26px] px-6"
+                >
                   lima beach signature nft
                 </div>
               </Link>
               <Link href="" passHref>
-                <div className="text-[#E2E2E2] font-medium cursor-pointer mt-[26px] px-6">
+                <div
+                  onClick={() => closeNavbar()}
+                  className="text-[#E2E2E2] font-medium cursor-pointer mt-[26px] px-6"
+                >
                   coming soon
                 </div>
               </Link>
@@ -132,7 +170,10 @@ const NavbarComponent = ({onConnect, walletAddress, isOpenNav}) => {
               {language.map((v, i) => {
                 return (
                   <Link href="" passHref key={i}>
-                    <div className="hover:text[#FFF] text-[#E2E2E2] font-medium cursor-pointer mt-[26px] px-6">
+                    <div
+                      onClick={() => closeNavbar()}
+                      className="hover:text[#FFF] text-[#E2E2E2] font-medium cursor-pointer mt-[26px] px-6"
+                    >
                       {v}
                     </div>
                   </Link>
@@ -140,7 +181,9 @@ const NavbarComponent = ({onConnect, walletAddress, isOpenNav}) => {
               })}
             </div>
           </div>
-          <Link href="">go to mint page</Link>
+          <Link href="">
+            <div onClick={() => closeNavbar()}>go to mint page</div>
+          </Link>
         </div>
       </nav>
     </div>

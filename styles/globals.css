@@ -24,7 +24,18 @@ a {
 
 .content {
   max-width: 1280px;
-  margin: 0 auto;
+  margin: 160px auto 0;
+}
+.nav-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  transition: all ease-in-out 0.1s;
+}
+.nav-container.scrolled {
+  background-color: rgba(5, 9, 16, 0.7);
 }
 
 nav.mobile {
@@ -47,8 +58,7 @@ nav.desktop {
 }
 
 nav {
-  margin: 0px auto 80px;
-  padding: 32px 0 10px;
+  margin: 0px auto;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
@@ -163,6 +173,10 @@ input[type='number']::-webkit-outer-spin-button {
 
 @media screen and (max-width: 1280px) {
   .content {
+    margin-top: 120px;
+  }
+  .content,
+  nav {
     padding: 0 80px;
   }
 
@@ -175,9 +189,6 @@ input[type='number']::-webkit-outer-spin-button {
   nav.mobile {
     display: flex;
     width: 100vw;
-    margin-left: -80px;
-    padding-left: 80px;
-    padding-right: 80px;
   }
   nav.desktop {
     display: none;
@@ -186,12 +197,11 @@ input[type='number']::-webkit-outer-spin-button {
 
 @media screen and (max-width: 677px) {
   .content {
-    padding: 0 24px;
+    margin-top: 100px;
   }
-  nav.mobile {
-    margin-left: -24px;
-    padding-left: 24px;
-    padding-right: 24px;
+  .content,
+  nav {
+    padding: 0 24px;
   }
   nav .mobile-inner {
     padding: 50px 24px 120px;

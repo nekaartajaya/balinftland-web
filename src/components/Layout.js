@@ -54,15 +54,17 @@ const Layout = ({children}) => {
   };
 
   return (
-    <div className={`content ${isOpenNavbar ? 'fixed' : ''}`}>
+    <div>
       <NavbarComponent
         onConnect={handleConnect}
         walletAddress={walletAddress}
         isOpenNav={setIsOpenNavbar}
       />
-      {cloneElement(children, {walletAddress: walletAddress})}
+      <div className={`content ${isOpenNavbar ? 'overflow-hidden' : ''}`}>
+        {cloneElement(children, {walletAddress: walletAddress})}
 
-      <FooterComponent />
+        <FooterComponent />
+      </div>
     </div>
   );
 };

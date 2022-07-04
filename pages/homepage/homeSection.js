@@ -9,17 +9,22 @@ import styles from '../../styles/HomeSection.module.css';
 const HomeSection = () => {
   // animation trigger
   const triggerAnimation = {
-    floatText: useRef(),
+    floatTextLeft: useRef(),
+    floatTextRight: useRef(),
   };
 
   // visible on viewport
   const visibleAnimation = {
-    floatText: useIntersectionObserver(triggerAnimation.floatText, {rootMargin: '-50%'})
+    floatTextLeft: useIntersectionObserver(triggerAnimation.floatTextLeft, {
+      threshold: 1,
+      rootMargin: '-40%',
+    })?.isIntersecting,
+    floatTextRight: useIntersectionObserver(triggerAnimation.floatTextRight, {rootMargin: '0%'})
       ?.isIntersecting,
   };
 
   return (
-    <section>
+    <section id="home" className="pt-12">
       <div>
         <div className={styles.titleBig}>DIGILANDBALI</div>
         <div className={styles.subtitle}>WE BUILD TOGETHER, WE OWN TOGETHER</div>
@@ -31,7 +36,7 @@ const HomeSection = () => {
       <div className="relative">
         <animated.div
           className={`${styles.floatingTextContainer} ${styles.floatingText} ${styles.top}`}
-          style={fadeInLeft(visibleAnimation.floatText)}
+          style={fadeInLeft(visibleAnimation.floatTextLeft)}
         >
           <div className={styles.title}>NFT Developer Property</div>
           <div className={styles.subtitle}>
@@ -39,12 +44,14 @@ const HomeSection = () => {
             community
           </div>
         </animated.div>
-        <div className={styles.imageMainContainer} ref={triggerAnimation.floatText}>
+        <div ref={triggerAnimation.floatTextLeft}></div>
+        <div className={styles.imageMainContainer}>
           <img src="/Home.svg" className={styles.imageMain} alt="HomePicture" />
         </div>
         <animated.div
           className={`${styles.floatingTextContainer} ${styles.floatingText} ${styles.bottom}`}
-          style={fadeInRight(visibleAnimation.floatText)}
+          style={fadeInRight(visibleAnimation.floatTextRight)}
+          ref={triggerAnimation.floatTextRight}
         >
           <div className={styles.title}>NFT Developer Property</div>
           <div className={styles.subtitle}>
