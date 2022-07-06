@@ -57,6 +57,7 @@ const Layout = ({children}) => {
 
   return (
     <div>
+      <div className="blurTop"></div>
       <NavbarComponent
         onConnect={handleConnect}
         walletAddress={walletAddress}

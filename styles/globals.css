@@ -11,7 +11,8 @@ body {
 }
 
 body {
-  background: url(/Bg_main.svg) no-repeat center center fixed;
+  /* background: url(/Bg_main.svg) no-repeat center center fixed; */
+  background-color: #000;
   color: #333;
   font-family: 'Syne';
   background-size: cover;
@@ -208,6 +209,18 @@ input[type='number']::-webkit-outer-spin-button {
   font-size: 48px;
   color: #406aff;
   padding: 0;
+}
+
+/* background */
+.blurTop {
+  background: linear-gradient(180deg, #131d30 0%, #39578b 41.67%, #7899d1 100%);
+  filter: blur(400px);
+  width: 40vw;
+  height: 600px;
+  position: absolute;
+  top: -70%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 @media screen and (max-width: 1280px) {
