@@ -101,7 +101,7 @@ const NavbarComponent = ({onConnect, walletAddress, isOpenNav}) => {
             </Link>
           ) : (
             <button onClick={onConnect}>
-              <span>{!walletAddress ? 'connect wallet' : 'disconnect wallet'}</span>
+              <span>{!walletAddress ? 'connect wallet' : 'connected'}</span>
             </button>
           )}
         </div>
@@ -146,7 +146,7 @@ const NavbarComponent = ({onConnect, walletAddress, isOpenNav}) => {
           </button>
         </div>
         <div
-          className={`mobile-inner link text-[16px] tablet:text-[24px] tracking-wide gap-10 right-0 flex flex-col bg-[#050910] w-[100%] h-screen top-[70px] tablet:top-[100px] z-[999] overflow-y-auto ${
+          className={`mobile-inner link text-[16px] tablet:text-[24px] tracking-wide gap-10 right-0 flex flex-col bg-[#050910] w-[100%] h-screen top-[60px] tablet:top-[90px] z-[999] overflow-y-auto ${
             openNavbar ? 'open' : ''
           }`}
         >
