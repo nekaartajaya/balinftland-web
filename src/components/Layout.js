@@ -16,7 +16,7 @@ const Layout = ({children}) => {
 
   const addWalletListener = () => {
     if (window.ethereum) {
-      window.ethereum.on('accountschanged', accounts => {
+      window.ethereum.on('accountsChanged', accounts => {
         if (accounts.length > 0) {
           window.currentAccount = accounts[0];
           setWallet(accounts[0]);
@@ -40,11 +40,13 @@ const Layout = ({children}) => {
   };
 
   useEffect(() => {
-    const {address, status} = fetchCurrentWallet();
-    setWallet(address);
-    setStatus(status);
+    (async () => {
+      const {address, status} = await fetchCurrentWallet();
+      setWallet(address);
+      setStatus(status);
 
-    addWalletListener();
+      addWalletListener();
+    })();
   }, []);
 
   const handleConnect = async () => {
@@ -55,6 +57,7 @@ const Layout = ({children}) => {
 
   return (
     <div>
+      <div className="blurTop"></div>
       <NavbarComponent
         onConnect={handleConnect}
         walletAddress={walletAddress}

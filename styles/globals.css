@@ -11,7 +11,8 @@ body {
 }
 
 body {
-  background: url(/Bg_main.svg) no-repeat center center fixed;
+  /* background: url(/Bg_main.svg) no-repeat center center fixed; */
+  background-color: #000;
   color: #333;
   font-family: 'Syne';
   background-size: cover;
@@ -32,10 +33,18 @@ a {
   left: 0;
   width: 100%;
   z-index: 9999;
-  transition: all ease-in-out 0.1s;
+  transition: all ease-in-out 0.2s;
 }
 .nav-container.scrolled {
   background-color: rgba(5, 9, 16, 0.7);
+  backdrop-filter: blur(40px);
+}
+
+.nav-container nav {
+  transition: all ease-in-out 0.2s;
+}
+.nav-container.scrolled nav {
+  height: 110px;
 }
 
 nav.mobile {
@@ -202,6 +211,18 @@ input[type='number']::-webkit-outer-spin-button {
   padding: 0;
 }
 
+/* background */
+.blurTop {
+  background: linear-gradient(180deg, #131d30 0%, #39578b 41.67%, #7899d1 100%);
+  filter: blur(400px);
+  width: 40vw;
+  height: 600px;
+  position: absolute;
+  top: -70%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 @media screen and (max-width: 1280px) {
   .content {
     margin-top: 120px;
@@ -224,6 +245,9 @@ input[type='number']::-webkit-outer-spin-button {
   nav.desktop {
     display: none;
   }
+  .nav-container.scrolled nav {
+    height: 90px;
+  }
 }
 
 @media screen and (max-width: 677px) {
@@ -236,5 +260,11 @@ input[type='number']::-webkit-outer-spin-button {
   }
   nav .mobile-inner {
     padding: 50px 24px 120px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .nav-container.scrolled nav {
+    height: 60px;
   }
 }
