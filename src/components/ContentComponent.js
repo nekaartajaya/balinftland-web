@@ -4,6 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import {useState} from 'react';
 
 import {MinusCirlce, AddCircle, TickCircle, InfoCircle} from 'iconsax-react';
+import FAQComponent from 'src/components/FAQComponent';
 import SocialHandles from 'src/components/SocialHandles';
 import {mintDigilandNFT, connectWallet} from 'src/helpers/metamask-interact';
 import styles from 'styles/ContentComponent.module.css';
@@ -201,6 +202,12 @@ const ContentComponent = () => {
             )}
           </div>
         </div>
+      </div>
+      <div className="mt-32">
+        <FAQComponent />
+      </div>
+      <div className="relative w-full h-[120px] my-12 tablet:my-32">
+        <img src="/Union.svg" layout="fill" className="w-full h-full relative" alt="tes" />
       </div>
     </div>
   );
