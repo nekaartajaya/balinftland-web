@@ -72,7 +72,6 @@ const NavbarComponent = ({onConnect, walletAddress, isOpenNav}) => {
               </Link>
             </div>
           </div>
-          <Link href="">career</Link>
         </div>
 
         <div className="w-[25%] flex justify-end items-center gap-4">
@@ -177,7 +176,6 @@ const NavbarComponent = ({onConnect, walletAddress, isOpenNav}) => {
               </Link>
             </div>
           </div>
-          <Link href="">career</Link>
           <div>
             <div>language</div>
             <div>
