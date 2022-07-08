@@ -49,7 +49,7 @@
 .bottomLeftImage .image {
   max-width: 100%;
   width: 303px;
-  height: 230px;
+  height: 300px;
   object-fit: cover;
   object-position: 70% 0;
   padding-bottom: 24px;
@@ -70,6 +70,7 @@
 }
 
 .miniText {
+  color: #e2e2e2;
   max-width: 303px;
 }
 
@@ -107,7 +108,7 @@
   }
   .bottomLeftImage .image {
     width: 243px;
-    height: 176px;
+    height: 250px;
     object-fit: cover;
     object-position: 70% 0;
     padding-bottom: 10px;
