@@ -2,10 +2,11 @@ import AboutLimaBeachSection from './AboutLimaBeachSection';
 import BluePrintSection from './BluePrintSection';
 import FacilitySection from './FacilitySection';
 import HomeSection from './HomeSection';
-import LuxuryPropertySection from './LuxuryPropertySection';
 import MintSection from './MintSection';
 import MintingStageSection from './MintingStageSection';
+import NFTApartment from './NFTApartment';
 import NFTFragmentSection from './NFTFragmentSection';
+import NFTSkyvillas from './NFTSkyvillas';
 import PermissiveDocSection from './PermissiveDocSection';
 import RoadmapSection from './RoadmapSection';
 import SmartSysSection from './SmartSysSection';
@@ -20,7 +21,8 @@ const SectionGroup = () => {
       <HomeSection />
       <AboutLimaBeachSection />
       <UtilityNFTSection />
-      <LuxuryPropertySection />
+      <NFTSkyvillas />
+      <NFTApartment />
       <FacilitySection />
       <BluePrintSection />
       <SmartSysSection />

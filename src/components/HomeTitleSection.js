@@ -76,7 +76,9 @@ const HomeTitleSection = ({
           children
         ) : null}
         {type === 'leftImage' && imageURL ? (
-          <div className={`w-[30%] text-[14px] desktop:text-[16px] ${styles.miniText}`}>
+          <div
+            className={`w-[30%] text-[14px] desktop:text-[16px] ${styles.miniText} hidden tablet:block`}
+          >
             {miniText}
           </div>
         ) : null}

@@ -98,12 +98,12 @@ const MintingStageSection = () => {
           </div>
         </div>
       </div>
-      <div className={styles.card}>
+      <div className={`${styles.card} min-h-[320px] mt-6`}>
         <div className={styles.cardContent}>
           <h1 className={styles.textMintNow}>
             Are you interested? {isDesktop ? '' : <br />}Mint Now!
           </h1>
-          <button className="min-w-max">Go to minting page</button>
+          <button className="min-w-max text-white uppercase px-6 py-4">Go to minting page</button>
         </div>
       </div>
     </div>

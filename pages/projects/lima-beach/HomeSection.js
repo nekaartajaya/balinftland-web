@@ -41,17 +41,17 @@ const HomeSection = () => {
 
   return (
     <div
-      className={`${sharedStyles.flexColumnStartContainer} ${styles.sectionWrapper} ${sharedStyles.flexOrder0}`}
+      className={`${sharedStyles.flexColumnStartContainer} ${styles.sectionWrapper} ${sharedStyles.flexOrder0} pt-14`}
     >
       <div className="w-full flex flex-col gap-1 items-center tablet:items-center desktop:flex desktop:flex-row desktop:gap-14 desktop:justify-end">
         <div>
-          <div className="uppercase whitespace-prewrap text-bold text-2xl desktop:text-5xl desktop:whitespace-nowrap text-center text-white">
+          <div className="uppercase whitespace-prewrap font-bold text-2xl desktop:text-5xl desktop:whitespace-nowrap text-white tablet:pr-20 mb-4 tablet:mb-0 leading-[150%] text-center tablet:text-left">
             lima beach
             <br />
             signature {isDesktop ? <br /> : ''}nft<span className={sharedStyles.titleDot}>.</span>
           </div>
         </div>
-        <div className="font-normal text-xs text-[#E2E2E2] text-center tablet:text-sm desktop:text-base desktop:font-medium desktop:text-left">
+        <div className="font-normal text-xs text-[#E2E2E2] text-center tablet:text-base desktop:text-2xl desktop:font-medium desktop:text-left">
           A limited-edition NFT represents the physical property certificate and physical property
           ownership built with the Internet of Things (IoT) Technology and Web 3.0.
         </div>
