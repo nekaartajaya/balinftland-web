@@ -7,6 +7,7 @@ import HomeSection from './homepage/homeSection';
 import PeopleBehindSection from './homepage/peopleBehindSection';
 import RevealSection from './homepage/revealSection';
 import SponsorSection from './homepage/sponsorSection';
+import StakingSection from './homepage/stakingSection';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <SponsorSection />
         <AboutSection />
         <FusionSection />
+        <StakingSection />
         <FragmentSection />
         <RevealSection />
         <PeopleBehindSection />
