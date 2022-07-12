@@ -44,7 +44,7 @@ const NavbarComponent = ({onConnect, walletAddress, isOpenNav}) => {
         <div id="logo" className="w-[25%]">
           <Link href="/">
             <img
-              src="/Digiland_Symbol.svg"
+              src="/DigilandBali.svg"
               className="w-[27px] h-[27px] cursor-pointer"
               alt="Digiland-logo"
             />
@@ -115,7 +115,7 @@ const NavbarComponent = ({onConnect, walletAddress, isOpenNav}) => {
           <Link href="/" passHref>
             <div className=" flex items-center text-white text-[12px] tablet:text-[28px] font-bold tracking-wide gap-2">
               <img
-                src="/Digiland_Symbol.svg"
+                src="/DigilandBali.svg"
                 className="w-[14px] h-[14px] tablet:w-[32px] tablet:h-[32px]"
                 alt="Digiland-logo"
               />

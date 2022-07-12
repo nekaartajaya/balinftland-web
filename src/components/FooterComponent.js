@@ -4,11 +4,14 @@ const FooterComponent = () => {
   return (
     <footer id="footer" className={styles.footer}>
       <div className="flex justify-between items-center desktop:hidden tabler:mb-14 mb-8">
-        <img
-          src="/Logo_Digilandbali.svg"
-          className="w-40 h-auto tablet:w-[200px] tablet:h-10"
-          alt="Logo-DigilandBali"
-        />
+        <div className=" flex items-center text-white text-[12px] tablet:text-[24px] font-bold tracking-wide gap-2">
+          <img
+            src="/DigilandBali.svg"
+            className="w-[14px] h-[14px] tablet:w-[27px] tablet:h-[27px]"
+            alt="Logo-DigilandBali"
+          />
+          DIGILANDBALI
+        </div>
         <div className={`${styles.contactIcons} ${styles.top}`}>
           <img
             src="/Discord_White.svg"
@@ -34,11 +37,10 @@ const FooterComponent = () => {
       </div>
       <div className={styles.container}>
         <div className="desktop:block hidden mr-10">
-          <img
-            src="/Logo_Digilandbali.svg"
-            className="max-w-45 w-45 h-10"
-            alt="Logo-DigilandBali"
-          />
+          <div className="flex text-white items-center text-[12px] tablet:text-[24px] font-bold tracking-wide gap-2">
+            <img src="/DigilandBali.svg" className="max-w-25 w-25 h-8" alt="Logo-DigilandBali" />
+            DIGILANDBALI
+          </div>
         </div>
         <div className={styles.info}>
           <div className={styles.inner}>
@@ -52,6 +54,9 @@ const FooterComponent = () => {
               </label>
               <label className={styles.link}>
                 <a href="#!">Digilandbali Career</a>
+              </label>
+              <label className={styles.link}>
+                <a href="#!">Digilandbali Privacy Policy</a>
               </label>
             </div>
           </div>
