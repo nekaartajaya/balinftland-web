@@ -41,8 +41,7 @@ const HomeSection = () => {
 
   return (
     <div
-      className={`${sharedStyles.flexColumnStartContainer} ${styles.sectionWrapper} ${sharedStyles.flexOrder0} pt-14`}
-    >
+      className={`${sharedStyles.flexColumnStartContainer} ${styles.sectionWrapper} ${sharedStyles.flexOrder0} pt-14`}>
       <div className="w-full flex flex-col gap-1 items-center tablet:items-center desktop:flex desktop:flex-row desktop:gap-14 desktop:justify-end">
         <div>
           <div className="uppercase whitespace-prewrap font-bold text-2xl desktop:text-5xl desktop:whitespace-nowrap text-white desktop:pr-20 mb-4 desktop:mb-0 leading-[150%] text-center desktop:text-left">

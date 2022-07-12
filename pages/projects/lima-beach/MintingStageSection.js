@@ -31,8 +31,7 @@ const MintingStageSection = () => {
           <animated.div
             className="text-xl tablet:text-3xl desktop:text-5xl text-[#FFF] font-bold text-center pb-5"
             ref={triggerAnimation.title}
-            style={fadeInUpText(visibleAnimation.title)}
-          >
+            style={fadeInUpText(visibleAnimation.title)}>
             Lima Beach NFT Minting Stage
             <span className="text-xl tablet:text-3xl desktop:text-5xl text-[#406aff] p-0">.</span>
           </animated.div>
@@ -40,8 +39,7 @@ const MintingStageSection = () => {
         <animated.div
           className="text-[12px] tablet:text-[14px] desktop:text-base text-[#E2E2E2] desktop:px-24 text-center"
           ref={triggerAnimation.subtitle}
-          style={fadeIn(visibleAnimation.subtitle)}
-        >
+          style={fadeIn(visibleAnimation.subtitle)}>
           Currently, the market price of a luxury apartment is $210,000. If you enter the project
           early, each NFT fragment will cost $10,000, making the total cost of seven NFT fragments
           around $70,000, a third (33%) of the current market price.
@@ -74,8 +72,7 @@ const MintingStageSection = () => {
         />
       </div>
       <div
-        className={`bg-[#344054] min-h-[200px] mt-6 flex tablet:flex-row flex-col tablet:justify-between justify-center tablet:items-center items-start w-full tablet:px-8 px-[20%] gap-4`}
-      >
+        className={`bg-[#344054] min-h-[200px] mt-6 flex tablet:flex-row flex-col tablet:justify-between justify-center tablet:items-center items-start w-full tablet:px-8 px-[20%] gap-4`}>
         <h1 className="text-white text-[16px] tablet:text-[24px] desktop:text-[32px]">
           Are you interested? {isDesktop ? '' : <br />}Mint Now!
         </h1>
