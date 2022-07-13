@@ -75,7 +75,7 @@
 }
 
 .border {
-  border: 2px solid #5b5b5b;
+  border-bottom: 2px solid #5b5b5b;
   margin: 24px 0;
   float: right;
 }
@@ -133,10 +133,6 @@
     line-height: 25.6px;
     margin-bottom: 16px;
     width: 100%;
-  }
-  .border {
-    border: 1px solid #5b5b5b;
-    margin: 12px 0;
   }
   .bottomLeftImage {
     display: block;

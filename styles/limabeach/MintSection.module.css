@@ -111,9 +111,18 @@
 
   .descContainer {
     display: flex;
-    flex-direction: row-reverse;
-
+    flex-direction: col-reverse;
     gap: 1em;
+  }
+
+  .detailContainer {
+    width: 100%;
+  }
+
+  .detailContainer img {
+    height: 200px;
+    object-fit: cover;
+    object-position: top;
   }
 }
 

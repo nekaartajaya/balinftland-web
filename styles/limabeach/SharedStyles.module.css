@@ -181,7 +181,7 @@
 }
 
 .titleBorder {
-  border: 2px solid #5b5b5b;
+  border-bottom: 2px solid #5b5b5b;
   margin: 24px 0;
   float: right;
 }
@@ -265,6 +265,10 @@
 
     color: #e2e2e2;
   }
+
+  .titleDot {
+    font-size: 24px;
+  }
 }
 
 @media screen and (max-width: 677px) {
@@ -319,5 +323,9 @@
     /* White-2 */
 
     color: #e2e2e2;
+  }
+
+  .titleDot {
+    font-size: 16px;
   }
 }

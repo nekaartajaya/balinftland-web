@@ -13,7 +13,34 @@ const ImageCarousel = props => {
   const items = [item, item, item, item];
 
   return (
-    <Carousel>
+    <Carousel
+      indicatorContainerProps={{
+        style: {
+          marginTop: '-30px',
+          position: 'absolute',
+          zIndex: 1,
+        },
+      }}
+      activeIndicatorIconButtonProps={{
+        style: {
+          color: '#406AFF',
+        },
+      }}
+      indicatorIconButtonProps={{
+        style: {
+          color: 'rgba(255, 255, 255, 0.4)',
+        },
+      }}
+      navButtonsProps={{
+        style: {
+          backgroundColor: 'rgba(255, 255, 255, 0.3)',
+          borderRadius: 0,
+          margin: 0,
+          padding: '5px 10px',
+        },
+      }}
+      navButtonsAlwaysVisible
+    >
       {items.map((item, i) => (
         <Item key={i} item={item} />
       ))}
@@ -24,7 +51,7 @@ const ImageCarousel = props => {
 const Item = ({item}, i) => {
   return (
     <div className={sharedStyles.responsive}>
-      <img src={item.src} alt={`${item.src}-${i}`} />
+      <img src={item.src} alt={`${item.src}-${i}`} className="w-full" />
     </div>
   );
 };
