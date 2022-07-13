@@ -2,10 +2,12 @@ import Layout from '../src/components/Layout';
 import AboutSection from './homepage/aboutSection';
 import AdvisorSection from './homepage/advisorSection';
 import FragmentSection from './homepage/fragmentSection';
+import FusionSection from './homepage/fusionSection';
 import HomeSection from './homepage/homeSection';
 import PeopleBehindSection from './homepage/peopleBehindSection';
 import RevealSection from './homepage/revealSection';
 import SponsorSection from './homepage/sponsorSection';
+import StakingSection from './homepage/stakingSection';
 
 export default function Home() {
   return (
@@ -14,6 +16,8 @@ export default function Home() {
         <HomeSection />
         <SponsorSection />
         <AboutSection />
+        <FusionSection />
+        <StakingSection />
         <FragmentSection />
         <RevealSection />
         <PeopleBehindSection />

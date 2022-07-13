@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import styles from '../../styles/FooterComponent.module.css';
 
 const FooterComponent = () => {
@@ -55,9 +57,6 @@ const FooterComponent = () => {
               <label className={styles.link}>
                 <a href="#!">Digilandbali Career</a>
               </label>
-              <label className={styles.link}>
-                <a href="#!">Digilandbali Privacy Policy</a>
-              </label>
             </div>
           </div>
           <div className={styles.inner}>
@@ -94,6 +93,24 @@ const FooterComponent = () => {
           <img src="/Telegram_White.svg" className="w-6 h-6" alt="Discord-white" />
           <img src="/Twitter_White.svg" className="w-6 h-6" alt="Discord-white" />
           <img src="/Opensea_White.svg" className="w-6 h-6" alt="Discord-white" />
+        </div>
+      </div>
+      <div className="flex flex-row items-center justify-between mt-6 border-t-2 border-[#FFF] pt-6 text-[#e2e2e2]">
+        <label className="text-[8px] tablet:text-[12px] desktop:text-[16px]">
+          2022 © DIGILANDBALI
+        </label>
+        <div className="flex items-center">
+          <label className="text-[8px] tablet:text-[12px] desktop:text-[16px]">
+            <Link href="/terms-and-condition" passHref>
+              <div className="text-[#e2e2e2]">TERMS AND CONDITION</div>
+            </Link>
+          </label>
+          <label className={`text-[8px] tablet:text-[12px] desktop:text-[16px] px-2`}>-</label>
+          <label className="text-[8px] tablet:text-[12px] desktop:text-[16px]">
+            <Link href="/privacy-policy" passHref>
+              <div className="text-[#e2e2e2]">PRIVACY POLICY</div>
+            </Link>
+          </label>
         </div>
       </div>
     </footer>

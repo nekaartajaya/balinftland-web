@@ -42,7 +42,7 @@ const AboutSection = () => {
   ];
 
   return (
-    <section className="py-10">
+    <section className="pt-10 pb-20">
       <div className="pb-20 tablet:pb-32">
         <HomeTitleSection
           type={'leftImage'}

@@ -34,7 +34,7 @@ const FragmentSection = () => {
           </animated.div>
         </div>
         <animated.div
-          className="text-[12px] tablet:text-[14px] desktop:text-base text-[#E2E2E2] tablet:px-24 text-center"
+          className="text-[12px] tablet:text-[14px] desktop:text-base text-[#E2E2E2] desktop:px-24 text-center"
           ref={triggerAnimation.subtitle}
           style={fadeIn(visibleAnimation.subtitle)}
         >
