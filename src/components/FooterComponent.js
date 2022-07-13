@@ -102,13 +102,13 @@ const FooterComponent = () => {
         <div className="flex items-center">
           <label className="text-[8px] tablet:text-[12px] desktop:text-[16px]">
             <Link href="/terms-and-condition" passHref>
-              <div className="text-[#e2e2e2]">TERMS AND CONDITION</div>
+              <div className="text-[#e2e2e2] cursor-pointer">TERMS AND CONDITION</div>
             </Link>
           </label>
           <label className={`text-[8px] tablet:text-[12px] desktop:text-[16px] px-2`}>-</label>
           <label className="text-[8px] tablet:text-[12px] desktop:text-[16px]">
             <Link href="/privacy-policy" passHref>
-              <div className="text-[#e2e2e2]">PRIVACY POLICY</div>
+              <div className="text-[#e2e2e2] cursor-pointer">PRIVACY POLICY</div>
             </Link>
           </label>
         </div>

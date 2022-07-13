@@ -37,11 +37,7 @@ const MintSection = () => {
         </div>
         <div className={styles.descContainer}>
           <animated.div className={styles.detailContainer} ref={triggerRef} style={fadeIn(visible)}>
-            <img
-              src={'/NFTInvest.svg'}
-              className={sharedStyles.responsive}
-              alt="How to mint illustration"
-            />
+            <img src={'/NFTInvest.svg'} className="w-full" alt="How to mint illustration" />
           </animated.div>
           <div className={styles.stepsContainer}>
             <div className={styles.detailContainer}>
@@ -60,14 +56,14 @@ const MintSection = () => {
             <div className={styles.detailContainer}>
               <div className={styles.stepHeaderContainer}>
                 <SecondIcon />
-                <h1 className={sharedStyles.titleSmall}>Get USDC</h1>
+                <h1 className={sharedStyles.titleSmall}>Get USDC and ETH</h1>
               </div>
               <div className={styles.stepTextContainer}>
                 <div className={sharedStyles.description}>
-                  Ready to purchase USDC once you have selected the ideal exchange. Ensure to only
-                  deposit funds into your account that you will not need for daily expenses or
-                  emergencies. Enter the USDC amount you wish to purchase.Choose the order type
-                  (market, limit, etc.).Complete the trade.
+                  Ready to purchase USDC and ETH as a gas fee once you have selected the ideal
+                  exchange. Ensure to only deposit funds into your account that you will not need
+                  for daily expenses or emergencies. Enter the USDC amount you wish to purchase.
+                  Choose the order type (market, limit, etc.). Complete the trade.
                 </div>
               </div>
             </div>

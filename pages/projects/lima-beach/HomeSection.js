@@ -45,7 +45,7 @@ const HomeSection = () => {
     >
       <div className="w-full flex flex-col gap-1 items-center tablet:items-center desktop:flex desktop:flex-row desktop:gap-14 desktop:justify-end">
         <div>
-          <div className="uppercase whitespace-prewrap font-bold text-2xl desktop:text-5xl desktop:whitespace-nowrap text-white tablet:pr-20 mb-4 tablet:mb-0 leading-[150%] text-center tablet:text-left">
+          <div className="uppercase whitespace-prewrap font-bold text-2xl desktop:text-5xl desktop:whitespace-nowrap text-white desktop:pr-20 mb-4 desktop:mb-0 leading-[150%] text-center desktop:text-left">
             lima beach
             <br />
             signature {isDesktop ? <br /> : ''}nft<span className={sharedStyles.titleDot}>.</span>

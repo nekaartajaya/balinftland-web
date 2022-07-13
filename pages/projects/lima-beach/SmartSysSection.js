@@ -5,7 +5,7 @@ const SmartSysSection = () => {
   return (
     <div className={`${styles.smartSystemContainer} ${sharedStyles.flexOrder6}`}>
       <div className={styles.smartSystemHeaderContainer}>
-        <h1 className={sharedStyles.sectionTitleBig}>
+        <h1 className={`${sharedStyles.sectionTitleBig} text-center `}>
           Smart Systems Partnered with Digitels<span className={sharedStyles.titleDot}>.</span>
         </h1>
         <div className={styles.subtitleContainer}>

@@ -1,6 +1,9 @@
 import {useRef} from 'react';
+import Carousel from 'react-multi-carousel';
 import {animated} from 'react-spring';
 
+import {ArrowCircleLeft, ArrowCircleRight} from 'iconsax-react';
+import 'react-multi-carousel/lib/styles.css';
 import {borderWidth, fadeIn, fadeInUpText} from 'src/animation';
 import useIntersectionObserver from 'src/hooks/useIntersectionObserver';
 import styles from 'styles/limabeach/BluePrintSection.module.css';
@@ -11,18 +14,57 @@ const BluePrintSection = () => {
   const dataRef = useIntersectionObserver(triggerRef, {});
   const visible = dataRef?.isIntersecting;
 
+  const image = {
+    src: '/Headerslide.svg',
+    alt: 'image illustration',
+  };
+  const items = [image, image, image, image];
+
+  const carouselRef = useRef();
+
+  const responsive = {
+    desktop: {
+      breakpoint: {max: 4000, min: 921},
+      items: 4,
+    },
+    tablet: {
+      breakpoint: {max: 920, min: 426},
+      items: 4,
+    },
+    mobile: {
+      breakpoint: {max: 425, min: 0},
+      items: 2,
+    },
+  };
+
   return (
     <div
       className={`${sharedStyles.flexColumnStartContainer} ${sharedStyles.flexOrder5} ${styles.root}`}
     >
-      <div className="overflow-hidden">
+      <div className="overflow-hidden flex justify-between items-center w-full">
         <animated.div
-          className={sharedStyles.sectionTitleBig}
+          className={`text-[24px] desktop:text-[48px] text-white font-bold`}
           ref={triggerRef}
           style={fadeInUpText(visible)}
         >
           Blue Print Sneak Peak<span className={sharedStyles.titleDot}>.</span>
         </animated.div>
+        <div className="flex items-center gap-x-3 desktop:gap-x-4">
+          <ArrowCircleLeft
+            className="w-[26px] h-[26px] desktop:w-[33px] desktop:h-[33px] cursor-pointer"
+            color="#FFF"
+            onClick={() => {
+              carouselRef.current.previous();
+            }}
+          />
+          <ArrowCircleRight
+            className="w-[26px] h-[26px] desktop:w-[33px] desktop:h-[33px] cursor-pointer"
+            color="#FFF"
+            onClick={() => {
+              carouselRef.current.next();
+            }}
+          />
+        </div>
       </div>
       <div className="w-full inline-block">
         <animated.div
@@ -31,23 +73,21 @@ const BluePrintSection = () => {
           style={borderWidth(visible)}
         ></animated.div>
       </div>
-      <animated.div
-        className={styles.sneakPeakImageContainer}
-        ref={triggerRef}
-        style={fadeIn(visible)}
-      >
-        <div className={styles.imageContainer}>
-          <img src={'/BluePrint1.svg'} className={styles.img} alt="Blueprint 1 illustration" />
-        </div>
-        <div className={styles.imageContainer}>
-          <img src={'/BluePrint2.svg'} className={styles.img} alt="BluePrint 2 illustration" />
-        </div>
-        <div className={styles.imageContainer}>
-          <img src={'/BluePrint3.svg'} className={styles.img} alt="Blueprint 3 illustration" />
-        </div>
-        <div className={styles.imageContainer}>
-          <img src={'/BluePrint4.svg'} className={styles.img} alt="Blueprint 4 illustration" />
-        </div>
+      <animated.div className="w-full" ref={triggerRef} style={fadeIn(visible)}>
+        <Carousel
+          ref={carouselRef}
+          arrows={false}
+          responsive={responsive}
+          infinite
+          itemClass="px-2"
+          containerClass="mx-[-8px]"
+        >
+          {items.map((item, i) => (
+            <div key={i}>
+              <img src={item.src} alt={`${item.src}-${i}`} className="w-full" />
+            </div>
+          ))}
+        </Carousel>
       </animated.div>
     </div>
   );

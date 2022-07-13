@@ -1,4 +1,5 @@
 import {Location} from 'iconsax-react';
+import SponsorSection from 'pages/homepage/sponsorSection';
 import SectionBreak from 'src/components/SectionBreak';
 import styles from 'styles/limabeach/AboutLimaBeachSection.module.css';
 import sharedStyles from 'styles/limabeach/SharedStyles.module.css';
@@ -6,10 +7,14 @@ import sharedStyles from 'styles/limabeach/SharedStyles.module.css';
 const AboutLimaBeachSection = () => {
   return (
     <>
-      <SectionBreak />
+      <SponsorSection />
       <div className={styles.root}>
         <div className={`mb-5 desktop:mb-0 w-full`}>
-          <img src={'/Whatislimabeach.svg'} alt="Lima Beach illustration" className="w-full" />
+          <img
+            src={'/Whatislimabeach.svg'}
+            alt="Lima Beach illustration"
+            className="w-full h-[250px] object-cover object-center desktop:h-auto"
+          />
         </div>
         <div className={styles.descriptionContainer}>
           <h1 className={styles.titleBig}>
