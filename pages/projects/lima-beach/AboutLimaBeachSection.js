@@ -11,7 +11,7 @@ const AboutLimaBeachSection = () => {
       <div className={styles.root}>
         <div className={`mb-5 desktop:mb-0 w-full`}>
           <img
-            src={'/Whatislimabeach.svg'}
+            src={'/Whatislimabeach.png'}
             alt="Lima Beach illustration"
             className="w-full h-[250px] object-cover object-center desktop:h-auto"
           />

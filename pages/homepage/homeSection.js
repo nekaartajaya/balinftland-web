@@ -2,6 +2,8 @@
 import {useRef} from 'react';
 import {animated} from 'react-spring';
 
+import Link from 'next/link';
+
 import {fadeInLeft, fadeInRight} from '../../src/animation';
 import useIntersectionObserver from '../../src/hooks/useIntersectionObserver';
 import styles from '../../styles/HomeSection.module.css';
@@ -29,8 +31,12 @@ const HomeSection = () => {
         <div className={styles.titleBig}>DIGILANDBALI</div>
         <div className={styles.subtitle}>WE BUILD TOGETHER, WE OWN TOGETHER</div>
         <div className={`${styles.buttonContainer} ${styles.top}`}>
-          <button className={`${styles.button} ${styles.buttonWhite}`}>About Digilandbali</button>
-          <button className={styles.button}>Visit Lima Beach Project</button>
+          <Link href="#home" passHref>
+            <button className={`${styles.button} ${styles.buttonWhite}`}>About Digilandbali</button>
+          </Link>
+          <Link href="/projects/lima-beach" passHref>
+            <button className={styles.button}>Visit Lima Beach Project</button>
+          </Link>
         </div>
       </div>
       <div className="relative">

@@ -38,7 +38,7 @@ const FooterComponent = () => {
         </div>
       </div>
       <div className={styles.container}>
-        <div className="desktop:block hidden mr-10">
+        <div className="desktop:block hidden mr-10 w-[30%]">
           <div className="flex text-white items-center text-[12px] tablet:text-[24px] font-bold tracking-wide gap-2">
             <img src="/DigilandBali.svg" className="max-w-25 w-25 h-8" alt="Logo-DigilandBali" />
             DIGILANDBALI
@@ -63,15 +63,18 @@ const FooterComponent = () => {
             <label className={styles.title}>Project</label>
             <div className="flex flex-col tablet:gap-4">
               <label className={styles.link}>
-                <a href="#!">Lima Beach Signature NFT</a>
+                <Link href="/projects/lima-beach" passHref>
+                  <div className="cursor-pointer">Lima Beach Signature NFT</div>
+                </Link>
               </label>
             </div>
           </div>
           <div className={styles.inner}>
             <label className={styles.title}>Contact</label>
             <div className="flex flex-col tablet:gap-4">
-              <label className={styles.link}>Properblock, Canggu Avenue, Bali, Indonesia</label>
-              <label className={styles.link}>info@properblock.io</label>
+              <Link href="mailto:gm@digilandbali.com" passHref>
+                <label className={styles.link}>gm@digilandbali.com</label>
+              </Link>
             </div>
           </div>
         </div>
@@ -89,10 +92,30 @@ const FooterComponent = () => {
           </a>
         </div>
         <div className={`${styles.contactIcons} ${styles.bottom}`}>
-          <img src="/Discord_White.svg" className="w-6 h-6" alt="Discord-white" />
-          <img src="/Telegram_White.svg" className="w-6 h-6" alt="Discord-white" />
-          <img src="/Twitter_White.svg" className="w-6 h-6" alt="Discord-white" />
-          <img src="/Opensea_White.svg" className="w-6 h-6" alt="Discord-white" />
+          <img
+            onClick={() => window.open('https://discord.gg/VtBdCYY2')}
+            src="/Discord_White.svg"
+            className="w-6 h-6 cursor-pointer"
+            alt="Discord-white"
+          />
+          <img
+            onClick={() => null}
+            src="/Telegram_White.svg"
+            className="w-6 h-6 cursor-pointer"
+            alt="Discord-white"
+          />
+          <img
+            onClick={() => window.open('https://twitter.com/digilandbali')}
+            src="/Twitter_White.svg"
+            className="w-6 h-6 cursor-pointer"
+            alt="Discord-white"
+          />
+          <img
+            onClick={() => null}
+            src="/Opensea_White.svg"
+            className="w-6 h-6 cursor-pointer"
+            alt="Discord-white"
+          />
         </div>
       </div>
       <div className="flex flex-row items-center justify-between mt-6 border-t-2 border-[#FFF] pt-6 text-[#e2e2e2]">

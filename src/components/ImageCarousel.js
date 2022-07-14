@@ -2,11 +2,11 @@ import Carousel from 'react-material-ui-carousel';
 
 import sharedStyles from '../../styles/limabeach/SharedStyles.module.css';
 
+import sliderHomeLimabeach from 'src/data/sliderHomeLimabeach';
+
 const ImageCarousel = props => {
   const item = {
     src: '/Headerslide.svg',
-    width: props.width,
-    height: props.height,
     alt: 'image illustration',
   };
 
@@ -41,7 +41,7 @@ const ImageCarousel = props => {
       }}
       navButtonsAlwaysVisible
     >
-      {items.map((item, i) => (
+      {sliderHomeLimabeach.map((item, i) => (
         <Item key={i} item={item} />
       ))}
     </Carousel>
@@ -51,7 +51,7 @@ const ImageCarousel = props => {
 const Item = ({item}, i) => {
   return (
     <div className={sharedStyles.responsive}>
-      <img src={item.src} alt={`${item.src}-${i}`} className="w-full" />
+      <img src={item.imageUrl} alt={item.imageAlt} className="w-full" />
     </div>
   );
 };

@@ -34,8 +34,15 @@ const UtilityNFTSection = () => {
           ></animated.div>
         </div>
 
-        <animated.div className={styles.imageDimension} ref={triggerRef} style={fadeIn(visible)}>
-          <img src={'/Videopreview.svg'} alt="video preview" />
+        <animated.div className="w-full" ref={triggerRef} style={fadeIn(visible)}>
+          <iframe
+            className="w-full aspect-video"
+            src="https://www.youtube.com/embed/r5GLQZDDK4s?controls=0"
+            title="The Umalas Signature promo video. Bali island investment"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
         </animated.div>
         <div className="flex flex-col items-start gap-[32px] w-full h-auto">
           <div className={styles.descContainer}>

@@ -5,6 +5,8 @@ import {borderWidth, fadeIn, fadeInUpText} from '../../src/animation';
 import PeopleCard from '../../src/components/PeopleCard';
 import useIntersectionObserver from '../../src/hooks/useIntersectionObserver';
 
+import team from 'src/data/team';
+
 const AdvisorSection = () => {
   // animation trigger
   const triggerAnimation = {
@@ -18,12 +20,6 @@ const AdvisorSection = () => {
     content: useIntersectionObserver(triggerAnimation.content, {})?.isIntersecting,
   };
 
-  const list = [];
-
-  for (let i = 1; i <= 4; i++) {
-    list.push(<PeopleCard imageUrl={`/advisor${i}.svg`} />);
-  }
-
   return (
     <section className="pb-4 tablet:pb-32">
       <div className="pb-8 tablet:pb-12">
@@ -33,7 +29,7 @@ const AdvisorSection = () => {
             ref={triggerAnimation.title}
             style={fadeInUpText(visibleAnimation.title)}
           >
-            Advisors
+            Team
             <span className="text-xl tablet:text-3xl desktop:text-5xl  text-[#406aff] p-0">.</span>
           </animated.div>
         </div>
@@ -43,11 +39,21 @@ const AdvisorSection = () => {
         ></animated.div>
       </div>
       <animated.div
-        className="tablet:grid grid-cols-4 tablet:gap-4"
+        className="tablet:grid grid-cols-5 tablet:gap-4"
         ref={triggerAnimation.content}
         style={fadeIn(visibleAnimation.content)}
       >
-        {list}
+        {team.map((v, i) => {
+          return (
+            <PeopleCard
+              key={i}
+              imageUrl={v.imageUrl}
+              imageAlt={v.imageAlt}
+              name={v.name}
+              position={v.position}
+            />
+          );
+        })}
       </animated.div>
     </section>
   );

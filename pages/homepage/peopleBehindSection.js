@@ -5,6 +5,8 @@ import {borderWidth, fadeIn, fadeInUpText} from '../../src/animation';
 import PeopleCard from '../../src/components/PeopleCard';
 import useIntersectionObserver from '../../src/hooks/useIntersectionObserver';
 
+import peopleBehind from 'src/data/peopleBehind';
+
 const PeopleBehindSection = () => {
   // animation trigger
   const triggerAnimation = {
@@ -17,12 +19,6 @@ const PeopleBehindSection = () => {
     title: useIntersectionObserver(triggerAnimation.title, {})?.isIntersecting,
     content: useIntersectionObserver(triggerAnimation.content, {})?.isIntersecting,
   };
-
-  const list = [];
-
-  for (let i = 1; i <= 4; i++) {
-    list.push(<PeopleCard imageUrl={`/people${i}.svg`} />);
-  }
 
   return (
     <section className="pb-20 tablet:pb-32">
@@ -43,11 +39,21 @@ const PeopleBehindSection = () => {
         ></animated.div>
       </div>
       <animated.div
-        className="tablet:grid grid-cols-4 tablet:gap-4"
+        className="tablet:grid grid-cols-5 tablet:gap-4"
         ref={triggerAnimation.content}
         style={fadeIn(visibleAnimation.content)}
       >
-        {list}
+        {peopleBehind.map((v, i) => {
+          return (
+            <PeopleCard
+              key={i}
+              imageUrl={v.imageUrl}
+              imageAlt={v.imageAlt}
+              name={v.name}
+              position={v.position}
+            />
+          );
+        })}
       </animated.div>
     </section>
   );

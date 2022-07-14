@@ -94,7 +94,7 @@ const NavbarComponent = ({onConnect, walletAddress, isOpenNav}) => {
           </div>
           {pathname[1] != 'minting' ? (
             <Link href="/minting/lima-beach" passHref>
-              <button>
+              <button disabled>
                 <span>mint yours</span>
               </button>
             </Link>
@@ -194,7 +194,9 @@ const NavbarComponent = ({onConnect, walletAddress, isOpenNav}) => {
             </div>
           </div>
           <Link href="/minting/lima-beach" passHref>
-            <div onClick={() => closeNavbar()}>go to mint page</div>
+            <div onClick={e => e.preventDefault()} disabled>
+              go to mint page
+            </div>
           </Link>
         </div>
       </nav>

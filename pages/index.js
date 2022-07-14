@@ -4,7 +4,6 @@ import AdvisorSection from './homepage/advisorSection';
 import FragmentSection from './homepage/fragmentSection';
 import FusionSection from './homepage/fusionSection';
 import HomeSection from './homepage/homeSection';
-import PeopleBehindSection from './homepage/peopleBehindSection';
 import RevealSection from './homepage/revealSection';
 import SponsorSection from './homepage/sponsorSection';
 import StakingSection from './homepage/stakingSection';
@@ -20,7 +19,6 @@ export default function Home() {
         <StakingSection />
         <FragmentSection />
         <RevealSection />
-        <PeopleBehindSection />
         <AdvisorSection />
         <div className="relative w-full h-[120px] mb-12 tablet:mb-32">
           <img src="/Union.svg" layout="fill" className="w-full h-full relative" alt="tes" />

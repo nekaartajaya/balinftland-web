@@ -25,7 +25,7 @@ const MintingStageSection = () => {
   };
 
   return (
-    <div className={`${styles.root} ${sharedStyles.flexOrder9}`}>
+    <div id="minting-stage" className={`${styles.root} ${sharedStyles.flexOrder9}`}>
       <div className="pb-8 tablet:pb-14">
         <div className="overflow-hidden">
           <animated.div
@@ -51,25 +51,25 @@ const MintingStageSection = () => {
         <MintingStage
           title="Physical Land Stage, with $10,000 each Fragment"
           description="The first NFT auction will be to purchase physical land on which to build the property. Anyone who participates in the first auction will mint an $US10,000 NFT fragment. In this stage, each NFT apartment will cost $US70,000, and it is the lowest stage to get the best price."
-          imageUrl="/NFTStage1_1.svg"
+          imageUrl="/NFT_Per_Stage/NFTStage1.png"
           imageAlt="NFT Stage 1 illustration"
         />
         <MintingStage
-          title="Physical Land Stage, with $10,000 each Fragment"
-          description="The first NFT auction will be to purchase physical land on which to build the property. Anyone who participates in the first auction will mint an $US10,000 NFT fragment. In this stage, each NFT apartment will cost $US70,000, and it is the lowest stage to get the best price."
-          imageUrl="/NFTStage2_1.svg"
+          title="Apartment Foundation Stage, with $13,500 each Fragment"
+          description="In the second stage, NFT fragments will be auctioned off to fund the development of the apartment foundation. It will run six months, and participants will be able to invest $US13,500/Fragment for a total NFT apartment price of $US94,500. The current auction price is 35% more than the previous one."
+          imageUrl="/NFT_Per_Stage/NFTStage2.png"
           imageAlt="NFT Stage 2 illustration"
         />
         <MintingStage
-          title="Physical Land Stage, with $10,000 each Fragment"
-          description="The first NFT auction will be to purchase physical land on which to build the property. Anyone who participates in the first auction will mint an $US10,000 NFT fragment. In this stage, each NFT apartment will cost $US70,000, and it is the lowest stage to get the best price."
-          imageUrl="/NFTStage3_1.svg"
+          title="Apartment Topping-Off Stage, with $17,500 each Fragment"
+          description="In the third stage, NFT fragments will be auctioned off to fund the apartment's topping off. It will run eight months, and participants will be able to invest $US17,500 with a total NFT apartment pricing of $US122,500. The current auction price is 29% higher than the previous one."
+          imageUrl="/NFT_Per_Stage/NFTStage3.png"
           imageAlt="NFT Stage 3 illustration"
         />
         <MintingStage
-          title="Physical Land Stage, with $10,000 each Fragment"
-          description="The first NFT auction will be to purchase physical land on which to build the property. Anyone who participates in the first auction will mint an $US10,000 NFT fragment. In this stage, each NFT apartment will cost $US70,000, and it is the lowest stage to get the best price."
-          imageUrl="/NFTStage4.svg"
+          title="Soft Opening Stage, with $22,500 each Fragment"
+          description="The fourth stage will auction off NFT fragments for eight months, with participants able to invest $US22,500 for a total NFT apartment price of $US157,500. The current auction price is 22% higher than the previous one."
+          imageUrl="/NFT_Per_Stage/NFTStage4.png"
           imageAlt="NFT Stage 4 illustration"
         />
       </div>

@@ -9,26 +9,38 @@ const Icons = ({dimension}) => {
     {
       src: '/Discord_White.svg',
       alt: 'Discord-white',
+      url: 'https://discord.gg/VtBdCYY2',
     },
     {
       src: '/Telegram_White.svg',
       alt: 'Telegram-white',
+      url: '',
     },
     {
       src: '/Twitter_White.svg',
-      alt: 'Telegram-white',
+      alt: 'Twitter-white',
+      url: 'https://twitter.com/digilandbali',
     },
     {
       src: '/Opensea_White.svg',
       alt: 'Opensea-white',
+      url: '',
     },
   ];
 
   return (
     <>
       {icons.map((icon, i) => (
-        <div key={`${icon.alt}-${i}`} style={{width: dimension, height: dimension}}>
-          <img src={icon.src} alt={icon.alt} />
+        <div
+          key={`${icon.alt}-${i}`}
+          style={{width: dimension, height: dimension}}
+          className="cursor-pointer"
+        >
+          <img
+            onClick={() => (icon.url !== '' ? window.open(icon.url) : null)}
+            src={icon.src}
+            alt={icon.alt}
+          />
         </div>
       ))}
     </>
@@ -76,7 +88,7 @@ const HomeSection = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className="mt-8">
         <img src="/Union.svg" className={sharedStyles.responsive} alt="decorative image" />
       </div>
     </div>
