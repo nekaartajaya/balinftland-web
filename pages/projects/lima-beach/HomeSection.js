@@ -9,26 +9,38 @@ const Icons = ({dimension}) => {
     {
       src: '/Discord_White.svg',
       alt: 'Discord-white',
+      url: 'https://discord.gg/VtBdCYY2',
     },
     {
       src: '/Telegram_White.svg',
       alt: 'Telegram-white',
+      url: '',
     },
     {
       src: '/Twitter_White.svg',
-      alt: 'Telegram-white',
+      alt: 'Twitter-white',
+      url: 'https://twitter.com/digilandbali',
     },
     {
       src: '/Opensea_White.svg',
       alt: 'Opensea-white',
+      url: '',
     },
   ];
 
   return (
     <>
       {icons.map((icon, i) => (
-        <div key={`${icon.alt}-${i}`} style={{width: dimension, height: dimension}}>
-          <img src={icon.src} alt={icon.alt} />
+        <div
+          key={`${icon.alt}-${i}`}
+          style={{width: dimension, height: dimension}}
+          className="cursor-pointer"
+        >
+          <img
+            onClick={() => (icon.url !== '' ? window.open(icon.url) : null)}
+            src={icon.src}
+            alt={icon.alt}
+          />
         </div>
       ))}
     </>
@@ -41,7 +53,8 @@ const HomeSection = () => {
 
   return (
     <div
-      className={`${sharedStyles.flexColumnStartContainer} ${styles.sectionWrapper} ${sharedStyles.flexOrder0} pt-14`}>
+      className={`${sharedStyles.flexColumnStartContainer} ${styles.sectionWrapper} ${sharedStyles.flexOrder0} pt-14`}
+    >
       <div className="w-full flex flex-col gap-1 items-center tablet:items-center desktop:flex desktop:flex-row desktop:gap-14 desktop:justify-end">
         <div>
           <div className="uppercase whitespace-prewrap font-bold text-2xl desktop:text-5xl desktop:whitespace-nowrap text-white desktop:pr-20 mb-4 desktop:mb-0 leading-[150%] text-center desktop:text-left">
@@ -75,7 +88,7 @@ const HomeSection = () => {
           </div>
         </div>
       </div>
-      <div>
+      <div className="mt-8">
         <img src="/Union.svg" className={sharedStyles.responsive} alt="decorative image" />
       </div>
     </div>

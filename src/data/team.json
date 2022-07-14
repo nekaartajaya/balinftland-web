@@ -1,0 +1,62 @@
+[
+  {
+    "imageUrl": "/Team/1.png",
+    "imageAlt": "BUDI TIANDY",
+    "name": "BUDI TIANDY",
+    "position": "Chief Executive Officer"
+  },
+  {
+    "imageUrl": "/Team/2.png",
+    "imageAlt": "JEREMY FANG",
+    "name": "JEREMY FANG",
+    "position": "Chief Operating Officer"
+  },
+  {
+    "imageUrl": "/Team/3.png",
+    "imageAlt": "GILANG BHAGASKARA",
+    "name": "GILANG BHAGASKARA",
+    "position": "Chief Technology Officer"
+  },
+  {
+    "imageUrl": "/Team/4.png",
+    "imageAlt": "DANIEL",
+    "name": "DANIEL",
+    "position": "Chief Marketing Officer"
+  },
+  {
+    "imageUrl": "/Team/5.png",
+    "imageAlt": "PRIMA YOGI LOVINILTRA",
+    "name": "PRIMA YOGI LOVINILTRA",
+    "position": "Head of Product"
+  },
+  {
+    "imageUrl": "/Team/6.png",
+    "imageAlt": "IRMAN NUR MUHAMMAD ALAMSYAH",
+    "name": "IRMAN NUR MUHAMMAD ALAMSYAH",
+    "position": "Software Architect"
+  },
+  {
+    "imageUrl": "/Team/7.png",
+    "imageAlt": "ANTON EMIL",
+    "name": "ANTON EMIL",
+    "position": "Blockchain Experts"
+  },
+  {
+    "imageUrl": "/Team/8.png",
+    "imageAlt": "MOCHAMAD HUSNI RIZAL",
+    "name": "MOCHAMAD HUSNI RIZAL",
+    "position": "Frontend Dev - Polkadot Ambassador"
+  },
+  {
+    "imageUrl": "/Team/9.png",
+    "imageAlt": "NEKA ARTAJAYA",
+    "name": "NEKA ARTAJAYA",
+    "position": "Frontend Dev"
+  },
+  {
+    "imageUrl": "/Team/10.png",
+    "imageAlt": "MUHAMMAD HAIDAR AL MUTAWAKKIL",
+    "name": "MUHAMMAD HAIDAR AL MUTAWAKKIL",
+    "position": "UI/UX Designer"
+  }
+]

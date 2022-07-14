@@ -42,7 +42,7 @@ const PermissiveDocSection = () => {
       </div>
       <animated.div className="w-full h-auto" ref={triggerRef} style={fadeIn(visible)}>
         <img
-          src={'/PermisiveDocumentImagePC.svg'}
+          src={'/IMGPermisiveDocument.png'}
           className="w-full h-auto"
           alt="Permissive Doc Section Illustration"
         />

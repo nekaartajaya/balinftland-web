@@ -9,6 +9,7 @@ import {ArrowCircleLeft, ArrowCircleRight} from 'iconsax-react';
 import {borderWidth, fadeIn, fadeInUpText} from 'src/animation';
 import ListWithIcon from 'src/components/ListWithIcon';
 import nftSkyvilla from 'src/data/nftSkyvilla';
+import sliderSkyvillas from 'src/data/sliderSkyvillas';
 import useIntersectionObserver from 'src/hooks/useIntersectionObserver';
 
 const NFTSkyvillas = () => {
@@ -19,12 +20,7 @@ const NFTSkyvillas = () => {
   // Slide
   const [activeChild, setActiveChild] = useState(0);
 
-  const image = {
-    src: '/Headerslide.svg',
-    alt: 'image illustration',
-  };
-
-  const items = useMemo(() => [image, image, image, image], []);
+  const items = useMemo(() => sliderSkyvillas, []);
 
   const changeChild = useCallback(
     type => {
@@ -91,11 +87,12 @@ const NFTSkyvillas = () => {
                 },
               }}
               index={activeChild}
+              navButtonsAlwaysInvisible
               autoPlay={false}
             >
               {items.map((item, i) => (
                 <div key={i} className={sharedStyles.responsive}>
-                  <img src={item.src} alt={`${item.src}-${i}`} className="w-full" />
+                  <img src={item.imageUrl} alt={item.imageAlt} className="w-full" />
                 </div>
               ))}
             </Carousel>

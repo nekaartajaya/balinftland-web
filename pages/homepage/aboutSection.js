@@ -2,6 +2,8 @@
 import {useRef} from 'react';
 import {animated} from 'react-spring';
 
+import Link from 'next/link';
+
 import {fadeIn, imageWidth} from '../../src/animation';
 import HomeTitleSection from '../../src/components/HomeTitleSection';
 import ImageDescComponent from '../../src/components/ImageDescComponent';
@@ -95,23 +97,27 @@ const AboutSection = () => {
           </div>
           <div className="flex items-center justify-center">
             <img
+              onClick={() => window.open('https://discord.gg/VtBdCYY2')}
               src="/Discord_White.svg"
-              className="mx-1 w-[16px] h-[16px] tablet:w-[36px] tablet:h-[36px]"
+              className="mx-1 w-[16px] h-[16px] tablet:w-[36px] tablet:h-[36px] cursor-pointer"
               alt="Discord-white"
             />
             <img
+              onClick={() => null}
               src="/Telegram_White.svg"
-              className="mx-1 w-[16px] h-[16px] tablet:w-[36px] tablet:h-[36px]"
+              className="mx-1 w-[16px] h-[16px] tablet:w-[36px] tablet:h-[36px] cursor-pointer"
               alt="Discord-white"
             />
             <img
+              onClick={() => window.open('https://twitter.com/digilandbali')}
               src="/Twitter_White.svg"
-              className="mx-1 w-[16px] h-[16px] tablet:w-[36px] tablet:h-[36px]"
+              className="mx-1 w-[16px] h-[16px] tablet:w-[36px] tablet:h-[36px] cursor-pointer"
               alt="Discord-white"
             />
             <img
+              onClick={() => null}
               src="/Opensea_White.svg"
-              className="mx-1 w-[16px] h-[16px] tablet:w-[36px] tablet:h-[36px]"
+              className="mx-1 w-[16px] h-[16px] tablet:w-[36px] tablet:h-[36px] cursor-pointer"
               alt="Discord-white"
             />
             <div className="text-[10px] tablet:text-base underline text-[#E2E2E2] ml-4">
@@ -208,7 +214,9 @@ const AboutSection = () => {
                 );
               })}
               <div className="flex items-center justify-end font-bold mt-[50px] desktop:mt-[80px]">
-                <div className="mr-2 text-sm">Know More</div>
+                <Link href="/projects/lima-beach/#minting-stage" passHref>
+                  <div className="mr-2 text-sm text-white cursor-pointer">Know More</div>
+                </Link>
                 <img src={'/arrowTopRight.svg'} className="w-[10px] h-[10px]" alt={'tes'} />
               </div>
             </div>

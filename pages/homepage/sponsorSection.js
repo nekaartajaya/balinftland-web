@@ -2,6 +2,8 @@
 import {useRef} from 'react';
 import {animated} from 'react-spring';
 
+import Link from 'next/link';
+
 import {fadeIn} from '../../src/animation';
 import useIntersectionObserver from '../../src/hooks/useIntersectionObserver';
 import styles from '../../styles/SponsorSection.module.css';
@@ -18,21 +20,27 @@ const SponsorSection = () => {
   };
 
   return (
-    <section>
+    <section className="pb-20">
       <animated.div
         className={styles.sponsorContainer}
         ref={triggerAnimation.sponsor}
         style={fadeIn(visibleAnimation.sponsor)}
       >
-        <div className={styles.imageContainer}>
-          <img src="/hah.svg" className={styles.image} alt="HomePicture" />
-        </div>
-        <div className={styles.imageContainer}>
-          <img src="/ftm.svg" className={styles.image} alt="HomePicture" />
-        </div>
-        <div className={styles.imageContainer}>
-          <img src="/hah.svg" className={styles.image} alt="HomePicture" />
-        </div>
+        <a href="https://samahitagroup.com" target="_blank" rel="noreferrer">
+          <div className={styles.imageContainer}>
+            <img src="/sponsor/Samahita.png" className={styles.image} alt="Samahita" />
+          </div>
+        </a>
+        <a href="https://blocksphere.id" target="_blank" rel="noreferrer">
+          <div className={styles.imageContainer}>
+            <img src="/sponsor/Blocksphere.png" className={styles.image} alt="Blocksphere" />
+          </div>
+        </a>
+        <a href="https://www.digitels.com" target="_blank" rel="noreferrer">
+          <div className={styles.imageContainer}>
+            <img src="/sponsor/Digitels.png" className={styles.image} alt="Digitels" />
+          </div>
+        </a>
       </animated.div>
     </section>
   );
