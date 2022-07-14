@@ -13,11 +13,13 @@ import SmartSysSection from './SmartSysSection';
 import TokenDistSection from './TokenDistSection';
 import UtilityNFTSection from './UtilityNFTSection';
 
+import Meta from 'src/components/Meta';
 import styles from 'styles/limabeach/SectionGroup.module.css';
 
 const SectionGroup = () => {
   return (
     <div className={styles.root}>
+      <Meta title="DigilandBali | Lima Beach" />
       <HomeSection />
       <AboutLimaBeachSection />
       <UtilityNFTSection />
