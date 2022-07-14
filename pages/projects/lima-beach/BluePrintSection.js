@@ -5,6 +5,7 @@ import {animated} from 'react-spring';
 import {ArrowCircleLeft, ArrowCircleRight} from 'iconsax-react';
 import 'react-multi-carousel/lib/styles.css';
 import {borderWidth, fadeIn, fadeInUpText} from 'src/animation';
+import sliderBlueprint from 'src/data/sliderBlueprint';
 import useIntersectionObserver from 'src/hooks/useIntersectionObserver';
 import styles from 'styles/limabeach/BluePrintSection.module.css';
 import sharedStyles from 'styles/limabeach/SharedStyles.module.css';
@@ -14,11 +15,7 @@ const BluePrintSection = () => {
   const dataRef = useIntersectionObserver(triggerRef, {});
   const visible = dataRef?.isIntersecting;
 
-  const image = {
-    src: '/Headerslide.svg',
-    alt: 'image illustration',
-  };
-  const items = [image, image, image, image];
+  const items = sliderBlueprint;
 
   const carouselRef = useRef();
 
@@ -84,7 +81,7 @@ const BluePrintSection = () => {
         >
           {items.map((item, i) => (
             <div key={i}>
-              <img src={item.src} alt={`${item.src}-${i}`} className="w-full" />
+              <img src={item.imageUrl} alt={item.imageAlt} className="w-full" />
             </div>
           ))}
         </Carousel>

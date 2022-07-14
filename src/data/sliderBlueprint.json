@@ -1,0 +1,22 @@
+[
+  {
+    "imageUrl": "/Slider_Blueprint/1.jpg",
+    "imageAlt": "Blueprint1"
+  },
+  {
+    "imageUrl": "/Slider_Blueprint/2.jpg",
+    "imageAlt": "Blueprint2"
+  },
+  {
+    "imageUrl": "/Slider_Blueprint/3.jpg",
+    "imageAlt": "Blueprint3"
+  },
+  {
+    "imageUrl": "/Slider_Blueprint/4.jpg",
+    "imageAlt": "Blueprint4"
+  },
+  {
+    "imageUrl": "/Slider_Blueprint/5.jpg",
+    "imageAlt": "Blueprint5"
+  }
+]
