@@ -8,10 +8,13 @@ import RevealSection from './homepage/revealSection';
 import SponsorSection from './homepage/sponsorSection';
 import StakingSection from './homepage/stakingSection';
 
+import Meta from 'src/components/Meta';
+
 export default function Home() {
   return (
     <Layout>
       <div>
+        <Meta title="DigilandBali | Homepage" />
         <HomeSection />
         <SponsorSection />
         <AboutSection />
