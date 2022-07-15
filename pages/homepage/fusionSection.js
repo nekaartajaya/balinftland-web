@@ -39,10 +39,8 @@ const FusionSection = () => {
           style={fadeIn(visibleAnimation.subtitle)}
         >
           All four-stage fragments of the NFT can be combined, the possibility of obtaining an NFT
-          SkyVilla is between 1 - 4 %. The 7 NFT fragments form one NFT Apartment or SkyVilla. Each
-          stage's fragments will have a distinct possibility of obtaining a SkyVilla. People with 7
-          NFT fragments on the most recent stage have a greater chance of obtaining Skyvilla through
-          Fusion, as there are only 3 NFT SkyVillas out of 253.
+          SkyVilla. The 7 NFT fragments form one NFT Apartment or SkyVilla. Each stage's fragments
+          combined will have 1,18% possibility of obtaining a SkyVilla.
         </animated.div>
       </div>
       <animated.div

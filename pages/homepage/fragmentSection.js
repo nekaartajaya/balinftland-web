@@ -53,7 +53,7 @@ const FragmentSection = () => {
           type="ongoing"
           title={'LIMA BEACH SIGNATURE NFT'}
           description={'CANGGU, BALI'}
-          imageUrl={'/Upcoming_Fragment_Collection/fragment1.png'}
+          imageUrl={'/Upcoming_Fragment_Collection/fragment5.png'}
         />
         <UpcomingFragmentCard imageUrl={'/Upcoming_Fragment_Collection/fragment2.png'} />
         <UpcomingFragmentCard imageUrl={'/Upcoming_Fragment_Collection/fragment3.png'} />

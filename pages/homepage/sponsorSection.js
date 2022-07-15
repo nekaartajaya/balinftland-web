@@ -8,7 +8,7 @@ import {fadeIn} from '../../src/animation';
 import useIntersectionObserver from '../../src/hooks/useIntersectionObserver';
 import styles from '../../styles/SponsorSection.module.css';
 
-const SponsorSection = () => {
+const SponsorSection = (page = 'home') => {
   // animation trigger
   const triggerAnimation = {
     sponsor: useRef(),
@@ -20,7 +20,7 @@ const SponsorSection = () => {
   };
 
   return (
-    <section className="pb-20">
+    <section className="w-full">
       <animated.div
         className={styles.sponsorContainer}
         ref={triggerAnimation.sponsor}

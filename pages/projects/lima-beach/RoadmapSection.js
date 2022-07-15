@@ -19,7 +19,7 @@ const RoadmapSection = () => {
       </div>
       <div className={styles.imageContainer}>
         <img
-          src={isMobile ? '/RoadmapMobile.svg' : '/Roadmap.svg'}
+          src={isMobile ? '/RoadmapMobile1.svg' : '/RoadmapDesktop.svg'}
           className={sharedStyles.responsive}
           alt="Roadmap image"
         />

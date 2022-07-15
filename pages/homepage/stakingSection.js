@@ -55,22 +55,21 @@ const StakingSection = () => {
         style={fadeIn(visibleAnimation.content)}
       >
         <div className="text-[12px] tablet:text-[14px] desktop:text-base text-[#E2E2E2] leading-5 mb-8">
-          NFT Owners will get guaranteed staking rewards for $1,650/fragment or $11,550/apartment
+          NFT Owners will get guaranteed staking rewards for $1,650/fragment up to $11,550/apartment
           per year. The occupants meet more than 210 days threshold, then there are any additional
           staking rewards for NFT Owners who stake their NFT Apartment / NFT SkyVilla. The
           additional staking rewards are considered floating profit calculated from the rest of 155
           days out of 365 days.
         </div>
         <div className="desktop:grid desktop:grid-cols-2 desktop:gap-x-32 text-[#E2E2E2]">
-          <div>
+          <div className="mb-4 desktop:mb-0">
             <div className="text-[#FFF] text-[14px] tablet:text-[24px] mb-4 font-semibold">
               Staking+ to get 1 NFT Apartment
             </div>
             <div className="text-[12px] tablet:text-[14px] desktop:text-base leading-6">
               NFT Owners can stake their NFT Apartment in the DeFi DApp where they will be unable to
-              use staked NFT Apartment and doesn’t get staking APY (based on staking APY table
-              above) for 5 years in order to get 1 additional NFT apartments in the second project
-              (TBA) after 5 years.
+              use staked NFT Apartment and doesn’t get staking APY for 5 years in order to get 1
+              additional NFT apartments in the second project (TBA) after 5 years.
             </div>
           </div>
           <div>
