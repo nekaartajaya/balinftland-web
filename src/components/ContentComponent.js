@@ -1,41 +1,109 @@
-import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
-import {MinusCirlce, AddCircle, TickCircle, InfoCircle} from 'iconsax-react';
+import {MinusCirlce, AddCircle, TickCircle, ExportSquare} from 'iconsax-react';
 import FAQComponent from 'src/components/FAQComponent';
 import SocialHandles from 'src/components/SocialHandles';
-import {mintDigilandNFT, connectWallet} from 'src/helpers/metamask-interact';
+import {
+  mintDigilandNFT,
+  connectWallet,
+  getCurrentWalletConnected,
+} from 'src/helpers/metamask-interact';
+import useMintHook from 'src/hooks/use-mint.hooks';
 import styles from 'styles/ContentComponent.module.css';
 
 const ContentComponent = () => {
-  //TODO: add selector here from state management to read walletAddress
-  const [walletAddress, setWalletAddress] = useState('');
+  const {
+    allowUSDC,
+    verifyAllowance,
+    allowance,
+    fetchBalance,
+    balance,
+    fetchMintedByUserQty,
+    mintedNFT,
+    fetchPrice,
+    price,
+    fetchActiveStage,
+    activeStage,
+    fetchMaxSupply,
+    maxSupply,
+    fetchMintedQty,
+    mintedQty,
+    fetchNFTImage,
+    image,
+    loading,
+  } = useMintHook();
+
+  useEffect(() => {
+    verifyAllowance();
+    fetchBalance();
+    fetchMintedByUserQty();
+    fetchPrice();
+    fetchActiveStage();
+    fetchMaxSupply();
+    fetchMintedQty();
+    fetchNFTImage();
+  }, []);
+
+  const [walletAddress, setWallet] = useState('');
+  const [status, setStatus] = useState('');
+
+  //TODO: move this into a hook e.g. useWalletHooks
+  const fetchCurrentWallet = async () => {
+    const {address} = await getCurrentWalletConnected();
+    return {address};
+  };
+
+  // TODO: move this into a hook e.g. useWalletHooks
+  const addWalletListener = () => {
+    if (window.ethereum) {
+      window.ethereum.on('accountsChanged', accounts => {
+        if (accounts.length > 0) {
+          window.currentAccount = accounts[0];
+          setWallet(accounts[0]);
+        } else {
+          setWallet('');
+          setStatus('🦊 connect to metamask using the top right button.');
+        }
+      });
+    } else {
+      setStatus(
+        <p>
+          {' '}
+          🦊{' '}
+          <a target="_blank" rel="noopener noreferrer" href={`https://metamask.io/download.html`}>
+            you must install metamask, a virtual ethereum wallet, in your browser.
+          </a>
+        </p>,
+      );
+    }
+  };
+
+  useEffect(() => {
+    (async () => {
+      const {address} = await fetchCurrentWallet();
+      setWallet(address);
+
+      addWalletListener();
+    })();
+  }, []);
 
   const [referralCode, setReferralCode] = useState('');
   const [quantity, setQuantity] = useState(0);
   const [mintedQuantity, setMintedQuantity] = useState(0);
 
   const [, setMintStatus] = useState('');
-
   const [isAgreed, setIsAgreed] = useState(false);
 
-  const [isUSDCAllowed, setIsUSDCAllowed] = useState(false);
-
   //TODO: fetch USDC balance from metamask
-  const [balance] = useState(200_000);
-
-  //TODO: fetch NFT price from getPrice in SC
-  const [price] = useState(50_000);
+  // const [balance] = useState(200_000);
 
   //Constant state
   const [maxQuantity] = useState(80);
 
   const handleMintPressed = async () => {
     if (quantity <= maxQuantity - mintedQuantity) {
-      //call metamask here to mint
-      console.log(`minted ${quantity} NFTs!`);
       let tempMinted = mintedQuantity + quantity;
       setMintedQuantity(tempMinted);
 
@@ -68,12 +136,7 @@ const ContentComponent = () => {
     const walletResponse = await connectWallet();
 
     //TODO: set walletAddress to the state management instead
-    setWalletAddress(walletResponse.address);
-  };
-
-  const handleAllowUSDC = () => {
-    //TODO: perform USDCAllowance extrinsic using Metamask first
-    setIsUSDCAllowed(!isUSDCAllowed);
+    setWallet(walletResponse.address);
   };
 
   const isUSDCEnough = () => {
@@ -85,26 +148,39 @@ const ContentComponent = () => {
     setIsAgreed(!isAgreed);
   };
 
+  const handleSetAllowance = () => {
+    allowUSDC(quantity * price);
+  };
+
   return (
     <div id="content">
       <div className="flex flex-col content-center justify-center min-w-fit tablet:grid tablet:grid-flow-col">
         <div className="flex flex-col items-center p-6 gap-4 text-center bg-[#edf4f7] rounded-t-lg tablet:rounded-tr-none tablet:rounded-l-lg tablet:max-w-max tablet:gap-8 desktop:px-20 desktop:py-14">
-          <img src="/Hexagon.svg" alt="NFT image illustration" className="w-45 h-45" />
+          <img src={image} alt="NFT image illustration" className="w-45 h-45" />
           <div className="flex flex-col gap-4 tablet:gap-4">
             <div>
               <h3 className="font-bold text-xl tablet:text-base">5 DAYS LEFT!</h3>
             </div>
             <div>
               <p className="font-bold">Mint Price</p>
-              <p className="font-normal">2000 USDC</p>
+              <p className="font-normal">1 NFT : {price.toLocaleString()} USDC</p>
             </div>
             <div>
-              <p className="font-bold">Stage 1 Supply</p>
-              <p className="font-normal">0/120</p>
+              <p className="font-bold">Stage {activeStage} Supply</p>
+              <p className="font-normal">
+                {mintedQty}/{maxSupply}
+              </p>
             </div>
             <div>
               <p className="font-bold">Total Supply</p>
               <p className="font-normal">1,771</p>
+            </div>
+            <div>
+              <div className="flex flex-row items-center justify-center gap-1">
+                <p className="font-bold">Minted</p>
+                <ExportSquare size="16" color="#344054" />
+              </div>
+              <p className="font-normal">{mintedNFT}</p>
             </div>
           </div>
           <div className="flex flex-row gap-2 tablet:my-auto">
@@ -113,7 +189,9 @@ const ContentComponent = () => {
         </div>
         <div className="bg-[#fff] rounded-b-lg p-6 tablet:rounded-bl-none tablet:rounded-r-lg tablet:min-w-fit desktop:px-20 desktop:py-14">
           <div className="flex flex-col gap-2 mb-8 tablet:mb-12">
-            <h1 className="font-bold text-2xl uppercase desktop:text-3xl">physical land stage</h1>
+            <h1 className="font-bold text-2xl uppercase desktop:text-3xl">
+              Stage 0{activeStage}: Physical Land
+            </h1>
             <h3 className="font-semibold text-lg uppercase desktop:text-2xl">
               lima beach signature nft
             </h3>
@@ -146,16 +224,44 @@ const ContentComponent = () => {
                   onChange={handleChangeQuantity}
                 ></input>
                 <div>
-                  <IconButton onClick={handleIncrement}>
-                    <AddCircle size="20" color="#8f98aa" />
+                  <IconButton disabled={!(quantity * price < balance)} onClick={handleIncrement}>
+                    <AddCircle
+                      size="20"
+                      color={!(quantity * price < balance) ? '#808080' : '#8f98aa'}
+                    />
                   </IconButton>
                 </div>
               </div>
               <div className="flex items-center justify-center rounded-lg border border-[#d0d5dd] py-2 px-4">
                 <h4 className="font-bold text-sm whitespace-nowrap">
-                  {price.toLocaleString()} USDC
+                  {(price * quantity).toLocaleString()} USDC
                 </h4>
               </div>
+            </div>
+
+            <div>
+              Allowed USDC to trade
+              <div className="border border-[EDF4F7] rounded flex justify-end items-center py-2 px-3">
+                <TickCircle
+                  size="16"
+                  color={allowance > 0 && allowance === quantity * price ? '#76CE8A' : '#808080'}
+                />
+                <div className="ml-2">{(quantity * price).toLocaleString()}</div>
+                <button
+                  disabled={loading || quantity * price > balance || quantity * price === allowance}
+                  onClick={handleSetAllowance}
+                  className="ml-auto disabled:bg-transparent bg-transparent shadow-none rounded-none p-0 font-medium text-xs text-[#406AFF]"
+                >
+                  {quantity > 0 ? 'Set New Allowance' : ''}
+                </button>
+              </div>
+              {allowance > 0 ? (
+                <div className="mt-1 text-[#76CE8A]">
+                  Congratulations ! Now you can trade your {allowance} USDC
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
 
             <div className="flex flex-row gap-1">
@@ -174,27 +280,13 @@ const ContentComponent = () => {
 
           <div className="flex flex-col gap-4 desktop:grid desktop:grid-cols-[1fr_1fr]">
             {walletAddress.length > 0 ? (
-              <>
-                <button
-                  className={isUSDCAllowed ? 'outlinedActive' : 'outlined'}
-                  disabled={isUSDCEnough() ? false : true}
-                  onClick={handleAllowUSDC}
-                >
-                  Allow to trade {(quantity * price).toLocaleString()} USDC
-                  {isUSDCAllowed ? (
-                    <TickCircle size="16" color="#76CE8A" />
-                  ) : (
-                    <InfoCircle size="16" color={isUSDCEnough() ? '#1F50FF' : '#bbcdfb'} />
-                  )}
-                </button>
-                <button
-                  className="w-full"
-                  onClick={handleMintPressed}
-                  disabled={quantity > 0 && isAgreed && isUSDCAllowed ? false : true}
-                >
-                  <span>Mint Now</span>
-                </button>{' '}
-              </>
+              <button
+                className="w-full"
+                onClick={handleMintPressed}
+                disabled={quantity > 0 && isAgreed && allowance === quantity * price ? false : true}
+              >
+                <span>Mint Now</span>
+              </button>
             ) : (
               <button className="w-full" onClick={handleConnectWallet}>
                 <span>Connect Wallet</span>
