@@ -50,7 +50,7 @@ const MintingStageSection = () => {
       <div className={styles.imageDescContainer}>
         <MintingStage
           title="Physical Land Stage, with $10,000 each Fragment"
-          description="The first NFT auction will be to purchase physical land on which to build the property. Anyone who participates in the first auction will mint an $US10,000 NFT fragment. In this stage, each NFT apartment will cost $US70,000, and it is the lowest stage to get the best price."
+          description="The first NFT auction will be held to purchase physical land on which to build the property. Anyone who participates in the first auction will mint an $US10,000 NFT fragment. In this stage, each NFT apartment will cost $US70,000, and it is the lowest stage to get the best price."
           imageUrl="/NFT_Per_Stage/NFTStage1.png"
           imageAlt="NFT Stage 1 illustration"
         />

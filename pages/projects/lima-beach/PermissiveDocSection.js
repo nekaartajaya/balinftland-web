@@ -48,11 +48,25 @@ const PermissiveDocSection = () => {
         />
       </animated.div>
       <div className={styles.headerText}>
-        An Indonesian company is set up as a Special Purpose Vehicle (SPV) to hold the physical
-        apartment certificate. SPV will put the certificate in the Safe Deposit Box for 60 years
-        (the SPV will have a 30 years leasehold rights for the first license and renew/extend the
-        leasehold rights for 30 years). All the NFT Buyers can cross-check the legal proof with the
-        public notary.
+        <div className="mb-4">
+          To what extent does Digilandbali ensure the safety and security of your physical apartment
+          authentication certificate?
+        </div>
+        <div className="mb-4">
+          We are aware that crypto users may consider this when determining whether the property
+          blockchain you have chosen will meet your security needs. Today, we are pleased to
+          announce a prominent Indonesian company will establish the Special Purpose Vehicle (SPV),
+          which holds the physical apartment certificate of all the NFT owners.
+        </div>
+        <div className="mb-4">
+          Consequently, the SPV will store the certificate in the Safe Deposit Box for 60 years.
+          Whereby, unlike any traditional complicated home sales activities, all NFT buyers can
+          cross-check the legal proof verified by a public notary!
+        </div>
+        <div className="mb-4 italic">
+          *The SPV will have 30 years of leasehold rights for the first license, and the leasehold
+          rights will be renewed or extended for 30 years
+        </div>
       </div>
       <div className="flex flex-col items-center gap-4">
         <div className="flex flex-col items-start min-w-full gap-4">

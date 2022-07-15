@@ -49,13 +49,13 @@ const FooterComponent = () => {
             <label className={styles.title}>Discover</label>
             <div className="flex flex-col tablet:gap-4">
               <label className={styles.link}>
-                <a href="#!">Digilandbali Whitepaper</a>
+                <a href="">Digilandbali Whitepaper</a>
               </label>
               <label className={styles.link}>
-                <a href="#!">Digilandbali Partners</a>
+                <a href="">Digilandbali Partners</a>
               </label>
               <label className={styles.link}>
-                <a href="#!">Digilandbali Career</a>
+                <a href="">Digilandbali Career</a>
               </label>
             </div>
           </div>

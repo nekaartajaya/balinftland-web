@@ -11,7 +11,7 @@ const AboutLimaBeachSection = () => {
       <div className={styles.root}>
         <div className={`mb-5 desktop:mb-0 w-full`}>
           <img
-            src={'/Whatislimabeach.png'}
+            src={'/Limabeach/what.png'}
             alt="Lima Beach illustration"
             className="w-full h-[250px] object-cover object-center desktop:h-auto"
           />
@@ -29,14 +29,14 @@ const AboutLimaBeachSection = () => {
             </div>
           </div>
           <div className={styles.description}>
-            The first decentralised property project from Digilandbali called Lima Beach Signature.
-            Each Lima Beach Signature NFT represents the physical ownership of an apartment that
-            leaseholders in Pantai Lima, Canggu, Bali, may use for occupancy. Each physical
-            apartment in Lima Beach Signature is a luxury, IoT Technology enabled smart condo with
-            premium services.
+            The first decentralised property project from Digilandbali is called The Lima Beach
+            Signature. Each Lima Beach Signature NFT represents the physical ownership of an
+            apartment that leaseholders in Pantai Lima, Canggu, Bali, may use for occupancy. Each
+            physical apartment in Lima Beach Signature is a luxury, IoT Technology enabled smart
+            condo with premium services.
           </div>
           <div className={styles.description}>
-            Having housing that is affordable is beneficial for the growth of communities. When
+            Having a housing that is affordable is beneficial for the growth of communities. When
             there are more affordable houses in a community, it becomes more sustainable, and the
             neighbourhood becomes safer and more secure, since the significant economic effects
             improve local purchasing power and career opportunities.

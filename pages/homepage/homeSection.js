@@ -31,7 +31,7 @@ const HomeSection = () => {
         <div className={styles.titleBig}>DIGILANDBALI</div>
         <div className={styles.subtitle}>WE BUILD TOGETHER, WE OWN TOGETHER</div>
         <div className={`${styles.buttonContainer} ${styles.top}`}>
-          <Link href="#home" passHref>
+          <Link href="/#home" passHref>
             <button className={`${styles.button} ${styles.buttonWhite}`}>About Digilandbali</button>
           </Link>
           <Link href="/projects/lima-beach" passHref>
@@ -44,7 +44,7 @@ const HomeSection = () => {
           className={`${styles.floatingTextContainer} ${styles.floatingText} ${styles.top}`}
           style={fadeInLeft(visibleAnimation.floatTextLeft)}
         >
-          <div className={styles.title}>NFT Developer Property</div>
+          <div className={styles.title}>NFT Property Developer</div>
           <div className={styles.subtitle}>
             Build decentralized property blockchain at developer prices in Bali ― To Build With And
             For The Community.

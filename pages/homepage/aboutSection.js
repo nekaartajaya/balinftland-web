@@ -44,14 +44,14 @@ const AboutSection = () => {
   ];
 
   return (
-    <section className="pt-10 pb-20">
+    <section className="py-20">
       <div className="pb-20 tablet:pb-32">
         <HomeTitleSection
           type={'leftImage'}
           topLeftText={'Who'}
-          topRightText={'Digilandbali, NFT Developer Property'}
-          imageURL={'/image8.svg'}
-          imageAlt={'tes'}
+          topRightText={'Digilandbali, NFT Property Developer'}
+          imageURL={'/Home/who.png'}
+          imageAlt={'Digiland image'}
           miniText={'One of the properties that has been built by the developer group'}
           descText={`Digilandbali is built by a team of Blockchain Consultant Experts with over a decade of experience. Being one of Bali's most reputable property developers with over 20 years of expertise, they have also built hotels and other properties including Agra Nusa Villas and the Nest in Benoa, as well as the Sapphire Cliff Resort and Umalas Signature. In particular, the NFT property will be maintained by a world-class management team with more than 25 years of experience.`}
         />
@@ -67,8 +67,8 @@ const AboutSection = () => {
       </div>
       <div className="pb-20 tablet:pb-32">
         <ImageDescComponent
-          imageUrl="/image2.svg"
-          imageAlt="Tes"
+          imageUrl="/Home/GetYourFragment.png"
+          imageAlt="Lima Beach image"
           title={`Get your fragments, Get your apartments, Live up your investments`}
           description={
             'Digilandbali is on a mission by adding value to daily lives of the community by hoping to get more people to involved in property with developer price, giving the NFT owners to stake our NFT apartments for more profitable rental as well as providing Smart 4.0 hospitality system technology. Because, together, we strive to build the NFT property by reducing the financial burden on property developers while yet offering high-end, luxurious services to leaseholders. ―We Build Together, We Own Together.'
@@ -78,10 +78,10 @@ const AboutSection = () => {
       <div className="pb-20 tablet:pb-32">
         <animated.div
           className="relative w-full hidden tablet:block"
-          style={imageWidth(visibleAnimation.imgLeft)}
+          style={fadeIn(visibleAnimation.imgLeft)}
           ref={triggerAnimation.imgLeft}
         >
-          <img src={'/image5.svg'} className="w-full h-auto" alt={'tes'} />
+          <img src={'/image5.svg'} className="w-full h-auto" alt={'about image'} />
         </animated.div>
         <animated.div
           className="tablet:py-8"
@@ -93,7 +93,7 @@ const AboutSection = () => {
             <br />
             Built in Bali,
             <br />
-            The Lost Paradise
+            World's Best Island
           </div>
           <div className="flex items-center justify-center">
             <img
@@ -129,10 +129,10 @@ const AboutSection = () => {
         </animated.div>
         <animated.div
           className="relative w-full hidden tablet:block ml-auto"
-          style={imageWidth(visibleAnimation.imgRight)}
+          style={fadeIn(visibleAnimation.imgRight)}
           ref={triggerAnimation.imgRight}
         >
-          <img src={'/image6.svg'} className="w-full h-auto" alt={'tes'} />
+          <img src={'/image6.svg'} className="w-full h-auto" alt={'about image'} />
         </animated.div>
       </div>
       <div className="pb-20 tablet:pb-32">
@@ -146,8 +146,8 @@ const AboutSection = () => {
       </div>
       <div className="pb-20 tablet:pb-32">
         <ImageDescComponent
-          imageUrl="/image1.svg"
-          imageAlt="Tes"
+          imageUrl="/Home/Mint7NFT.png"
+          imageAlt="Mint NFT image"
           title={`Mint 7 NFT Fragment \nGet 1 Apartment as Utility`}
           description={
             'One NFT Fragment will be worth 1/7 of the apartment leasehold. When enough of these fragments are collected, they can be fused together. A leaseholder would need seven NFT fragments to make one NFT Apartment or one NFT Skyvilla, which would give them a whole leasehold. 7 NFT fragments would be equal to 1 luxury service apartment with a 58-year leasehold and FREE costs for operating or living there. As the number of NFTs minted increases at each stage, so does their price.'
@@ -157,7 +157,8 @@ const AboutSection = () => {
       <div className="pb-20 tablet:pb-32">
         <HomeTitleSection
           type={'topImage'}
-          imageURL={'/image4.svg'}
+          imageURL={'/Home/limabeach.png'}
+          imageAlt="Lima Beach image"
           topLeftText={'Where'}
           topRightText={'Lima Beach Canggu, Bali, Indonesia'}
           descText={`It is the ideal place to spend a seaside holiday. Enjoy its luscious green rice fields that sway in the wind, spectacular vistas of Mount Batukaru, magical sunsets across Pantai Lima Beach, and the sound of the ocean. Is it your dream to be a part of it , and feels the beautiful magic of Bali?`}
@@ -175,31 +176,31 @@ const AboutSection = () => {
         <HomeTitleSection
           type={'custom'}
           topLeftText={'How'}
-          topRightText={'How it’s built from minting till become apartments.'}
+          topRightText={'How Lima Beach Signature NFT apartment built from minting'}
         >
           <div className="tablet:flex text-start desktop:items-center relative">
             <div className="w-full tablet:w-[30%] desktop:w-[60%] float-left">
               <div className="desktop:relative max-w-full desktop:max-w-[380px] mr-[15px] tablet:mr-0 hidden tablet:block">
                 <img
-                  src={'/image7.svg'}
+                  src={'/Home/how.png'}
                   className="w-full h-auto max-w-[195px] desktop:max-w-[380px] "
-                  alt={'tes'}
+                  alt={'How to build image'}
                 />
               </div>
             </div>
             <div className="w-[100%] tablet:w-[70%] desktop:w-[40%] tablet:pl-[80px] desktop:pl-[105px] desktop:pl-0 mb-5 tablet:mb-0">
               <div className="text-[12px] tablet:text-sm leading-[140%] dekstop:text-2xl text-[#FFF] text-justify">
                 One NFT Apartment or SkyVilla can be formed by combining all 7 NFT Fragments through
-                4-stage. Each stage's fragments will have a distinct possibility of obtaining a
+                4 stage. Each stage's fragments will have a distinct possibility of obtaining a
                 SkyVilla. As there are only 3 NFT SkyVillas out of 253 units of Apartments, people
                 with 7 NFT fragments on the most recent stage have a better chance of gaining
                 Skyvilla through the last stage—Fusion.
               </div>
             </div>
             <div className="block tablet:hidden">
-              <img src={'/image9.svg'} className="w-full h-auto " alt={'tes'} />
+              <img src={'/image9.svg'} className="w-full h-auto " alt={'How to build image'} />
             </div>
-            <div className="w-full mt-[20px] tablet:mt-0 tablet:max-w-[380px] relative tablet:absolute bg-[#3F7DF4] text-[#FFF] p-6 tablet:top-[90%] tablet:left-[15%] desktop:top-[50%] desktop:left-[20%]">
+            <div className="w-full mt-[20px] tablet:mt-0 tablet:max-w-[380px] relative tablet:absolute bg-[#3F7DF4] text-[#FFF] p-6 tablet:top-[90%] tablet:left-[15%] desktop:top-[77%] desktop:left-[20%]">
               {stage.map((item, index) => {
                 return (
                   <div

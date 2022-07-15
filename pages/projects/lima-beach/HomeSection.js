@@ -64,7 +64,7 @@ const HomeSection = () => {
           </div>
         </div>
         <div className="font-normal text-xs text-[#E2E2E2] text-center tablet:text-base desktop:text-2xl desktop:font-medium desktop:text-left">
-          A limited-edition NFT represents the physical property certificate and physical property
+          A limited-edition NFT representing the physical property certificate and physical property
           ownership built with the Internet of Things (IoT) Technology and Web 3.0.
         </div>
         <div className={styles.iconContainer}>

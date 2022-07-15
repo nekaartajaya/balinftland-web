@@ -37,7 +37,7 @@ const UtilityNFTSection = () => {
         <animated.div className="w-full" ref={triggerRef} style={fadeIn(visible)}>
           <iframe
             className="w-full aspect-video"
-            src="https://www.youtube.com/embed/r5GLQZDDK4s?controls=0"
+            src="https://www.youtube.com/embed/yP81-AQ84jk?controls=0"
             title="The Umalas Signature promo video. Bali island investment"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -55,13 +55,13 @@ const UtilityNFTSection = () => {
                 Digilandbali's Lima Beach Signature NFT project reduces ownership expenses and
                 broadens its attractiveness. As a property's price rises, so does its value. Since
                 the property project was built by the community working together, everyone can
-                access property’s luxury services at a developer price instead of market price.
+                access the property's luxury services at a developer price instead of market price.
               </div>
             </div>
             <div className="flex flex-col items-start gap-4 desktop:max-w-[524px]">
               <div className={styles.titleMedium}>Smart Apartment with IoT Technology Adoption</div>
               <div className={styles.text}>
-                Digilandbali create a smart 4.0 digital hospitality and advanced building management
+                Digilandbali was a smart 4.0 digital hospitality and advanced building management
                 system, where you don't need a physical key to get in. This also will surely
                 improves the customer experience and perceptions.
               </div>
@@ -72,8 +72,8 @@ const UtilityNFTSection = () => {
               <div className={styles.titleMedium}>Free 60 Years of Hospitality Management</div>
               <div className={styles.text}>
                 The hotel management will rent out to the public 65 of the 253 units. The rent from
-                65 units will cover the costs of the renters. Hence, NFT owners may having his or
-                her own property at ease without needing to worry anything.
+                65 units will cover the costs of the renters. Hence, NFT owners may have his or her
+                own property at ease without needing to worry anything.
               </div>
             </div>
             <div className="flex flex-col items-start gap-4 desktop:max-w-[524px]">
@@ -82,10 +82,9 @@ const UtilityNFTSection = () => {
               </div>
               <div className={styles.text}>
                 Luxurious smart service apartments strategically situated in Canggu, Bali with perks
-                such as fully-furnished, IoT Technology enabled, and etc. You may enjoy one of the
-                world's most spectacular sunsets which is able be seen from the property. The
-                beachfront, seaview, or lush garden view are all possibilities for the
-                accommodations.
+                such as fully-furnished, IoT Technology enabled. You may enjoy one of the world's
+                most spectacular sunsets which is able be seen from the property. The beachfront,
+                seaview, or lush garden view are all possibilities for the accommodations.
               </div>
             </div>
           </div>

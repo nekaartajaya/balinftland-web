@@ -44,7 +44,7 @@ const BluePrintSection = () => {
           ref={triggerRef}
           style={fadeInUpText(visible)}
         >
-          Blue Print Sneak Peak<span className={sharedStyles.titleDot}>.</span>
+          Blue Print Sneak Peek<span className={sharedStyles.titleDot}>.</span>
         </animated.div>
         <div className="flex items-center gap-x-3 desktop:gap-x-4">
           <ArrowCircleLeft

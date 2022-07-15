@@ -35,9 +35,9 @@ const NFTFragmentSection = () => {
       <MintingStage
         cropImage={false}
         border={false}
-        title="7 NFT fragments would equal 1 luxury service apartment with a 58-years leasehold"
+        title="7 NFT fragments worth 1 luxury service apartment with a 58-years leasehold"
         description="Each fragment will let the NFT holders stay in the apartment for up to 30 nights. The
-            quotas will be changed every year for the next 58 years on 31 December 23:59:59 (UTC+8)."
+            quotas will be renewes every year for the next 58 years on 31 December 23:59:59 (UTC+8)."
         imageUrl="/image-removebg-preview_1_1.svg"
         imageAlt="NFT Fragment image illustration"
       />
