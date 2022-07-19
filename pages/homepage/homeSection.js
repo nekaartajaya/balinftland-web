@@ -1,4 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+import {useMediaQuery} from '@mui/material';
+
 import {useRef} from 'react';
 import {animated} from 'react-spring';
 
@@ -24,6 +26,8 @@ const HomeSection = () => {
     floatTextRight: useIntersectionObserver(triggerAnimation.floatTextRight, {rootMargin: '0%'})
       ?.isIntersecting,
   };
+
+  const isTab = useMediaQuery('(max-width: 919px)', {noSsr: true});
 
   return (
     <section id="home" className="pt-12">
@@ -52,7 +56,11 @@ const HomeSection = () => {
         </animated.div>
         <div ref={triggerAnimation.floatTextLeft}></div>
         <div className="w-full mb-8">
-          <img src="/Home/HeaderImage.png" className="w-[80%] h-auto mx-auto" alt="HomePicture" />
+          <img
+            src={isTab ? '/Home/HomeTab.png' : '/Home/HomeDesktop.png'}
+            className="w-[80%] h-auto mx-auto"
+            alt="HomePicture"
+          />
         </div>
         <animated.div
           className={`${styles.floatingTextContainer} ${styles.floatingText} ${styles.bottom}`}
