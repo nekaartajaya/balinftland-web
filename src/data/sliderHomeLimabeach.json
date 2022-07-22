@@ -1,18 +1,30 @@
 [
   {
-    "imageUrl": "/Slider_Lima_Beach_Signature/Cinema.jpeg",
-    "imageAlt": "Cinema"
+    "imageUrl": "/Slider_Lima_Beach_Signature/1.png",
+    "imageAlt": "Lima Beach 1"
   },
   {
-    "imageUrl": "/Slider_Lima_Beach_Signature/Gym.jpeg",
-    "imageAlt": "Gym"
+    "imageUrl": "/Slider_Lima_Beach_Signature/2.png",
+    "imageAlt": "Lima Beach 2"
   },
   {
-    "imageUrl": "/Slider_Lima_Beach_Signature/Playground.jpeg",
-    "imageAlt": "Playground"
+    "imageUrl": "/Slider_Lima_Beach_Signature/3.png",
+    "imageAlt": "Lima Beach 3"
   },
   {
-    "imageUrl": "/Slider_Lima_Beach_Signature/Workstation.jpeg",
-    "imageAlt": "Workstation"
+    "imageUrl": "/Slider_Lima_Beach_Signature/4.png",
+    "imageAlt": "Lima Beach 4"
+  },
+  {
+    "imageUrl": "/Slider_Lima_Beach_Signature/5.png",
+    "imageAlt": "Lima Beach 5"
+  },
+  {
+    "imageUrl": "/Slider_Lima_Beach_Signature/6.png",
+    "imageAlt": "Lima Beach 6"
+  },
+  {
+    "imageUrl": "/Slider_Lima_Beach_Signature/7.png",
+    "imageAlt": "Lima Beach 7"
   }
 ]
