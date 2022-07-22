@@ -41,11 +41,11 @@ const SponsorSection = (page = 'home') => {
             <img src="/sponsor/Digitels.png" className={styles.image} alt="Digitels" />
           </div>
         </a>
-        <a href="https://linktr.ee/cryptomamak_official" target="_blank" rel="noreferrer">
+        {/* <a href="https://linktr.ee/cryptomamak_official" target="_blank" rel="noreferrer">
           <div className={styles.imageContainer}>
             <img src="/sponsor/Cryptomamak.png" className={styles.image} alt="Cryptomamak" />
           </div>
-        </a>
+        </a> */}
       </animated.div>
     </section>
   );
