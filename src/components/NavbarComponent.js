@@ -100,7 +100,7 @@ const NavbarComponent = ({onConnect, walletAddress, isOpenNav}) => {
           </div> */}
           {pathname[1] != 'minting' ? (
             <Link href="/minting/lima-beach" passHref>
-              <button disabled={!process.env.NODE_ENV === 'development'}>
+              <button disabled>
                 <span>mint yours</span>
               </button>
             </Link>
@@ -204,14 +204,7 @@ const NavbarComponent = ({onConnect, walletAddress, isOpenNav}) => {
             </div>
           </div> */}
           <Link href="/minting/lima-beach" passHref>
-            <div
-              onClick={
-                !process.env.NODE_ENV === 'development'
-                  ? e => e.preventDefault()
-                  : () => closeNavbar()
-              }
-              disabled={!process.env.NODE_ENV === 'development'}
-            >
+            <div onClick={e => e.preventDefault()} disabled>
               go to mint page
             </div>
           </Link>
