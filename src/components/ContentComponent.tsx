@@ -19,9 +19,10 @@ import {
   ArrowSwapHorizontal,
 } from 'iconsax-react';
 import FAQComponent from 'src/components/FAQComponent';
-import SocialHandles from 'src/components/SocialHandles';
+import SocialHandles from 'src/components/SocialHandles.js';
 import useMintHook from 'src/hooks/use-mint.hooks';
 import styles from 'styles/ContentComponent.module.css';
+import {useConnect, useAccount} from 'wagmi';
 
 const style = {
   position: 'absolute',
@@ -35,10 +36,7 @@ const style = {
 
 const ContentComponent = () => {
   const {
-    fetchCurrentWallet,
     currentWallet,
-    listenToWalletChanges,
-    linkWallet,
     mintNFT,
     minting,
     isMintSuccess,
@@ -62,8 +60,10 @@ const ContentComponent = () => {
     loading,
   } = useMintHook();
 
+  const {isConnected} = useAccount();
+  const {connect, connectors, error, isLoading, pendingConnector} = useConnect();
+
   useEffect(() => {
-    listenToWalletChanges();
     verifyAllowance();
     fetchBalance();
     fetchMintedByUserQty();
@@ -72,7 +72,6 @@ const ContentComponent = () => {
     fetchMaxSupply();
     fetchNFTImage();
     fetchMintedQty();
-    fetchCurrentWallet();
   }, []);
 
   useEffect(() => {
@@ -98,8 +97,6 @@ const ContentComponent = () => {
 
   const [copy, setCopy] = useState(false);
 
-  const [enableMint, setEnableMint] = useState(false);
-
   const handleTooltipClose = () => {
     setCopy(false);
   };
@@ -110,13 +107,13 @@ const ContentComponent = () => {
 
   const handleDecrement = () => {
     if (quantity !== 0) {
-      let decreasedQuantity = quantity - 1;
+      const decreasedQuantity = quantity - 1;
       setQuantity(decreasedQuantity);
     }
   };
 
   const handleIncrement = () => {
-    let increasedQuantity = quantity + 1;
+    const increasedQuantity = quantity + 1;
     setQuantity(increasedQuantity);
   };
 
@@ -126,10 +123,6 @@ const ContentComponent = () => {
 
   const handleChangeReferralCode = e => {
     setReferralCode(e.target.value);
-  };
-
-  const handleConnectWallet = () => {
-    linkWallet();
   };
 
   const isUSDCEnough = () => {
@@ -311,7 +304,7 @@ const ContentComponent = () => {
           </div>
 
           <div className="flex flex-col gap-4 desktop:grid desktop:grid-cols-[1fr_1fr]">
-            {currentWallet && currentWallet.length > 0 ? (
+            {isConnected ? (
               <button
                 className="w-full"
                 onClick={() => handleMintPressed()}
@@ -329,18 +322,33 @@ const ContentComponent = () => {
                 <span>Mint Now</span>
               </button>
             ) : (
-              <button className="w-full" onClick={handleConnectWallet}>
-                <span>Connect Wallet</span>
-              </button>
+              <>
+                {connectors.map(connector => (
+                  <button
+                    className="w-full"
+                    disabled={!connector.ready || isLoading}
+                    key={connector.id}
+                    onClick={() => connect({connector})}
+                  >
+                    <span>
+                      {'Connect Wallet'}
+                      {isLoading && connector.id === pendingConnector?.id && ' (connecting)'}
+                    </span>
+                  </button>
+                ))}
+
+                {error && <div>{error.message}</div>}
+              </>
             )}
           </div>
         </div>
       </div>
+
       <div className="mt-32">
         <FAQComponent />
       </div>
       <div className="relative w-full h-[120px] my-12 tablet:my-32">
-        <img src="/Union.svg" layout="fill" className="w-full h-full relative" alt="tes" />
+        <img src="/Union.svg" className="w-full h-full relative" alt="tes" />
       </div>
 
       <Modal
