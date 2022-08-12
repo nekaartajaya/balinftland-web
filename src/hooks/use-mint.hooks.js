@@ -20,15 +20,18 @@ import {
   getMintedNFTQty,
   getNFTImage,
 } from 'src/helpers/metamask-interact';
+import {mintNFTWithRefCode} from 'src/lib/api/referral';
+import useStore from 'src/store';
 
 const contractAddress = process.env.NEXT_PUBLIC_LBSF_CONTRACT_ADDRESS;
+const usdcContractAddress = process.env.NEXT_PUBLIC_USDC_CONTRACT_ADDRESS;
 const alchemyKey = process.env.NEXT_PUBLIC_ALCHEMY_URL;
 
 const useMintHook = () => {
+  //TODO: move some of the states to store level
   const [loading, setLoading] = useState(false);
   const [minting, setMinting] = useState(false);
   const [isMintSuccess, setIsMintSuccess] = useState(false);
-  const [currentWallet, setWallet] = useState('');
   const [isUSDCApproved, setIsUSDCApproved] = useState(false);
   const [allowance, setAllowance] = useState(0);
   const [activeStage, setActiveStage] = useState(0);
@@ -40,13 +43,18 @@ const useMintHook = () => {
   const [mintedQty, setMintedQty] = useState(0);
   const [mintedNFT, setMintedNFT] = useState(0);
 
+  const currentWallet = useStore(state => state.currentWallet);
+  const updateWallet = useStore(state => state.updateWallet);
+
   const fetchCurrentWallet = async () => {
     setLoading(true);
 
     try {
-      const respObj = await getCurrentWalletConnected();
-      const {address} = respObj;
-      setWallet(address);
+      if (currentWallet === '') {
+        const respObj = await getCurrentWalletConnected();
+        const {address} = respObj;
+        updateWallet(address);
+      }
     } catch (error) {
       console.log({error});
     } finally {
@@ -60,8 +68,7 @@ const useMintHook = () => {
     try {
       const address = await connectWallet();
 
-      console.log({address});
-      setWallet(address);
+      updateWallet(address);
     } catch (error) {
       console.log({error});
     } finally {
@@ -72,7 +79,7 @@ const useMintHook = () => {
   const listenToWalletChanges = () => {
     const account = addWalletListener();
 
-    setWallet(account);
+    updateWallet(account);
   };
 
   const fetchNFTImage = async () => {
@@ -89,11 +96,19 @@ const useMintHook = () => {
     }
   };
 
-  const fetchMintedByUserQty = async () => {
+  const fetchMintedByUserQty = async currentAddress => {
     setLoading(true);
 
+    let tempAddress = '';
+
+    if (currentWallet.length > 0) {
+      tempAddress = currentWallet;
+    } else {
+      tempAddress = currentAddress;
+    }
+
     try {
-      const mintedNFT = await getMintedNFTQty();
+      const mintedNFT = await getMintedNFTQty(tempAddress);
       setMintedNFT(mintedNFT);
     } catch (error) {
       console.log({error});
@@ -129,12 +144,12 @@ const useMintHook = () => {
     }
   };
 
-  const fetchBalance = async () => {
+  const fetchBalance = async address => {
     setLoading(true);
 
     try {
       const decimals = await getUSDCDecimals();
-      const balance = await getUSDCBalance();
+      const balance = await getUSDCBalance(address);
 
       setBalance(balance / 10 ** decimals);
     } catch (error) {
@@ -215,7 +230,7 @@ const useMintHook = () => {
     }
   };
 
-  const mintNFT = async quantity => {
+  const mintNFT = async (quantity, referralCode = '') => {
     const web3 = createAlchemyWeb3(alchemyKey);
 
     const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
@@ -256,6 +271,23 @@ const useMintHook = () => {
           })
 
           .on('error', console.error);
+
+        if (txHash) {
+          const data = await mintNFTWithRefCode({
+            projectId: 'lima-beach-signature',
+            nftId: contractAddress,
+            walletAddress: currentAccount,
+            tokenId,
+            quantity,
+            currencyId: usdcContractAddress,
+            amount: quantity,
+            referralCode,
+          });
+
+          return data;
+        } else {
+          console.log('refCode not recorded!');
+        }
       } else {
         console.log('please install metamask!');
       }
@@ -266,10 +298,30 @@ const useMintHook = () => {
     }
   };
 
+  const signWallet = async (nonce, address) => {
+    try {
+      const msgHash = `0x${Buffer.from(nonce, 'utf8').toString('hex')}`;
+
+      const provider = await detectEthereumProvider({timeout: 2000});
+
+      if (provider) {
+        const msg = await window.ethereum.request({
+          method: 'personal_sign',
+          params: [msgHash, address, ''],
+        });
+
+        return msg;
+      } else {
+        console.log('please install metamask!');
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return {
     loading,
     fetchCurrentWallet,
-    currentWallet,
     listenToWalletChanges,
     linkWallet,
     mintNFT,
@@ -295,6 +347,7 @@ const useMintHook = () => {
     mintedNFT,
     fetchNFTImage,
     image,
+    signWallet,
   };
 };
 

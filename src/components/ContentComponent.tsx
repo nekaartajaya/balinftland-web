@@ -4,10 +4,14 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 import IconButton from '@mui/material/IconButton';
 import Modal from '@mui/material/Modal';
 import Skeleton from '@mui/material/Skeleton';
+import TextField from '@mui/material/TextField';
 import Tooltip from '@mui/material/Tooltip';
+import {InjectedConnector} from '@wagmi/core';
 
 import {useState, useEffect} from 'react';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+
+import getConfig from 'next/config';
 
 import {
   MinusCirlce,
@@ -18,10 +22,15 @@ import {
   Copy,
   ArrowSwapHorizontal,
 } from 'iconsax-react';
+import Cookies from 'js-cookie';
 import FAQComponent from 'src/components/FAQComponent';
 import SocialHandles from 'src/components/SocialHandles.js';
-import useMintHook from 'src/hooks/use-mint.hooks';
+import useAuthHook from 'src/hooks/use-auth.hooks';
+import useFormHook from 'src/hooks/use-form.hooks';
+import useMintHook from 'src/hooks/use-mint.hooks.js';
+import useStore from 'src/store';
 import styles from 'styles/ContentComponent.module.css';
+import {useDebounce} from 'use-debounce';
 import {useConnect, useAccount} from 'wagmi';
 
 const style = {
@@ -34,9 +43,10 @@ const style = {
   borderRadius: '4px',
 };
 
+const {publicRuntimeConfig} = getConfig();
+
 const ContentComponent = () => {
   const {
-    currentWallet,
     mintNFT,
     minting,
     isMintSuccess,
@@ -60,19 +70,48 @@ const ContentComponent = () => {
     loading,
   } = useMintHook();
 
-  const {isConnected} = useAccount();
+  const {login, isAuthenticated} = useAuthHook();
+
+  const {verifyRefCode, isLoading: isLoadingForm} = useFormHook();
+
+  const {address, isConnected, isDisconnected} = useAccount();
   const {connect, connectors, error, isLoading, pendingConnector} = useConnect();
 
+  const NFTContractAddress = publicRuntimeConfig.contractAddress;
+
+  const [connectClicked, setConnectClicked] = useState(false);
+
+  const currentWallet = useStore(state => state.currentWallet);
+  const updateWallet = useStore(state => state.updateWallet);
+
+  if (isDisconnected) {
+    Cookies.remove('access_token');
+    Cookies.remove('user');
+  }
   useEffect(() => {
     verifyAllowance();
-    fetchBalance();
-    fetchMintedByUserQty();
+    fetchMintedQty();
     fetchPrice();
     fetchActiveStage();
     fetchMaxSupply();
     fetchNFTImage();
-    fetchMintedQty();
+    setConnectClicked(false);
   }, []);
+
+  useEffect(() => {
+    if (isConnected && address) {
+      updateWallet(address);
+      fetchMintedByUserQty(address);
+      fetchBalance(address);
+    }
+  }, [isConnected, address]);
+
+  useEffect(() => {
+    const token = Cookies.get('access_token');
+    if (!token && connectClicked && address) {
+      login(address);
+    }
+  }, [address, connectClicked]);
 
   useEffect(() => {
     if (isMintSuccess) {
@@ -80,9 +119,34 @@ const ContentComponent = () => {
     }
   }, [isMintSuccess]);
 
-  const disableMint = minting;
+  const [temp, setTemp] = useState('');
+  const [referralCode] = useDebounce(temp, 1000);
+  const [codeValidity, setCodeValidity] = useState(false);
 
-  const [referralCode, setReferralCode] = useState('');
+  //Prerequisite for refCode
+  const isAlphaNumeric = str => /^[a-z0-9]+$/gi.test(str);
+  const isValidCode = referralCode.length === 6 && isAlphaNumeric(referralCode);
+  const emptyRefCode = referralCode.length === 0;
+  const refCodeConfirmed = (codeValidity && referralCode.length === 6) || referralCode.length === 0;
+
+  const disableMint = minting || !refCodeConfirmed;
+
+  useEffect(() => {
+    async function check() {
+      if (isValidCode) {
+        const refCodeValidity = await verifyRefCode(referralCode);
+
+        if (refCodeValidity) {
+          setCodeValidity(true);
+        }
+      } else {
+        setCodeValidity(false);
+      }
+    }
+
+    check();
+  }, [isValidCode, referralCode]);
+
   const [quantity, setQuantity] = useState(0);
 
   const [isAgreed, setIsAgreed] = useState(false);
@@ -122,7 +186,7 @@ const ContentComponent = () => {
   };
 
   const handleChangeReferralCode = e => {
-    setReferralCode(e.target.value);
+    setTemp(e.target.value);
   };
 
   const isUSDCEnough = () => {
@@ -138,11 +202,18 @@ const ContentComponent = () => {
     allowUSDC(quantity * price);
   };
 
+  const handleConnectWallet = (connector: InjectedConnector) => {
+    connect({connector});
+    setConnectClicked(true);
+  };
+
   const handleMintPressed = () => {
-    mintNFT(quantity);
+    mintNFT(quantity, referralCode);
   };
 
   const allowedSupply = maxSupply - mintedQty;
+
+  const formDisabled = !isAuthenticated;
 
   return (
     <div id="content">
@@ -204,22 +275,33 @@ const ContentComponent = () => {
             </h3>
           </div>
 
+          {/*FORMS*/}
           <div className="flex flex-col gap-4 mb-8 tablet:mb-28">
-            <input
+            <TextField
               className="rounded-lg border border-[#d0d5dd] p-2 shadow-[0px_1px_2px_rgba(16,24,40,0.05)]"
-              type="text"
               name="referral-code"
               id="referral-code"
+              variant="outlined"
               placeholder="Input Referral Code (Optional)"
-              alt="Input Referral Code (Optional)"
-              value={referralCode}
+              label="Referral Code"
+              defaultValue={''}
               onChange={handleChangeReferralCode}
+              disabled={formDisabled}
             />
-
+            {isLoadingForm ? <p>Checking...</p> : <></>}
+            {isValidCode || emptyRefCode ? (
+              <></>
+            ) : (
+              <p className="text-[#ff4b7b]">Invalid Referral code, code has been removed </p>
+            )}
+            {codeValidity ? <p className="text-[#76ce8a]">Referral Code Added!</p> : <></>}
             <div className={styles.container}>
               <div className="flex py-1 px-2 rounded-lg border border-[#d0d5dd] justify-around">
                 <div>
-                  <IconButton disabled={allowedSupply === 0} onClick={handleDecrement}>
+                  <IconButton
+                    disabled={allowedSupply === 0 || formDisabled}
+                    onClick={handleDecrement}
+                  >
                     <MinusCirlce size="20" color="#8f98aa" />
                   </IconButton>
                 </div>
@@ -228,11 +310,14 @@ const ContentComponent = () => {
                   name="input-mint-quantity"
                   className={styles.inputQuantity}
                   value={quantity}
+                  disabled={formDisabled}
                   onChange={handleChangeQuantity}
                 ></input>
                 <div>
                   <IconButton
-                    disabled={!(quantity * price < balance) || quantity >= allowedSupply}
+                    disabled={
+                      !(quantity * price < balance) || quantity >= allowedSupply || formDisabled
+                    }
                     onClick={handleIncrement}
                   >
                     <AddCircle
@@ -249,12 +334,10 @@ const ContentComponent = () => {
                 </h4>
               </div>
             </div>
-
             <p className="font-normal text-lg text-[#ff4b7b]">
               {quantity > 0 && quantity >= allowedSupply ? `Max supply reached` : ''}
               {allowedSupply === 0 ? `Sold out!` : ''}
             </p>
-
             <div>
               Allowed USDC to trade
               <div className="border border-[EDF4F7] rounded flex justify-end items-center py-2 px-3">
@@ -268,7 +351,8 @@ const ContentComponent = () => {
                     loading ||
                     quantity * price > balance ||
                     quantity * price === allowance ||
-                    quantity > allowedSupply
+                    quantity > allowedSupply ||
+                    formDisabled
                   }
                   onClick={handleSetAllowance}
                   className="ml-auto disabled:bg-transparent bg-transparent shadow-none rounded-none p-0 font-medium text-xs text-[#406AFF]"
@@ -288,9 +372,14 @@ const ContentComponent = () => {
                 <></>
               )}
             </div>
-
             <div className="flex flex-row gap-1">
-              <input type="checkbox" id="tnc" name="tnc" onChange={handleChangeAgreement} />
+              <input
+                type="checkbox"
+                id="tnc"
+                name="tnc"
+                onChange={handleChangeAgreement}
+                disabled={formDisabled}
+              />
               <label htmlFor="tos">
                 I agree with{' '}
                 <a href="https://google.com" style={{color: '#406aff'}}>
@@ -323,15 +412,15 @@ const ContentComponent = () => {
               </button>
             ) : (
               <>
-                {connectors.map(connector => (
+                {connectors.map((connector: InjectedConnector) => (
                   <button
                     className="w-full"
                     disabled={!connector.ready || isLoading}
                     key={connector.id}
-                    onClick={() => connect({connector})}
+                    onClick={() => handleConnectWallet(connector)}
                   >
                     <span>
-                      {'Connect Wallet'}
+                      {`Connect ${connector.name}`}
                       {isLoading && connector.id === pendingConnector?.id && ' (connecting)'}
                     </span>
                   </button>
