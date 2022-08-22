@@ -85,7 +85,7 @@ const Sidebar = ({activeMenu, isOpenSidebar, setIsOpenSidebar}) => {
           style={{backgroundColor: 'rgba(0,0,0,0.5)'}}
         >
           <button
-            className="bg-[#3A67DE] border-0 rounded-full h-[35px] w-[35px] tablet:h-[50px] tablet:w-[50px] desktop:hidden block x"
+            className="bg-[#3A67DE] border-0 rounded-full h-[35px] w-[35px] tablet:h-[50px] tablet:w-[50px] desktop:hidden block right-[8px] tablet:top-[22px] top-[21px] absolute"
             onClick={() => {
               if (!setIsOpenSidebar) {
                 setTimeout(() => {
