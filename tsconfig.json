@@ -15,7 +15,16 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "moduleResolution": "node",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@interface/*": ["./src/interface/*"],
+      "@helpers/*": ["./src/helpers/*"],
+      "@data/*": ["./src/data/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@lib/*": ["./src/lib/*"]
+    }
   },
   "exclude": ["node_modules"]
 }
