@@ -56,7 +56,7 @@ const Sidebar = ({activeMenu, isOpenSidebar, setIsOpenSidebar}) => {
   return (
     <div>
       {/* Desktop */}
-      <div className="h-screen px-9 py-10 bg-[#FFF] fixed z-[99] overflow-y-scroll hidden desktop:block">
+      <div className="sidebar h-screen px-9 py-10 bg-[#FFF] fixed z-[99] overflow-y-scroll hidden desktop:block">
         <div>
           <img src="/logo-black.svg" alt="logo Digiland" />
         </div>
@@ -104,7 +104,7 @@ const Sidebar = ({activeMenu, isOpenSidebar, setIsOpenSidebar}) => {
           </button>
         </div>
         <div
-          className={`h-screen px-4 desktop:px-9 py-6 bg-[#FFF] fixed z-[9992] overflow-y-scroll transition-all ease-in-out ${
+          className={`sidebar h-screen px-4 desktop:px-9 py-6 bg-[#FFF] fixed z-[9992] overflow-y-scroll transition-all ease-in-out ${
             isOpenSidebar ? 'translate-x-0' : 'translate-x-[-100%]'
           }`}
         >
