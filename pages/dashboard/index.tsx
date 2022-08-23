@@ -6,7 +6,7 @@ const Dashboard = () => {
   return (
     <SafeHydrate>
       <Layout>
-        <Meta title="DigilandBali | Mint Lima Beach NFT" />
+        <Meta title="DigilandBali | Dashboard" />
       </Layout>
     </SafeHydrate>
   );
