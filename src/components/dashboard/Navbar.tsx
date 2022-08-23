@@ -7,30 +7,34 @@ import textMiddleEllipsis from '@utils/textMiddleEllipsis';
 import {useEffect, useState} from 'react';
 
 import {ArrowRight2, Copy} from 'iconsax-react';
-import {useAccount, useBalance, useConnect} from 'wagmi';
+import {useAccount, useBalance, useConnect, useNetwork, useSwitchNetwork} from 'wagmi';
 
 const Navbar = ({title, isOpenSidebar, setIsOpenSidebar}) => {
   const [isOpenModalProfile, setIsOpenModalProfile] = useState(false);
   const [isOpenModalConnectWallet, setIsOpenModalConnectWallet] = useState(false);
-  const [copy, setCopy] = useState<boolean>(false);
+  const [isOpenModalWrongNetwork, setIsOpenModalWrongNetwork] = useState(false);
+  const [isOpenModalSelectNetwork, setIsOpenModalSelectNetwork] = useState(false);
   const {connect, connectors} = useConnect();
   const {address} = useAccount();
   const balance = useBalance({
     addressOrName: address,
     token: process.env.NEXT_PUBLIC_USDC_CONTRACT_ADDRESS,
   });
-
-  const handleTooltipClose = () => {
-    setCopy(false);
-  };
-
-  const handleTooltipOpen = () => {
-    setCopy(true);
-  };
+  const {chain} = useNetwork();
+  const {
+    chains,
+    isLoading: isLoadingSwitchNetwork,
+    pendingChainId,
+    switchNetwork,
+  } = useSwitchNetwork();
 
   useEffect(() => {
     if (address) setIsOpenModalConnectWallet(false);
   }, [address]);
+
+  useEffect(() => {
+    if (chain && chain.name === 'Ethereum') setIsOpenModalSelectNetwork(false);
+  }, [chain]);
 
   return (
     <div
@@ -42,24 +46,30 @@ const Navbar = ({title, isOpenSidebar, setIsOpenSidebar}) => {
       {address ? (
         <div className="flex desktop:justify-end justify-between items-center w-full gap-2 tablet:gap-4">
           <div className="flex items-center gap-2 tablet:gap-4">
-            <div className="p-[3px] tablet:p-[12px] rounded-[25px] border border-[#E7ECEF]">
-              <div className="w-full flex items-center gap-2">
-                <img src="/icon/usdc.svg" />
-                <div className="text-[12px] tablet:text-[16px]">
-                  {balance?.data
-                    ? balance?.data?.formatted + ' ' + balance?.data?.symbol
-                    : 'Loading...'}
+            {chain && chain.name === 'Ethereum' ? (
+              <div className="p-[3px] tablet:p-[12px] rounded-[25px] border border-[#E7ECEF]">
+                <div className="w-full flex items-center gap-2">
+                  <img src="/icon/usdc.svg" />
+                  <div className="text-[12px] tablet:text-[16px]">
+                    {balance?.data
+                      ? balance?.data?.formatted + ' ' + balance?.data?.symbol
+                      : 'Loading...'}
+                  </div>
                 </div>
               </div>
-            </div>
-            {/* <button
-              className="px-[30px] py-[12px] rounded-[25px] bg-[#FF6262]"
-              onClick={() => setIsOpenModalConnectWallet(!isOpenModalConnectWallet)}
-            >
-              <div className="w-full flex items-center gap-2">
-                <div className="text-[16px] text-white font-medium">Switch Network</div>
-              </div>
-            </button> */}
+            ) : (
+              <button
+                className="px-[15px] tablet:px-[30px] py-[9px] tablet:py-[12px] rounded-[25px] bg-[#FF6262]"
+                onClick={() => setIsOpenModalWrongNetwork(!isOpenModalWrongNetwork)}
+              >
+                <div className="w-full flex items-center gap-2">
+                  <div className="text-[12px] tablet:text-[16px] text-white font-medium">
+                    Switch Network
+                  </div>
+                </div>
+              </button>
+            )}
+
             <button
               className="bg-[#F5F5F7] flex items-center gap-2 pl-[20px] rounded-[25px] py-0 pr-0"
               onClick={() => setIsOpenModalProfile(!isOpenModalProfile)}
@@ -72,26 +82,6 @@ const Navbar = ({title, isOpenSidebar, setIsOpenSidebar}) => {
               </div>
             </button>
           </div>
-          <button
-            className={`bg-[#3A67DE] border-0 rounded-full h-[35px] w-[35px] tablet:h-[50px] tablet:w-[50px] desktop:hidden ${
-              isOpenSidebar ? 'hidden' : 'block'
-            }`}
-            onClick={() => {
-              if (!setIsOpenSidebar) {
-                setTimeout(() => {
-                  setIsOpenSidebar(!isOpenSidebar);
-                }, 200);
-              } else {
-                setIsOpenSidebar(!isOpenSidebar);
-              }
-            }}
-          >
-            <img
-              src={`${isOpenSidebar ? '/close-icon.svg' : '/hamburger-icon.svg'}`}
-              className="w-[18px] mx-auto"
-              alt="logo"
-            />
-          </button>
         </div>
       ) : (
         <button
@@ -104,54 +94,26 @@ const Navbar = ({title, isOpenSidebar, setIsOpenSidebar}) => {
           </div>
         </button>
       )}
-
-      {/* MODAL PROFILE */}
-      <CustomModal
-        isOpen={isOpenModalProfile}
-        title={'Connected Wallet'}
-        type={'small'}
-        onClose={() => setIsOpenModalProfile(!isOpenModalProfile)}
+      <button
+        className={`bg-[#3A67DE] border-0 rounded-full h-[35px] w-[35px] tablet:h-[50px] tablet:w-[50px] desktop:hidden ${
+          isOpenSidebar ? 'hidden' : 'block'
+        }`}
+        onClick={() => {
+          if (!setIsOpenSidebar) {
+            setTimeout(() => {
+              setIsOpenSidebar(!isOpenSidebar);
+            }, 200);
+          } else {
+            setIsOpenSidebar(!isOpenSidebar);
+          }
+        }}
       >
-        <div className="text-[#8F98AA] text-[14px] mb-8">Choose your preferred wallet</div>
-        <div className="bg-[#F7F7F7] flex justify-between items-center py-[8px] px-[12px] rounded-[4px] mb-8">
-          <div className="flex gap-[22px]">
-            <img src="/icon/metamask.svg" />
-            <div>{textMiddleEllipsis({text: address})}</div>
-          </div>
-          <div className="flex items-center">
-            <ClickAwayListener onClickAway={handleTooltipClose}>
-              <Tooltip
-                PopperProps={{
-                  disablePortal: true,
-                }}
-                onOpen={handleTooltipOpen}
-                open={copy}
-                onClose={handleTooltipClose}
-                disableFocusListener
-                disableHoverListener
-                disableTouchListener
-                title="Copied!"
-                leaveDelay={200}
-              >
-                <button
-                  onClick={async () => {
-                    await copyToClipboard({text: address});
-                    handleTooltipOpen();
-                  }}
-                >
-                  <Copy size="16" color="#8F98AA" />
-                </button>
-              </Tooltip>
-            </ClickAwayListener>
-          </div>
-        </div>
-        <button
-          className="w-full p-3 text-center text-[14px] text-white bg-[#436CFF] rounded-[4px]"
-          onClick={() => null}
-        >
-          Disconnect
-        </button>
-      </CustomModal>
+        <img
+          src={`${isOpenSidebar ? '/close-icon.svg' : '/hamburger-icon.svg'}`}
+          className="w-[18px] mx-auto"
+          alt="logo"
+        />
+      </button>
 
       {/* MODAL CONNECT WALLET */}
       <CustomModal
@@ -176,6 +138,60 @@ const Navbar = ({title, isOpenSidebar, setIsOpenSidebar}) => {
             </div>
           </button>
         ))}
+      </CustomModal>
+
+      {/* MODAL WRONG NETWORK */}
+      <CustomModal
+        isOpen={isOpenModalWrongNetwork}
+        title={'Wrong Network'}
+        type={'small'}
+        onClose={() => setIsOpenModalWrongNetwork(!isOpenModalWrongNetwork)}
+      >
+        <div className="text-[#131736] text-[14px] my-6">
+          Connect your Wallet to <span className="font-bold">Ethereum Mainnet</span> to use this
+          app, currently you are connected to{' '}
+          <span className="font-bold">{chain ? chain.name : ''}</span>
+        </div>
+        <button
+          className="p-[12px] rounded-[4px] bg-[#436CFF] w-full"
+          onClick={() => {
+            setIsOpenModalWrongNetwork(!isOpenModalWrongNetwork);
+            setIsOpenModalSelectNetwork(!isOpenModalSelectNetwork);
+          }}
+        >
+          <div className="text-[14px] text-white">Switch to Ethereum Mainnet</div>
+        </button>
+      </CustomModal>
+
+      {/* MODAL SELECT NETWORK */}
+      <CustomModal
+        isOpen={isOpenModalSelectNetwork}
+        title={'Connect your wallet'}
+        type={'small'}
+        onClose={() => setIsOpenModalSelectNetwork(!isOpenModalSelectNetwork)}
+      >
+        <div className="text-[#8F98AA] text-[14px] mt-2 mb-6">Choose your available network</div>
+        {chains.map(x =>
+          x.name === 'Ethereum' ? (
+            <button
+              disabled={!switchNetwork || x.id === chain?.id}
+              key={x.id}
+              onClick={() => switchNetwork?.(x.id)}
+              className="w-full flex jusitfy-end items-center bg-[#F7F7F7] p-3"
+            >
+              <div className="w-full flex gap-[22px]">
+                <img src="/icon/ethereum.svg" />
+                <div className="font-bold text-base">
+                  {x.name}
+                  {isLoadingSwitchNetwork && pendingChainId === x.id && ' (switching)'}
+                </div>
+              </div>
+              <div>
+                <ArrowRight2 size="16" color="#8F98AA" />
+              </div>
+            </button>
+          ) : null,
+        )}
       </CustomModal>
     </div>
   );
