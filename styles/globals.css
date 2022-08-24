@@ -10,12 +10,18 @@ body {
   scroll-behavior: smooth;
 }
 
-body {
+.dark-mode {
   /* background: url(/Bg_main.svg) no-repeat center center fixed; */
   background-color: #000;
   color: #333;
   font-family: 'Syne';
   background-size: cover;
+}
+
+.light-mode {
+  /* background: url(/Bg_main.svg) no-repeat center center fixed; */
+  background-color: #fafafa;
+  font-family: 'Syne';
 }
 
 a {

@@ -10,7 +10,7 @@ import StakingSection from './homepage/stakingSection';
 
 import Meta from 'src/components/Meta';
 
-export default function Home() {
+export default function Home(props) {
   return (
     <Layout>
       <div>
@@ -32,7 +32,5 @@ export default function Home() {
 }
 
 export async function getStaticProps() {
-  return {
-    props: {},
-  };
+  return {props: {isDark: true}};
 }
