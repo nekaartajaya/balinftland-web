@@ -43,30 +43,58 @@ const UnlockableContent = () => {
 
   return (
     <div className="flex">
-      <div className="pt-8 px-6">
-        <Text className="text-base font-semibold mb-2">My NFTs</Text>
-        <Text className="text-sm font-normal mb-4">
-          Choose your NFT to view the Permissive Document
-        </Text>
+      {isDesktop ? (
+        <>
+          <div className="pt-8 px-6">
+            <Text className="text-base font-semibold mb-2">My NFTs</Text>
+            <Text className="text-sm font-normal mb-4">
+              Choose your NFT to view the Permissive Document
+            </Text>
 
-        <Tabs variant="unstyled">
-          <StyledTabList />
-          <TabPanels>
-            <TabPanel>
-              <Grid templateColumns="repeat(2, 1fr)" gap={5}>
-                <NFTCards />
-              </Grid>
-            </TabPanel>
-            <TabPanel>
-              <p>Only Fragments!</p>
-            </TabPanel>
-            <TabPanel>
-              <p>Only Apartments!</p>
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
-      </div>
-      {isDesktop ? <PermissiveDocument /> : <></>}
+            <Tabs variant="unstyled">
+              <StyledTabList />
+              <TabPanels>
+                <TabPanel>
+                  <Grid templateColumns="repeat(2, 1fr)" gap={5}>
+                    <NFTCards />
+                  </Grid>
+                </TabPanel>
+                <TabPanel>
+                  <p>Only Fragments!</p>
+                </TabPanel>
+                <TabPanel>
+                  <p>Only Apartments!</p>
+                </TabPanel>
+              </TabPanels>
+            </Tabs>
+          </div>
+          <PermissiveDocument />
+        </>
+      ) : (
+        <div className="pt-8 px-6">
+          <Text className="text-base font-semibold mb-2">My NFTs</Text>
+          <Text className="text-sm font-normal mb-4">
+            Choose your NFT to view the Permissive Document
+          </Text>
+
+          <Tabs variant="unstyled">
+            <StyledTabList />
+            <TabPanels>
+              <TabPanel>
+                <Grid templateColumns="repeat(2, 1fr)" gap={5}>
+                  <NFTCards />
+                </Grid>
+              </TabPanel>
+              <TabPanel>
+                <p>Only Fragments!</p>
+              </TabPanel>
+              <TabPanel>
+                <p>Only Apartments!</p>
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </div>
+      )}
     </div>
   );
 };

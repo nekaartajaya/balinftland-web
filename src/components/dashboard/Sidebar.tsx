@@ -76,7 +76,7 @@ const Sidebar = ({activeMenu, isOpenSidebar, setIsOpenSidebar}) => {
       </div>
       {/* Mobile & Tablet */}
       <div
-        className={`w-full h-screen desktop:hidden transition-all ease-in-out ${
+        className={`w-full desktop:hidden transition-all ease-in-out ${
           isOpenSidebar ? 'visible' : 'invisible'
         }`}
       >
