@@ -7,14 +7,23 @@ import textMiddleEllipsis from '@utils/textMiddleEllipsis';
 import {useEffect, useState} from 'react';
 
 import {ArrowRight2, Copy} from 'iconsax-react';
-import {useAccount, useBalance, useConnect, useNetwork, useSwitchNetwork} from 'wagmi';
+import {
+  useAccount,
+  useBalance,
+  useConnect,
+  useDisconnect,
+  useNetwork,
+  useSwitchNetwork,
+} from 'wagmi';
 
 const Navbar = ({title, isOpenSidebar, setIsOpenSidebar}) => {
   const [isOpenModalProfile, setIsOpenModalProfile] = useState(false);
   const [isOpenModalConnectWallet, setIsOpenModalConnectWallet] = useState(false);
   const [isOpenModalWrongNetwork, setIsOpenModalWrongNetwork] = useState(false);
   const [isOpenModalSelectNetwork, setIsOpenModalSelectNetwork] = useState(false);
+  const [copy, setCopy] = useState<boolean>(false);
   const {connect, connectors} = useConnect();
+  const {disconnect} = useDisconnect();
   const {address} = useAccount();
   const balance = useBalance({
     addressOrName: address,
@@ -35,6 +44,14 @@ const Navbar = ({title, isOpenSidebar, setIsOpenSidebar}) => {
   useEffect(() => {
     if (chain && chain.name === 'Ethereum') setIsOpenModalSelectNetwork(false);
   }, [chain]);
+
+  const handleTooltipClose = () => {
+    setCopy(false);
+  };
+
+  const handleTooltipOpen = () => {
+    setCopy(true);
+  };
 
   return (
     <div
@@ -192,6 +209,56 @@ const Navbar = ({title, isOpenSidebar, setIsOpenSidebar}) => {
             </button>
           ) : null,
         )}
+      </CustomModal>
+
+      <CustomModal
+        isOpen={isOpenModalProfile}
+        title={'Connected Wallet'}
+        type={'small'}
+        onClose={() => setIsOpenModalProfile(!isOpenModalProfile)}
+      >
+        <div className="text-[#8F98AA] text-[14px] mb-8">Choose your preferred wallet</div>
+        <div className="bg-[#F7F7F7] flex justify-between items-center py-[8px] px-[12px] rounded-[4px] mb-8">
+          <div className="flex gap-[22px]">
+            <img src="/icon/metamask.svg" />
+            <div>{textMiddleEllipsis({text: address})}</div>
+          </div>
+          <div className="flex items-center">
+            <ClickAwayListener onClickAway={handleTooltipClose}>
+              <Tooltip
+                PopperProps={{
+                  disablePortal: true,
+                }}
+                onOpen={handleTooltipOpen}
+                open={copy}
+                onClose={handleTooltipClose}
+                disableFocusListener
+                disableHoverListener
+                disableTouchListener
+                title="Copied!"
+                leaveDelay={200}
+              >
+                <button
+                  onClick={async () => {
+                    await copyToClipboard({text: address});
+                    handleTooltipOpen();
+                  }}
+                >
+                  <Copy size="16" color="#8F98AA" />
+                </button>
+              </Tooltip>
+            </ClickAwayListener>
+          </div>
+        </div>
+        <button
+          className="w-full p-3 text-center text-[14px] text-white bg-[#436CFF] rounded-[4px]"
+          onClick={() => {
+            disconnect();
+            setIsOpenModalProfile(false);
+          }}
+        >
+          Disconnect
+        </button>
       </CustomModal>
     </div>
   );
