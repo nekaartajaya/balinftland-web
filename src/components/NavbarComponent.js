@@ -106,7 +106,7 @@ const NavbarComponent = ({isOpenNav}) => {
           </div> */}
           {pathname[1] != 'minting' ? (
             <Link href="/minting/lima-beach" passHref>
-              <button disabled>
+              <button disabled className="py-2 px-[14px] bg-[#436CFF]">
                 <span>mint yours</span>
               </button>
             </Link>
