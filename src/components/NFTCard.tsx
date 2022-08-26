@@ -4,7 +4,7 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardMedia from '@mui/material/CardMedia';
 import Skeleton from '@mui/material/Skeleton';
 
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import {Triangle} from 'iconsax-react';
 
@@ -12,16 +12,46 @@ type NFTCardProps = {
   isLoading: boolean;
   imageUrl: string;
   qty: string;
+  clicked: () => void;
+  tabId: string;
+  loadingView?: boolean;
+  selectCard?: boolean;
 };
 
-const NFTCard = ({isLoading, imageUrl, qty}: NFTCardProps) => {
+const NFTCard = ({
+  imageUrl,
+  qty,
+  clicked,
+  tabId,
+  loadingView,
+  selectCard,
+  isLoading,
+}: NFTCardProps) => {
   const [selectedCard, setSelectedCard] = useState<null | string>(null);
-  const [isSelected, setSelected] = useState(false);
+  const [isSelected, setSelected] = useState<boolean>(false);
 
-  const handleSelectCard = (selectedCardKey: string) => {
+  const handleSelectCard = async (selectedCardKey: string) => {
+    clicked();
     setSelected(!isSelected);
     setSelectedCard(selectedCardKey);
   };
+
+  useEffect(() => {
+    if (tabId !== '') {
+      setSelected(false);
+      setSelectedCard(null);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tabId]);
+
+  useEffect(() => {
+    if (!selectCard) {
+      setSelected(false);
+    } else {
+      setSelected(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [loadingView]);
 
   return (
     <Card
@@ -31,7 +61,7 @@ const NFTCard = ({isLoading, imageUrl, qty}: NFTCardProps) => {
         backgroundColor: isSelected && `${imageUrl}` === selectedCard ? '#d5defb' : '#fff',
       }}
     >
-      <CardActionArea onClick={() => handleSelectCard(`${imageUrl}`)}>
+      <CardActionArea onClick={() => (loadingView ? null : handleSelectCard(`${imageUrl}`))}>
         {isLoading ? (
           <Skeleton width={300} height={300} />
         ) : (
@@ -55,11 +85,14 @@ const NFTCard = ({isLoading, imageUrl, qty}: NFTCardProps) => {
             width: '100%',
             padding: '9px 12px',
             color: 'white',
-            backgroundColor: isSelected && `${imageUrl}` === selectedCard ? '#406AFF' : '#161336',
+            backgroundColor:
+              !loadingView && isSelected && `${imageUrl}` === selectedCard ? '#406AFF' : '#161336',
             fontFamily: 'Syne',
           }}
         >
-          <Text className="text-sm font-semibold normal-case">View Certificate</Text>
+          <Text className="text-sm font-semibold normal-case">
+            {loadingView ? 'Loading' : isSelected ? 'Viewed' : 'View Certificate'}
+          </Text>
         </div>
       </CardActionArea>
     </Card>
