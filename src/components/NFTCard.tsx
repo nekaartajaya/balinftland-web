@@ -1,39 +1,21 @@
-import {Box, Image, Text} from '@chakra-ui/react';
-import {Button, CardActionArea, CardActions} from '@mui/material';
+import {Text} from '@chakra-ui/react';
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
+import CardActionArea from '@mui/material/CardActionArea';
 import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
+import SvgIcon from '@mui/material/SvgIcon';
 
 import {useState} from 'react';
 
 import styles from './NFTCard.module.css';
 
-type NFTDescProps = {
+import {Triangle} from 'iconsax-react';
+
+type NFTCardProps = {
   imageUrl: string;
-  imageAlt: string;
+  qty: string;
 };
 
-const NFTCards = () => {
-  const nftDescList = [
-    {
-      imageUrl: '/Unlockables/apart1.svg',
-      imageAlt: 'Fragment1',
-    },
-    {
-      imageUrl: '/Unlockables/apart2.svg',
-      imageAlt: 'Fragment2',
-    },
-    {
-      imageUrl: '/Unlockables/apart3.svg',
-      imageAlt: 'Fragment3',
-    },
-    {
-      imageUrl: '/Unlockables/apart3.svg',
-      imageAlt: 'Fragment4',
-    },
-  ];
-
+const NFTCard = ({imageUrl, qty}: NFTCardProps) => {
   const [selectedCard, setSelectedCard] = useState<null | string>(null);
   const [isSelected, setSelected] = useState(false);
 
@@ -41,45 +23,41 @@ const NFTCards = () => {
     setSelected(!isSelected);
     setSelectedCard(selectedCardKey);
   };
+
   return (
-    <>
-      {nftDescList.map((nftDesc, i) => (
-        <Card
-          key={`${nftDesc.imageAlt}${i}`}
-          className={
-            isSelected && `${nftDesc.imageAlt}${i}` === selectedCard ? styles.selected : ''
-          }
+    <Card
+      key={imageUrl}
+      className={isSelected && `${imageUrl}` === selectedCard ? styles.selected : styles.default}
+    >
+      <CardActionArea onClick={() => handleSelectCard(`${imageUrl}`)}>
+        <CardMedia style={{padding: 12}} component="img" image={imageUrl} alt="NFT image" />
+        <div className="flex px-6 py-2 justify-center items-center gap-1">
+          <div>
+            <Triangle size="16" color="#131736" />
+          </div>
+          <Text>NFT Owned</Text>
+          <Text>({qty})</Text>
+        </div>
+        <div
+          id="fake-button"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderTopLeftRadius: 0,
+            borderTopRightRadius: 0,
+            width: '100%',
+            padding: '9px 12px',
+            color: 'white',
+            backgroundColor: isSelected && `${imageUrl}` === selectedCard ? '#406AFF' : '#161336',
+            fontFamily: 'Syne',
+          }}
         >
-          <CardActionArea onClick={() => handleSelectCard(`${nftDesc.imageAlt}${i}`)}>
-            <CardMedia
-              style={{padding: 12}}
-              component="img"
-              image={nftDesc.imageUrl}
-              alt={nftDesc.imageAlt}
-            />
-            <div
-              id="fake-button"
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderTopLeftRadius: 0,
-                borderTopRightRadius: 0,
-                width: '100%',
-                padding: '9px 12px',
-                color: 'white',
-                backgroundColor:
-                  isSelected && `${nftDesc.imageAlt}${i}` === selectedCard ? '#406AFF' : '#161336',
-                fontFamily: 'Syne',
-              }}
-            >
-              <Text className="text-sm font-semibold normal-case">View Certificate</Text>
-            </div>
-          </CardActionArea>
-        </Card>
-      ))}
-    </>
+          <Text className="text-sm font-semibold normal-case">View Certificate</Text>
+        </div>
+      </CardActionArea>
+    </Card>
   );
 };
 
-export default NFTCards;
+export default NFTCard;
