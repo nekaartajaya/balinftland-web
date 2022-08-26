@@ -24,7 +24,8 @@
       "@hooks/*": ["./src/hooks/*"],
       "@utils/*": ["./src/utils/*"],
       "@lib/*": ["./src/lib/*"]
-    }
+    },
+    "typeRoots": ["../node_modules/@types", "../@types"]
   },
   "exclude": ["node_modules"]
 }
