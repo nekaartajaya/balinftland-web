@@ -81,14 +81,14 @@ const UnlockableContent = () => {
 
   const tokenId = 1;
 
-  const {data, isError, isLoading} = useContractRead({
+  const {data} = useContractRead({
     addressOrName: lbsfContractAddress,
     contractInterface: abi,
     functionName: 'balanceOf',
     args: [address, tokenId],
   });
 
-  if (!address) {
+  if (!address || !data) {
     return <EmptyNFTContent />;
   }
 
