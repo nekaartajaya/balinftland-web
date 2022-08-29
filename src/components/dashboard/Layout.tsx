@@ -54,7 +54,7 @@ const Layout = ({children}: {children: ReactNode}) => {
           setIsOpenSidebar={setIsOpenSidebar}
           isOpenSidebar={isOpenSidebar}
         />
-        <div className="pt-[120px] px-6 pb-6">{children}</div>
+        <div className="pt-[90px]">{children}</div>
       </div>
     </div>
   );
