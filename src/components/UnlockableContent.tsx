@@ -143,6 +143,7 @@ const UnlockableContent = () => {
         });
         setLoadingView(false);
         setDocument(url);
+        if (!url) setSelectCard(false);
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
