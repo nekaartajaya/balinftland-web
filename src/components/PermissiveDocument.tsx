@@ -35,6 +35,8 @@ const PermissiveDocument = ({tabId, document}: {tabId: string; document: string}
 
   useEffect(() => {
     setSuccessRender(false);
+    setPageNumber(1);
+    setNumPages(null);
   }, [tabId]);
 
   return (
