@@ -74,7 +74,7 @@ const NavbarComponent = ({isOpenNav}) => {
               </div>
             </div>
             <div className="dropdown-item">
-              <Link href="/projects/lima-beach" passHref>
+              <Link href="/projects/lima-beach-signature" passHref>
                 <div className="hover:opacity-100 opacity-50 cursor-pointer">
                   lima beach signature nft
                 </div>
@@ -105,15 +105,19 @@ const NavbarComponent = ({isOpenNav}) => {
             </div>
           </div> */}
           {pathname[1] != 'minting' ? (
-            <Link href="/minting/lima-beach" passHref>
-              <button disabled className="py-2 px-[14px] bg-[#436CFF]">
+            <Link href="/minting/lima-beach-signature" passHref>
+              <button className="py-2 px-[14px] bg-[#436CFF]">
                 <span>mint yours</span>
               </button>
             </Link>
           ) : (
             <>
               {connectors.map(connector => (
-                <button key={connector.id} onClick={() => handleConnect(connector)}>
+                <button
+                  className="p-2 bg-[#406aff]"
+                  key={connector.id}
+                  onClick={() => handleConnect(connector)}
+                >
                   <span>{!address ? 'connect wallet' : 'connected'}</span>
                 </button>
               ))}
