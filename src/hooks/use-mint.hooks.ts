@@ -8,7 +8,6 @@ import getConfig from 'next/config';
 import contractABI from '../../public/contracts/LBSFragment.json';
 
 import {
-  addWalletListener,
   getCurrentWalletConnected,
   connectWallet,
   approveUSDC,
@@ -24,7 +23,8 @@ import {
   getNFTImageByTokenId,
 } from 'src/helpers/metamask-interact';
 import {mintNFTWithRefCode} from 'src/lib/api/referral';
-import useStore from 'src/store';
+import useWeb3Store from 'src/store';
+import {AbiItem} from 'web3-utils';
 
 const {publicRuntimeConfig} = getConfig();
 const lbsfContractAddress = publicRuntimeConfig.lbsfContractAddress;
@@ -49,8 +49,10 @@ const useMintHook = () => {
 
   const [ownedImage, setOwnedImage] = useState('');
 
-  const currentWallet = useStore(state => state.currentWallet);
-  const updateWallet = useStore(state => state.updateWallet);
+  const currentWallet = useWeb3Store(state => state.currentWallet);
+  const updateWallet = useWeb3Store(state => state.updateWallet);
+
+  const updateMintedTxHash = useWeb3Store(state => state.updateMintedTxHash);
 
   const fetchCurrentWallet = async () => {
     setLoading(true);
@@ -80,12 +82,6 @@ const useMintHook = () => {
     } finally {
       setLoading(false);
     }
-  };
-
-  const listenToWalletChanges = () => {
-    const account = addWalletListener();
-
-    updateWallet(account);
   };
 
   const fetchNFTImage = async () => {
@@ -209,8 +205,7 @@ const useMintHook = () => {
     setLoading(true);
 
     try {
-      const activeStage = await getActiveStage();
-      const price = await getPrice(activeStage);
+      const price = await getPrice();
 
       setPrice(price);
     } catch (error) {
@@ -253,9 +248,7 @@ const useMintHook = () => {
   const mintNFT = async (token, quantity, referralCode = '') => {
     const web3 = createAlchemyWeb3(web3ProviderURL);
 
-    const contract = new web3.eth.Contract(contractABI.abi, lbsfContractAddress);
-
-    window.contract = new web3.eth.Contract(contractABI.abi, lbsfContractAddress);
+    const contract = new web3.eth.Contract(contractABI.abi as AbiItem[], lbsfContractAddress);
 
     setMinting(true);
 
@@ -276,7 +269,7 @@ const useMintHook = () => {
         const transactionParameters = {
           to: lbsfContractAddress,
           from: currentAccount,
-          data: window.contract.methods.mint(tokenId, quantity, '0x00').encodeABI(),
+          data: contract.methods.mint(tokenId, quantity, '0x00').encodeABI(),
         };
 
         const txHash = await web3.eth
@@ -294,6 +287,8 @@ const useMintHook = () => {
 
         if (txHash) {
           const {transactionHash} = txHash;
+
+          updateMintedTxHash(transactionHash);
 
           const data = await mintNFTWithRefCode(token, {
             id: transactionHash,
@@ -325,31 +320,9 @@ const useMintHook = () => {
     }
   };
 
-  const signWallet = async (nonce, address) => {
-    try {
-      const msgHash = `0x${Buffer.from(nonce, 'utf8').toString('hex')}`;
-
-      const provider = await detectEthereumProvider({timeout: 2000});
-
-      if (provider) {
-        const msg = await window.ethereum.request({
-          method: 'personal_sign',
-          params: [msgHash, address, ''],
-        });
-
-        return msg;
-      } else {
-        console.log('please install metamask!');
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   return {
     loading,
     fetchCurrentWallet,
-    listenToWalletChanges,
     linkWallet,
     mintNFT,
     minting,
@@ -374,7 +347,6 @@ const useMintHook = () => {
     mintedNFT,
     fetchNFTImage,
     image,
-    signWallet,
     fetchNFTImageByTokenId,
     ownedImage,
   };
