@@ -13,6 +13,9 @@
     "formatter": "yarn format:lint && yarn format:prettier"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.10.12",
     "next": "latest",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
