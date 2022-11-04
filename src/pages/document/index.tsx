@@ -1,5 +1,11 @@
+import Layout from '@components/layout';
+
 const PermissiveDocument = () => {
-  return <div>Permissive Document</div>;
+  return (
+    <Layout>
+      <div>Permissive Document</div>
+    </Layout>
+  );
 };
 
 export default PermissiveDocument;

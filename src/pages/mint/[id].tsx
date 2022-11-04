@@ -1,5 +1,11 @@
+import Layout from '@components/layout';
+
 const Mint = () => {
-  return <div>Minting</div>;
+  return (
+    <Layout>
+      <div>Minting</div>
+    </Layout>
+  );
 };
 
 export default Mint;

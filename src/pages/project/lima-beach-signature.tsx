@@ -1,5 +1,11 @@
+import Layout from '@components/layout';
+
 const LimaBeachSiganture = () => {
-  return <div>Lima Beach Signature NFT</div>;
+  return (
+    <Layout>
+      <div>Lima Beach Signature NFT</div>
+    </Layout>
+  );
 };
 
 export default LimaBeachSiganture;
