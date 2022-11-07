@@ -1,3 +1,4 @@
+import HomeHospitalitySection from '@components/home/HospitalitySection';
 import HomeLogoSection from '@components/home/LogoSection';
 import HomeProjectSection from '@components/home/ProjectSection';
 import HomeTopSection from '@components/home/TopSection';
@@ -9,6 +10,7 @@ const Home = () => {
       <HomeTopSection />
       <HomeLogoSection />
       <HomeProjectSection />
+      <HomeHospitalitySection />
     </Layout>
   );
 };

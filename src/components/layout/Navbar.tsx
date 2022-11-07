@@ -4,7 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import {SwipeableDrawer} from '@mui/material';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import {Dispatch, SetStateAction, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 
 const Navbar = () => {
   const router = useRouter();
@@ -66,7 +66,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="w-full h-[86px] fixed top-0 md:px-[60px] px-4 bg-dark-blue flex justify between items-center">
+      <nav className="w-full h-[86px] fixed top-0 md:px-[60px] px-4 bg-dark-blue flex justify between items-center z-[999]">
         <div className="w-1/2">
           <Link href="/">
             <img

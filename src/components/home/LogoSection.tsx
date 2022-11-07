@@ -1,7 +1,8 @@
+import {Logo} from '@interfaces/HomeInterface';
 import {Avatar} from '@mui/material';
 
 const HomeLogoSection = () => {
-  const Logo = [
+  const Logo: Array<Logo> = [
     {
       name: 'Logo',
       desc: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti aliquam',
@@ -25,7 +26,7 @@ const HomeLogoSection = () => {
   ];
   return (
     <div className="flex justify-around items-center bg-[url('/images/pages/home/dummy-11.png')] px-12 py-16">
-      {Logo.map(({name, desc, logo}, index) => {
+      {Logo.map(({name, desc}, index) => {
         return (
           <div key={index} className="flex flex-col items-center text-center gap-y-4 text-white">
             <Avatar sx={{width: 100, height: 100}}> </Avatar>

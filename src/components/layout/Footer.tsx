@@ -96,7 +96,7 @@ const Footer = () => {
               {SocialMedia.map(({name, icon, link}, index) => {
                 return (
                   <div key={index} className="max-w-[20px]">
-                    <a href={link} target="_blank">
+                    <a href={link} target="_blank" rel="noreferrer">
                       <img src={icon} alt={name} />
                     </a>
                   </div>
@@ -114,7 +114,7 @@ const Footer = () => {
               {list.map(({name, link}: ListFooterMenu, index: number) => {
                 return (
                   <div key={index} className="capitalize text-grey font-light mb-3">
-                    {name}
+                    <Link href={link}> {name}</Link>
                   </div>
                 );
               })}

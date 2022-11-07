@@ -1,6 +1,6 @@
 import Footer from '@components/layout/Footer';
 import Navbar from '@components/layout/Navbar';
-import {ReactNode, useState} from 'react';
+import {ReactNode} from 'react';
 
 const Layout = ({children}: {children: ReactNode}) => {
   return (
