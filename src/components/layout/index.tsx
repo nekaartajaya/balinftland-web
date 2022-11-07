@@ -1,12 +1,14 @@
-import Navbar from '@components/layout/Navbar';
 import Footer from '@components/layout/Footer';
-import {ReactNode} from 'react';
+import Navbar from '@components/layout/Navbar';
+import {ReactNode, useState} from 'react';
 
 const Layout = ({children}: {children: ReactNode}) => {
+  const [isOpenNavbar, setIsOpenNavbar] = useState<boolean>(false);
+
   return (
     <>
-      <Navbar />
-      <div>{children}</div>
+      <Navbar isOpenNav={setIsOpenNavbar} />
+      <div className="pt-[86px]">{children}</div>
       <Footer />
     </>
   );
