@@ -1,6 +1,8 @@
 import CustomButton from '@components/global/Button';
+import {useRouter} from 'next/router';
 
 const HomeProjectSection = () => {
+  const router = useRouter();
   return (
     <div className="w-full flex justify-between border-b border-black">
       <div className="w-full bg-[url('/images/pages/home/dummy-1.png')] bg-cover bg-no-repeat bg-center"></div>
@@ -13,7 +15,11 @@ const HomeProjectSection = () => {
           ownership built with the Internet of Things (IoT) Technology and Web 3.0.
         </div>
         <div>
-          <CustomButton text="Lima Beach" classes="ml-auto !bg-light-blue" />
+          <CustomButton
+            text="Lima Beach"
+            classes="ml-auto !bg-light-blue"
+            onClick={() => router.push('/project/lima-beach-signature')}
+          />
         </div>
       </div>
     </div>

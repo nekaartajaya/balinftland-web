@@ -1,6 +1,9 @@
 import CustomButton from '@components/global/Button';
+import {useRouter} from 'next/router';
 
 const HomeTopSection = () => {
+  const router = useRouter();
+
   return (
     <div className="flex justify-between items-center min-h-[772px] px-4">
       <div className="w-1/2 px-24">
@@ -11,7 +14,11 @@ const HomeTopSection = () => {
           <h1>Property,</h1>
         </div>
         <div>
-          <CustomButton text="About Bali NFT Land" classes="text-base" />
+          <CustomButton
+            text="About Bali NFT Land"
+            classes="text-base"
+            onClick={() => router.push('/profile')}
+          />
         </div>
       </div>
 
