@@ -1,11 +1,9 @@
-import {SvgIconTypeMap} from '@mui/material';
-import {OverridableComponent} from '@mui/material/OverridableComponent';
+import {ReactNode} from 'react';
 
 export interface ButtonInterface {
   text: string;
-  bg: string;
-  color: string;
-  icon?: OverridableComponent<SvgIconTypeMap<{}, 'svg'>>;
+  color?: string;
+  icon?: ReactNode;
   classes?: string;
-  onClick: () => any;
+  onClick?: () => any;
 }

@@ -3,3 +3,8 @@ export interface Logo {
   desc: string;
   logo?: string;
 }
+export interface Hospitality {
+  name: string;
+  desc: string;
+  image?: string;
+}
