@@ -66,7 +66,6 @@ const Navbar = () => {
 
   return (
     <div>
-      {/* Desktop */}
       <nav className="w-full h-[86px] fixed top-0 md:px-[60px] px-4 bg-dark-blue flex justify between items-center">
         <div className="w-1/2">
           <Link href="/">
@@ -151,86 +150,6 @@ const Navbar = () => {
           </SwipeableDrawer>
         </div>
       </nav>
-      {/* Tablet & Mobile */}
-      {/* <nav
-        className={`h-[70px] tablet:h-[100px] flex justify-between items-center transition transition-colors duration-200 mobile ${
-          openNavbar ? 'bg-[#050910]' : 'bg-transparent'
-        }`}
-      >
-        <div id="logo" className="w-[50%]">
-          <Link href="/" passHref>
-            <div className=" flex items-center text-white text-[12px] tablet:text-[28px] font-bold tracking-wide gap-2">
-              <img
-                src="/DigilandBali.svg"
-                className="w-[14px] h-[14px] tablet:w-[32px] tablet:h-[32px]"
-                alt="Digiland-logo"
-              />
-              DIGILANDBALI
-            </div>
-          </Link>
-        </div>
-        <>
-          <div id="three-lines-menu">
-            <button
-              className="bg-transparent border-0"
-              onClick={() => {
-                setOpenNavbar(!openNavbar);
-                if (!openNavbar) {
-                  setTimeout(() => {
-                    isOpenNav(!openNavbar);
-                  }, 200);
-                } else {
-                  isOpenNav(!openNavbar);
-                }
-              }}
-            >
-              <img
-                src={`${openNavbar ? '/close-icon.svg' : '/hamburger-icon.svg'}`}
-                className="w-[18px] tablet:w-[32px]"
-                alt="logo"
-              />
-            </button>
-          </div>
-          <div
-            className={`mobile-inner link text-[16px] tablet:text-[24px] tracking-wide gap-10 right-0 flex flex-col bg-[#050910] w-[100%] h-screen top-[60px] tablet:top-[90px] z-[999] overflow-y-auto ${
-              openNavbar ? 'open' : ''
-            }`}
-          >
-            <Link href="/#home" passHref>
-              <div onClick={() => handleCloseNavbar()}>home</div>
-            </Link>
-            <a
-              target="_blank"
-              href="https://drive.google.com/file/d/1TCMsMaM9lTXmywLc_rCW01XHw8R6OJms/view?usp=sharin"
-              rel="noopener noreferrer"
-            >
-              <div onClick={() => handleCloseNavbar()}>whitepaper</div>
-            </a>
-            <div>
-              <div>projects</div>
-              <div>
-                <Link href="/projects/lima-beach" passHref>
-                  <div
-                    onClick={() => handleCloseNavbar()}
-                    className="hover:text[#FFF] text-[#E2E2E2] font-medium cursor-pointer mt-[26px] px-6"
-                  >
-                    lima beach signature nft
-                  </div>
-                </Link>
-                <Link href="" passHref>
-                  <div
-                    onClick={() => handleCloseNavbar()}
-                    className="text-[#E2E2E2] font-medium cursor-pointer mt-[26px] px-6"
-                  >
-                    coming soon
-                  </div>
-                </Link>
-              </div>
-            </div>
-            <Link href="/minting/lima-beach-signature">go to mint page</Link>
-          </div>
-        </>
-      </nav> */}
     </div>
   );
 };

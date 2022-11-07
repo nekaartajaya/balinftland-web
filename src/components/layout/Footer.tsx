@@ -1,6 +1,6 @@
 import {FooterMenu} from '@interfaces/FooterInterface';
+import {ListFooterMenu, SocialMedia} from '@interfaces/FooterInterface';
 import Link from 'next/link';
-import {ListFooterMenu, SocialMedia} from 'src/interfaces/FooterInterface';
 
 const Footer = () => {
   const footerMenu: Array<FooterMenu> = [
@@ -82,7 +82,7 @@ const Footer = () => {
   ];
 
   return (
-    <div className="flex md:flex-row flex-col md:px-[60px] px-4 gap-y-4">
+    <div className="flex md:flex-row flex-col md:px-[60px] px-4 py-8 gap-y-4 bg-white">
       <div className="md:w-1/3 w-full">
         <div className="flex md:flex-col justify-between">
           <div className="mb-4">
