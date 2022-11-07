@@ -18,6 +18,7 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@pages/*": ["src/pages/*"],
+      "@interfaces/*": ["src/interfaces/*"],
       "@styles/*": ["styles/*"]
     }
   },

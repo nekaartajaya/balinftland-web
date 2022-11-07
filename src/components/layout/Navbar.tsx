@@ -1,10 +1,10 @@
+import {NavMenu} from '@interfaces/NavbarInterface';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
 import {SwipeableDrawer} from '@mui/material';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 import {Dispatch, SetStateAction, useEffect, useState} from 'react';
-import {NavMenu} from 'src/interfaces/NavbarInterface';
 
 const Navbar = () => {
   const router = useRouter();
