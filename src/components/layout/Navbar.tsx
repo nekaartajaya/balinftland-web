@@ -79,11 +79,11 @@ const Navbar = () => {
 
         {/* Desktop */}
         <div className="link md:flex hidden gap-9 justify-end items-center w-1/2">
-          {NavMenu.map(({name, link, classes}) => {
+          {NavMenu.map(({name, link, classes}, index) => {
             if (pathname && pathname[1] === 'mint' && name === 'mint yours') return;
 
             return (
-              <Link href={link} passHref>
+              <Link key={index} href={link} passHref>
                 <div
                   className={`${classes} nav-item uppercase text-[#FFF] text-sm tracking-wider font-normal cursor-pointer ${
                     handleActiveMenu(name) && 'active'
@@ -123,11 +123,11 @@ const Navbar = () => {
             className="!top-[86px]"
           >
             <div className="px-4 pt-4">
-              {NavMenu.map(({name, link, classes}) => {
+              {NavMenu.map(({name, link, classes}, index) => {
                 if (pathname && pathname[1] === 'mint' && name === 'mint yours') return;
 
                 return (
-                  <Link href={link} passHref>
+                  <Link key={index} href={link} passHref>
                     <div
                       className={`${classes} nav-item-mobile uppercase text-blue text-sm tracking-wider font-normal cursor-pointer mb-4 ${
                         name !== 'mint yours' ? 'w-fit' : 'text-center'

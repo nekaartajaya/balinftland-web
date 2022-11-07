@@ -2,7 +2,7 @@ import CustomButton from '@components/global/Button';
 
 const HomeTopSection = () => {
   return (
-    <div className="flex justify-between items-center min-h-[772px]">
+    <div className="flex justify-between items-center min-h-[772px] px-4">
       <div className="w-1/2 px-24">
         <h1 className="text-xl text-blue tracking-[8px] mb-4">BALI NFT LAND</h1>
         <div className="text-7xl font-bold tracking-wider leading-tight text-blue mb-8">

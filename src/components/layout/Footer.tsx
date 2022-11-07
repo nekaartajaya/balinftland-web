@@ -93,9 +93,9 @@ const Footer = () => {
               FOLLOW US ON
             </div>
             <div className="flex gap-x-4">
-              {SocialMedia.map(({name, icon, link}) => {
+              {SocialMedia.map(({name, icon, link}, index) => {
                 return (
-                  <div className="max-w-[20px]">
+                  <div key={index} className="max-w-[20px]">
                     <a href={link} target="_blank">
                       <img src={icon} alt={name} />
                     </a>
@@ -107,12 +107,16 @@ const Footer = () => {
         </div>
       </div>
       <div className="md:w-2/3 w-full flex sm:flex-row flex-col gap-y-4">
-        {footerMenu.map(({title, list}: FooterMenu) => {
+        {footerMenu.map(({title, list}: FooterMenu, index: number) => {
           return (
-            <div className="sm:w-1/3 text-sm tracking-wide">
+            <div key={index} className="sm:w-1/3 text-sm tracking-wide">
               <div className="uppercase text-dark-blue-2 font-bold mb-3">{title}</div>
-              {list.map(({name, link}: ListFooterMenu) => {
-                return <div className="capitalize text-grey font-light mb-3">{name}</div>;
+              {list.map(({name, link}: ListFooterMenu, index: number) => {
+                return (
+                  <div key={index} className="capitalize text-grey font-light mb-3">
+                    {name}
+                  </div>
+                );
               })}
             </div>
           );
