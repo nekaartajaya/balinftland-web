@@ -8,3 +8,7 @@ export interface Hospitality {
   desc: string;
   image?: string;
 }
+export interface UnitMetaverse {
+  name: string;
+  image?: string;
+}
