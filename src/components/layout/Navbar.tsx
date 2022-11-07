@@ -1,14 +1,21 @@
+import CloseIcon from '@mui/icons-material/Close';
+import MenuIcon from '@mui/icons-material/Menu';
+import {SwipeableDrawer} from '@mui/material';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import {NavMenu} from 'src/interfaces/NavbarInterface';
 
-const Navbar = ({isOpenNav}: {isOpenNav: Dispatch<SetStateAction<boolean>>}) => {
+const Navbar = () => {
   const router = useRouter();
   const [openNavbar, setOpenNavbar] = useState<boolean>(false);
   const [pathname, setPathname] = useState<Array<string> | undefined>();
 
-  const closeNavbar = () => {
+  const handleOpenNavbar = () => {
+    setOpenNavbar(true);
+  };
+
+  const handleCloseNavbar = () => {
     setOpenNavbar(false);
   };
 
@@ -35,41 +42,52 @@ const Navbar = ({isOpenNav}: {isOpenNav: Dispatch<SetStateAction<boolean>>}) => 
     },
     {
       name: 'mint yours',
-      link: '/mint',
+      link: '/mint/tes',
       classes:
-        '!capitalize !font-medium !text-base bg-light-green px-4 py-2 hover:bg-light-green/[.80]',
+        '!capitalize !font-medium !text-base bg-light-green px-4 py-2 hover:bg-light-green/[.80] whitespace-nowrap !text-[#FFF]',
     },
   ];
 
+  const handleActiveMenu = (name: string) => {
+    if (pathname && (pathname[1] === name || (pathname[1] === '' && name === 'home'))) return true;
+  };
+
   useEffect(() => {
     setPathname(router.asPath.split('/'));
-    console.log(pathname);
+    handleCloseNavbar;
   }, [router]);
+
+  useEffect(() => {
+    window.addEventListener('resize', handleCloseNavbar);
+    return () => {
+      window.removeEventListener('resize', handleCloseNavbar);
+    };
+  }, []);
 
   return (
     <div>
       {/* Desktop */}
-      <nav className="w-full h-[86px] fixed top-0 px-[60px] bg-dark-blue flex justify between items-center">
-        <div className="w-[25%]">
+      <nav className="w-full h-[86px] fixed top-0 md:px-[60px] px-4 bg-dark-blue flex justify between items-center">
+        <div className="w-1/2">
           <Link href="/">
             <img
               src="/images/logo/logo-white.png"
-              className="cursor-pointer"
+              className="cursor-pointer min-"
               alt="BaliNFTLand-logo"
             />
           </Link>
         </div>
 
-        <div className="link flex gap-9 justify-end items-center w-full">
+        {/* Desktop */}
+        <div className="link md:flex hidden gap-9 justify-end items-center w-1/2">
           {NavMenu.map(({name, link, classes}) => {
+            if (pathname && pathname[1] === 'mint' && name === 'mint yours') return;
+
             return (
               <Link href={link} passHref>
                 <div
-                  onClick={() => closeNavbar()}
                   className={`${classes} nav-item uppercase text-[#FFF] text-sm tracking-wider font-normal cursor-pointer ${
-                    pathname &&
-                    (pathname[1] === name || (pathname[1] === '' && name === 'home')) &&
-                    'active'
+                    handleActiveMenu(name) && 'active'
                   }`}
                 >
                   {name}
@@ -80,6 +98,57 @@ const Navbar = ({isOpenNav}: {isOpenNav: Dispatch<SetStateAction<boolean>>}) => 
               </Link>
             );
           })}
+        </div>
+
+        {/* Tablet & Mobile */}
+        <div className="md:hidden flex justify-end w-1/2">
+          <button
+            className="text-[#FFF]"
+            onClick={!openNavbar ? handleOpenNavbar : handleCloseNavbar}
+          >
+            {!openNavbar ? (
+              <MenuIcon color="inherit" fontSize="large" />
+            ) : (
+              <CloseIcon color="inherit" fontSize="large" />
+            )}
+          </button>
+          <SwipeableDrawer
+            anchor={'left'}
+            open={openNavbar}
+            onClose={handleCloseNavbar}
+            onOpen={handleOpenNavbar}
+            sx={{
+              '& .MuiBackdrop-root': {top: '86px'},
+              '& .MuiDrawer-paper': {boxSizing: 'border-box', width: '100%', top: '86px'},
+            }}
+            className="!top-[86px]"
+          >
+            <div className="px-4 pt-4">
+              {NavMenu.map(({name, link, classes}) => {
+                if (pathname && pathname[1] === 'mint' && name === 'mint yours') return;
+
+                return (
+                  <Link href={link} passHref>
+                    <div
+                      className={`${classes} nav-item-mobile uppercase text-blue text-sm tracking-wider font-normal cursor-pointer mb-4 ${
+                        name !== 'mint yours' ? 'w-fit' : 'text-center'
+                      }`}
+                      onClick={handleCloseNavbar}
+                    >
+                      {name}
+                      {pathname && pathname[1] !== 'mint' && (
+                        <div
+                          className={`nav-border h-[2px] bg-blue ${
+                            handleActiveMenu(name) && '!w-full'
+                          }`}
+                        ></div>
+                      )}
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </SwipeableDrawer>
         </div>
       </nav>
       {/* Tablet & Mobile */}
@@ -128,21 +197,21 @@ const Navbar = ({isOpenNav}: {isOpenNav: Dispatch<SetStateAction<boolean>>}) => 
             }`}
           >
             <Link href="/#home" passHref>
-              <div onClick={() => closeNavbar()}>home</div>
+              <div onClick={() => handleCloseNavbar()}>home</div>
             </Link>
             <a
               target="_blank"
               href="https://drive.google.com/file/d/1TCMsMaM9lTXmywLc_rCW01XHw8R6OJms/view?usp=sharin"
               rel="noopener noreferrer"
             >
-              <div onClick={() => closeNavbar()}>whitepaper</div>
+              <div onClick={() => handleCloseNavbar()}>whitepaper</div>
             </a>
             <div>
               <div>projects</div>
               <div>
                 <Link href="/projects/lima-beach" passHref>
                   <div
-                    onClick={() => closeNavbar()}
+                    onClick={() => handleCloseNavbar()}
                     className="hover:text[#FFF] text-[#E2E2E2] font-medium cursor-pointer mt-[26px] px-6"
                   >
                     lima beach signature nft
@@ -150,7 +219,7 @@ const Navbar = ({isOpenNav}: {isOpenNav: Dispatch<SetStateAction<boolean>>}) => 
                 </Link>
                 <Link href="" passHref>
                   <div
-                    onClick={() => closeNavbar()}
+                    onClick={() => handleCloseNavbar()}
                     className="text-[#E2E2E2] font-medium cursor-pointer mt-[26px] px-6"
                   >
                     coming soon
