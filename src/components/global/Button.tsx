@@ -1,16 +1,9 @@
 import {ButtonInterface} from '@interfaces/GlobalInterface';
 
-const CustomButton = ({
-  text,
-  bg = 'blue',
-  color = '#FFF',
-  icon,
-  classes,
-  onClick,
-}: ButtonInterface) => {
+const CustomButton = ({text, color = '#FFF', icon, classes, onClick}: ButtonInterface) => {
   return (
     <button
-      className={`${classes} flex justify-center items-center gap-x-2 p-3 min-w-[260px] bg-${bg} text-[${color}]`}
+      className={`${classes} flex justify-center items-center gap-x-2 p-3 min-w-[260px] bg-blue text-[${color}]`}
       onClick={onClick}
     >
       {text}
