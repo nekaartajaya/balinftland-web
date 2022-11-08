@@ -1,9 +1,10 @@
 import Layout from '@components/layout';
+import ProjectStageSection from '@components/project/StageSection';
 
 const LimaBeachSiganture = () => {
   return (
     <Layout>
-      <div>Lima Beach Signature NFT</div>
+      <ProjectStageSection />
     </Layout>
   );
 };
