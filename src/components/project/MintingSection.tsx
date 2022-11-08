@@ -1,7 +1,7 @@
 import {Stage} from '@interfaces/ProjectInterface';
 import ProjectStage from './Stage';
 
-const ProjectStageSection = () => {
+const ProjectMintingSection = () => {
   const Stage: Array<Stage> = [
     {
       title: 'Physical Land Stage, with $10,000 each Fragment.',
@@ -30,14 +30,28 @@ const ProjectStageSection = () => {
   ];
 
   return (
-    <>
+    <div>
+      <div className="mb-4">
+        <h1 className="text-[64px] leading-[80px] text-blue text-left fo">
+          <span className="font-bold">LIMA</span> BEACH
+          <br />
+          NFT MINTING STAGE
+        </h1>
+      </div>
+
+      <div className="text-blue text-[22px] italic mb-4">
+        Currently, the market price of a luxury apartment is $210,000. If you enter the project
+        early, each NFT fragment will cost $10,000, making the total cost of seven NFT fragments
+        around $70,000, a third (33%) of the current market price.
+      </div>
+
       {Stage.map(({title, subtitle, desc, image}: Stage, index: number) => {
         return (
           <ProjectStage key={index} title={title} subtitle={subtitle} desc={desc} image={image} />
         );
       })}
-    </>
+    </div>
   );
 };
 
-export default ProjectStageSection;
+export default ProjectMintingSection;
