@@ -23,7 +23,8 @@
     "@mui/material": "^5.10.12",
     "next": "latest",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "react-multi-carousel": "^2.8.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "5.16.4",

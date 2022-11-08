@@ -61,3 +61,15 @@ code {
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
 }
+
+/* Slider Dot */
+.slider-dot li button {
+  border-radius: 0;
+  border: 0;
+  background-color: #d9d9d9;
+}
+
+.slider-dot li.react-multi-carousel-dot--active button {
+  width: 60px;
+  background-color: #d9d9d9;
+}

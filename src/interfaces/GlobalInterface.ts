@@ -7,3 +7,8 @@ export interface ButtonInterface {
   classes?: string;
   onClick?: () => any;
 }
+
+export interface ImageInterface {
+  url: string;
+  alt: string;
+}
