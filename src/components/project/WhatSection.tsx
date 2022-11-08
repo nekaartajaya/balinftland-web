@@ -13,7 +13,7 @@ const ProjectWhatSection = () => {
   return (
     <div className="flex flex-col gap-y-8">
       {/* Introduce */}
-      <div className="mb-8">
+      <div>
         <h1 className="text-[64px] tracking-wider leading-[80px] text-blue text-center font-bold">
           What is Lima Beach NFT.
         </h1>
