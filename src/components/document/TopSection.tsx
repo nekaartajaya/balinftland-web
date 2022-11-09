@@ -25,7 +25,7 @@ const DocumentTopSection = () => {
     <section>
       <Title text="Permissive Document" classes="mb-8" />
 
-      <div className="text-dark-blue text-2xl flex flex-col gap-y-6 mb-10 text-justify font-light">
+      <div className="text-dark-blue text-2xl flex flex-col gap-y-6 mb-10 text-justify">
         <p>
           To what extent does Bali NFT Land ensure the safety and security of your physical
           apartment authentication certificate?
