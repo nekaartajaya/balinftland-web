@@ -1,9 +1,12 @@
+import DocumentTopSection from '@components/document/TopSection';
 import Layout from '@components/layout';
 
 const PermissiveDocument = () => {
   return (
     <Layout>
-      <div>Permissive Document</div>
+      <div className="bg-[#F9F9F9] flex flex-col gap-y-16 md:px-[60px] px-4 py-10">
+        <DocumentTopSection />
+      </div>
     </Layout>
   );
 };
