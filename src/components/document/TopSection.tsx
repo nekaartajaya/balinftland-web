@@ -1,3 +1,4 @@
+import Title from '@components/global/Title';
 import {DocumentCardInterface} from '@interfaces/DocumentInterface';
 import DocumentCard from './Card';
 
@@ -22,9 +23,7 @@ const DocumentTopSection = () => {
 
   return (
     <section>
-      <h1 className="text-[64px] tracking-wide text-blue text-center font-semibold mb-8">
-        Permissive Document
-      </h1>
+      <Title text="Permissive Document" classes="mb-8" />
 
       <div className="text-dark-blue text-2xl flex flex-col gap-y-6 mb-10 text-justify font-light">
         <p>
