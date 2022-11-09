@@ -1,3 +1,4 @@
+import Subtitle from '@components/global/Subtitle';
 import {ImageInterface} from '@interfaces/GlobalInterface';
 
 const ProfileUtilitySection = () => {
@@ -21,10 +22,8 @@ const ProfileUtilitySection = () => {
   ];
 
   return (
-    <div className="py-10">
-      <div>
-        <h1 className="text-center font-bold text-[52px] text-blue">Utility</h1>
-      </div>
+    <div className="py-20">
+      <Subtitle text="Utility" />
 
       <div className="grid md:grid-cols-4 grid-cols-2">
         {Utility.map((item: ImageInterface, index: number) => {
