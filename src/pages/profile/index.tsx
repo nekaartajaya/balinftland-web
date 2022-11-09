@@ -1,9 +1,12 @@
 import Layout from '@components/layout';
+import ProfileTopSection from '@components/profile/TopSection';
 
 const Profile = () => {
   return (
     <Layout>
-      <div>Profile</div>
+      <div>
+        <ProfileTopSection />
+      </div>
     </Layout>
   );
 };
