@@ -83,11 +83,13 @@ const Navbar = () => {
             if (pathname && pathname[1] === 'mint' && name === 'mint yours') return;
 
             return (
-              <Link key={index} href={link} passHref>
+              <Link
+                key={index}
+                href={link}
+                className={`nav-item  ${handleActiveMenu(name) && 'active'}`}
+              >
                 <div
-                  className={`${classes} nav-item uppercase text-[#FFF] text-sm tracking-wider font-normal cursor-pointer ${
-                    handleActiveMenu(name) && 'active'
-                  }`}
+                  className={`${classes} uppercase text-[#FFF] text-sm tracking-wider font-normal cursor-pointer`}
                 >
                   {name}
                   {pathname && pathname[1] !== 'mint' && (
@@ -127,7 +129,7 @@ const Navbar = () => {
                 if (pathname && pathname[1] === 'mint' && name === 'mint yours') return;
 
                 return (
-                  <Link key={index} href={link} passHref>
+                  <Link key={index} href={link}>
                     <div
                       className={`${classes} nav-item-mobile uppercase text-blue text-sm tracking-wider font-normal cursor-pointer mb-4 ${
                         name !== 'mint yours' ? 'w-fit' : 'text-center'
