@@ -47,8 +47,8 @@ const HomeLogoSection = () => {
   };
 
   return (
-    <div className="bg-[url('/images/pages/home/dummy-11.png')] bg-norepeat px-12 py-16">
-      <div className="relative pb-[50px]">
+    <div className="bg-[url('/images/pages/home/dummy-11.png')] bg-no-repeat bg-cover px-12 py-16">
+      <div className="relative pb-[40px] md:pb-0">
         <Carousel
           responsive={responsive}
           arrows={false}
