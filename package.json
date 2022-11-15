@@ -1,7 +1,7 @@
 {
-  "private": true,
   "name": "balinftland-web",
   "version": "0.1.8",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -16,7 +16,8 @@
     "lint": "eslint .",
     "format:lint": "eslint --fix ./src/ --ext .js,.jsx,.ts,.tsx",
     "format:prettier": "prettier --config .prettierrc ./src/ --write --ignore-unknown",
-    "formatter": "yarn format:lint && yarn format:prettier"
+    "formatter": "yarn format:lint && yarn format:prettier",
+    "export": "next export"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -53,7 +54,7 @@
   },
   "lint-staged": {
     "./src/**/*": [
-      "yarn formatter"
+      "npx formatter"
     ]
   }
 }
