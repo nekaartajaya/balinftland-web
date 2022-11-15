@@ -1,16 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
+  content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
   theme: {
-    extend: {
-      fontFamily: {
-        Rampart: ['Syne', 'sans-serif'],
-      },
+    colors: {
+      'dark-blue': '#0E3D5B',
+      'dark-blue-2': '#231E58',
+      blue: '#155E9D',
+      'light-blue': '#0175BF',
+      'light-grey': '#CDCDCD',
+      grey: '#838383',
+      'light-green': '#2AC610',
+      green: '#53BA9C',
+      white: '#FFFFFF',
+      black: '#000000',
     },
-    screens: {
-      tablet: '426px',
-      desktop: '920px',
-    },
+    extend: {},
   },
   plugins: [],
 };

@@ -1,22 +1,29 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js + Jest
 
-## Getting Started
+This example shows how to configure Jest to work with Next.js.
 
-First, run the development server:
+This includes Next.js' built-in support for Global CSS, CSS Modules and TypeScript.
+
+## How to Use
+
+Quickly get started using [Create Next App](https://github.com/vercel/next.js/tree/canary/packages/create-next-app#readme)!
+
+In your terminal, run the following command:
 
 ```bash
-npm run dev
-# or
-yarn dev
+npx create-next-app --example with-jest with-jest-app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```bash
+yarn create next-app --example with-jest with-jest-app
+```
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```bash
+pnpm create next-app --example with-jest with-jest-app
+```
 
-## Learn More
+## Run Jest Tests
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm test
+```
