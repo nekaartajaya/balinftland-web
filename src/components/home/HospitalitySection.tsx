@@ -3,7 +3,7 @@ import {useMediaQuery} from '@mui/material';
 import Carousel from 'react-multi-carousel';
 
 const HomeHospitalitySection = () => {
-  const isLaptop = useMediaQuery('(max-width: 1440px)', {noSsr: true});
+  const isLaptop = useMediaQuery('(max-width: 990px)', {noSsr: true});
 
   const Hospitality: Array<Hospitality> = [
     {
@@ -62,7 +62,7 @@ const HomeHospitalitySection = () => {
 
   return (
     <div className="md:py-24 py-16 md:px-0 px-4">
-      <h1 className="md:text-[52px] text-4xl text-blue font-bold text-center mb-16">
+      <h1 className="md:text-[52px] text-3xl text-blue font-bold text-center mb-16">
         Smart 4.0 Hospitality
       </h1>
       <div className="px-4 relative pb-10">
