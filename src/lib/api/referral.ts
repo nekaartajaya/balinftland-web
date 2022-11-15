@@ -1,4 +1,4 @@
-import DigilandAPI from '.';
+import BaliNFTLandAPI from '.';
 
 type refCodePayloadProps = {
   id: string;
@@ -14,7 +14,7 @@ type refCodePayloadProps = {
 
 export const checkRefCode = async (token: string, code: string) => {
   try {
-    const {data} = await DigilandAPI(token).request({
+    const {data} = await BaliNFTLandAPI(token).request({
       url: `/users/${code}`,
       method: 'GET',
     });
@@ -49,7 +49,7 @@ export const mintNFTWithRefCode = async (token, payload: refCodePayloadProps) =>
       referralCode,
     };
 
-    const {data} = await DigilandAPI(token).request({
+    const {data} = await BaliNFTLandAPI(token).request({
       url: `projects/${projectId}/nfts/${nftId}/mintings`,
       method: 'POST',
       data: values,

@@ -7,7 +7,7 @@ const Dashboard = props => {
   return (
     <SafeHydrate>
       <Layout>
-        <Meta title="DigilandBali | User Dashboard" />
+        <Meta title="User Dashboard | Bali NFT Land" />
         <UnlockableContent />
       </Layout>
     </SafeHydrate>

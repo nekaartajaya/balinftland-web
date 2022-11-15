@@ -6,7 +6,7 @@ import SafeHydrate from 'src/components/SafeHydrate';
 const MintPage = props => {
   return (
     <Layout>
-      <Meta title="DigilandBali | Mint Lima Beach NFT" />
+      <Meta title="Mint Lima Beach NFT | Bali NFT Land" />
       <SafeHydrate>
         <ContentComponent />
       </SafeHydrate>

@@ -58,7 +58,7 @@ const Sidebar = ({activeMenu, isOpenSidebar, setIsOpenSidebar}) => {
       {/* Desktop */}
       <div className="sidebar h-screen px-9 py-10 bg-[#FFF] fixed z-[99] overflow-y-scroll hidden desktop:block">
         <div>
-          <img src="/logo-black.svg" alt="logo Digiland" />
+          <img src="/logo-black.svg" alt="Bali NTF Land Logo" />
         </div>
         <div className="mt-[100px] flex flex-col gap-10">
           {menu.map((v, i) => {
@@ -109,7 +109,7 @@ const Sidebar = ({activeMenu, isOpenSidebar, setIsOpenSidebar}) => {
           }`}
         >
           <div>
-            <img src="/logo-black.svg" alt="logo Digiland" />
+            <img src="/logo-black.svg" alt="Bali NTF Land Logo" />
           </div>
           <div className="desktop:mt-[100px] mt-[50px] flex flex-col gap-6 desktop:gap-10 mb-10">
             {menu.map((v, i) => {

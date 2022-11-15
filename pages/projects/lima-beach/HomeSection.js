@@ -19,7 +19,7 @@ const Icons = ({dimension}) => {
     {
       src: '/Twitter_White.svg',
       alt: 'Twitter-white',
-      url: 'https://twitter.com/digilandbali',
+      url: 'https://twitter.com/balinftland',
     },
     {
       src: '/Opensea_White.svg',

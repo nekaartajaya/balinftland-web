@@ -87,7 +87,7 @@ const PermissiveDocument = ({tabId, document}: {tabId: string; document: string}
         </Document>
         {successRender && (
           <div className="text-5xl font-normal whitespace-nowrap text-[#afafaf66] absolute -rotate-45 left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%]">
-            Digilandbali Copyright
+            Bali NFT Land Copyright
           </div>
         )}
       </div>
@@ -120,7 +120,7 @@ const ModalBurn = ({isOpenModalBurn, setIsOpenModalBurn}) => {
     >
       <div className="text-[#131736] text-[14px] my-6">
         Burning your NFTs will allow you to turn your NFTs Apartment digital model into conventional
-        model, and get physical land certificate. To do this action, kindly visit DigilandbaliHQ
+        model, and get physical land certificate. To do this action, kindly visit Bali NFT Land HQ
       </div>
       <div className="w-full flex justify-end">
         <button

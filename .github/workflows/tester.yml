@@ -27,16 +27,3 @@ jobs:
         run: yarn lint
       - name: Run Build
         run: yarn build
-
-  check-link-markdown:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Check link markdown
-        uses: gaurav-nelson/github-action-markdown-link-check@v1
-        with:
-          use-quiet-mode: 'yes'
-          config-file: '.github/workflows/mlc_config.json'

@@ -49,11 +49,11 @@ const AboutSection = () => {
         <HomeTitleSection
           type={'leftImage'}
           topLeftText={'Who'}
-          topRightText={'Digilandbali, NFT Property Developer'}
+          topRightText={'Bali NFT Land, NFT Property Developer'}
           imageURL={'/Home/who.png'}
-          imageAlt={'Digiland image'}
+          imageAlt={'Bali NTF Land image'}
           miniText={'One of the properties that has been built by the developer group'}
-          descText={`Digilandbali is built by a team of Blockchain Consultant Experts with over a decade of experience. Being one of Bali's most reputable property developers with over 20 years of expertise, they have also built hotels and other properties including Agra Nusa Villas and the Nest in Benoa, as well as the Sapphire Cliff Resort and Umalas Signature. In particular, the NFT property will be maintained by a world-class management team with more than 25 years of experience.`}
+          descText={`Bali NFT Land is built by a team of Blockchain Consultant Experts with over a decade of experience. Being one of Bali's most reputable property developers with over 20 years of expertise, they have also built hotels and other properties including Agra Nusa Villas and the Nest in Benoa, as well as the Sapphire Cliff Resort and Umalas Signature. In particular, the NFT property will be maintained by a world-class management team with more than 25 years of experience.`}
         />
       </div>
       <div className="pb-20 tablet:pb-32">
@@ -62,7 +62,7 @@ const AboutSection = () => {
           topLeftText={'Why'}
           topRightText={'We build the property together, We own the property together'}
           miniText={'On a mission to make everyone\nbecome a property developer'}
-          descText={`Digilandbali is a decentralized property developer with no middleman and no high conventional marketing cost. The idea is to create a viable option for the people who are struggling to own a property because of the high cost and unavailability of liquidity.`}
+          descText={`Bali NFT Land is a decentralized property developer with no middleman and no high conventional marketing cost. The idea is to create a viable option for the people who are struggling to own a property because of the high cost and unavailability of liquidity.`}
         />
       </div>
       <div className="pb-20 tablet:pb-32">
@@ -71,7 +71,7 @@ const AboutSection = () => {
           imageAlt="Lima Beach image"
           title={`Get your fragments, Get your apartments, Live up your investments`}
           description={
-            'Digilandbali is on a mission by adding value to daily lives of the community by hoping to get more people to involved in property with developer price, giving the NFT owners to stake our NFT apartments for more profitable rental as well as providing Smart 4.0 hospitality system technology. Because, together, we strive to build the NFT property by reducing the financial burden on property developers while yet offering high-end, luxurious services to leaseholders. ―We Build Together, We Own Together.'
+            'Bali NFT Land is on a mission by adding value to daily lives of the community by hoping to get more people to involved in property with developer price, giving the NFT owners to stake our NFT apartments for more profitable rental as well as providing Smart 4.0 hospitality system technology. Because, together, we strive to build the NFT property by reducing the financial burden on property developers while yet offering high-end, luxurious services to leaseholders. ―We Build Together, We Own Together.'
           }
         />
       </div>
@@ -109,7 +109,7 @@ const AboutSection = () => {
               alt="Discord-white"
             />
             <img
-              onClick={() => window.open('https://twitter.com/digilandbali')}
+              onClick={() => window.open('https://twitter.com/balinftland')}
               src="/Twitter_White.svg"
               className="mx-1 w-[16px] h-[16px] tablet:w-[36px] tablet:h-[36px] cursor-pointer"
               alt="Discord-white"
@@ -139,9 +139,9 @@ const AboutSection = () => {
         <HomeTitleSection
           type={'leftImage'}
           topLeftText={'What'}
-          topRightText={'Digilandbali 1st Project: \nLima Beach Signature NFT'}
+          topRightText={'Bali NFT Land 1st Project: \nLima Beach Signature NFT'}
           miniText={'On a mission to make everyone\nbecome a property developer'}
-          descText={`Digilandbali develops the next-level NFT concept, in which our NFTs are backed by a tangible asset that will grow in value over time. The NFT has utility and strong physical apartment fundamentals. Lima Beach Signature NFT is Digilandbali's first decentralized property blockchain project. Each Lima Beach Signature NFT symbolizes the physical ownership of an apartment in Pantai Lima, Canggu, and Bali, which leaseholders can use for living. While the Lima Beach Signature's physical properties are all luxury service smart apartments that employ IoT technology.`}
+          descText={`Bali NFT Land develops the next-level NFT concept, in which our NFTs are backed by a tangible asset that will grow in value over time. The NFT has utility and strong physical apartment fundamentals. Lima Beach Signature NFT is balinftland's first decentralized property blockchain project. Each Lima Beach Signature NFT symbolizes the physical ownership of an apartment in Pantai Lima, Canggu, and Bali, which leaseholders can use for living. While the Lima Beach Signature's physical properties are all luxury service smart apartments that employ IoT technology.`}
         />
       </div>
       <div className="pb-20 tablet:pb-32">

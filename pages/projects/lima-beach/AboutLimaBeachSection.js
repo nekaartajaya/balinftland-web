@@ -29,7 +29,7 @@ const AboutLimaBeachSection = () => {
             </div>
           </div>
           <div className={styles.description}>
-            The first decentralised property project from Digilandbali is called The Lima Beach
+            The first decentralised property project from Bali NFT Land is called The Lima Beach
             Signature. Each Lima Beach Signature NFT represents the physical ownership of an
             apartment that leaseholders in Pantai Lima, Canggu, Bali, may use for occupancy. Each
             physical apartment in Lima Beach Signature is a luxury, IoT Technology enabled smart

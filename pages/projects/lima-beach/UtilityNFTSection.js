@@ -52,7 +52,7 @@ const UtilityNFTSection = () => {
                 Increasing participation in property investment with developer prices
               </div>
               <div className={styles.text}>
-                Digilandbali's Lima Beach Signature NFT project reduces ownership expenses and
+                Bali NFT Land's Lima Beach Signature NFT project reduces ownership expenses and
                 broadens its attractiveness. As a property's price rises, so does its value. Since
                 the property project was built by the community working together, everyone can
                 access the property's luxury services at a developer price instead of market price.
@@ -61,7 +61,7 @@ const UtilityNFTSection = () => {
             <div className="flex flex-col items-start gap-4 desktop:max-w-[524px]">
               <div className={styles.titleMedium}>Smart Apartment with IoT Technology Adoption</div>
               <div className={styles.text}>
-                Digilandbali was a smart 4.0 digital hospitality and advanced building management
+                Bali NFT Land was a smart 4.0 digital hospitality and advanced building management
                 system, where you don't need a physical key to get in. This also will surely
                 improves the customer experience and perceptions.
               </div>

@@ -55,7 +55,7 @@ const NavbarComponent = ({isOpenNav}) => {
             <img
               src="/DigilandBali.svg"
               className="w-[27px] h-[27px] cursor-pointer"
-              alt="Digiland-logo"
+              alt="Bali NTF Land Logo"
             />
           </Link>
         </div>
@@ -151,9 +151,9 @@ const NavbarComponent = ({isOpenNav}) => {
               <img
                 src="/DigilandBali.svg"
                 className="w-[14px] h-[14px] tablet:w-[32px] tablet:h-[32px]"
-                alt="Digiland-logo"
+                alt="Bali NTF Land Logo"
               />
-              DIGILANDBALI
+              Bali NFT Land
             </div>
           </Link>
         </div>

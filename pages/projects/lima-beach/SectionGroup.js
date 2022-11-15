@@ -19,7 +19,7 @@ import styles from 'styles/limabeach/SectionGroup.module.css';
 const SectionGroup = () => {
   return (
     <div className={styles.root}>
-      <Meta title="DigilandBali | Lima Beach" />
+      <Meta title="Lima Beach | Bali NFT Land" />
       <HomeSection />
       <AboutLimaBeachSection />
       <UtilityNFTSection />

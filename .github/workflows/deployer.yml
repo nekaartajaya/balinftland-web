@@ -31,10 +31,9 @@ jobs:
         run: yarn build
       - name: Run Export
         run: yarn export
-      - name: Deploy
-        uses: FirebaseExtended/action-hosting-deploy@v0
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
-          projectId: '${{ secrets.FIREBASE_PROJECT_ID }}'
-          channelId: live
+          args: deploy --project=testnet
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

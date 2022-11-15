@@ -1,4 +1,4 @@
-import DigilandAPI from '.';
+import BaliNFTLandAPI from '.';
 
 type unlockablePayload = {
   signature: string;
@@ -18,7 +18,7 @@ export const getUnlockableContent = async (payload: unlockablePayload) => {
       tokenId,
     };
 
-    const {data} = await DigilandAPI().request({
+    const {data} = await BaliNFTLandAPI().request({
       url: `projects/${projectId}/nfts/${nftId}/unlockable-contents`,
       method: 'GET',
       params: values,

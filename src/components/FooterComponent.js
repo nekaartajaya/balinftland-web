@@ -10,9 +10,9 @@ const FooterComponent = () => {
           <img
             src="/DigilandBali.svg"
             className="w-[14px] h-[14px] tablet:w-[27px] tablet:h-[27px]"
-            alt="Logo-DigilandBali"
+            alt="Logo-balinftland"
           />
-          DIGILANDBALI
+          Bali NFT Land
         </div>
         <div className={`${styles.contactIcons} ${styles.top}`}>
           <img
@@ -40,8 +40,8 @@ const FooterComponent = () => {
       <div className={styles.container}>
         <div className="desktop:block hidden mr-10 w-[30%]">
           <div className="flex text-white items-center text-[12px] tablet:text-[24px] font-bold tracking-wide gap-2">
-            <img src="/DigilandBali.svg" className="max-w-25 w-25 h-8" alt="Logo-DigilandBali" />
-            DIGILANDBALI
+            <img src="/DigilandBali.svg" className="max-w-25 w-25 h-8" alt="Logo-balinftland" />
+            Bali NFT Land
           </div>
         </div>
         <div className={styles.info}>
@@ -49,13 +49,13 @@ const FooterComponent = () => {
             <label className={styles.title}>Discover</label>
             <div className="flex flex-col tablet:gap-4">
               <label className={styles.link}>
-                <a href="">Digilandbali Whitepaper</a>
+                <a href="">Bali NFT Land Whitepaper</a>
               </label>
               <label className={styles.link}>
-                <a href="">Digilandbali Partners</a>
+                <a href="">Bali NFT Land Partners</a>
               </label>
               <label className={styles.link}>
-                <a href="">Digilandbali Career</a>
+                <a href="">Bali NFT Land Career</a>
               </label>
             </div>
           </div>
@@ -72,8 +72,8 @@ const FooterComponent = () => {
           <div className={styles.inner}>
             <label className={styles.title}>Contact</label>
             <div className="flex flex-col tablet:gap-4">
-              <Link href="mailto:gm@digilandbali.com" passHref>
-                <label className={styles.link}>gm@digilandbali.com</label>
+              <Link href="mailto:gm@balinftland.com" passHref>
+                <label className={styles.link}>gm@balinftland.com</label>
               </Link>
             </div>
           </div>
@@ -105,7 +105,7 @@ const FooterComponent = () => {
             alt="Discord-white"
           />
           <img
-            onClick={() => window.open('https://twitter.com/digilandbali')}
+            onClick={() => window.open('https://twitter.com/balinftland')}
             src="/Twitter_White.svg"
             className="w-6 h-6 cursor-pointer"
             alt="Discord-white"
@@ -120,7 +120,7 @@ const FooterComponent = () => {
       </div>
       <div className="flex flex-row items-center justify-between mt-6 border-t-2 border-[#FFF] pt-6 text-[#e2e2e2]">
         <label className="text-[8px] tablet:text-[12px] desktop:text-[16px]">
-          2022 © DIGILANDBALI
+          2022 © Bali NFT Land
         </label>
         <div className="flex items-center">
           <label className="text-[8px] tablet:text-[12px] desktop:text-[16px]">

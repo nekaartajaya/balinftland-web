@@ -32,11 +32,13 @@ const HomeSection = () => {
   return (
     <section id="home" className="pt-12">
       <div>
-        <div className={styles.titleBig}>DIGILANDBALI</div>
+        <div className={styles.titleBig}>Bali NFT Land</div>
         <div className={styles.subtitle}>WE BUILD TOGETHER, WE OWN TOGETHER</div>
         <div className={`${styles.buttonContainer} ${styles.top}`}>
           <Link href="/#home" passHref>
-            <button className={`${styles.button} ${styles.buttonWhite}`}>About Digilandbali</button>
+            <button className={`${styles.button} ${styles.buttonWhite}`}>
+              About Bali NFT Land
+            </button>
           </Link>
           <Link href="/projects/lima-beach" passHref>
             <button className={styles.button}>Visit Lima Beach Project</button>
@@ -74,7 +76,7 @@ const HomeSection = () => {
         </animated.div>
       </div>
       <div className={`${styles.buttonContainer} ${styles.bottom}`}>
-        <button className={`${styles.button} ${styles.buttonWhite}`}>About Digilandbali</button>
+        <button className={`${styles.button} ${styles.buttonWhite}`}>About Bali NFT Land</button>
         <button className={styles.button}>Visit Lima Beach Project</button>
       </div>
       <div className={styles.imageUnionContainer}>

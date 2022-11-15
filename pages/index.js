@@ -14,7 +14,7 @@ export default function Home(props) {
   return (
     <Layout>
       <div>
-        <Meta title="DigilandBali | Homepage" />
+        <Meta title="Homepage | Bali NFT Land" />
         <HomeSection />
         <SponsorSection />
         <AboutSection />

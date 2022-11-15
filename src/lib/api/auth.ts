@@ -1,4 +1,4 @@
-import DigilandAPI from '.';
+import BaliNFTLandAPI from '.';
 
 import {createSignature} from 'src/helpers/metamask-interact.js';
 
@@ -48,7 +48,7 @@ export const getChallenge = async (
   values: GetChallengeProps,
 ): Promise<GetChallengeRespProps | null> => {
   try {
-    const {data} = await DigilandAPI().request({
+    const {data} = await BaliNFTLandAPI().request({
       url: '/auth/login/challange',
       method: 'POST',
       data: values,
@@ -63,7 +63,7 @@ export const getChallenge = async (
 
 export const login = async (values: LoginProps): Promise<LoginRespProps | null> => {
   try {
-    const {data} = await DigilandAPI().request({
+    const {data} = await BaliNFTLandAPI().request({
       url: '/auth/login',
       method: 'POST',
       data: values,

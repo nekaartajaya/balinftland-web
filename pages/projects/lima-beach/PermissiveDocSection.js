@@ -49,8 +49,8 @@ const PermissiveDocSection = () => {
       </animated.div>
       <div className={styles.headerText}>
         <div className="mb-4">
-          To what extent does Digilandbali ensure the safety and security of your physical apartment
-          authentication certificate?
+          To what extent does Bali NFT Land ensure the safety and security of your physical
+          apartment authentication certificate?
         </div>
         <div className="mb-4">
           We are aware that crypto users may consider this when determining whether the property
@@ -90,7 +90,7 @@ const PermissiveDocSection = () => {
           </div>
           <div className="w-full my-1 border-2 border-[#5b5b5b]"></div>
           <div className={styles.imageText}>
-            Digilandbali's "NFT Burning" feature helps NFT owners receive a Physical Leasehold
+            Bali NFT Land's "NFT Burning" feature helps NFT owners receive a Physical Leasehold
             Rights Certificate from a notary. This certificate grants the NFT owner 58 years of
             leasehold rights and centralised access to the apartment through an IoT app.
           </div>

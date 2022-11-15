@@ -1,7 +1,7 @@
 {
   "projects": {
-    "default": "digilandbali-testnet",
-    "testnet": "digilandbali-testnet",
-    "mainnet": "digilandbali-mainnet"
+    "default": "balinftland-testnet",
+    "testnet": "balinftland-testnet",
+    "mainnet": "balinftland-mainnet"
   }
 }
