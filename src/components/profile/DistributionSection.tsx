@@ -8,7 +8,11 @@ const ProfileDistributionSection = () => {
         <span className="absolute right-[-30px]">1,771 NFT Fragment</span>
       </div>
 
-      <img src="/images/pages/profile/dummy-3.png" alt="Vision" className="w-full px-20" />
+      <img
+        src="/images/pages/profile/dummy-3.png"
+        alt="Vision"
+        className="w-full px-20"
+      />
     </div>
   );
 };

@@ -1,10 +1,10 @@
-import {Logo} from '@interfaces/HomeInterface';
-import {Avatar, useMediaQuery} from '@mui/material';
+import { Logo } from '@interfaces/HomeInterface';
+import { Avatar, useMediaQuery } from '@mui/material';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 const HomeLogoSection = () => {
-  const isTab = useMediaQuery('(max-width: 768px)', {noSsr: true});
+  const isTab = useMediaQuery('(max-width: 768px)', { noSsr: true });
 
   const Logo: Array<Logo> = [
     {
@@ -31,16 +31,16 @@ const HomeLogoSection = () => {
 
   const responsive = {
     desktop: {
-      breakpoint: {max: 9999, min: 769},
+      breakpoint: { max: 9999, min: 769 },
       items: 4,
     },
     tablet: {
-      breakpoint: {max: 768, min: 401},
+      breakpoint: { max: 768, min: 401 },
       items: 2,
       slidesToSlide: 2,
     },
     phone: {
-      breakpoint: {max: 400, min: 0},
+      breakpoint: { max: 400, min: 0 },
       items: 1,
       slidesToSlide: 1,
     },
@@ -56,13 +56,13 @@ const HomeLogoSection = () => {
           renderDotsOutside={true}
           dotListClass={'slider-dot'}
         >
-          {Logo.map(({name, desc}, index) => {
+          {Logo.map(({ name, desc }, index) => {
             return (
               <div
                 key={index}
                 className="flex flex-col items-center text-center gap-y-4 text-white"
               >
-                <Avatar sx={{width: 100, height: 100}}> </Avatar>
+                <Avatar sx={{ width: 100, height: 100 }}> </Avatar>
                 <h1 className="text-sm">{name}</h1>
                 <div className="text-[10px] max-w-[180px]">{desc}</div>
               </div>

@@ -1,0 +1,42 @@
+name: CII
+
+on:
+  branch_protection_rule:
+  schedule:
+    - cron: '00 5 * * 0'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cii-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'branch_protection_rule' }}
+
+jobs:
+  openssf-scorecard:
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
+      security-events: write
+    runs-on: ubuntu-20.04
+    name: OpenSSF Scorecards
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@e2f20e631ae6d7dd3b768f56a5d2af784dd54791
+      - name: Analize
+        uses: ossf/scorecard-action@99c53751e09b9529366343771cc321ec74e9bd3d
+        with:
+          results_file: results.sarif
+          results_format: sarif
+          publish_results: true
+      - name: Upload Result to Artifact
+        uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb
+        with:
+          name: SARIF file
+          path: results.sarif
+          retention-days: 5
+      - name: Upload Result to Code-Scanning
+        uses: github/codeql-action/upload-sarif@4238421316c33d73aeea2801274dd286f157c2bb
+        with:
+          sarif_file: results.sarif

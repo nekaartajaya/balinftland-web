@@ -1,4 +1,4 @@
-import {Stage} from '@interfaces/ProjectInterface';
+import { Stage } from '@interfaces/ProjectInterface';
 import ProjectStage from './Stage';
 
 const ProjectMintingSection = () => {
@@ -40,14 +40,21 @@ const ProjectMintingSection = () => {
       </div>
 
       <div className="text-blue text-[22px] italic mb-4">
-        Currently, the market price of a luxury apartment is $210,000. If you enter the project
-        early, each NFT fragment will cost $10,000, making the total cost of seven NFT fragments
-        around $70,000, a third (33%) of the current market price.
+        Currently, the market price of a luxury apartment is $210,000. If you
+        enter the project early, each NFT fragment will cost $10,000, making the
+        total cost of seven NFT fragments around $70,000, a third (33%) of the
+        current market price.
       </div>
 
-      {Stage.map(({title, subtitle, desc, image}: Stage, index: number) => {
+      {Stage.map(({ title, subtitle, desc, image }: Stage, index: number) => {
         return (
-          <ProjectStage key={index} title={title} subtitle={subtitle} desc={desc} image={image} />
+          <ProjectStage
+            key={index}
+            title={title}
+            subtitle={subtitle}
+            desc={desc}
+            image={image}
+          />
         );
       })}
     </div>

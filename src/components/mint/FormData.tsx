@@ -9,7 +9,9 @@ const MintFormData = () => {
   return (
     <>
       <div className="w-full bg-white flex flex-col gap-y-4 items-center py-10">
-        <span className="text-[22px] text-blue tracking-[6px] font-medium mb-4">ENTRY DATA</span>
+        <span className="text-[22px] text-blue tracking-[6px] font-medium mb-4">
+          ENTRY DATA
+        </span>
         <div className="max-w-[550px] w-full flex flex-col gap-y-14">
           <div className="flex flex-col gap-y-4">
             <FormLabel text="Name" />
@@ -26,7 +28,11 @@ const MintFormData = () => {
           </div>
           <div className="flex flex-col gap-y-4">
             <FormLabel text="Collection" />
-            <FormInputText type="text" name="collection" placeholder="Wertoy Collection" />
+            <FormInputText
+              type="text"
+              name="collection"
+              placeholder="Wertoy Collection"
+            />
           </div>
           <div className="flex flex-col gap-y-4">
             <FormTraits
@@ -53,14 +59,20 @@ const MintFormData = () => {
             <FormLabel text="Unlockable Content" />
             <div className="flex justify-between gap-x-8">
               <FormDescription text="Include unlockable content that can only be revealed by the owner of the item." />
-              <FormSwitch defaultChecked inputProps={{'aria-label': 'ant design'}} />
+              <FormSwitch
+                defaultChecked
+                inputProps={{ 'aria-label': 'ant design' }}
+              />
             </div>
           </div>
           <div className="flex flex-col gap-y-4">
             <FormLabel text="Explicit & Sensitive Content" />
             <div className="flex justify-between gap-x-8">
               <FormDescription text="Set this item as explicit and sensitive content" />
-              <FormSwitch defaultChecked inputProps={{'aria-label': 'ant design'}} />
+              <FormSwitch
+                defaultChecked
+                inputProps={{ 'aria-label': 'ant design' }}
+              />
             </div>
           </div>
           <div className="flex flex-col gap-y-4">
@@ -79,7 +91,9 @@ const MintFormData = () => {
       </div>
 
       <button className="bg-dark-blue w-full py-4 flex gap-x-4 justify-center items-center">
-        <span className="text-[32px] text-white font-bold tracking-widest">MINT YOUR NFT</span>
+        <span className="text-[32px] text-white font-bold tracking-widest">
+          MINT YOUR NFT
+        </span>
         <img src="/images/icons/arrow-right.png" alt="Next" className="w-6" />
       </button>
     </>

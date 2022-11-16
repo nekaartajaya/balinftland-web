@@ -1,6 +1,12 @@
-import {ButtonInterface} from '@interfaces/GlobalInterface';
+import { ButtonInterface } from '@interfaces/GlobalInterface';
 
-const CustomButton = ({text, color = '#FFF', icon, classes, onClick}: ButtonInterface) => {
+const CustomButton = ({
+  text,
+  color = '#FFF',
+  icon,
+  classes,
+  onClick,
+}: ButtonInterface) => {
   return (
     <>
       <button

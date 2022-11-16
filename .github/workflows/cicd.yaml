@@ -1,0 +1,106 @@
+name: CI/CD
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  test:
+    if: ${{ github.event_name == 'pull_request' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        command:
+          - 'build'
+          - 'lint:check'
+          - 'format:check'
+    runs-on: ubuntu-20.04
+    name: Test on Node.js 16 ( ${{ matrix.command }} )
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@e2f20e631ae6d7dd3b768f56a5d2af784dd54791
+        with:
+          fetch-depth: 0
+      - name: Set Up Node.js
+        uses: actions/setup-node@8c91899e586c5b171469028077307d293428b516
+        with:
+          node-version: 16
+          cache: npm
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+      - name: Run ${{ matrix.command }}
+        run: yarn ${{ matrix.command }}
+
+  release-please:
+    if: ${{ github.event_name == 'push' && github.ref_type == 'branch' }}
+    runs-on: ubuntu-20.04
+    name: Release Please
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@e2f20e631ae6d7dd3b768f56a5d2af784dd54791
+        with:
+          fetch-depth: 0
+      - name: Release
+        id: release
+        uses: google-github-actions/release-please-action@44c30b36230f7335e5da53e297d931807ccea116
+        with:
+          release-type: node
+          package-name: ${{ github.event.repository.name }}
+          include-v-in-tag: false
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+
+  deploy:
+    needs:
+      - release-please
+    permissions:
+      contents: read
+      id-token: write
+    strategy:
+      max-parallel: 1
+      matrix:
+        is_release:
+          - ${{ needs.release-please.outputs.release_created || false }}
+        environment:
+          - TESTNET
+          - MAINNET
+        exclude:
+          - is_release: false
+            environment: MAINNET
+    environment: ${{ matrix.environment }}
+    env:
+      NEXT_PUBLIC_AUTH_URL: '${{ secrets.NEXT_PUBLIC_AUTH_URL }}'
+      NEXT_PUBLIC_API_URL: '${{ secrets.NEXT_PUBLIC_API_URL }}'
+      NEXT_PUBLIC_WEB3_PROVIDER_URL: '${{ secrets.NEXT_PUBLIC_WEB3_PROVIDER_URL }}'
+      NEXT_PUBLIC_WEB3_PROVIDER_KEY: '${{ secrets.NEXT_PUBLIC_WEB3_PROVIDER_KEY }}'
+      NEXT_PUBLIC_LBSF_CONTRACT_ADDRESS: '${{ secrets.NEXT_PUBLIC_LBSF_CONTRACT_ADDRESS }}'
+      NEXT_PUBLIC_USDC_CONTRACT_ADDRESS: '${{ secrets.NEXT_PUBLIC_USDC_CONTRACT_ADDRESS }}'
+    runs-on: ubuntu-20.04
+    name: Deploy to ${{ matrix.environment }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@e2f20e631ae6d7dd3b768f56a5d2af784dd54791
+        with:
+          fetch-depth: 0
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Run Build
+        run: yarn build
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --project=${{ matrix.environment }}
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

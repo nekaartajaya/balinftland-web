@@ -1,9 +1,9 @@
-import {Hospitality} from '@interfaces/HomeInterface';
-import {useMediaQuery} from '@mui/material';
+import { Hospitality } from '@interfaces/HomeInterface';
+import { useMediaQuery } from '@mui/material';
 import Carousel from 'react-multi-carousel';
 
 const HomeHospitalitySection = () => {
-  const isLaptop = useMediaQuery('(max-width: 990px)', {noSsr: true});
+  const isLaptop = useMediaQuery('(max-width: 990px)', { noSsr: true });
 
   const Hospitality: Array<Hospitality> = [
     {
@@ -40,21 +40,21 @@ const HomeHospitalitySection = () => {
 
   const responsive = {
     desktop: {
-      breakpoint: {max: 9999, min: 991},
+      breakpoint: { max: 9999, min: 991 },
       items: 6,
     },
     laptop: {
-      breakpoint: {max: 990, min: 769},
+      breakpoint: { max: 990, min: 769 },
       items: 4,
       slidesToSlide: 1,
     },
     tablet: {
-      breakpoint: {max: 768, min: 401},
+      breakpoint: { max: 768, min: 401 },
       items: 2,
       slidesToSlide: 1,
     },
     phone: {
-      breakpoint: {max: 400, min: 0},
+      breakpoint: { max: 400, min: 0 },
       items: 1,
       slidesToSlide: 1,
     },
@@ -73,13 +73,15 @@ const HomeHospitalitySection = () => {
           renderDotsOutside={true}
           dotListClass={'slider-dot'}
         >
-          {Hospitality.map(({name, desc, image}, index) => {
+          {Hospitality.map(({ name, desc, image }, index) => {
             return (
               <div key={index} className="px-2">
                 <div className="mb-4">
                   <img src={image} alt={name} className="w-full" />
                 </div>
-                <div className="text-center text-blue text-sm font-normal px-2">{desc}</div>
+                <div className="text-center text-blue text-sm font-normal px-2">
+                  {desc}
+                </div>
               </div>
             );
           })}

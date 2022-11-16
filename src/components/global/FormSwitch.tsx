@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import {Switch} from '@mui/material';
+import { Switch } from '@mui/material';
 
 const FormSwitch = styled(Switch)(() => ({
   width: 55,

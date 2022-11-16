@@ -1,6 +1,6 @@
 import CustomButton from '@components/global/Button';
 import Title from '@components/global/Title';
-import {DocumentTypeInterface} from '@interfaces/DocumentInterface';
+import { DocumentTypeInterface } from '@interfaces/DocumentInterface';
 import Parser from 'html-react-parser';
 
 const DocumentTypeSection = () => {
@@ -40,11 +40,18 @@ const DocumentTypeSection = () => {
               </div>
 
               <div className="flex flex-col justify-between">
-                <p className="text-dark-blue text-2xl text-justify">{Parser(item.desc)}</p>
+                <p className="text-dark-blue text-2xl text-justify">
+                  {Parser(item.desc)}
+                </p>
 
                 <CustomButton
                   text={item.button}
-                  icon={<img src="/images/icons/arrow-right.png" alt="Read Brochure" />}
+                  icon={
+                    <img
+                      src="/images/icons/arrow-right.png"
+                      alt="Read Brochure"
+                    />
+                  }
                   classes="w-max gap-x-4 mx-auto"
                 />
               </div>

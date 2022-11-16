@@ -1,8 +1,8 @@
 import Layout from '@components/layout';
 import MintFormData from '@components/mint/FormData';
 import MintFormUpload from '@components/mint/FormUpload';
-import {Slide} from '@mui/material';
-import {useState} from 'react';
+import { Slide } from '@mui/material';
+import { useState } from 'react';
 
 const Mint = () => {
   const [step, setStep] = useState<string>('upload');

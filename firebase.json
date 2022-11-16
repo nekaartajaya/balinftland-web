@@ -1,0 +1,15 @@
+{
+  "hosting": {
+    "source": ".",
+    "ignore": ["**/.*", "**/node_modules/**", "firebase.json"]
+  },
+  "emulators": {
+    "hosting": {
+      "port": 5000
+    },
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true
+  }
+}

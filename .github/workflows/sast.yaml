@@ -1,0 +1,39 @@
+name: SAST
+
+on:
+  pull_request:
+  schedule:
+    - cron: '00 5 * * 0'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sast-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  codeql:
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language:
+          - javascript
+          - typescript
+    runs-on: ubuntu-20.04
+    name: CodeQL ( ${{ matrix.language }} )
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@e2f20e631ae6d7dd3b768f56a5d2af784dd54791
+      - name: Initialize
+        uses: github/codeql-action/init@4238421316c33d73aeea2801274dd286f157c2bb
+        with:
+          languages: ${{ matrix.language }}
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@4238421316c33d73aeea2801274dd286f157c2bb
+      - name: Analize
+        uses: github/codeql-action/analyze@4238421316c33d73aeea2801274dd286f157c2bb

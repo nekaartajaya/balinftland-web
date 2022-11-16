@@ -1,10 +1,10 @@
-import {NavMenu} from '@interfaces/NavbarInterface';
+import { NavMenu } from '@interfaces/NavbarInterface';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
-import {SwipeableDrawer} from '@mui/material';
+import { SwipeableDrawer } from '@mui/material';
 import Link from 'next/link';
-import {useRouter} from 'next/router';
-import {useEffect, useState} from 'react';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 const Navbar = () => {
   const router = useRouter();
@@ -49,7 +49,11 @@ const Navbar = () => {
   ];
 
   const handleActiveMenu = (name: string) => {
-    if (pathname && (pathname[1] === name || (pathname[1] === '' && name === 'home'))) return true;
+    if (
+      pathname &&
+      (pathname[1] === name || (pathname[1] === '' && name === 'home'))
+    )
+      return true;
   };
 
   useEffect(() => {
@@ -79,8 +83,9 @@ const Navbar = () => {
 
         {/* Desktop */}
         <div className="link md:flex hidden gap-9 justify-end items-center w-1/2">
-          {NavMenu.map(({name, link, classes}, index) => {
-            if (pathname && pathname[1] === 'mint' && name === 'mint yours') return;
+          {NavMenu.map(({ name, link, classes }, index) => {
+            if (pathname && pathname[1] === 'mint' && name === 'mint yours')
+              return;
 
             return (
               <Link
@@ -119,14 +124,19 @@ const Navbar = () => {
             onClose={handleCloseNavbar}
             onOpen={handleOpenNavbar}
             sx={{
-              '& .MuiBackdrop-root': {top: '86px'},
-              '& .MuiDrawer-paper': {boxSizing: 'border-box', width: '100%', top: '86px'},
+              '& .MuiBackdrop-root': { top: '86px' },
+              '& .MuiDrawer-paper': {
+                boxSizing: 'border-box',
+                width: '100%',
+                top: '86px',
+              },
             }}
             className="!top-[86px]"
           >
             <div className="px-4 pt-4">
-              {NavMenu.map(({name, link, classes}, index) => {
-                if (pathname && pathname[1] === 'mint' && name === 'mint yours') return;
+              {NavMenu.map(({ name, link, classes }, index) => {
+                if (pathname && pathname[1] === 'mint' && name === 'mint yours')
+                  return;
 
                 return (
                   <Link key={index} href={link}>

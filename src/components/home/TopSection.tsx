@@ -1,5 +1,5 @@
 import CustomButton from '@components/global/Button';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 
 const HomeTopSection = () => {
   const router = useRouter();
@@ -23,7 +23,11 @@ const HomeTopSection = () => {
       </div>
 
       <div className="lg:w-1/2 md:w-[40%]">
-        <img src="images/stages/stage-4.png" alt="Home Top Section" className="w-full" />
+        <img
+          src="images/stages/stage-4.png"
+          alt="Home Top Section"
+          className="w-full"
+        />
       </div>
       <div className="md:hidden block mt-10">
         <CustomButton

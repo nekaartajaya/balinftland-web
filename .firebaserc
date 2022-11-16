@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "balinftland-testnet",
+    "testnet": "balinftland-testnet",
+    "mainnet": "balinftland-mainnet"
+  },
+  "targets": {},
+  "etags": {}
+}

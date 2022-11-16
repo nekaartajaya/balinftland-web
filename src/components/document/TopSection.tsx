@@ -1,5 +1,5 @@
 import Title from '@components/global/Title';
-import {DocumentCardInterface} from '@interfaces/DocumentInterface';
+import { DocumentCardInterface } from '@interfaces/DocumentInterface';
 import DocumentCard from './Card';
 
 const DocumentTopSection = () => {
@@ -27,18 +27,19 @@ const DocumentTopSection = () => {
 
       <div className="text-dark-blue text-2xl flex flex-col gap-y-6 mb-10 text-justify">
         <p>
-          To what extent does Bali NFT Land ensure the safety and security of your physical
-          apartment authentication certificate?
+          To what extent does Bali NFT Land ensure the safety and security of
+          your physical apartment authentication certificate?
         </p>
         <p>
-          We are aware that crypto users may consider this when determining whether the property
-          blockchain you have chosen will meet your security needs. Today, we are pleased to
-          announce a prominent Indonesian company will establish the Special Purpose Vehicle (SPV),
+          We are aware that crypto users may consider this when determining
+          whether the property blockchain you have chosen will meet your
+          security needs. Today, we are pleased to announce a prominent
+          Indonesian company will establish the Special Purpose Vehicle (SPV),
           which holds the physical apartment certificate of all the NFT owners.
         </p>
         <p>
-          The SPV will have 30 years of leasehold rights for the first license, and the leasehold
-          rights will be renewed or extended for 30 years
+          The SPV will have 30 years of leasehold rights for the first license,
+          and the leasehold rights will be renewed or extended for 30 years
         </p>
       </div>
 

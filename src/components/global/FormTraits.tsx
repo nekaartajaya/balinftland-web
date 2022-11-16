@@ -1,6 +1,6 @@
 import AddIcon from '@mui/icons-material/Add';
 import ClearIcon from '@mui/icons-material/Clear';
-import {useState} from 'react';
+import { useState } from 'react';
 import FormDescription from './FormDescription';
 import FormInputText from './FormInputText';
 import FormLabel from './FormLabel';
@@ -19,9 +19,9 @@ const FormTraits = ({
   const addItems = () => {
     if (items.length > 0) {
       let newItem = items[items.length - 1].id + 1;
-      setItems([...items, {id: newItem}]);
+      setItems([...items, { id: newItem }]);
     } else {
-      setItems([...items, {id: 1}]);
+      setItems([...items, { id: 1 }]);
     }
   };
 

@@ -1,5 +1,5 @@
 import Subtitle from '@components/global/Subtitle';
-import {TeamInterface} from '@interfaces/ProfileInterface';
+import { TeamInterface } from '@interfaces/ProfileInterface';
 
 const ProfileTeamSection = () => {
   const team: Array<TeamInterface> = [
@@ -61,7 +61,11 @@ const ProfileTeamSection = () => {
         {team.map((item: TeamInterface, index: number) => {
           return (
             <div key={index}>
-              <img src={item.imageUrl} alt={item.imageAlt} className="w-full mb-4" />
+              <img
+                src={item.imageUrl}
+                alt={item.imageAlt}
+                className="w-full mb-4"
+              />
               <div className="text-center text-blue tracking-wider">
                 <h1 className="font-bold text-[20px]">{item.name}</h1>
                 <span className="text-base font-medium">{item.position}</span>

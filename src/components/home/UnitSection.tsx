@@ -1,9 +1,9 @@
-import {UnitMetaverse} from '@interfaces/HomeInterface';
-import {useMediaQuery} from '@mui/material';
+import { UnitMetaverse } from '@interfaces/HomeInterface';
+import { useMediaQuery } from '@mui/material';
 import Carousel from 'react-multi-carousel';
 
 const HomeUnitSection = () => {
-  const isTab = useMediaQuery('(max-width: 990px)', {noSsr: true});
+  const isTab = useMediaQuery('(max-width: 990px)', { noSsr: true });
 
   const UnitMetaverse: Array<UnitMetaverse> = [
     {
@@ -22,16 +22,16 @@ const HomeUnitSection = () => {
 
   const responsive = {
     desktop: {
-      breakpoint: {max: 9999, min: 991},
+      breakpoint: { max: 9999, min: 991 },
       items: 3,
     },
     laptop: {
-      breakpoint: {max: 990, min: 769},
+      breakpoint: { max: 990, min: 769 },
       items: 2,
       slidesToSlide: 1,
     },
     tablet: {
-      breakpoint: {max: 768, min: 0},
+      breakpoint: { max: 768, min: 0 },
       items: 1,
       slidesToSlide: 1,
     },
@@ -50,7 +50,7 @@ const HomeUnitSection = () => {
           renderDotsOutside={true}
           dotListClass={'slider-dot'}
         >
-          {UnitMetaverse.map(({name, image}, index) => {
+          {UnitMetaverse.map(({ name, image }, index) => {
             return (
               <div key={index} className="px-6">
                 <div className="mb-4">

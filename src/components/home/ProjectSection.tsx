@@ -1,5 +1,5 @@
 import CustomButton from '@components/global/Button';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 
 const HomeProjectSection = () => {
   const router = useRouter();
@@ -11,8 +11,9 @@ const HomeProjectSection = () => {
           <span className="font-bold">LIMA</span> BEACH SIGNATURE NFT.
         </h1>
         <div className="text-blue text-base md:max-w-[400px] text-right ml-auto mb-20">
-          A limited-edition NFT representing the physical property certificate and physical property
-          ownership built with the Internet of Things (IoT) Technology and Web 3.0.
+          A limited-edition NFT representing the physical property certificate
+          and physical property ownership built with the Internet of Things
+          (IoT) Technology and Web 3.0.
         </div>
         <div>
           <CustomButton

@@ -1,5 +1,5 @@
 import Subtitle from '@components/global/Subtitle';
-import {ImageInterface} from '@interfaces/GlobalInterface';
+import { ImageInterface } from '@interfaces/GlobalInterface';
 
 const ProfileUtilitySection = () => {
   const Utility: Array<ImageInterface> = [
@@ -30,7 +30,9 @@ const ProfileUtilitySection = () => {
           return (
             <div key={index} className="text-center">
               <img src={item.url} alt={item.alt} className="mx-auto" />
-              <h5 className="text-dark-blue text-2xl font-semibold">{item.alt}</h5>
+              <h5 className="text-dark-blue text-2xl font-semibold">
+                {item.alt}
+              </h5>
             </div>
           );
         })}

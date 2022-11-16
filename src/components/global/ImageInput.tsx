@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import {ChangeEvent, DragEvent, MouseEvent, useRef, useState} from 'react';
+import { ChangeEvent, DragEvent, MouseEvent, useRef, useState } from 'react';
 import Image from 'next/image';
 
 type SizeInputImage = 'small' | 'medium' | 'large';
@@ -10,10 +10,13 @@ interface SizeXY {
   Y: string;
 }
 
-const SizeInputImageValue: Map<SizeInputImage, SizeXY> = new Map<SizeInputImage, SizeXY>([
-  ['small', {X: '160px', Y: '160px'}],
-  ['medium', {X: '400px', Y: '280px'}],
-  ['large', {X: '100%', Y: '200px'}],
+const SizeInputImageValue: Map<SizeInputImage, SizeXY> = new Map<
+  SizeInputImage,
+  SizeXY
+>([
+  ['small', { X: '160px', Y: '160px' }],
+  ['medium', { X: '400px', Y: '280px' }],
+  ['large', { X: '100%', Y: '200px' }],
 ]);
 
 const ImageInput = ({
@@ -31,7 +34,10 @@ const ImageInput = ({
 }) => {
   const fileInput = useRef<HTMLInputElement>(null);
 
-  const sizeValue: SizeXY = SizeInputImageValue.get(size ?? 'medium') ?? {X: '160px', Y: '160px'};
+  const sizeValue: SizeXY = SizeInputImageValue.get(size ?? 'medium') ?? {
+    X: '160px',
+    Y: '160px',
+  };
 
   const [imagePreview, setImagePreview] = useState<string | null>(null);
 
@@ -39,7 +45,9 @@ const ImageInput = ({
     const files: FileList | null = e.target.files;
 
     onFileChange && onFileChange(files?.item(0));
-    setImagePreview(files && files.length > 0 ? URL.createObjectURL(files[0]) : null);
+    setImagePreview(
+      files && files.length > 0 ? URL.createObjectURL(files[0]) : null,
+    );
   };
 
   const onDragOverFile = (e: DragEvent<HTMLElement>) => {
@@ -53,7 +61,9 @@ const ImageInput = ({
     console.log(e.dataTransfer.files);
 
     onFileChange && onFileChange(files?.item(0));
-    setImagePreview(files && files.length > 0 ? URL.createObjectURL(files[0]) : null);
+    setImagePreview(
+      files && files.length > 0 ? URL.createObjectURL(files[0]) : null,
+    );
   };
 
   const handleRemove = (e: MouseEvent<HTMLDivElement>) => {
@@ -88,7 +98,10 @@ const ImageInput = ({
       >
         {imagePreview && (
           <div className="w-full z-10 dark:bg-black bg-black absolute inset-0 cursor-pointer rounded opacity-0 dark:hover:opacity-60 hover:opacity-30">
-            <div onClick={handleRemove} className="z-50 absolute top-0 right-0 p-2">
+            <div
+              onClick={handleRemove}
+              className="z-50 absolute top-0 right-0 p-2"
+            >
               <svg
                 width="12"
                 height="13"
