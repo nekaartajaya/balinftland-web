@@ -69,16 +69,19 @@ const ProjectWhatSection = () => {
           dotListClass={'slider-dot'}
         >
           <img
+            key={1}
             src="/images/pages/limabeach/dummy-6.png"
             alt="Room 1"
             className="w-full"
           />
           <img
+            key={2}
             src="/images/pages/limabeach/dummy-6.png"
             alt="Room 2"
             className="w-full"
           />
           <img
+            key={3}
             src="/images/pages/limabeach/dummy-6.png"
             alt="Room 3"
             className="w-full"
