@@ -74,11 +74,11 @@ jobs:
         is_release:
           - ${{ needs.release-please.outputs.release_created || false }}
         environment:
-          - TESTNET
-          - MAINNET
+          - testnet
+          - mainnet
         exclude:
           - is_release: false
-            environment: MAINNET
+            environment: mainnet
     environment: ${{ matrix.environment }}
     env:
       NEXT_PUBLIC_AUTH_URL: '${{ secrets.NEXT_PUBLIC_AUTH_URL }}'
@@ -99,7 +99,7 @@ jobs:
       - name: Run Build
         run: yarn build
       - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
+        uses: w9jds/firebase-action@af64fd5f617596c638756547f005e0ba0f47066c
         with:
           args: deploy --project=${{ matrix.environment }}
         env:
