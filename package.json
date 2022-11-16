@@ -10,13 +10,7 @@
     "type": "git",
     "url": "https://github.com/balinftland/balinftland-web.git"
   },
-  "engines": {
-    "node": ">=14.0.0",
-    "yarn": ">=1.22.0",
-    "npm": "please-use-yarn"
-  },
   "scripts": {
-    "prepare": "husky install",
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "lint:check": "next lint --ignore-path .gitignore .",
     "lint:fix": "next lint --fix --ignore-path .gitignore  .",
