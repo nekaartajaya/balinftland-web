@@ -15,7 +15,7 @@ const ProfileRoadmapSection = () => {
   const roadmap = [];
   for (let i = 0; i < 5; i++) {
     roadmap.push(
-      <div className="max-w-[220px] mx-auto">
+      <div key={i} className="max-w-[220px] mx-auto">
         <div className="bg-[#D9D9D9] w-[220px] h-[220px] border mx-auto"></div>
         <div className="text-dark-blue">
           <h1 className="text-[40px]  font-semibold text-center mb-2">
