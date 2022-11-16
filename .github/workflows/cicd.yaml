@@ -101,6 +101,8 @@ jobs:
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@af64fd5f617596c638756547f005e0ba0f47066c
         with:
-          args: deploy --project=${{ matrix.environment }}
+          args: |
+            experiments:enable webframeworks
+            deploy --project=${{ matrix.environment }}
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
