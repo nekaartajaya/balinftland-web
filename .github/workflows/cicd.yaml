@@ -55,7 +55,8 @@ jobs:
         id: release
         uses: google-github-actions/release-please-action@44c30b36230f7335e5da53e297d931807ccea116
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT }}
+          fork: true
           release-type: node
           package-name: ${{ github.event.repository.name }}
           include-v-in-tag: false
