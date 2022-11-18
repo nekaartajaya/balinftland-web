@@ -2,12 +2,25 @@ import Subtitle from '@components/global/Subtitle';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import { useMediaQuery } from '@mui/material';
 
 const ProfileRoadmapSection = () => {
+  const isMobile = useMediaQuery('(max-width: 500px)', { noSsr: true });
+
   const responsive = {
     desktop: {
-      breakpoint: { max: 3000, min: 0 },
+      breakpoint: { max: 9999, min: 1440 },
       items: 3,
+      slidesToSlide: 1,
+    },
+    laptop: {
+      breakpoint: { max: 1439, min: 769 },
+      items: 2,
+      slidesToSlide: 1,
+    },
+    tab: {
+      breakpoint: { max: 768, min: 0 },
+      items: 1,
       slidesToSlide: 1,
     },
   };
@@ -15,8 +28,8 @@ const ProfileRoadmapSection = () => {
   const roadmap = [];
   for (let i = 0; i < 5; i++) {
     roadmap.push(
-      <div key={i} className="max-w-[220px] mx-auto">
-        <div className="bg-[#D9D9D9] w-[220px] h-[220px] border mx-auto"></div>
+      <div key={i} className="max-w-[220px]  mx-auto">
+        <div className="bg-[#D9D9D9] w-[220px] h-[220px]  border mx-auto"></div>
         <div className="text-dark-blue">
           <h1 className="text-[40px]  font-semibold text-center mb-2">
             Q5 2022
@@ -47,16 +60,16 @@ const ProfileRoadmapSection = () => {
   }
 
   return (
-    <div className="border-y border-dark-blue py-20">
-      <div className="text-center mb-12">
+    <div className=" py-20">
+      <div className="text-center mb-12 px-4">
         <Subtitle text="Bali Land NFT Roadmap" />
-        <h6 className="text-[22px] text-blue">
+        <h6 className="md:text-[22px] text-xl text-blue mt-4">
           We are guided by a simple yet precise vision of Bali Land NFT Roadmap.
           We Build together, We Own Together.
         </h6>
       </div>
 
-      <div className="pb-10 relative">
+      <div className="pb-12 relative">
         <Carousel
           responsive={responsive}
           arrows={false}
@@ -65,7 +78,7 @@ const ProfileRoadmapSection = () => {
           dotListClass={'slider-dot'}
           infinite
           itemClass={'mx-auto'}
-          centerMode
+          centerMode={!isMobile}
         >
           {roadmap}
         </Carousel>

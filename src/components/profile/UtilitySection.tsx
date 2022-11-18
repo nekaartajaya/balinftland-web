@@ -22,15 +22,19 @@ const ProfileUtilitySection = () => {
   ];
 
   return (
-    <div className="py-20">
+    <div className="border-y border-dark-blue py-16">
       <Subtitle text="Utility" />
 
-      <div className="grid md:grid-cols-4 grid-cols-2">
+      <div className="grid md:grid-cols-4 grid-cols-2 gap-y-4 mt-10">
         {Utility.map((item: ImageInterface, index: number) => {
           return (
             <div key={index} className="text-center">
-              <img src={item.url} alt={item.alt} className="mx-auto" />
-              <h5 className="text-dark-blue text-2xl font-semibold">
+              <img
+                src={item.url}
+                alt={item.alt}
+                className="mx-auto md:w-full w-3/4"
+              />
+              <h5 className="text-dark-blue md:text-2xl text-xl font-semibold">
                 {item.alt}
               </h5>
             </div>

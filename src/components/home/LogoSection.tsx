@@ -47,28 +47,33 @@ const HomeLogoSection = () => {
   };
 
   return (
-    <div className="bg-[url('/images/pages/home/dummy-11.png')] bg-no-repeat bg-cover px-12 py-16">
+    <div className="bg-[url('/images/pages/home/dummy-11.png')] bg-no-repeat bg-cover px-12 py-10">
       <div className="relative pb-[40px] md:pb-0">
-        <Carousel
-          responsive={responsive}
-          arrows={false}
-          showDots={isTab ? true : false}
-          renderDotsOutside={true}
-          dotListClass={'slider-dot'}
-        >
-          {Logo.map(({ name, desc }, index) => {
-            return (
-              <div
-                key={index}
-                className="flex flex-col items-center text-center gap-y-4 text-white"
-              >
-                <Avatar sx={{ width: 100, height: 100 }}> </Avatar>
-                <h1 className="text-sm">{name}</h1>
-                <div className="text-[10px] max-w-[180px]">{desc}</div>
-              </div>
-            );
-          })}
-        </Carousel>
+        <div className="text-white md:text-[32px] text-xl font-bold tracking-[16px] relative w-full text-center py-6 px-4">
+          <h1>OUR PARTNER</h1>
+        </div>
+        <div className="grid md:grid-cols-4 grid-cols-2 gap-y-6 py-10">
+          <img
+            src="/images/partners/blocksphere.png"
+            alt="Logo Blocksphere"
+            className="mx-auto"
+          />
+          <img
+            src="/images/partners/paras.png"
+            alt="Logo Paras"
+            className="mx-auto"
+          />
+          <img
+            src="/images/partners/myriad-town.png"
+            alt="Logo Myriad Town"
+            className="mx-auto"
+          />
+          <img
+            src="/images/partners/myriad.png"
+            alt="Logo Myriad"
+            className="mx-auto"
+          />
+        </div>
       </div>
     </div>
   );
