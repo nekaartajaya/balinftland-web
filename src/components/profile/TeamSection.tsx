@@ -4,49 +4,49 @@ import { TeamInterface } from '@interfaces/ProfileInterface';
 const ProfileTeamSection = () => {
   const team: Array<TeamInterface> = [
     {
-      imageUrl: 'images/pages/profile/team/1.png',
+      imageUrl: 'images/pages/profile/Team/1.png',
       imageAlt: 'BUDI TIANDY',
       name: 'BUDI TIANDY',
       position: 'Chief Executive Officer',
     },
     {
-      imageUrl: 'images/pages/profile/team/2.png',
+      imageUrl: 'images/pages/profile/Team/2.png',
       imageAlt: 'BOGANK SERPIYADI',
       name: 'BOGANK SERPIYADI',
       position: 'Chief Operating Officer',
     },
     {
-      imageUrl: 'images/pages/profile/team/3.png',
+      imageUrl: 'images/pages/profile/Team/3.png',
       imageAlt: 'GILANG BHAGASKARA',
       name: 'GILANG BHAGASKARA',
       position: 'Chief Technology Officer',
     },
     {
-      imageUrl: 'images/pages/profile/team/4.png',
+      imageUrl: 'images/pages/profile/Team/4.png',
       imageAlt: 'IRMAN NUR MUHAMMAD ALAMSYAH',
       name: 'IRMAN NUR MUHAMMAD ALAMSYAH',
       position: 'Software Architect',
     },
     {
-      imageUrl: 'images/pages/profile/team/5.png',
+      imageUrl: 'images/pages/profile/Team/5.png',
       imageAlt: 'ANTON EMIL',
       name: 'ANTON EMIL',
       position: 'Blockchain Expert',
     },
     {
-      imageUrl: 'images/pages/profile/team/6.png',
+      imageUrl: 'images/pages/profile/Team/6.png',
       imageAlt: 'MOCHAMMAD HUSNI RIZAL',
       name: 'MOCHAMMAD HUSNI RIZAL',
       position: 'Frontend Dev - Polkadot Ambassador',
     },
     {
-      imageUrl: 'images/pages/profile/team/7.png',
+      imageUrl: 'images/pages/profile/Team/7.png',
       imageAlt: 'NEKA ARTAJAYA',
       name: 'NEKA ARTAJAYA',
       position: 'Frontend Dev',
     },
     {
-      imageUrl: 'images/pages/profile/team/8.png',
+      imageUrl: 'images/pages/profile/Team/8.png',
       imageAlt: 'MUHAMMAD HAIDAR AL MUTAWAKKIL',
       name: 'MUHAMMAD HAIDAR AL MUTAWAKKIL',
       position: 'UI/UX Designer',
