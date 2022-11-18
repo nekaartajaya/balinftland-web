@@ -1,6 +1,6 @@
 import DigilandAPI from '.';
 
-import { createSignature } from '@helpers/metamask-interact.js';
+import { createSignature } from '@helpers/metamask-interact';
 
 type GetChallengeProps = {
   id: string;
@@ -21,7 +21,7 @@ type LoginRespProps = {
 
 export const getChallengeAndSignIn = async (id: string) => {
   try {
-    const { nonce } = await getChallenge({
+    const { nonce }: any = await getChallenge({
       id,
     });
 
@@ -31,7 +31,7 @@ export const getChallengeAndSignIn = async (id: string) => {
       throw new Error('Please sign to authenticate!');
     }
 
-    const { token } = await login({ id, signature: msg });
+    const { token }: any = await login({ id, signature: msg });
 
     if (token) {
       return token;

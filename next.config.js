@@ -24,6 +24,13 @@ const nextConfig = {
     ],
   },
   reactStrictMode: true,
+  publicRuntimeConfig: {
+    apiURL: process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000',
+    web3ProviderKey: process.env.NEXT_PUBLIC_WEB3_PROVIDER_KEY,
+    web3ProviderURL: process.env.NEXT_PUBLIC_WEB3_PROVIDER_URL,
+    lbsfContractAddress: process.env.NEXT_PUBLIC_LBSF_CONTRACT_ADDRESS,
+    usdcContractAddress: process.env.NEXT_PUBLIC_USDC_CONTRACT_ADDRESS,
+  },
 };
 
 module.exports = nextConfig;
