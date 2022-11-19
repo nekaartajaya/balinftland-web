@@ -20,162 +20,7 @@ import useStore from '@store/index';
 import FAQSection from './FAQ';
 
 const StageOne = () => {
-  const [quantity, setQuantity] = useState(0);
-  const [isAgreed, setIsAgreed] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
-  const [openModalFAQ, setOpenModalFAQ] = useState(false);
-
-  const {
-    mintNFT,
-    minting,
-    isMintSuccess,
-    allowUSDC,
-    verifyAllowance,
-    allowance,
-    fetchBalance,
-    balance,
-    fetchMintedByUserQty,
-    mintedNFT,
-    fetchPrice,
-    price,
-    fetchActiveStage,
-    activeStage,
-    fetchMaxSupply,
-    maxSupply,
-    fetchMintedQty,
-    mintedQty,
-    fetchNFTImage,
-    image,
-    loading,
-  } = useMintHook();
-
-  const { login, isAuthenticated } = useAuthHook();
-  const [temp, setTemp] = useState('');
-  const [referralCode] = useDebounce(temp, 1000);
-  const [codeValidity, setCodeValidity] = useState(false);
-  const cookieToken = Cookies.get('access_token');
-
-  //Prerequisite for refCode
-  const isAlphaNumeric = (str: string) => /^[a-z0-9]+$/gi.test(str);
-  const isValidCode = referralCode.length === 6 && isAlphaNumeric(referralCode);
-  const emptyRefCode = referralCode.length === 0;
-  const refCodeConfirmed =
-    (codeValidity && referralCode.length === 6) || referralCode.length === 0;
-
-  const disableMint = minting || !refCodeConfirmed;
-
-  useEffect(() => {
-    async function check() {
-      if (isValidCode && cookieToken) {
-        const refCodeValidity = await verifyRefCode(cookieToken, referralCode);
-
-        if (refCodeValidity) {
-          setCodeValidity(true);
-        }
-      } else {
-        setCodeValidity(false);
-      }
-    }
-
-    check();
-  }, [isValidCode, referralCode, cookieToken]);
-
-  const { verifyRefCode, isLoading: isLoadingForm } = useFormHook();
-
-  const connecting = useWeb3Store((state) => state.connecting);
-  const toggleConnecting = useWeb3Store((state) => state.toggleConnecting);
-
-  const { address, isConnected, isDisconnected } = useAccount();
-  const { connect, connectors, isLoading, status } = useConnect({
-    onSuccess() {
-      toggleConnecting();
-    },
-  });
-
-  const currentWallet = useStore((state) => state.currentWallet);
-  const updateWallet = useStore((state) => state.updateWallet);
-
-  if (isDisconnected) {
-    Cookies.remove('access_token');
-    Cookies.remove('user');
-  }
-
-  useEffect(() => {
-    verifyAllowance();
-    fetchMintedQty();
-    fetchPrice();
-    fetchActiveStage();
-    fetchMaxSupply();
-    fetchNFTImage();
-  }, []);
-
-  useEffect(() => {
-    if (address && !cookieToken) {
-      login(address);
-    }
-  }, [address, cookieToken]);
-
-  useEffect(() => {
-    if (isConnected && address) {
-      updateWallet(address);
-      Cookies.set('user', JSON.stringify(address));
-      fetchMintedByUserQty(address);
-      fetchBalance(address);
-    }
-  }, [isConnected, address, isAuthenticated]);
-
-  useEffect(() => {
-    if (isMintSuccess && address) {
-      fetchMintedByUserQty(address);
-    }
-  }, [isMintSuccess, address]);
-
-  const handleConnectWallet = (connector: InjectedConnector) => {
-    connect({ connector });
-    toggleConnecting();
-  };
-  const handleDecrement = () => {
-    if (quantity !== 0) {
-      const decreasedQuantity = quantity - 1;
-      setQuantity(decreasedQuantity);
-    }
-  };
-
-  const handleIncrement = () => {
-    const increasedQuantity = quantity + 1;
-    setQuantity(increasedQuantity);
-  };
-
-  const handleChangeQuantity = (e: { target: { value: any } }) => {
-    setQuantity(Number(e.target.value));
-  };
-
-  const handleChangeReferralCode = (e: {
-    target: { value: SetStateAction<string> };
-  }) => {
-    setTemp(e.target.value);
-  };
-
-  const isUSDCEnough = () => {
-    if (balance < quantity * price) return false;
-    return true;
-  };
-
-  const handleChangeAgreement = () => {
-    setIsAgreed(!isAgreed);
-  };
-
-  const handleSetAllowance = () => {
-    allowUSDC(quantity * price);
-  };
-  const handleMintPressed = () => {
-    mintNFT(cookieToken, quantity, referralCode);
-  };
-
-  const allowedSupply = maxSupply - mintedQty;
-
-  const formDisabled = !isAuthenticated;
-
+  const [openModalFAQ, setOpenModalFAQ] = useState<boolean>(false);
   return (
     <div className="max-w-[868px] w-full">
       <div className="flex border border-dark-blue mb-5">
@@ -262,19 +107,6 @@ const StageOne = () => {
                 placeholder={'Input Preffereal Code (Optional)'}
                 className={`border border-dark-blue p-3 placeholder:text-blue/[.30] text-base w-full`}
               />
-              {isLoadingForm ? <p>Checking...</p> : <></>}
-              {isValidCode || emptyRefCode ? (
-                <></>
-              ) : (
-                <p className="text-red">
-                  Invalid Referral code, code has been removed{' '}
-                </p>
-              )}
-              {codeValidity ? (
-                <p className="text-light-green">Referral Code Added!</p>
-              ) : (
-                <></>
-              )}
             </div>
 
             <div className="flex justify-between items-center mb-6">
@@ -312,12 +144,7 @@ const StageOne = () => {
               </div>
             </div>
 
-            <p className="font-normal text-lg text-red">
-              {quantity > 0 && quantity >= allowedSupply
-                ? `Max supply reached`
-                : ''}
-              {/* {allowedSupply === 0 ? `Sold out!` : ''} */}
-            </p>
+            <p className="font-normal text-lg text-red"></p>
 
             <div className="flex flex-row gap-x-2">
               <input
@@ -334,77 +161,17 @@ const StageOne = () => {
                 </a>
               </label>
             </div>
-            <div className="font-normal text-lg text-red mb-10">
-              {isUSDCEnough() ? '' : 'Insufficient balance'}
-            </div>
+            <div className="font-normal text-lg text-red mb-10"></div>
 
             <div className="flex flex-col gap-4 desktop:grid desktop:grid-cols-[1fr_1fr]">
-              {isConnected ? (
-                <div className="flex gap-x-10">
-                  <div className="w-full">
-                    <button
-                      disabled={
-                        loading ||
-                        quantity * price > balance ||
-                        quantity * price === allowance ||
-                        quantity > allowedSupply ||
-                        formDisabled
-                      }
-                      onClick={handleSetAllowance}
-                      className="bg-light-blue-2/[0.10] w-full h-full border-2 border-light-blue-2"
-                    >
-                      {/* {quantity > 0 ? 'Set New Allowance' : ''} */}
-                      <div className="ml-2 text-light-blue-2 font-bold text-[12px]">
-                        Allow To Trade {(quantity * price).toLocaleString()}{' '}
-                        USDC
-                      </div>
-                    </button>
-                    {allowance > 0 && (
-                      <p className="mt-1 text-light-green">
-                        {allowance ? (
-                          `Congratulations ! Now you can trade your ${allowance} USDC`
-                        ) : (
-                          <Skeleton />
-                        )}
-                      </p>
-                    )}
-                  </div>
-                  <button
-                    className="w-full bg-light-blue-2 text-white font-bold py-3 px-[14px] text-[12px]"
-                    onClick={() => handleMintPressed()}
-                    disabled={
-                      !(
-                        allowedSupply > 0 &&
-                        quantity > 0 &&
-                        isAgreed &&
-                        allowance === quantity * price
-                      ) || disableMint
-                        ? true
-                        : false
-                    }
-                  >
-                    <span>Mint Now</span>
-                  </button>
-                </div>
-              ) : (
-                <>
-                  {connectors.map((connector: any) => (
-                    <button
-                      className="w-full p-2 bg-light-blue-2 text-white font-bold w-1/2"
-                      disabled={
-                        !connector.ready ||
-                        isLoading ||
-                        status === 'loading' ||
-                        connecting
-                      }
-                      key={connector.id}
-                      onClick={() => handleConnectWallet(connector)}
-                    >
-                      <span>{connecting ? 'Connecting' : 'Connect'}</span>
-                    </button>
-                  ))}
-                </>
-              )}
+              <>
+                <button
+                  className="w-full p-2 bg-light-blue-2 text-white font-bold w-1/2"
+                  disabled={false}
+                >
+                  <span>Connect</span>
+                </button>
+              </>
             </div>
           </div>
         </div>
