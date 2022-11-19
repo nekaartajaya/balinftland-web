@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import TelegramIcon from '@mui/icons-material/Telegram';
-import { IconButton, Skeleton, TextField } from '@mui/material';
+import { Box, IconButton, Skeleton, TextField } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import SwapHorizOutlinedIcon from '@mui/icons-material/SwapHorizOutlined';
@@ -17,11 +17,13 @@ import Cookies from 'js-cookie';
 import { useDebounce } from 'use-debounce';
 import useFormHook from '@hooks/use-form.hooks';
 import useStore from '@store/index';
+import FAQSection from './FAQ';
 
 const StageOne = () => {
   const [quantity, setQuantity] = useState(0);
   const [isAgreed, setIsAgreed] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [openModalFAQ, setOpenModalFAQ] = useState(false);
 
   const {
     mintNFT,
@@ -176,7 +178,7 @@ const StageOne = () => {
 
   return (
     <div className="max-w-[868px] w-full">
-      <div className="flex border border-dark-blue">
+      <div className="flex border border-dark-blue mb-5">
         <div className="px-10 py-10 bg-[#EDF4F7] flex flex-col gap-y-6 w-full max-w-[254px]">
           <div className="text-center">
             <Image
@@ -407,6 +409,13 @@ const StageOne = () => {
           </div>
         </div>
       </div>
+      <button
+        className="bg-light-blue-2 text-white font-bold text-base w-full py-3"
+        onClick={() => setOpenModalFAQ(true)}
+      >
+        Learn more About Minting
+      </button>
+      <FAQSection open={openModalFAQ} onClose={() => setOpenModalFAQ(false)} />
     </div>
   );
 };

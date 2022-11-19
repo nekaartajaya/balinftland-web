@@ -37,6 +37,7 @@
     "react-multi-carousel": "^2.8.2",
     "use-debounce": "^8.0.4",
     "wagmi": "^0.8.5",
+    "web3": "^1.8.1",
     "web3-utils": "^1.8.1"
   },
   "devDependencies": {

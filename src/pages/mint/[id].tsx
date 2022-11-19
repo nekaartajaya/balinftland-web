@@ -20,3 +20,14 @@ const Mint = () => {
 };
 
 export default Mint;
+
+export async function getStaticPaths() {
+  return {
+    paths: [{ params: { id: 'lima-beach-signature' } }],
+    fallback: false,
+  };
+}
+
+export async function getStaticProps() {
+  return { props: { isDark: false } };
+}

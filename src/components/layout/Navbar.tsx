@@ -42,7 +42,7 @@ const Navbar = () => {
     },
     {
       name: 'mint yours',
-      link: '/mint/tes',
+      link: '/mint/lima-beach-signature',
       classes:
         '!capitalize !font-medium !text-base bg-light-green px-4 py-2 hover:bg-light-green/[.80] whitespace-nowrap !text-[#FFF]',
     },

@@ -26,7 +26,7 @@ export const checkRefCode = async (token: string, code: string) => {
 };
 
 export const mintNFTWithRefCode = async (
-  token,
+  token: string,
   payload: refCodePayloadProps,
 ) => {
   try {
