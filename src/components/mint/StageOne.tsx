@@ -23,8 +23,8 @@ const StageOne = () => {
   const [openModalFAQ, setOpenModalFAQ] = useState<boolean>(false);
   return (
     <div className="max-w-[868px] w-full">
-      <div className="flex border border-dark-blue mb-5">
-        <div className="px-10 py-10 bg-[#EDF4F7] flex flex-col gap-y-6 w-full max-w-[254px]">
+      <div className="md:flex border border-dark-blue mb-5">
+        <div className="md:p-10 p-4 bg-[#EDF4F7] flex flex-col gap-y-6 w-full md:max-w-[254px]">
           <div className="text-center">
             <Image
               src={'/images/icons/stage-1.png'}
@@ -93,7 +93,7 @@ const StageOne = () => {
           </div>
         </div>
 
-        <div className="bg-white w-full px-12 flex flex-col justify-center">
+        <div className="bg-white w-full md:px-12 px-4 md:py-2 py-4 flex flex-col justify-center">
           <div className="text-blue tracking-[5px] mb-9">
             <h1 className="font-bold text-2xl">STAGE 01: PHYSICAL LAND</h1>
             <span className="text-base">Lima Beach Signature NFT</span>
@@ -154,7 +154,7 @@ const StageOne = () => {
                 disabled={false}
                 className="w-5 !rounded-none"
               />
-              <label>
+              <label className="md:text-base text-sm">
                 <span className="text-blue/[.30]">I Agree Bali NFT Land</span>{' '}
                 <a href="https://google.com" className="text-blue">
                   Terms And Conditions
