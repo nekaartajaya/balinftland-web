@@ -23,12 +23,13 @@ const DocumentTopSection = () => {
 
   return (
     <section>
-      <Title text="Permissive Document" classes="mb-8" />
+      <Title text="Permissive Document" classes="md:mb-16 mb-8" />
 
-      <div className="text-dark-blue text-2xl flex flex-col gap-y-6 mb-10 text-justify">
+      <div className="text-dark-blue md:text-2xl text-lg flex flex-col gap-y-6 mb-20 text-justify md:px-20 px-6 text-dark-blue">
         <p>
-          To what extent does Bali NFT Land ensure the safety and security of
-          your physical apartment authentication certificate?
+          To what extent does <span className="font-bold">Bali NFT Land</span>{' '}
+          ensure the safety and security of your physical apartment
+          authentication certificate?
         </p>
         <p>
           We are aware that crypto users may consider this when determining
@@ -43,7 +44,7 @@ const DocumentTopSection = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-3 gap-x-4">
+      <div className="grid md:grid-cols-3 gap-x-4 gap-y-4">
         {DocumentCardArray.map((item: DocumentCardInterface, index: number) => {
           return <DocumentCard key={index} item={item} />;
         })}
