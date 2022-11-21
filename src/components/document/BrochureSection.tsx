@@ -3,8 +3,8 @@ import Title from '@components/global/Title';
 
 const DocumentBrochureSection = () => {
   return (
-    <div className="px-12">
-      <Title text="Property Brochure" classes="mb-6" />
+    <div>
+      <Title text="Property Brochure" classes="mb-10" />
 
       <div className="mb-12">
         <img
@@ -14,7 +14,7 @@ const DocumentBrochureSection = () => {
         />
       </div>
 
-      <div className="text-dark-blue text-2xl text-justify mb-8">
+      <div className="text-dark-blue md:text-2xl text-xl text-justify mb-8 md:px-32 px-8">
         <span className="font-bold text-black">Bali NFT Land</span> -
         opportunity for investors to develop and lease out high-end properties
         in Bali with NFTs, which is an excellent choice for individuals who do
@@ -22,11 +22,7 @@ const DocumentBrochureSection = () => {
       </div>
 
       <div className="w-full">
-        <CustomButton
-          text="Read Brochure"
-          classes="mx-auto gap-x-4"
-          icon={<img src="/images/icons/arrow-right.png" alt="Read Brochure" />}
-        />
+        <CustomButton text="Read Brochure" classes="mx-auto gap-x-4" />
       </div>
     </div>
   );
