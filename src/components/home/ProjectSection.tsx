@@ -17,7 +17,7 @@ const HomeProjectSection = () => {
         </div>
         <div>
           <CustomButton
-            text="Lima Beach"
+            text="Go to Lima Beach Signature"
             classes="ml-auto !bg-light-blue"
             onClick={() => router.push('/project/lima-beach-signature')}
           />
