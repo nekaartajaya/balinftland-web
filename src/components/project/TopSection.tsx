@@ -14,7 +14,7 @@ const ProjectTopSection = () => {
           </h1>
         </div>
       </div>
-      <div className="md:text-left text-center text-blue md:text-[32px] text-xl sm:px-24 px-10 md:leading-[45px]">
+      <div className="md:text-justify text-center text-blue md:text-[30px] text-xl md:px-24 px-10 md:leading-[45px]">
         A limited-edition NFT representing the physical property certificate and
         physical property ownership built with the Internet of Things (IoT)
         Technology and Web 3.0.

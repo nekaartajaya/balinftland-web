@@ -1,10 +1,31 @@
+import { useMediaQuery } from '@mui/material';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 const ProjectWhatSection = () => {
+  const isMobile = useMediaQuery('(max-width: 768px)', { noSsr: true });
+
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 0 },
+      items: 1,
+      slidesToSlide: 1,
+    },
+  };
+
+  const responsiveFacility = {
+    desktop: {
+      breakpoint: { max: 9999, min: 769 },
+      items: 3,
+      slidesToSlide: 1,
+    },
+    tablet: {
+      breakpoint: { max: 768, min: 500 },
+      items: 2,
+      slidesToSlide: 1,
+    },
+    mobile: {
+      breakpoint: { max: 499, min: 0 },
       items: 1,
       slidesToSlide: 1,
     },
@@ -14,7 +35,7 @@ const ProjectWhatSection = () => {
     <div className="flex flex-col gap-y-8">
       {/* Introduce */}
       <div>
-        <h1 className="text-[64px] tracking-wider leading-[80px] text-blue text-center font-bold">
+        <h1 className="md:text-[64px] text-4xl tracking-wider md:leading-[80px] text-blue text-center font-bold">
           What is Lima Beach NFT.
         </h1>
       </div>
@@ -27,7 +48,7 @@ const ProjectWhatSection = () => {
         />
       </div>
 
-      <div className="text-blue text-[22px]">
+      <div className="text-blue md:text-[22px] text-lg md:px-24 px-10 text-justify">
         The first decentralised property project from Digilandbali is called The
         Lima Beach Signature. Each Lima Beach Signature NFT represents the
         physical ownership of an apartment that leaseholders in Pantai Lima,
@@ -38,29 +59,44 @@ const ProjectWhatSection = () => {
 
       {/* Facility */}
       <div>
-        <h1 className="text-[42px] text-blue font-bold mb-6">Facility</h1>
-        <div className="grid grid-cols-3 gap-x-6">
-          <img
-            src="/images/pages/limabeach/dummy-3.png"
-            alt="Facility 1"
-            className="w-full"
-          />
-          <img
-            src="/images/pages/limabeach/dummy-4.png"
-            alt="Facility 2"
-            className="w-full"
-          />
-          <img
-            src="/images/pages/limabeach/dummy-5.png"
-            alt="Facility 3"
-            className="w-full"
-          />
+        <h1 className="md:text-[42px] text-3xl text-blue font-bold mb-6 text-center">
+          Facility
+        </h1>
+        <div className="pb-12 relative">
+          <Carousel
+            responsive={responsiveFacility}
+            arrows={false}
+            showDots={isMobile}
+            renderDotsOutside={true}
+            dotListClass={'slider-dot'}
+            infinite={isMobile}
+            itemClass={'mx-auto'}
+            sliderClass="gap-x-4"
+          >
+            <img
+              src="/images/pages/limabeach/dummy-3.png"
+              alt="Facility 1"
+              className="w-full"
+            />
+            <img
+              src="/images/pages/limabeach/dummy-4.png"
+              alt="Facility 2"
+              className="w-full"
+            />
+            <img
+              src="/images/pages/limabeach/dummy-5.png"
+              alt="Facility 3"
+              className="w-full"
+            />
+          </Carousel>
         </div>
       </div>
 
       {/* Rooms */}
       <div className="relative pb-[50px]">
-        <h1 className="text-[42px] text-blue font-bold mb-6">Room</h1>
+        <h1 className="md:text-[42px] text-3xl text-blue font-bold mb-6 text-center">
+          Room
+        </h1>
         <Carousel
           responsive={responsive}
           arrows={false}
@@ -91,7 +127,7 @@ const ProjectWhatSection = () => {
 
       {/* Apartment */}
       <div>
-        <h1 className="text-[42px] text-blue font-bold mb-6">
+        <h1 className="md:text-[42px] text-3xl text-blue font-bold mb-6 text-center">
           Apartement Value
         </h1>
         <img
