@@ -38,17 +38,17 @@ const StageOne = () => {
   return (
     <div className="max-w-[868px] w-full">
       <div className="md:flex border border-dark-blue mb-5">
-        <div className=" border-r flex flex-col w-full md:max-w-[254px] md:min-h-[520px]">
-          <div className="md:h-[83%] bg-[url('/images/stages/stage-1-new.png')] bg-cover bg-[14%]"></div>
-          <hr />
-          <div className="md:h-[17%] flex flex-col items-center justify-center text-blue">
+        <div className="md:border-r flex flex-col w-full md:max-w-[254px] md:min-h-[520px] min-h-[280px]">
+          <div className="md:h-[83%] h-[180px] bg-[url('/images/stages/stage-1-new.png')] bg-cover md:bg-[14%] bg-center"></div>
+          <hr className="md:block hidden" />
+          <div className="md:h-[17%] h-[100px] flex flex-col items-center justify-center text-blue bg-white  md:border-y-0 border-y">
             <div className="text-xl">Mint Price</div>
             <div className="text-xl font-bold">1 NFT : 10.000 USDC</div>
             <div className="text-[7px]">STAGE 1</div>
           </div>
         </div>
 
-        <div className="bg-white w-full md:px-12 px-4 md:py-6 py-4 flex flex-col justify-between">
+        <div className="bg-white w-full md:px-12 px-4 md:py-6 py-4 flex flex-col justify-between gap-y-12">
           <div className="flex gap-x-16">
             <div className="text-blue text-[14px] flex items-center gap-x-4">
               <span>Stage 1 Supply</span>
