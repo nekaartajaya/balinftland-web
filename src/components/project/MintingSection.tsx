@@ -30,16 +30,16 @@ const ProjectMintingSection = () => {
   ];
 
   return (
-    <div>
+    <div className="md:px-24 px-10">
       <div className="mb-4">
-        <h1 className="text-[64px] leading-[80px] text-blue text-left fo">
+        <h1 className="md:text-[64px] text-4xl md:leading-[80px] leading-[50px] text-blue text-center ">
           <span className="font-bold">LIMA</span> BEACH
           <br />
           NFT MINTING STAGE
         </h1>
       </div>
 
-      <div className="text-blue text-[22px] italic mb-4">
+      <div className="text-blue md:text-[22px] text-lg italic mb-4 text-justify">
         Currently, the market price of a luxury apartment is $210,000. If you
         enter the project early, each NFT fragment will cost $10,000, making the
         total cost of seven NFT fragments around $70,000, a third (33%) of the
