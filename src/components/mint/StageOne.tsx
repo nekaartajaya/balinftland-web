@@ -20,6 +20,20 @@ import useStore from '@store/index';
 import FAQSection from './FAQ';
 
 const StageOne = () => {
+  const connecting = useWeb3Store((state) => state.connecting);
+  const toggleConnecting = useWeb3Store((state) => state.toggleConnecting);
+  const { address, isConnected, isDisconnected } = useAccount();
+  const { connect, connectors, isLoading, status } = useConnect({
+    onSuccess() {
+      toggleConnecting();
+    },
+  });
+
+  const handleConnectWallet = (connector: InjectedConnector) => {
+    connect({ connector });
+    toggleConnecting();
+  };
+
   const [openModalFAQ, setOpenModalFAQ] = useState<boolean>(false);
   return (
     <div className="max-w-[868px] w-full">
@@ -164,14 +178,44 @@ const StageOne = () => {
             <div className="font-normal text-lg text-red mb-10"></div>
 
             <div className="flex flex-col gap-4 desktop:grid desktop:grid-cols-[1fr_1fr]">
-              <>
+              {isConnected ? (
                 <button
-                  className="w-full p-2 bg-light-blue-2 text-white font-bold w-1/2"
-                  disabled={false}
+                  className="w-full bg-[#406aff] py-[8px] px-[14px]"
+                  // onClick={() => handleMintPressed()}
+                  // disabled={
+                  //   !(
+                  //     allowedSupply > 0 &&
+                  //     quantity > 0 &&
+                  //     isAgreed &&
+                  //     allowance === quantity * price
+                  //   ) || disableMint
+                  //     ? true
+                  //     : false
+                  // }
                 >
-                  <span>Connect</span>
+                  <span>Mint Now</span>
                 </button>
-              </>
+              ) : (
+                <>
+                  {connectors.map((connector: any) => (
+                    <button
+                      className="w-full p-2 bg-[#406aff]"
+                      disabled={
+                        !connector.ready ||
+                        isLoading ||
+                        status === 'loading' ||
+                        connecting
+                      }
+                      key={connector.id}
+                      onClick={() => handleConnectWallet(connector)}
+                    >
+                      <span className="text-white">
+                        {connecting ? 'Connecting...' : 'Connect'}
+                      </span>
+                    </button>
+                  ))}
+                </>
+              )}
             </div>
           </div>
         </div>
