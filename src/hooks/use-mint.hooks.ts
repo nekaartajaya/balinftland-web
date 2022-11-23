@@ -255,7 +255,7 @@ const useMintHook = () => {
     const web3 = createAlchemyWeb3(web3ProviderURL);
 
     const contract = new web3.eth.Contract(
-      contractABI.abi as AbiItem[],
+      contractABI.abi as any,
       lbsfContractAddress,
     );
 
