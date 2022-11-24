@@ -12,7 +12,7 @@ import useWeb3Store from '@store/index';
 import { InjectedConnector } from '@wagmi/core';
 import useAuthHook from '@hooks/use-auth.hooks';
 import CheckIcon from '@mui/icons-material/Check';
-import { SetStateAction, useEffect, useState } from 'react';
+import { SetStateAction, useEffect, useRef, useState } from 'react';
 import Cookies from 'js-cookie';
 import { useDebounce } from 'use-debounce';
 import useFormHook from '@hooks/use-form.hooks';
@@ -115,11 +115,14 @@ const StageOne = () => {
 
   useEffect(() => {
     async function check() {
+      console.log(isLoadingForm);
       if (isValidCode && cookieToken) {
         const refCodeValidity = await verifyRefCode(cookieToken, referralCode);
 
         if (refCodeValidity) {
           setCodeValidity(true);
+        } else {
+          setCodeValidity(false);
         }
       } else {
         setCodeValidity(false);
@@ -177,6 +180,12 @@ const StageOne = () => {
     target: { value: SetStateAction<string> };
   }) => {
     setTemp(e.target.value);
+  };
+
+  const refRefferal = useRef();
+  const handleRemoveReferralCode = () => {
+    setTemp('');
+    refRefferal.current.value = '';
   };
 
   const isUSDCEnough = () => {
@@ -253,12 +262,63 @@ const StageOne = () => {
 
             <div>
               <div className="mb-10">
-                <input
-                  type="text"
-                  name={'refferal'}
-                  placeholder={'Input Preffereal Code (Optional)'}
-                  className={`border border-dark-blue p-3 placeholder:text-blue/[.30] text-base w-full focus:outline-blue`}
-                />
+                <div className="relative mb-1">
+                  {codeValidity && (
+                    <div className="absolute top-[50%] translate-y-[-50%] left-3">
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M17.7391 8.65217L11.0435 15.3478L7.69565 12M23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12Z"
+                          stroke="#2AC610"
+                        />
+                      </svg>
+                    </div>
+                  )}
+                  {codeValidity && referralCode.length > 0 && (
+                    <div className="absolute top-[50%] translate-y-[-50%] right-3 text-[12px]">
+                      <button
+                        className="text-[#FF0000]"
+                        onClick={() => handleRemoveReferralCode()}
+                      >
+                        Remove
+                      </button>
+                    </div>
+                  )}
+
+                  <input
+                    ref={refRefferal}
+                    type="text"
+                    name={'refferal'}
+                    placeholder={'Input Preffereal Code (Optional)'}
+                    className={`border border-dark-blue py-3 pl-3 pr-12 placeholder:text-blue/[.30] text-base w-full focus:outline-blue ${
+                      codeValidity && '!pl-12'
+                    }`}
+                    defaultValue={''}
+                    onChange={handleChangeReferralCode}
+                    disabled={formDisabled}
+                  />
+                </div>
+
+                {isLoadingForm && (
+                  <p className="text-blue text-[12px]">Checking...</p>
+                )}
+                {isValidCode || emptyRefCode ? (
+                  <></>
+                ) : (
+                  <p className="text-[#FF0000] text-[12px]">
+                    Invalid Referral code, code has been removed{' '}
+                  </p>
+                )}
+                {codeValidity && (
+                  <p className="text-light-green text-[12px]">
+                    Referral Code Added!
+                  </p>
+                )}
               </div>
 
               <div className="flex justify-between items-center mb-6">
