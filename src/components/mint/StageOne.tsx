@@ -42,6 +42,8 @@ const StageOne = () => {
     fetchNFTImage,
     image,
     loading,
+    isUSDCApproved,
+    loadingAllowance,
   } = useMintHook();
 
   const { login, isAuthenticated } = useAuthHook();
@@ -55,9 +57,6 @@ const StageOne = () => {
 
   const { address, isConnected, isDisconnected } = useAccount();
   const { connect, connectors, isLoading, status } = useConnect({
-    onSuccess() {
-      toggleConnecting();
-    },
     onError() {
       toggleConnecting();
     },
@@ -72,7 +71,7 @@ const StageOne = () => {
   }
 
   useEffect(() => {
-    verifyAllowance();
+    // verifyAllowance();
     fetchMintedQty();
     fetchPrice();
     fetchActiveStage();
@@ -165,7 +164,13 @@ const StageOne = () => {
   };
 
   const handleChangeQuantity = (e: { target: { value: any } }) => {
-    setQuantity(Number(e.target.value));
+    if (e.target.value) {
+      let value = e.target.value;
+      if (value.charAt(0) === '0') value = value.substring(1);
+      setQuantity(value);
+    } else {
+      setQuantity(0);
+    }
   };
 
   const handleChangeReferralCode = (e: {
@@ -193,7 +198,14 @@ const StageOne = () => {
   };
 
   const handleMintPressed = () => {
-    mintNFT(cookieToken, quantity, referralCode);
+    !(
+      allowedSupply > 0 &&
+      quantity > 0 &&
+      isAgreed &&
+      allowance === quantity * price
+    ) || disableMint
+      ? null
+      : mintNFT(cookieToken, quantity, referralCode);
   };
 
   const allowedSupply = maxSupply - mintedQty;
@@ -266,7 +278,7 @@ const StageOne = () => {
                     value={quantity}
                     disabled={false}
                     onChange={handleChangeQuantity}
-                    className={`placeholder:text-blue/[.30] text-base w-full text-center text-blue font-bold text-sm`}
+                    className={`placeholder:text-blue/[.30] text-base w-full text-center text-blue font-bold text-sm focus:outline-none`}
                   ></input>
                   <div>
                     <IconButton
@@ -305,22 +317,58 @@ const StageOne = () => {
                   </a>
                 </label>
               </div>
-              <div className="font-normal text-lg text-red mb-10">
+              <div className="font-normal text-[12px] text-red h-10 mt-2 text-[#FF0000]">
                 {isUSDCEnough() ? '' : 'Insufficient balance'}
               </div>
 
               <div className="flex gap-x-12">
-                {isConnected ? (
+                {isConnected && isAuthenticated ? (
                   <>
-                    <button
-                      className="w-1/2 bg-light-blue-2/[.10] py-3 px-1 text-[12px] border-2 border-light-blue-2"
-                      onClick={handleSetAllowance}
-                    >
-                      <span className="text-light-blue-2 font-semibold">
-                        Allow To Trade {(quantity * price).toLocaleString()}{' '}
-                        USDC
-                      </span>
-                    </button>
+                    {!(
+                      allowedSupply > 0 &&
+                      quantity > 0 &&
+                      isAgreed &&
+                      allowance === quantity * price
+                    ) || !isUSDCApproved ? (
+                      <button
+                        className={`w-1/2 bg-light-blue-2/[.10] py-3 px-1 text-[12px] border-2 border-light-blue-2 ${
+                          !isUSDCEnough() || quantity === 0
+                            ? 'opacity-50'
+                            : 'opacity-100'
+                        }`}
+                        onClick={handleSetAllowance}
+                        disabled={!isUSDCEnough()}
+                      >
+                        <span className="text-light-blue-2 font-semibold">
+                          {loadingAllowance
+                            ? 'Loading...'
+                            : `Allow To Trade ${(
+                                quantity * price
+                              ).toLocaleString()} 
+                          USDC`}
+                        </span>
+                      </button>
+                    ) : (
+                      <div className="w-1/2 flex items-center justify-center gap-x-2 bg-light-green/[.05] border-2 border-light-green py-3">
+                        <span className="text-light-green font-bold text-[12px]">
+                          Now You Can Trade USDC
+                        </span>
+                        <svg
+                          width="18"
+                          height="18"
+                          viewBox="0 0 18 18"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M13.1739 6.56522L8.30435 11.4348L5.86957 9M17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 4.58172 4.58172 1 9 1C13.4183 1 17 4.58172 17 9Z"
+                            stroke-width="2"
+                            className="stroke-light-green"
+                          />
+                        </svg>
+                      </div>
+                    )}
+
                     <button
                       className={`w-1/2 bg-light-blue-2 py-3 px-1 text-[12px]  ${
                         !(

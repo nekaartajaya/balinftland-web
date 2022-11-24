@@ -46,6 +46,7 @@ const useMintHook = () => {
   const [balance, setBalance] = useState<number>(0);
   const [mintedQty, setMintedQty] = useState<number>(0);
   const [mintedNFT, setMintedNFT] = useState<number>(0);
+  const [loadingAllowance, setLoadingAllowance] = useState<boolean>(false);
 
   const [ownedImage, setOwnedImage] = useState<string>('');
 
@@ -231,7 +232,7 @@ const useMintHook = () => {
   };
 
   const allowUSDC = async (amount: number) => {
-    setLoading(true);
+    setLoadingAllowance(true);
 
     try {
       const isSuccess = await approveUSDC(amount);
@@ -243,7 +244,7 @@ const useMintHook = () => {
     } catch (error) {
       console.log({ error });
     } finally {
-      setLoading(false);
+      setLoadingAllowance(false);
     }
   };
 
@@ -359,6 +360,7 @@ const useMintHook = () => {
     image,
     fetchNFTImageByTokenId,
     ownedImage,
+    loadingAllowance,
   };
 };
 
