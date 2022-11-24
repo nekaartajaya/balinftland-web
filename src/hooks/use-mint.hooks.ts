@@ -300,6 +300,7 @@ const useMintHook = () => {
           const { transactionHash } = txHash;
 
           updateMintedTxHash(transactionHash);
+          setIsMintSuccess(true);
 
           const data = await mintNFTWithRefCode(token, {
             id: transactionHash,

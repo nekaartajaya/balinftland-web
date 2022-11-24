@@ -24,6 +24,7 @@ import { useDebounce } from 'use-debounce';
 import useFormHook from '@hooks/use-form.hooks';
 import useStore from '@store/index';
 import FAQSection from './FAQ';
+import NotificationModal from '@components/global/NotificationModal';
 
 const StageOne = () => {
   const {
@@ -77,13 +78,23 @@ const StageOne = () => {
   }
 
   useEffect(() => {
-    // verifyAllowance();
     fetchMintedQty();
     fetchPrice();
     fetchActiveStage();
     fetchMaxSupply();
     fetchNFTImage();
   }, []);
+
+  useEffect(() => {
+    console.log(isMintSuccess);
+    if (isMintSuccess) {
+      fetchMintedQty();
+      fetchPrice();
+      fetchActiveStage();
+      fetchMaxSupply();
+      fetchNFTImage();
+    }
+  }, [minting]);
 
   useEffect(() => {
     if (address && !cookieToken) {
@@ -100,12 +111,6 @@ const StageOne = () => {
     }
   }, [isConnected, address, isAuthenticated]);
 
-  useEffect(() => {
-    if (isMintSuccess && address) {
-      fetchMintedByUserQty(address);
-    }
-  }, [isMintSuccess, address]);
-
   const [temp, setTemp] = useState('');
   const [referralCode] = useDebounce(temp, 1000);
   const [codeValidity, setCodeValidity] = useState(false);
@@ -121,7 +126,6 @@ const StageOne = () => {
 
   useEffect(() => {
     async function check() {
-      console.log(isLoadingForm);
       if (isValidCode && cookieToken) {
         const refCodeValidity = await verifyRefCode(cookieToken, referralCode);
 
@@ -258,7 +262,9 @@ const StageOne = () => {
             ) : (
               <>
                 <div className="text-xl">Mint Price</div>
-                <div className="text-xl font-bold">1 NFT : {price} USDC</div>
+                <div className="text-xl font-bold">
+                  1 NFT : {price.toLocaleString()} USDC
+                </div>
                 <div className="text-[7px]">STAGE 0{activeStage}</div>
               </>
             )}
@@ -483,7 +489,7 @@ const StageOne = () => {
                           >
                             <path
                               d="M13.1739 6.56522L8.30435 11.4348L5.86957 9M17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 4.58172 4.58172 1 9 1C13.4183 1 17 4.58172 17 9Z"
-                              stroke-width="2"
+                              strokeWidth="2"
                               className="stroke-light-green"
                             />
                           </svg>
@@ -518,7 +524,7 @@ const StageOne = () => {
                         }
                       >
                         <span className={`text-white font-semibold`}>
-                          Mint Now
+                          {minting ? 'Minting...' : 'Mint Now'}
                         </span>
                       </button>
                     </>
@@ -603,6 +609,10 @@ const StageOne = () => {
         Learn more About Minting
       </button>
       <FAQSection open={openModalFAQ} onClose={() => setOpenModalFAQ(false)} />
+      <NotificationModal
+        title={'Mint Successful'}
+        subtitle={`Congratulations! You have minted ${quantity} Lima Beach Signature NFT Fragments`}
+      />
     </div>
   );
 };
