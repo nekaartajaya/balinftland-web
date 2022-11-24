@@ -109,7 +109,7 @@ const StageOne = () => {
       fetchMintedByUserQty(address);
       fetchBalance(address);
     }
-  }, [isConnected, address, isAuthenticated]);
+  }, [isAuthenticated]);
 
   const [temp, setTemp] = useState('');
   const [referralCode] = useDebounce(temp, 1000);
@@ -235,7 +235,7 @@ const StageOne = () => {
 
   const allowedSupply = maxSupply - mintedQty;
 
-  const formDisabled = !isAuthenticated;
+  const formDisabled = !isAuthenticated || minting || loadingAllowance;
 
   const [openModalFAQ, setOpenModalFAQ] = useState<boolean>(false);
 
@@ -383,7 +383,7 @@ const StageOne = () => {
                   <div className="flex items-center h-12 border border-dark-blue justify-around w-[45%]">
                     <div>
                       <IconButton
-                        disabled={false}
+                        disabled={formDisabled}
                         onClick={() => handleDecrement()}
                       >
                         <RemoveIcon
@@ -396,13 +396,13 @@ const StageOne = () => {
                       type="number"
                       name="input-mint-quantity"
                       value={quantity}
-                      disabled={false}
+                      disabled={formDisabled}
                       onChange={handleChangeQuantity}
                       className={`placeholder:text-blue/[.30] text-base w-full text-center text-blue font-bold text-sm focus:outline-none`}
                     ></input>
                     <div>
                       <IconButton
-                        disabled={false}
+                        disabled={formDisabled}
                         onClick={() => handleIncrement()}
                       >
                         <AddIcon
@@ -427,7 +427,7 @@ const StageOne = () => {
                     type="checkbox"
                     name="tnc"
                     onChange={() => handleChangeAgreement()}
-                    disabled={false}
+                    disabled={formDisabled}
                     className="w-5 !rounded-none"
                   />
                   <label className="md:text-base text-sm">

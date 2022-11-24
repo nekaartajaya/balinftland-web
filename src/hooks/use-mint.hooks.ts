@@ -329,6 +329,7 @@ const useMintHook = () => {
       console.log({ error });
     } finally {
       setMinting(false);
+      setIsMintSuccess(false);
     }
   };
 
