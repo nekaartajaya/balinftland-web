@@ -225,7 +225,7 @@ const StageOne = () => {
           <hr className="md:block hidden" />
           <div className="md:h-[17%] h-[100px] flex flex-col items-center justify-center text-blue bg-white  md:border-y-0 border-y">
             <div className="text-xl">Mint Price</div>
-            <div className="text-xl font-bold">1 NFT : 10.000 USDC</div>
+            <div className="text-xl font-bold">1 NFT : {price} USDC</div>
             <div className="text-[7px]">STAGE 0{activeStage}</div>
           </div>
         </div>
@@ -233,7 +233,7 @@ const StageOne = () => {
         <div className="bg-white w-full md:px-12 px-4 md:py-6 py-4 flex flex-col justify-between gap-y-12">
           <div className="flex gap-x-16">
             <div className="text-blue text-[14px] flex items-center gap-x-4">
-              <span>Stage 1 Supply</span>
+              <span>Stage {activeStage} Supply</span>
               <h5 className="font-bold">
                 {mintedQty}/{maxSupply}
               </h5>
@@ -245,7 +245,9 @@ const StageOne = () => {
           </div>
           <div>
             <div className="text-blue tracking-[5px] mb-9">
-              <h1 className="font-bold text-2xl">STAGE 01: PHYSICAL LAND</h1>
+              <h1 className="font-bold text-2xl">
+                STAGE 0{activeStage}: PHYSICAL LAND
+              </h1>
               <span className="text-base">Lima Beach Signature NFT</span>
             </div>
 
@@ -253,9 +255,9 @@ const StageOne = () => {
               <div className="mb-10">
                 <input
                   type="text"
-                  name={'tes'}
+                  name={'refferal'}
                   placeholder={'Input Preffereal Code (Optional)'}
-                  className={`border border-dark-blue p-3 placeholder:text-blue/[.30] text-base w-full`}
+                  className={`border border-dark-blue p-3 placeholder:text-blue/[.30] text-base w-full focus:outline-blue`}
                 />
               </div>
 
@@ -327,17 +329,18 @@ const StageOne = () => {
                     {!(
                       allowedSupply > 0 &&
                       quantity > 0 &&
-                      isAgreed &&
                       allowance === quantity * price
                     ) || !isUSDCApproved ? (
                       <button
                         className={`w-1/2 bg-light-blue-2/[.10] py-3 px-1 text-[12px] border-2 border-light-blue-2 ${
-                          !isUSDCEnough() || quantity === 0
+                          !isUSDCEnough() || quantity === 0 || loadingAllowance
                             ? 'opacity-50'
                             : 'opacity-100'
                         }`}
                         onClick={handleSetAllowance}
-                        disabled={!isUSDCEnough()}
+                        disabled={
+                          !isUSDCEnough() || quantity === 0 || loadingAllowance
+                        }
                       >
                         <span className="text-light-blue-2 font-semibold">
                           {loadingAllowance
@@ -376,7 +379,9 @@ const StageOne = () => {
                           quantity > 0 &&
                           isAgreed &&
                           allowance === quantity * price
-                        ) || disableMint
+                        ) ||
+                        disableMint ||
+                        !isUSDCApproved
                           ? 'opacity-50'
                           : 'opacity-100'
                       }`}
@@ -387,7 +392,9 @@ const StageOne = () => {
                           quantity > 0 &&
                           isAgreed &&
                           allowance === quantity * price
-                        ) || disableMint
+                        ) ||
+                        disableMint ||
+                        !isUSDCApproved
                           ? true
                           : false
                       }
