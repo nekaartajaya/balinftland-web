@@ -5,6 +5,7 @@ import getConfig from 'next/config';
 
 import contractABI from '../../public/contracts/LBSFragment.json';
 import usdcContractABI from '../../public/contracts/USDC.json';
+import { replaceURI } from './ipfs';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -51,9 +52,7 @@ export const getNFTImage = async () => {
 
     const uri = await contract.methods.uri(activeStage).call();
 
-    const resp = await fetch(
-      uri.replace('ipfs://', 'https://gateway.pinata.cloud/ipfs/'),
-    );
+    const resp = await fetch(replaceURI(uri));
 
     if (!resp.ok) throw new Error(resp.statusText);
 
@@ -61,7 +60,7 @@ export const getNFTImage = async () => {
 
     const image = json.image;
 
-    return image.replace('ipfs://', 'https://gateway.pinata.cloud/ipfs/');
+    return replaceURI(image);
   } catch (error) {
     console.log({ error });
     return null;

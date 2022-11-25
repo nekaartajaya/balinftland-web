@@ -40,7 +40,7 @@ const useMintHook = () => {
   const [allowance, setAllowance] = useState<number>(0);
   const [activeStage, setActiveStage] = useState<number>(0);
   const [maxSupply, setMaxSupply] = useState<number>(0);
-  const [image, setImage] = useState<string>('');
+  const [image, setImage] = useState<string | null>('');
   const [price, setPrice] = useState<number>(0);
   const [usdcDecimals, setDecimals] = useState<number>(0);
   const [balance, setBalance] = useState<number>(0);
