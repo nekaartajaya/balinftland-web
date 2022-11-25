@@ -50,22 +50,22 @@ const HomeTopSection = () => {
           infinite
         >
           <img
-            src="images/stages/stage-1.png"
+            src="images/stages/stage-1-clear.png"
             alt="Home Top Section"
             className="w-[90%] mx-auto"
           />
           <img
-            src="images/stages/stage-2.png"
+            src="images/stages/stage-2-clear.png"
             alt="Home Top Section"
             className="w-[90%] mx-auto"
           />
           <img
-            src="images/stages/stage-3.png"
+            src="images/stages/stage-3-clear.png"
             alt="Home Top Section"
             className="w-[90%] mx-auto"
           />
           <img
-            src="images/stages/stage-4.png"
+            src="images/stages/stage-4-clear.png"
             alt="Home Top Section"
             className="w-[90%] mx-auto"
           />

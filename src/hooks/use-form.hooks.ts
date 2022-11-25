@@ -12,8 +12,7 @@ const useFormHook = () => {
     try {
       const data = await checkRefCode(cookieToken, code);
 
-      //TODO: need API endpoint to check refCode validity!
-      if (data === '') {
+      if (data) {
         setValid(true);
         return true;
       } else {

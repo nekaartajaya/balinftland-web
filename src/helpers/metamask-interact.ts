@@ -5,6 +5,7 @@ import getConfig from 'next/config';
 
 import contractABI from '../../public/contracts/LBSFragment.json';
 import usdcContractABI from '../../public/contracts/USDC.json';
+import { replaceURI } from './ipfs';
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -51,7 +52,7 @@ export const getNFTImage = async () => {
 
     const uri = await contract.methods.uri(activeStage).call();
 
-    const resp = await fetch(uri);
+    const resp = await fetch(replaceURI(uri));
 
     if (!resp.ok) throw new Error(resp.statusText);
 
@@ -59,7 +60,7 @@ export const getNFTImage = async () => {
 
     const image = json.image;
 
-    return image;
+    return replaceURI(image);
   } catch (error) {
     console.log({ error });
     return null;
@@ -104,9 +105,7 @@ export const getTokenToMintedQty = async () => {
     );
 
     const activeStage = await contract.methods.activeStage().call();
-    const mintedQty = await contract.methods
-      .tokenToMintedQty(activeStage)
-      .call();
+    const mintedQty = await contract.methods.totalSupply(activeStage).call();
 
     return mintedQty;
   } catch (error) {
@@ -125,9 +124,7 @@ export const getMaxSaleSupply = async () => {
     );
 
     const activeStage = await contract.methods.activeStage().call();
-    const maxSupply = await contract.methods
-      .getMaxSaleSupply(activeStage)
-      .call();
+    const maxSupply = await contract.methods.maxSaleSupply(activeStage).call();
 
     return maxSupply;
   } catch (error) {
@@ -200,7 +197,7 @@ export const getPrice = async () => {
     const activeStage = await contract.methods.activeStage().call();
 
     const price = await contract.methods
-      .getPrice(web3.utils.toNumber(activeStage))
+      .price(web3.utils.toNumber(activeStage))
       .call();
 
     const decimals = await getUSDCDecimals();

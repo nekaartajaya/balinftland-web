@@ -7,6 +7,8 @@ const {
   NEXT_PUBLIC_WEB3_PROVIDER_KEY,
   NEXT_PUBLIC_LBSF_CONTRACT_ADDRESS,
   NEXT_PUBLIC_USDC_CONTRACT_ADDRESS,
+  NEXT_PUBLIC_CHAIN_ID,
+  NEXT_PUBLIC_IPFS_URL,
 } = process.env;
 
 const nextConfig = {
@@ -30,6 +32,8 @@ const nextConfig = {
     web3ProviderURL: process.env.NEXT_PUBLIC_WEB3_PROVIDER_URL,
     lbsfContractAddress: process.env.NEXT_PUBLIC_LBSF_CONTRACT_ADDRESS,
     usdcContractAddress: process.env.NEXT_PUBLIC_USDC_CONTRACT_ADDRESS,
+    chainId: process.env.NEXT_PUBLIC_CHAIN_ID,
+    ipfsURL: process.env.NEXT_PUBLIC_IPFS_URL,
   },
 };
 

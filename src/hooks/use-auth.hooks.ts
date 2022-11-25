@@ -2,8 +2,11 @@ import { useState, useEffect } from 'react';
 
 import Cookies from 'js-cookie';
 import { getChallengeAndSignIn } from '@api/auth';
+import useWeb3Store from '@store/index';
 
 const useAuthHook = () => {
+  const toggleConnecting = useWeb3Store((state) => state.toggleConnecting);
+
   useEffect(() => {
     async function loadUserFromCookies() {
       const cookieToken = Cookies.get('access_token');
@@ -28,6 +31,7 @@ const useAuthHook = () => {
       Cookies.set('access_token', token);
       Cookies.set('user', JSON.stringify(user));
       setUser(user);
+      toggleConnecting();
     }
   };
 

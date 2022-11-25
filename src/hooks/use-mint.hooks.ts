@@ -40,12 +40,13 @@ const useMintHook = () => {
   const [allowance, setAllowance] = useState<number>(0);
   const [activeStage, setActiveStage] = useState<number>(0);
   const [maxSupply, setMaxSupply] = useState<number>(0);
-  const [image, setImage] = useState<string>('');
+  const [image, setImage] = useState<string | null>('');
   const [price, setPrice] = useState<number>(0);
   const [usdcDecimals, setDecimals] = useState<number>(0);
   const [balance, setBalance] = useState<number>(0);
   const [mintedQty, setMintedQty] = useState<number>(0);
   const [mintedNFT, setMintedNFT] = useState<number>(0);
+  const [loadingAllowance, setLoadingAllowance] = useState<boolean>(false);
 
   const [ownedImage, setOwnedImage] = useState<string>('');
 
@@ -231,7 +232,7 @@ const useMintHook = () => {
   };
 
   const allowUSDC = async (amount: number) => {
-    setLoading(true);
+    setLoadingAllowance(true);
 
     try {
       const isSuccess = await approveUSDC(amount);
@@ -243,7 +244,7 @@ const useMintHook = () => {
     } catch (error) {
       console.log({ error });
     } finally {
-      setLoading(false);
+      setLoadingAllowance(false);
     }
   };
 
@@ -255,7 +256,7 @@ const useMintHook = () => {
     const web3 = createAlchemyWeb3(web3ProviderURL);
 
     const contract = new web3.eth.Contract(
-      contractABI.abi as AbiItem[],
+      contractABI.abi as any,
       lbsfContractAddress,
     );
 
@@ -299,6 +300,7 @@ const useMintHook = () => {
           const { transactionHash } = txHash;
 
           updateMintedTxHash(transactionHash);
+          setIsMintSuccess(true);
 
           const data = await mintNFTWithRefCode(token, {
             id: transactionHash,
@@ -327,6 +329,7 @@ const useMintHook = () => {
       console.log({ error });
     } finally {
       setMinting(false);
+      setIsMintSuccess(false);
     }
   };
 
@@ -359,6 +362,7 @@ const useMintHook = () => {
     image,
     fetchNFTImageByTokenId,
     ownedImage,
+    loadingAllowance,
   };
 };
 
