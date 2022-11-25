@@ -7,7 +7,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import SwapHorizOutlinedIcon from '@mui/icons-material/SwapHorizOutlined';
 import useMintHook from '@hooks/use-mint.hooks';
-import { useConnect, useAccount } from 'wagmi';
+import { useConnect, useAccount, useNetwork } from 'wagmi';
 import useWeb3Store from '@store/index';
 import { InjectedConnector } from '@wagmi/core';
 import useAuthHook from '@hooks/use-auth.hooks';
@@ -25,6 +25,8 @@ import useFormHook from '@hooks/use-form.hooks';
 import useStore from '@store/index';
 import FAQSection from './FAQ';
 import NotificationModal from '@components/global/NotificationModal';
+import getConfig from 'next/config';
+const { publicRuntimeConfig } = getConfig();
 
 const StageOne = () => {
   const {
@@ -68,6 +70,7 @@ const StageOne = () => {
       toggleConnecting();
     },
   });
+  const { chain, chains } = useNetwork();
 
   const currentWallet = useStore((state) => state.currentWallet);
   const updateWallet = useStore((state) => state.updateWallet);
@@ -128,7 +131,7 @@ const StageOne = () => {
     async function check() {
       if (isValidCode && cookieToken) {
         const refCodeValidity = await verifyRefCode(cookieToken, referralCode);
-
+        console.log({ refCodeValidity });
         if (refCodeValidity) {
           setCodeValidity(true);
         } else {
@@ -235,8 +238,15 @@ const StageOne = () => {
 
   const allowedSupply = maxSupply - mintedQty;
 
-  const formDisabled = !isAuthenticated || minting || loadingAllowance;
+  const wrongNetwork = chain?.id !== Number(publicRuntimeConfig.chainId);
 
+  const formDisabled =
+    isDisconnected ||
+    !isAuthenticated ||
+    minting ||
+    loadingAllowance ||
+    !address ||
+    wrongNetwork;
   const [openModalFAQ, setOpenModalFAQ] = useState<boolean>(false);
 
   return (
@@ -361,22 +371,27 @@ const StageOne = () => {
                       disabled={formDisabled}
                     />
                   </div>
-
-                  {isLoadingForm && (
-                    <span className="text-blue text-[12px]">Checking...</span>
-                  )}
-                  {isValidCode || emptyRefCode ? (
-                    <></>
-                  ) : (
-                    <span className="text-[#FF0000] text-[12px]">
-                      Invalid Referral code, code has been removed{' '}
-                    </span>
-                  )}
-                  {codeValidity && (
-                    <span className="text-light-green text-[12px]">
-                      Referral Code Added!
-                    </span>
-                  )}
+                  <div className="h-3">
+                    {isLoadingForm && (
+                      <span className="text-blue text-[12px]">Checking...</span>
+                    )}
+                    {isValidCode || emptyRefCode ? (
+                      <></>
+                    ) : (
+                      <span className="text-[#FF0000] text-[12px]">
+                        Invalid Referral code, code has been removed
+                      </span>
+                    )}
+                    {codeValidity ? (
+                      <span className="text-light-green text-[12px]">
+                        Referral Code Added!
+                      </span>
+                    ) : !codeValidity && !emptyRefCode && !isLoadingForm ? (
+                      <span className="text-[#FF0000] text-[12px]">
+                        Invalid Referral code, code has been removed
+                      </span>
+                    ) : null}
+                  </div>
                 </div>
 
                 <div className="flex justify-between items-center mb-6">
@@ -445,89 +460,95 @@ const StageOne = () => {
 
                 <div className="flex gap-x-12">
                   {isConnected && isAuthenticated ? (
-                    <>
-                      {!(
-                        allowedSupply > 0 &&
-                        quantity > 0 &&
-                        allowance === quantity * price
-                      ) || !isUSDCApproved ? (
+                    wrongNetwork ? (
+                      <div className="text-[#FF0000] py-3">
+                        You are in wrong network. Please switch network first!
+                      </div>
+                    ) : (
+                      <>
+                        {!(
+                          allowedSupply > 0 &&
+                          quantity > 0 &&
+                          allowance === quantity * price
+                        ) || !isUSDCApproved ? (
+                          <button
+                            className={`w-1/2 bg-light-blue-2/[.10] py-3 px-1 text-[12px] border-2 border-light-blue-2 ${
+                              !isUSDCEnough() ||
+                              quantity === 0 ||
+                              loadingAllowance
+                                ? 'opacity-50'
+                                : 'opacity-100'
+                            }`}
+                            onClick={handleSetAllowance}
+                            disabled={
+                              !isUSDCEnough() ||
+                              quantity === 0 ||
+                              loadingAllowance
+                            }
+                          >
+                            <span className="text-light-blue-2 font-semibold">
+                              {loadingAllowance
+                                ? 'Loading...'
+                                : `Allow To Trade ${(
+                                    quantity * price
+                                  ).toLocaleString()} 
+                          USDC`}
+                            </span>
+                          </button>
+                        ) : (
+                          <div className="w-1/2 flex items-center justify-center gap-x-2 bg-light-green/[.05] border-2 border-light-green py-3">
+                            <span className="text-light-green font-bold text-[12px]">
+                              Now You Can Trade USDC
+                            </span>
+                            <svg
+                              width="18"
+                              height="18"
+                              viewBox="0 0 18 18"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M13.1739 6.56522L8.30435 11.4348L5.86957 9M17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 4.58172 4.58172 1 9 1C13.4183 1 17 4.58172 17 9Z"
+                                strokeWidth="2"
+                                className="stroke-light-green"
+                              />
+                            </svg>
+                          </div>
+                        )}
+
                         <button
-                          className={`w-1/2 bg-light-blue-2/[.10] py-3 px-1 text-[12px] border-2 border-light-blue-2 ${
-                            !isUSDCEnough() ||
-                            quantity === 0 ||
-                            loadingAllowance
+                          className={`w-1/2 bg-light-blue-2 py-3 px-1 text-[12px]  ${
+                            !(
+                              allowedSupply > 0 &&
+                              quantity > 0 &&
+                              isAgreed &&
+                              allowance === quantity * price
+                            ) ||
+                            disableMint ||
+                            !isUSDCApproved
                               ? 'opacity-50'
                               : 'opacity-100'
                           }`}
-                          onClick={handleSetAllowance}
+                          onClick={() => handleMintPressed()}
                           disabled={
-                            !isUSDCEnough() ||
-                            quantity === 0 ||
-                            loadingAllowance
+                            !(
+                              allowedSupply > 0 &&
+                              quantity > 0 &&
+                              isAgreed &&
+                              allowance === quantity * price
+                            ) ||
+                            disableMint ||
+                            !isUSDCApproved
+                              ? true
+                              : false
                           }
                         >
-                          <span className="text-light-blue-2 font-semibold">
-                            {loadingAllowance
-                              ? 'Loading...'
-                              : `Allow To Trade ${(
-                                  quantity * price
-                                ).toLocaleString()} 
-                          USDC`}
+                          <span className={`text-white font-semibold`}>
+                            {minting ? 'Minting...' : 'Mint Now'}
                           </span>
                         </button>
-                      ) : (
-                        <div className="w-1/2 flex items-center justify-center gap-x-2 bg-light-green/[.05] border-2 border-light-green py-3">
-                          <span className="text-light-green font-bold text-[12px]">
-                            Now You Can Trade USDC
-                          </span>
-                          <svg
-                            width="18"
-                            height="18"
-                            viewBox="0 0 18 18"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              d="M13.1739 6.56522L8.30435 11.4348L5.86957 9M17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 4.58172 4.58172 1 9 1C13.4183 1 17 4.58172 17 9Z"
-                              strokeWidth="2"
-                              className="stroke-light-green"
-                            />
-                          </svg>
-                        </div>
-                      )}
-
-                      <button
-                        className={`w-1/2 bg-light-blue-2 py-3 px-1 text-[12px]  ${
-                          !(
-                            allowedSupply > 0 &&
-                            quantity > 0 &&
-                            isAgreed &&
-                            allowance === quantity * price
-                          ) ||
-                          disableMint ||
-                          !isUSDCApproved
-                            ? 'opacity-50'
-                            : 'opacity-100'
-                        }`}
-                        onClick={() => handleMintPressed()}
-                        disabled={
-                          !(
-                            allowedSupply > 0 &&
-                            quantity > 0 &&
-                            isAgreed &&
-                            allowance === quantity * price
-                          ) ||
-                          disableMint ||
-                          !isUSDCApproved
-                            ? true
-                            : false
-                        }
-                      >
-                        <span className={`text-white font-semibold`}>
-                          {minting ? 'Minting...' : 'Mint Now'}
-                        </span>
-                      </button>
-                    </>
+                      </>
+                    )
                   ) : (
                     <>
                       {connectors.map((connector: any) => (
