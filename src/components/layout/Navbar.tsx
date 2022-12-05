@@ -1,7 +1,9 @@
+import { logowhite } from '@assets/images';
 import { NavMenu } from '@interfaces/NavbarInterface';
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
 import { SwipeableDrawer } from '@mui/material';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -44,7 +46,7 @@ const Navbar = () => {
       name: 'mint yours',
       link: '/mint/lima-beach-signature',
       classes:
-        '!capitalize !font-medium !text-base bg-light-green px-4 py-2 hover:bg-light-green/[.80] whitespace-nowrap !text-[#FFF]',
+        'md:!capitalize !font-medium !text-base bg-light-green px-4 py-2 hover:bg-light-green/[.80] whitespace-nowrap !text-[#FFF]',
     },
   ];
 
@@ -70,12 +72,16 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className="w-full h-[86px] fixed top-0 md:px-[60px] px-4 bg-dark-blue flex justify between items-center z-[999]">
+      <nav
+        className={`w-full h-[86px] fixed top-0 md:px-[60px] px-6 flex justify between items-center z-[999] transition-all ease-in-out duration-150 ${
+          openNavbar ? 'bg-white' : 'bg-dark-blue'
+        }`}
+      >
         <div className="w-1/2">
           <Link href="/">
-            <img
-              src="/images/logo/logo-white.png"
-              className="cursor-pointer min-"
+            <Image
+              src={logowhite}
+              className={`cursor-pointer ${openNavbar && 'invert'}`}
               alt="BaliNFTLand-logo"
             />
           </Link>
@@ -115,7 +121,9 @@ const Navbar = () => {
             {!openNavbar ? (
               <MenuIcon color="inherit" fontSize="large" />
             ) : (
-              <CloseIcon color="inherit" fontSize="large" />
+              <div className="text-black">
+                <CloseIcon color="inherit" fontSize="large" />
+              </div>
             )}
           </button>
           <SwipeableDrawer
@@ -128,28 +136,33 @@ const Navbar = () => {
               '& .MuiDrawer-paper': {
                 boxSizing: 'border-box',
                 width: '100%',
-                top: '86px',
+                top: '85px',
+                boxShadow: 'none !important',
+                border: 'none !important',
               },
             }}
             className="!top-[86px]"
           >
-            <div className="px-4 pt-4">
+            <div className="px-6 pt-8">
               {NavMenu.map(({ name, link, classes }, index) => {
-                if (pathname && pathname[1] === 'mint' && name === 'mint yours')
+                if (
+                  (pathname &&
+                    pathname[1] === 'mint' &&
+                    name === 'mint yours') ||
+                  name === 'home'
+                )
                   return;
 
                 return (
                   <Link key={index} href={link}>
                     <div
-                      className={`${classes} nav-item-mobile uppercase text-blue text-sm tracking-wider font-normal cursor-pointer mb-4 ${
-                        name !== 'mint yours' ? 'w-fit' : 'text-center'
-                      }`}
+                      className={`${classes} nav-item-mobile uppercase text-black text-lg tracking-wider font-semibold cursor-pointer mb-4 w-fit`}
                       onClick={handleCloseNavbar}
                     >
                       {name}
                       {pathname && pathname[1] !== 'mint' && (
                         <div
-                          className={`nav-border h-[2px] bg-blue ${
+                          className={`nav-border h-[2px] bg-black ${
                             handleActiveMenu(name) && '!w-full'
                           }`}
                         ></div>

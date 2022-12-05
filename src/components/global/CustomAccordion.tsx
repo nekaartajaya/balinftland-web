@@ -20,7 +20,7 @@ const CustomAccordion = ({ data }: { data: any }) => {
         <div>{isOpen ? <RemoveIcon /> : <AddIcon />}</div>
       </div>
       <div
-        className={`text-[14px] tablet:text-[14px] desktop:text-[16px] transition transition-all duration-150 ease-in-out ${
+        className={`text-[14px] tablet:text-[14px] desktop:text-[16px] transition-all duration-150 ease-in-out ${
           isOpen
             ? 'opacity-100 visible max-h-[600px]  pt-6'
             : ' opacity-0 invisible max-h-[0px]'
