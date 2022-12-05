@@ -12,7 +12,9 @@ import hospitality3 from 'public/images/pages/home/dummy-4.png';
 import hospitality4 from 'public/images/pages/home/dummy-5.png';
 import hospitality5 from 'public/images/pages/home/dummy-6.png';
 import hospitality6 from 'public/images/pages/home/dummy-7.png';
-
+import unitmetaverse1 from 'public/images/pages/home/dummy-8.png';
+import unitmetaverse2 from 'public/images/pages/home/dummy-9.png';
+import unitmetaverse3 from 'public/images/pages/home/dummy-10.png';
 export {
   stage1clear,
   stage2clear,
@@ -28,4 +30,7 @@ export {
   hospitality4,
   hospitality5,
   hospitality6,
+  unitmetaverse1,
+  unitmetaverse2,
+  unitmetaverse3,
 };

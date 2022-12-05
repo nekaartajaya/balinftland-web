@@ -25,12 +25,12 @@ const HomeTopSection = () => {
     <div className="flex md:flex-row flex-col-reverse justify-between items-center mx-auto">
       <div className="md:w-1/2 w-full lg:px-24 md:px-10 px-6 bg-dark-blue lg:min-h-[700px] md:min-h-[500px] top flex items-center md:justify-center">
         <div className="w-full md:py-0 pt-5 pb-10">
-          <div className="lg:text-7xl md:text-5xl text-3xl md:font-bold font-semibold tracking-wider text-white md:mb-8 mb-2">
+          <div className="lg:text-7xl md:text-5xl text-3xl md:font-bold font-semibold tracking-wider text-white md:mb-8 mb-4">
             <h1 className="leading-tight md:capitalize uppercase">
               NFT, Blockchain, Property,
             </h1>
           </div>
-          <h1 className="md:text-xl text-lg text-white tracking-[8px] mb-4 font-normal">
+          <h1 className="md:text-xl text-sm text-white tracking-[8px] mb-6 font-normal">
             BALI NFT LAND
           </h1>
           <div>
