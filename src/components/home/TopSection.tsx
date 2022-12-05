@@ -8,7 +8,7 @@ import {
   stage2clear,
   stage3clear,
   stage4clear,
-} from 'src/assets/images';
+} from '@assets/images';
 
 const HomeTopSection = () => {
   const router = useRouter();
