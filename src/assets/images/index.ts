@@ -6,6 +6,12 @@ import blocksphere from 'public/images/partners/blocksphere.png';
 import paras from 'public/images/partners/paras.png';
 import myriadtown from 'public/images/partners/myriad-town.png';
 import myriad from 'public/images/partners/myriad.png';
+import hospitality1 from 'public/images/pages/home/dummy-2.png';
+import hospitality2 from 'public/images/pages/home/dummy-3.png';
+import hospitality3 from 'public/images/pages/home/dummy-4.png';
+import hospitality4 from 'public/images/pages/home/dummy-5.png';
+import hospitality5 from 'public/images/pages/home/dummy-6.png';
+import hospitality6 from 'public/images/pages/home/dummy-7.png';
 
 export {
   stage1clear,
@@ -16,4 +22,10 @@ export {
   paras,
   myriadtown,
   myriad,
+  hospitality1,
+  hospitality2,
+  hospitality3,
+  hospitality4,
+  hospitality5,
+  hospitality6,
 };
