@@ -3,6 +3,7 @@ import { ButtonInterface } from '@interfaces/GlobalInterface';
 const CustomButton = ({
   text,
   color = '#FFF',
+  blue,
   icon,
   classes,
   onClick,
@@ -10,7 +11,9 @@ const CustomButton = ({
   return (
     <>
       <button
-        className={`${classes} flex justify-center items-center gap-x-2 p-3 min-w-[260px] bg-blue text-[${color}]`}
+        className={`${classes} ${
+          blue ? 'bg-blue' : 'bg-green'
+        } flex justify-center items-center gap-x-2 p-3 min-w-[260px] text-[${color}]`}
         onClick={onClick}
       >
         {text}
