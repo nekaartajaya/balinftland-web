@@ -3,9 +3,13 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { useMediaQuery } from '@mui/material';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Scrollbar } from 'swiper';
 
 const ProfileRoadmapSection = () => {
-  const isMobile = useMediaQuery('(max-width: 500px)', { noSsr: true });
+  const isTab = useMediaQuery('(max-width: 768px)', { noSsr: false });
+  const isMobile = useMediaQuery('(max-width: 639px)', { noSsr: false });
+  const isLaptop = useMediaQuery('(max-width: 1199px)', { noSsr: false });
 
   const responsive = {
     desktop: {
@@ -25,63 +29,84 @@ const ProfileRoadmapSection = () => {
     },
   };
 
+  const pagination = {
+    renderBullet: function (_index: number, className: string) {
+      return `<span class="custom-dot ${className}"></span>`;
+    },
+  };
+
   const roadmap = [];
   for (let i = 0; i < 5; i++) {
     roadmap.push(
-      <div key={i} className="max-w-[220px]  mx-auto">
-        <div className="bg-[#D9D9D9] w-[220px] h-[220px]  border mx-auto"></div>
-        <div className="text-dark-blue">
-          <h1 className="text-[40px]  font-semibold text-center mb-2">
-            Q5 2022
-          </h1>
-          <ul className="text-[10px] tracking-wider gap-y-4">
-            <li className="mb-2">
-              <CheckCircleOutlineIcon fontSize="small" /> NFT Fragment
-              Development
-            </li>
-            <li className="mb-2">
-              <CheckCircleOutlineIcon fontSize="small" /> Marketing Campaign
-            </li>
-            <li className="mb-2">
-              <CheckCircleOutlineIcon fontSize="small" /> Legal Preparation
-            </li>
-            <li className="mb-2">
-              <CheckCircleOutlineIcon fontSize="small" /> Landing Page
-              Development
-            </li>
-            <li className="mb-2">
-              <CheckCircleOutlineIcon fontSize="small" /> Lima Beach Page
-              Development
-            </li>
-          </ul>
+      <SwiperSlide key={i}>
+        <div className="md:max-w-[220px] max-w-[210px]">
+          <div className="bg-[#D9D9D9] md:w-[220px] md:h-[220px] w-[210px] h-[210px]  border mx-auto"></div>
+          <div className="text-dark-blue">
+            <h1 className="md:text-[34px] text-3xl  font-semibold text-center my-2">
+              Q5 2022
+            </h1>
+            <ul className="text-[10px] tracking-wider gap-y-4">
+              <li className="mb-2">
+                <CheckCircleOutlineIcon fontSize="small" /> NFT Fragment
+                Development
+              </li>
+              <li className="mb-2">
+                <CheckCircleOutlineIcon fontSize="small" /> Marketing Campaign
+              </li>
+              <li className="mb-2">
+                <CheckCircleOutlineIcon fontSize="small" /> Legal Preparation
+              </li>
+              <li className="mb-2">
+                <CheckCircleOutlineIcon fontSize="small" /> Landing Page
+                Development
+              </li>
+              <li className="mb-2">
+                <CheckCircleOutlineIcon fontSize="small" /> Lima Beach Page
+                Development
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>,
+      </SwiperSlide>,
     );
   }
 
   return (
-    <div className=" py-20">
-      <div className="text-center mb-12 px-4">
-        <Subtitle text="Bali Land NFT Roadmap" />
-        <h6 className="md:text-[22px] text-xl text-blue mt-4">
+    <div className=" md:py-20 py-10 ">
+      <div className="text-left mb-12 md:px-24 px-10">
+        <Subtitle text="Bali Land NFT Roadmap" classes="!text-left " />
+        <h6 className="md:text-[22px] text-sm text-blue mt-4">
           We are guided by a simple yet precise vision of Bali Land NFT Roadmap.
           We Build together, We Own Together.
         </h6>
       </div>
 
-      <div className="pb-12 relative">
-        <Carousel
-          responsive={responsive}
-          arrows={false}
-          showDots={true}
-          renderDotsOutside={true}
-          dotListClass={'slider-dot'}
-          infinite
-          itemClass={'mx-auto'}
-          centerMode={!isMobile}
+      <div className="md:hidden">
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={isMobile ? 1.3 : isTab ? 2.3 : isLaptop ? 3.3 : 4.3}
+          modules={[Pagination]}
+          pagination={{
+            type: 'progressbar',
+          }}
+          centeredSlidesBounds={true}
+          className="swiper-profile  swiper-roadmap-profile"
         >
           {roadmap}
-        </Carousel>
+        </Swiper>
+      </div>
+
+      <div className="hidden md:block">
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={isMobile ? 1.3 : isTab ? 2.3 : isLaptop ? 3.3 : 4.3}
+          modules={[Pagination]}
+          pagination={pagination}
+          centeredSlidesBounds={true}
+          className="swiper-profile  swiper-roadmap-profile"
+        >
+          {roadmap}
+        </Swiper>
       </div>
     </div>
   );

@@ -50,16 +50,14 @@ const ProfileUtilitySection = () => {
         })}
       </div>
 
-      <div className="md:hidden md:px-24 px-10 mt-4">
+      <div className="md:hidden mt-4">
         <Swiper
           spaceBetween={20}
           slidesPerView={1.5}
-          scrollbar={{
-            hide: false,
-          }}
-          modules={[Scrollbar]}
+          modules={[Pagination]}
+          pagination={{ type: 'progressbar' }}
           centeredSlidesBounds={true}
-          className="swiper-utility-profile"
+          className="swiper-profile swiper-utility-profile"
         >
           {Utility.map((item: ImageInterface, index: number) => {
             return (

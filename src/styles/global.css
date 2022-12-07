@@ -83,5 +83,35 @@ code {
 }
 
 .swiper-utility-profile {
-  padding-bottom: 30px !important;
+  padding-bottom: 40px !important;
+  padding-right: 60px !important;
+}
+
+.swiper-profile .swiper-wrapper {
+  padding-left: 96px !important;
+  padding-right: 96px !important;
+}
+
+@media screen and (max-width: 768px) {
+  .swiper-profile .swiper-wrapper {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+}
+
+.swiper-roadmap-profile {
+  padding-bottom: 50px !important;
+  padding-right: 100px !important;
+}
+
+.swiper-pagination-progressbar {
+  width: calc(100vw - 96px) !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  bottom: 0 !important;
+  top: auto !important;
+  height: 6px !important;
+}
+.swiper-pagination-progressbar-fill {
+  background: #0e3d5b !important;
 }
