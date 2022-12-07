@@ -64,13 +64,20 @@ code {
 }
 
 /* Slider Dot */
-.slider-dot li button {
+.swiper .custom-dot {
   border-radius: 0;
   border: 0;
   background-color: #d9d9d9;
+  opacity: 40%;
 }
 
-.slider-dot li.react-multi-carousel-dot--active button {
+.swiper .custom-dot.swiper-pagination-bullet-active {
   width: 60px;
   background-color: #d9d9d9;
+  opacity: 1005;
+}
+
+.swiper-top-home {
+  padding-top: 45px !important;
+  padding-bottom: 45px !important;
 }

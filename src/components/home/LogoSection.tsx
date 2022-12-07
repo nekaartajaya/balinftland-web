@@ -1,7 +1,6 @@
 import { Logo } from '@interfaces/HomeInterface';
-import { Avatar, useMediaQuery } from '@mui/material';
-import Image from 'next/image';
-import Carousel from 'react-multi-carousel';
+import { useMediaQuery } from '@mui/material';
+import Image from 'next/legacy/image';
 import 'react-multi-carousel/lib/styles.css';
 import { blocksphere, myriad, myriadtown, paras } from '@assets/images';
 
@@ -31,23 +30,6 @@ const HomeLogoSection = () => {
     },
   ];
 
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 9999, min: 769 },
-      items: 4,
-    },
-    tablet: {
-      breakpoint: { max: 768, min: 401 },
-      items: 2,
-      slidesToSlide: 2,
-    },
-    phone: {
-      breakpoint: { max: 400, min: 0 },
-      items: 1,
-      slidesToSlide: 1,
-    },
-  };
-
   return (
     <div className="bg-[url('/images/pages/home/dummy-11.png')] bg-no-repeat bg-cover md:px-12 px-4 md:py-6">
       <div className="relative pb-[40px] md:pb-0">
@@ -61,6 +43,7 @@ const HomeLogoSection = () => {
               alt="Home Top Section"
               layout="fill"
               objectFit="contain"
+              priority
             />
           </div>
           <div className="w-full md:h-[150px] h-[55px] relative mx-auto">
@@ -69,6 +52,7 @@ const HomeLogoSection = () => {
               alt="Home Top Section"
               layout="fill"
               objectFit="contain"
+              priority
             />
           </div>
           <div className="w-full md:h-[150px] h-[55px] relative mx-auto">
@@ -77,6 +61,7 @@ const HomeLogoSection = () => {
               alt="Home Top Section"
               layout="fill"
               objectFit="contain"
+              priority
             />
           </div>
           <div className="w-full md:h-[150px] h-[55px] relative mx-auto">
@@ -85,23 +70,9 @@ const HomeLogoSection = () => {
               alt="Home Top Section"
               layout="fill"
               objectFit="contain"
+              priority
             />
           </div>
-          {/* <Image
-            src="/images/partners/paras.png"
-            alt="Logo Paras"
-            className="mx-auto"
-          />
-          <Image
-            src="/images/partners/myriad-town.png"
-            alt="Logo Myriad Town"
-            className="mx-auto"
-          />
-          <Image
-            src="/images/partners/myriad.png"
-            alt="Logo Myriad"
-            className="mx-auto"
-          /> */}
         </div>
       </div>
     </div>

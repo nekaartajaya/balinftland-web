@@ -1,23 +1,22 @@
 import CustomButton from '@components/global/Button';
 import { Divider } from '@mui/material';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { useRouter } from 'next/router';
-import Carousel from 'react-multi-carousel';
 import {
   stage1clear,
   stage2clear,
   stage3clear,
   stage4clear,
 } from '@assets/images';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper';
 
 const HomeTopSection = () => {
   const router = useRouter();
 
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 9999, min: 0 },
-      items: 1,
-      slidesToSlide: 1,
+  const pagination = {
+    renderBullet: function (_index: number, className: string) {
+      return `<span class="custom-dot ${className}"></span>`;
     },
   };
 
@@ -49,50 +48,61 @@ const HomeTopSection = () => {
         className="border border-dark-blue md:block"
       /> */}
 
-      <div className="md:w-1/2 w-full relative py-10 md:mb-0 mb-6">
-        <Carousel
-          responsive={responsive}
-          arrows={false}
-          showDots={true}
-          renderDotsOutside={true}
-          dotListClass={'slider-dot'}
-          infinite
-          autoPlay
-          className="md:mb-5 mb-8"
+      <div className="md:w-1/2 w-full relative md:mb-0 mb-6">
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={1}
+          pagination={pagination}
+          autoplay
+          modules={[Pagination]}
+          loop
+          className="swiper-top-home"
         >
-          <div className="w-[90%] md:h-[400px] h-[250px] relative mx-auto">
-            <Image
-              src={stage1clear}
-              alt="Home Top Section"
-              layout="fill"
-              objectFit="contain"
-            />
-          </div>
-          <div className="w-[90%] md:h-[400px] h-[250px] relative mx-auto">
-            <Image
-              src={stage2clear}
-              alt="Home Top Section"
-              layout="fill"
-              objectFit="contain"
-            />
-          </div>
-          <div className="w-[90%] md:h-[400px] h-[250px] relative mx-auto">
-            <Image
-              src={stage3clear}
-              alt="Home Top Section"
-              layout="fill"
-              objectFit="contain"
-            />
-          </div>
-          <div className="w-[90%] md:h-[400px] h-[250px] relative mx-auto">
-            <Image
-              src={stage4clear}
-              alt="Home Top Section"
-              layout="fill"
-              objectFit="contain"
-            />
-          </div>
-        </Carousel>
+          <SwiperSlide>
+            <div className="w-[90%] md:h-[400px] h-[250px] relative mx-auto">
+              <Image
+                src={stage1clear}
+                alt="Home Top Section"
+                layout="fill"
+                objectFit="contain"
+                priority
+              />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="w-[90%] md:h-[400px] h-[250px] relative mx-auto">
+              <Image
+                src={stage2clear}
+                alt="Home Top Section"
+                layout="fill"
+                objectFit="contain"
+                priority
+              />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="w-[90%] md:h-[400px] h-[250px] relative mx-auto">
+              <Image
+                src={stage3clear}
+                alt="Home Top Section"
+                layout="fill"
+                objectFit="contain"
+                priority
+              />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="w-[90%] md:h-[400px] h-[250px] relative mx-auto">
+              <Image
+                src={stage4clear}
+                alt="Home Top Section"
+                layout="fill"
+                objectFit="contain"
+                priority
+              />
+            </div>
+          </SwiperSlide>
+        </Swiper>
       </div>
     </div>
   );
