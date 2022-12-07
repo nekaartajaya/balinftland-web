@@ -22,7 +22,7 @@ const ProfileTopSection = () => {
           </h1>
         </div>
       </div>
-      <div className="italic text-left text-blue md:text-[32px] text-base sm:px-24 px-10 py-8 lg:py-14 md:leading-[45px]">
+      <div className="italic text-left text-blue md:text-[32px] text-base md:px-24 px-10 py-8 lg:py-14 md:leading-[45px]">
         <span className="font-bold">Bali NFT Land</span> is a decentralized
         property developer with no middleman and no high conventional marketing
         cost. The idea is to create a viable option for the people who are
