@@ -10,7 +10,7 @@ const HomeProjectSection = () => {
         <h1 className="md:text-[64px] text-2xl md:tracking-wider md:leading-[80px] text-blue md:text-right md:mb-8 mb-5 md:font-normal font-semibold">
           <span className="font-extrabold">LIMA</span> BEACH SIGNATURE NFT.
         </h1>
-        <div className="text-blue text-base md:max-w-[400px] md:text-right ml-auto md:mb-20 mb-6">
+        <div className="text-blue text-sm md:text-base md:max-w-[400px] md:text-right ml-auto md:mb-20 mb-6">
           A limited-edition NFT representing the physical property certificate
           and physical property ownership built with the Internet of Things
           (IoT) Technology and Web 3.0.

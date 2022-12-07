@@ -32,11 +32,11 @@ const HomeLogoSection = () => {
 
   return (
     <div className="bg-[url('/images/pages/home/dummy-11.png')] bg-no-repeat bg-cover md:px-12 px-4 md:py-6">
-      <div className="relative pb-[40px] md:pb-0">
+      <div className="relative pb-[20px] md:pb-0">
         <div className="text-white md:text-[32px] text-md font-bold md:tracking-[16px] tracking-[6px] relative w-full text-center py-4 px-4">
           <h1>OUR PARTNER</h1>
         </div>
-        <div className="grid grid-cols-4 gap-y-6 md:py-8">
+        <div className="grid grid-cols-4 md:py-8">
           <div className="w-full md:h-[150px] h-[55px] relative mx-auto">
             <Image
               src={blocksphere}
