@@ -9,7 +9,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
       <Navbar />
       <div className="pt-[86px]">
         <Event />
-        <div className="pt-[70px]">{children}</div>
+        <div className="md:pt-[70px] pt-[40px]">{children}</div>
       </div>
       <Footer />
     </>
