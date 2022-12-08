@@ -55,8 +55,8 @@ const ProfileTeamSection = () => {
   ];
 
   return (
-    <div className="py-20 md:px-24 px-10">
-      <Subtitle text="Team" classes="mb-16 md:!text-left" />
+    <div className="py-20 md:px-24 px-6">
+      <Subtitle text="Team" classes="md:mb-16 md:!text-left text-3xl" />
 
       <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 md:gap-x-12 gap-x-4 gap-y-6">
         {team.map((item: TeamInterface, index: number) => {

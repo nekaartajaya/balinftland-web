@@ -4,7 +4,7 @@ import Image from 'next/legacy/image';
 const ProfileDistributionSection = () => {
   return (
     <div className="bg-dark-blue md:py-8 pt-8 pb-20">
-      <div className="text-white relative md:mb-6 mb-8 pb-10  md:px-24 px-10">
+      <div className="text-white relative md:mb-6 mb-8 pb-10  md:px-24 px-6">
         <Subtitle text="NFT Distribution" classes="!text-white md:!text-left" />
         <span className="absolute left-1/2 md:translate-x-0 translate-x-[-50%] bottom-0">
           1,771 NFT Fragment

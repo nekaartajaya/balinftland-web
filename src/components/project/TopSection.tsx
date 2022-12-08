@@ -14,13 +14,13 @@ const ProjectTopSection = () => {
           </h1>
         </div>
       </div>
-      <div className="md:text-justify text-center text-blue md:text-[30px] text-sm md:px-24 px-10 md:leading-[45px]">
+      <div className="md:text-justify text-center text-blue md:text-[30px] text-sm md:px-24 px-6 md:leading-[45px]">
         A limited-edition NFT representing the physical property certificate and
         physical property ownership built with the Internet of Things (IoT)
         Technology and Web 3.0.
       </div>
 
-      <div className="md:px-24 px-10 pt-8 md:block hidden">
+      <div className="md:px-24 px-6 pt-8 md:block hidden">
         <hr />
       </div>
     </div>

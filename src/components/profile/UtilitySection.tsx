@@ -26,7 +26,7 @@ const ProfileUtilitySection = () => {
 
   return (
     <div className="border-y border-dark-blue md:py-16 pt-5 pb-8">
-      <Subtitle text="Utility" classes=" md:px-24 px-10 !text-left" />
+      <Subtitle text="Utility" classes=" md:px-24 px-6 !text-left" />
 
       <div className="md:grid grid-cols-4 gap-y-4 mt-10 px-8 hidden">
         {Utility.map((item: ImageInterface, index: number) => {

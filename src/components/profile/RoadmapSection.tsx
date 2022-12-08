@@ -73,7 +73,7 @@ const ProfileRoadmapSection = () => {
 
   return (
     <div className=" md:py-20 py-10 ">
-      <div className="text-left mb-12 md:px-24 px-10">
+      <div className="text-left mb-12 md:px-24 px-6">
         <Subtitle text="Bali Land NFT Roadmap" classes="!text-left " />
         <h6 className="md:text-[22px] text-sm text-blue mt-4">
           We are guided by a simple yet precise vision of Bali Land NFT Roadmap.

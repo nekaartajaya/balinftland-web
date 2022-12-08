@@ -94,8 +94,8 @@ code {
 
 @media screen and (max-width: 768px) {
   .swiper-profile .swiper-wrapper {
-    padding-left: 40px !important;
-    padding-right: 40px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
   }
 }
 
@@ -105,7 +105,7 @@ code {
 }
 
 .swiper-pagination-progressbar {
-  width: calc(100vw - 96px) !important;
+  width: calc(100vw - 48px) !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
   bottom: 0 !important;

@@ -9,7 +9,7 @@ const LimaBeachSiganture = () => {
     <Layout>
       <div className="flex flex-col sm:gap-y-16 gap-y-12 pb-10">
         <ProjectTopSection />
-        <div className="md:px-24 px-10">
+        <div className="md:px-24 px-6">
           <ProjectWhatSection />
           <ProjectFragmentSection />
           <ProjectMintingSection />
