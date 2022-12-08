@@ -262,19 +262,19 @@ const StageOne = () => {
   return (
     <div className="max-w-[868px] w-full">
       <div className="md:flex border border-dark-blue mb-5">
-        <div className="md:border-r flex flex-col w-full md:max-w-[254px] md:min-h-[520px] min-h-[280px]">
+        <div className="md:border-r flex flex-col w-full md:max-w-[254px] md:min-h-[520px] min-h-[200px] bg-white">
           {loading ? (
             <div className="w-[80%] md:h-[83%] h-[180px] mx-auto md:pt-[35px] pt-[18px]">
               <Skeleton height={'90%'} variant="rectangular" />
             </div>
           ) : (
             <div
-              className={`md:h-[83%] h-[180px] bg-cover md:bg-left bg-center`}
+              className={`md:h-[83%] h-[200px] bg-cover  md:bg-left bg-[2rem_-5.5rem] bg-no-repeat border-b md:border-0`}
               style={{ backgroundImage: `url(${image})` }}
             ></div>
           )}
           <hr className="md:block hidden" />
-          <div className="md:h-[17%] h-[100px] flex flex-col items-center justify-center text-blue bg-white  md:border-y-0 border-y">
+          <div className="md:h-[17%] h-0 hidden md:flex flex-col items-center justify-center text-blue bg-white  md:border-y-0 border-y">
             {loading ? (
               <div className="w-[80%]">
                 <Skeleton height={50} variant="rectangular" />
@@ -291,8 +291,8 @@ const StageOne = () => {
           </div>
         </div>
 
-        <div className="bg-white w-full md:px-12 px-4 md:py-6 py-4 flex flex-col justify-between gap-y-12">
-          <div className="flex gap-x-16">
+        <div className="bg-white w-full px-12 md:py-6 py-8 flex flex-col justify-between gap-y-12">
+          <div className="flex md:justify-start justify-between gap-x-4 md:gap-x-16">
             {loading ? (
               <>
                 <div className="w-full">
@@ -304,13 +304,13 @@ const StageOne = () => {
               </>
             ) : (
               <>
-                <div className="text-blue text-[14px] flex items-center gap-x-4">
+                <div className="text-blue md:text-[14px] text-[10px] flex items-center gap-x-4">
                   <span>Stage {activeStage} Supply</span>
                   <h5 className="font-bold">
                     {mintedQty}/{maxSupply}
                   </h5>
                 </div>
-                <div className="text-blue text-[14px] flex items-center gap-x-4">
+                <div className="text-blue md:text-[14px] text-[10px] flex items-center gap-x-4">
                   <span>Total Supply</span>
                   <h5 className="font-bold">1,771</h5>
                 </div>
@@ -318,17 +318,33 @@ const StageOne = () => {
             )}
           </div>
           <div>
-            <div className="text-blue tracking-[5px] mb-9">
+            <div className="text-blue md:tracking-[5px] mb-9 text-center md:text-left">
               {loading ? (
                 <div className="w-full">
                   <Skeleton height={50} variant="rectangular" />
                 </div>
               ) : (
                 <>
-                  <h1 className="font-bold text-2xl">
-                    STAGE 0{activeStage}: PHYSICAL LAND
+                  <h1 className="font-bold text-2xl mb-2 md:mb-0">
+                    STAGE 0{activeStage}:{' '}
+                    <span className="block md:inline-block">PHYSICAL LAND</span>
                   </h1>
                   <span className="text-base">Lima Beach Signature NFT</span>
+                </>
+              )}
+            </div>
+
+            <div className="flex flex-col items-center justify-center text-blue bg-white mb-8">
+              {loading ? (
+                <div className="w-[80%]">
+                  <Skeleton height={50} variant="rectangular" />
+                </div>
+              ) : (
+                <>
+                  <div className="text-xl">Mint Price</div>
+                  <div className="text-xl font-bold">
+                    1 NFT : {price.toLocaleString()} USDC
+                  </div>
                 </>
               )}
             </div>
@@ -339,7 +355,7 @@ const StageOne = () => {
               </div>
             ) : (
               <div>
-                <div className="mb-10">
+                <div className="md:mb-10">
                   <div className="relative mb-1">
                     {codeValidity && (
                       <div className="absolute top-[50%] translate-y-[-50%] left-3">
@@ -404,8 +420,8 @@ const StageOne = () => {
                   </div>
                 </div>
 
-                <div className="flex justify-between items-center mb-6">
-                  <div className="flex items-center h-12 border border-dark-blue justify-around w-[45%]">
+                <div className="flex md:flex-row flex-col justify-between items-center mb-6">
+                  <div className="flex items-center h-12 border border-dark-blue justify-around md:w-[45%] w-full">
                     <div>
                       <IconButton
                         disabled={formDisabled}
@@ -423,7 +439,7 @@ const StageOne = () => {
                       value={quantity}
                       disabled={formDisabled}
                       onChange={handleChangeQuantity}
-                      className={`placeholder:text-blue/[.30] text-base w-full text-center text-blue font-bold text-sm focus:outline-none`}
+                      className={`placeholder:text-blue/[.30] md:text-base w-full text-center text-blue font-bold text-sm focus:outline-none`}
                     ></input>
                     <div>
                       <IconButton
@@ -437,8 +453,8 @@ const StageOne = () => {
                       </IconButton>
                     </div>
                   </div>
-                  <SwapHorizOutlinedIcon />
-                  <div className="flex items-center justify-center h-12 border border-dark-blue w-[45%]">
+                  <SwapHorizOutlinedIcon className="rotate-90 my-2" />
+                  <div className="flex items-center justify-center h-12 border border-dark-blue md:w-[45%] w-full">
                     <h4 className="font-bold text-sm whitespace-nowrap text-blue">
                       {(quantity * price).toLocaleString()} USDC
                     </h4>
@@ -455,7 +471,7 @@ const StageOne = () => {
                     disabled={formDisabled}
                     className="w-5 !rounded-none"
                   />
-                  <label className="md:text-base text-sm">
+                  <label className="md:text-base text-[11px]">
                     <span className="text-blue/[.30]">
                       I Agree Bali NFT Land
                     </span>{' '}
@@ -468,13 +484,13 @@ const StageOne = () => {
                   {isUSDCEnough() ? '' : 'Insufficient balance'}
                 </div>
 
-                <div className="flex gap-x-12">
+                <div className="flex md:flex-row flex-col gap-x-12 gap-y-3">
                   {isConnected && isAuthenticated ? (
                     wrongNetwork ? (
                       <div className="flex-col flex">
                         <button
                           disabled={isLoadingSwitch}
-                          className="w-1/2 py-3 bg-[#406aff] text-[12px] px-1"
+                          className="md:w-1/2 w-full py-3 bg-[#406aff] text-[12px] px-1"
                           onClick={() => switchNetwork?.(5)}
                         >
                           <span className="text-white font-semibold">
@@ -497,7 +513,7 @@ const StageOne = () => {
                           allowance === quantity * price
                         ) || !isUSDCApproved ? (
                           <button
-                            className={`w-1/2 bg-light-blue-2/[.10] py-3 px-1 text-[12px] border-2 border-light-blue-2 ${
+                            className={`md:w-1/2 w-full bg-light-blue-2/[.10] py-3 px-1 text-[12px] border-2 border-light-blue-2 ${
                               !isUSDCEnough() ||
                               quantity === 0 ||
                               loadingAllowance
@@ -521,7 +537,7 @@ const StageOne = () => {
                             </span>
                           </button>
                         ) : (
-                          <div className="w-1/2 flex items-center justify-center gap-x-2 bg-light-green/[.05] border-2 border-light-green py-3">
+                          <div className="md:w-1/2 w-full flex items-center justify-center gap-x-2 bg-light-green/[.05] border-2 border-light-green py-3">
                             <span className="text-light-green font-bold text-[12px]">
                               Now You Can Trade USDC
                             </span>
@@ -542,7 +558,7 @@ const StageOne = () => {
                         )}
 
                         <button
-                          className={`w-1/2 bg-light-blue-2 py-3 px-1 text-[12px]  ${
+                          className={`md:w-1/2 w-full bg-light-blue-2 py-3 px-1 text-[12px]  ${
                             !(
                               allowedSupply > 0 &&
                               quantity > 0 &&
@@ -578,7 +594,7 @@ const StageOne = () => {
                     <>
                       {connectors.map((connector: any) => (
                         <button
-                          className="w-1/2 py-3 bg-[#406aff] text-[12px] px-1"
+                          className="md:w-1/2 w-full py-3 bg-[#406aff] text-[12px] px-1"
                           disabled={
                             !connector.ready ||
                             isLoading ||
@@ -600,7 +616,7 @@ const StageOne = () => {
             )}
           </div>
 
-          <div className="flex justify-end items-end gap-x-2">
+          <div className="flex md:justify-end justify-center items-end gap-x-2">
             {loading ? (
               <div className="w-1/4">
                 <Skeleton height={20} variant="rectangular" />
