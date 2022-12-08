@@ -7,13 +7,14 @@ import ProjectWhatSection from '@components/project/WhatSection';
 const LimaBeachSiganture = () => {
   return (
     <Layout>
-      <div className="flex flex-col gap-y-16 pb-10">
+      <div className="flex flex-col sm:gap-y-16 gap-y-12 pb-10">
         <ProjectTopSection />
-        <hr />
-        <ProjectWhatSection />
-        <hr />
-        <ProjectFragmentSection />
-        <ProjectMintingSection />
+        <div className="md:px-24 px-10">
+          <ProjectWhatSection />
+          <hr />
+          <ProjectFragmentSection />
+          <ProjectMintingSection />
+        </div>
       </div>
     </Layout>
   );
