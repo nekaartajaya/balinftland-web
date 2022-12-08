@@ -11,7 +11,6 @@ const LimaBeachSiganture = () => {
         <ProjectTopSection />
         <div className="md:px-24 px-10">
           <ProjectWhatSection />
-          <hr />
           <ProjectFragmentSection />
           <ProjectMintingSection />
         </div>

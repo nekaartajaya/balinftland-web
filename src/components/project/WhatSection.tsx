@@ -109,6 +109,7 @@ const ProjectWhatSection = () => {
         </h1>
         <div className="relative  md:bg-[url('/images/pages/limabeach/dummy-7.png')] bg-[url('/images/pages/limabeach/dummy-9.png')] bg-no-repeat bg-cover bg-center h-[400px] md:h-[500px]"></div>
       </div>
+      <hr className="md:block hidden" />
     </div>
   );
 };
