@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
+import Image from 'next/legacy/image';
 
 import { useState, useEffect } from 'react';
 
@@ -31,7 +32,16 @@ const NotificationModal = ({ title, subtitle }: NotificationModalProps) => {
         aria-describedby="modal-modal-description"
       >
         <Box className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 mobile:max-w-[250px] max-w-[280px] bg-white rounded-0 flex flex-col justify-center items-center gap-6">
-          <img src="/images/icons/success.png" alt="Success" />
+          <div className="relative w-20 h-20">
+            <Image
+              src="/images/icons/success.png"
+              alt="Success"
+              layout="responsive"
+              objectFit="contain"
+              width={100}
+              height={100}
+            />
+          </div>
           <div>
             <div className="font-semibold text-xl text-center text-blue mb-2">
               {title}

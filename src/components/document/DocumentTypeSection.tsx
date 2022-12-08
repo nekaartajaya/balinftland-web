@@ -29,7 +29,7 @@ const DocumentTypeSection = () => {
     },
   ];
   return (
-    <div className="flex flex-col gap-y-20 px-8">
+    <div className="flex flex-col gap-y-20 md:px-24 px-6">
       {DocumentType.map((item: DocumentTypeInterface, index: number) => {
         return (
           <div key={index}>

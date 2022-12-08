@@ -4,6 +4,7 @@ import FormLabel from '@components/global/FormLabel';
 import FormRoyalti from '@components/global/FormRoyalti';
 import FormSwitch from '@components/global/FormSwitch';
 import FormTraits from '@components/global/FormTraits';
+import Image from 'next/legacy/image';
 
 const MintFormData = () => {
   return (
@@ -94,7 +95,15 @@ const MintFormData = () => {
         <span className="text-[32px] text-white font-bold tracking-widest">
           MINT YOUR NFT
         </span>
-        <img src="/images/icons/arrow-right.png" alt="Next" className="w-6" />
+        <div className="relative">
+          <Image
+            src="/images/icons/arrow-right.png"
+            alt="Next Icon"
+            layout="responsive"
+            width={14}
+            height={22}
+          />
+        </div>
       </button>
     </>
   );

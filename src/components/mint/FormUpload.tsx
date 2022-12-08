@@ -1,4 +1,5 @@
 import ImageInput from '@components/global/ImageInput';
+import Image from 'next/legacy/image';
 
 const MintFormUpload = ({ onNext }: { onNext: () => void }) => {
   return (
@@ -14,11 +15,16 @@ const MintFormUpload = ({ onNext }: { onNext: () => void }) => {
         />
       </div>
 
-      <button className="bg-dark-blue max-w-[100px] w-full " onClick={onNext}>
-        <img
+      <button
+        className="bg-dark-blue max-w-[100px] w-full relative"
+        onClick={onNext}
+      >
+        <Image
           src="/images/icons/arrow-right.png"
-          alt="Next"
-          className="mx-auto w-6"
+          alt="Next Icon"
+          layout="responsive"
+          width={14}
+          height={22}
         />
       </button>
     </div>
