@@ -7,7 +7,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import SwapHorizOutlinedIcon from '@mui/icons-material/SwapHorizOutlined';
 import useMintHook from '@hooks/use-mint.hooks';
-import { useConnect, useAccount, useNetwork } from 'wagmi';
+import { useConnect, useAccount, useNetwork, useSwitchNetwork } from 'wagmi';
 import useWeb3Store from '@store/index';
 import { InjectedConnector } from '@wagmi/core';
 import useAuthHook from '@hooks/use-auth.hooks';
@@ -71,6 +71,15 @@ const StageOne = () => {
     },
   });
   const { chain, chains } = useNetwork();
+  const {
+    chains: chainsSwitch,
+    isLoading: isLoadingSwitch,
+    error: errorSwitch,
+    pendingChainId,
+    switchNetwork,
+  } = useSwitchNetwork({
+    chainId: 420,
+  });
 
   const currentWallet = useStore((state) => state.currentWallet);
   const updateWallet = useStore((state) => state.updateWallet);
@@ -238,7 +247,8 @@ const StageOne = () => {
 
   const allowedSupply = maxSupply - mintedQty;
 
-  const wrongNetwork = chain?.id !== Number(publicRuntimeConfig.chainId);
+  // const wrongNetwork = chain?.id !== Number(publicRuntimeConfig.chainId);
+  const wrongNetwork = chain?.id !== 5; //chainId of Goerli
 
   const formDisabled =
     isDisconnected ||
@@ -461,8 +471,23 @@ const StageOne = () => {
                 <div className="flex gap-x-12">
                   {isConnected && isAuthenticated ? (
                     wrongNetwork ? (
-                      <div className="text-[#FF0000] py-3">
-                        You are in wrong network. Please switch network first!
+                      <div className="flex-col flex">
+                        <button
+                          disabled={isLoadingSwitch}
+                          className="w-1/2 py-3 bg-[#406aff] text-[12px] px-1"
+                          onClick={() => switchNetwork?.(5)}
+                        >
+                          <span className="text-white font-semibold">
+                            {isLoadingSwitch && pendingChainId === 5
+                              ? 'Switching...'
+                              : 'Switch Network'}
+                          </span>
+                        </button>
+                        <div className="text-[#FF0000] py-3">
+                          {errorSwitch
+                            ? 'Switch network failed'
+                            : 'You are in wrong network. Please switch network first!'}
+                        </div>
                       </div>
                     ) : (
                       <>
