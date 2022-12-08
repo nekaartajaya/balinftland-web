@@ -2,6 +2,7 @@ import CustomButton from '@components/global/Button';
 import Title from '@components/global/Title';
 import { DocumentTypeInterface } from '@interfaces/DocumentInterface';
 import Parser from 'html-react-parser';
+import Image from 'next/legacy/image';
 
 const DocumentTypeSection = () => {
   const DocumentType: Array<DocumentTypeInterface> = [
@@ -32,25 +33,36 @@ const DocumentTypeSection = () => {
       {DocumentType.map((item: DocumentTypeInterface, index: number) => {
         return (
           <div key={index}>
-            <Title text={item.title} classes="md:mb-12 mb-6" />
+            <Title text={item.title} classes="md:mb-12 mb-6 !text-left" />
 
-            <div className="grid md:grid-cols-2 gap-x-8">
-              <div className="mb-8 md:mb-0">
-                <img src={item.image} alt={item.title} />
+            <div className="grid md:grid-cols-2 gap-x-8 items-start">
+              <div className="relative w-full md:h-full h-[380px]">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  layout="fill"
+                  objectFit="cover"
+                />
               </div>
 
               <div className="flex flex-col justify-between">
-                <p className="text-dark-blue md:text-2xl text-xl text-justify">
+                <p className="text-dark-blue md:text-2xl sm:text-xl text-[14px] text-justify">
                   {Parser(item.desc)}
                 </p>
 
                 <CustomButton
+                  blue
                   text={item.button}
                   icon={
-                    <img
-                      src="/images/icons/arrow-right.png"
-                      alt="Read Brochure"
-                    />
+                    <div className="w-[14px]">
+                      <Image
+                        src="/images/icons/arrow-right.png"
+                        alt={item.title}
+                        layout="responsive"
+                        width={14}
+                        height={22}
+                      />
+                    </div>
                   }
                   classes="w-max gap-x-4 mx-auto mt-8"
                 />
