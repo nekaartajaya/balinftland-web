@@ -1,3 +1,5 @@
+import { StaticImageData } from 'next/image';
+
 export interface FooterMenu {
   title: string;
   list: Array<ListFooterMenu>;
@@ -9,5 +11,5 @@ export interface ListFooterMenu {
 }
 
 export interface SocialMedia extends ListFooterMenu {
-  icon: string;
+  icon: StaticImageData;
 }

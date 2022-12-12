@@ -23,9 +23,9 @@ const DocumentTopSection = () => {
 
   return (
     <section>
-      <Title text="Permissive Document" classes="md:mb-16 mb-8" />
+      <Title text="Permissive Document" classes="md:mb-16 mb-8 md:px-24 px-6" />
 
-      <div className="text-dark-blue md:text-2xl text-lg flex flex-col gap-y-6 mb-20 text-justify md:px-20 px-6 text-dark-blue">
+      <div className="md:text-2xl text-[14px] flex flex-col gap-y-6 mb-10 md:mb-20 text-justify text-dark-blue md:px-24 px-6">
         <p>
           To what extent does <span className="font-bold">Bali NFT Land</span>{' '}
           ensure the safety and security of your physical apartment
@@ -44,7 +44,7 @@ const DocumentTopSection = () => {
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-x-4 gap-y-4">
+      <div className="grid md:grid-cols-3 gap-x-4 gap-y-4 md:px-24 px-0">
         {DocumentCardArray.map((item: DocumentCardInterface, index: number) => {
           return <DocumentCard key={index} item={item} />;
         })}

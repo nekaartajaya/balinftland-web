@@ -11,7 +11,7 @@ const Mint = () => {
   return (
     <Layout>
       <SafeHydrate>
-        <div className="bg-[#F9F9F9] flex justify-center md:px-[60px] px-4 py-10">
+        <div className="bg-[#F9F9F9] flex justify-center md:px-[60px] px-4 pb-10">
           <StageOne />
         </div>
       </SafeHydrate>

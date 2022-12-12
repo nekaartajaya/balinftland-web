@@ -6,6 +6,7 @@ export interface ButtonInterface {
   icon?: ReactNode;
   classes?: string;
   onClick?: () => any;
+  blue?: boolean;
 }
 
 export interface ImageInterface {

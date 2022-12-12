@@ -1,3 +1,5 @@
+import { StaticImageData } from 'next/image';
+
 export interface Logo {
   name: string;
   desc: string;
@@ -6,9 +8,9 @@ export interface Logo {
 export interface Hospitality {
   name: string;
   desc: string;
-  image?: string;
+  image?: StaticImageData;
 }
 export interface UnitMetaverse {
   name: string;
-  image?: string;
+  image?: StaticImageData;
 }

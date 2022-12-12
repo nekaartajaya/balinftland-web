@@ -10,10 +10,11 @@ body {
   margin: 0;
   font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background: url('/images/background.png');
+  /* background: url('/images/background.png');
   background-position: center center;
   background-size: cover;
-  background-repeat: repeat-y;
+  background-repeat: repeat-y; */
+  background-color: #f9f9f9;
 }
 
 * {
@@ -63,13 +64,54 @@ code {
 }
 
 /* Slider Dot */
-.slider-dot li button {
+.swiper .custom-dot {
   border-radius: 0;
   border: 0;
   background-color: #d9d9d9;
+  opacity: 40%;
 }
 
-.slider-dot li.react-multi-carousel-dot--active button {
+.swiper .custom-dot.swiper-pagination-bullet-active {
   width: 60px;
   background-color: #d9d9d9;
+  opacity: 1005;
+}
+
+.swiper-top-home {
+  padding-top: 45px !important;
+  padding-bottom: 45px !important;
+}
+
+.swiper-utility-profile {
+  padding-bottom: 40px !important;
+  padding-right: 60px !important;
+}
+
+.swiper-profile .swiper-wrapper {
+  padding-left: 96px !important;
+  padding-right: 96px !important;
+}
+
+@media screen and (max-width: 768px) {
+  .swiper-profile .swiper-wrapper {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
+.swiper-roadmap-profile {
+  padding-bottom: 50px !important;
+  padding-right: 100px !important;
+}
+
+.swiper-pagination-progressbar {
+  width: calc(100vw - 48px) !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  bottom: 0 !important;
+  top: auto !important;
+  height: 6px !important;
+}
+.swiper-pagination-progressbar-fill {
+  background: #0e3d5b !important;
 }

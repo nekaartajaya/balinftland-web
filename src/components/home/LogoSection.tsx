@@ -1,7 +1,8 @@
 import { Logo } from '@interfaces/HomeInterface';
-import { Avatar, useMediaQuery } from '@mui/material';
-import Carousel from 'react-multi-carousel';
+import { useMediaQuery } from '@mui/material';
+import Image from 'next/legacy/image';
 import 'react-multi-carousel/lib/styles.css';
+import { blocksphere, myriad, myriadtown, paras } from '@assets/images';
 
 const HomeLogoSection = () => {
   const isTab = useMediaQuery('(max-width: 768px)', { noSsr: true });
@@ -29,50 +30,49 @@ const HomeLogoSection = () => {
     },
   ];
 
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 9999, min: 769 },
-      items: 4,
-    },
-    tablet: {
-      breakpoint: { max: 768, min: 401 },
-      items: 2,
-      slidesToSlide: 2,
-    },
-    phone: {
-      breakpoint: { max: 400, min: 0 },
-      items: 1,
-      slidesToSlide: 1,
-    },
-  };
-
   return (
-    <div className="bg-[url('/images/pages/home/dummy-11.png')] bg-no-repeat bg-cover px-12 py-10">
-      <div className="relative pb-[40px] md:pb-0">
-        <div className="text-white md:text-[32px] text-xl font-bold tracking-[16px] relative w-full text-center py-6 px-4">
+    <div className="bg-[url('/images/pages/home/dummy-11.png')] bg-no-repeat bg-cover md:px-12 px-4 md:py-6">
+      <div className="relative pb-[20px] md:pb-0">
+        <div className="text-white md:text-[32px] text-md font-bold md:tracking-[16px] tracking-[6px] relative w-full text-center py-4 px-4">
           <h1>OUR PARTNER</h1>
         </div>
-        <div className="grid md:grid-cols-4 grid-cols-2 gap-y-6 py-10">
-          <img
-            src="/images/partners/blocksphere.png"
-            alt="Logo Blocksphere"
-            className="mx-auto"
-          />
-          <img
-            src="/images/partners/paras.png"
-            alt="Logo Paras"
-            className="mx-auto"
-          />
-          <img
-            src="/images/partners/myriad-town.png"
-            alt="Logo Myriad Town"
-            className="mx-auto"
-          />
-          <img
-            src="/images/partners/myriad.png"
-            alt="Logo Myriad"
-            className="mx-auto"
-          />
+        <div className="grid grid-cols-4 md:py-8">
+          <div className="w-full md:h-[150px] h-[55px] relative mx-auto">
+            <Image
+              src={blocksphere}
+              alt="Home Top Section"
+              layout="fill"
+              objectFit="contain"
+              priority
+            />
+          </div>
+          <div className="w-full md:h-[150px] h-[55px] relative mx-auto">
+            <Image
+              src={paras}
+              alt="Home Top Section"
+              layout="fill"
+              objectFit="contain"
+              priority
+            />
+          </div>
+          <div className="w-full md:h-[150px] h-[55px] relative mx-auto">
+            <Image
+              src={myriadtown}
+              alt="Home Top Section"
+              layout="fill"
+              objectFit="contain"
+              priority
+            />
+          </div>
+          <div className="w-full md:h-[150px] h-[55px] relative mx-auto">
+            <Image
+              src={myriad}
+              alt="Home Top Section"
+              layout="fill"
+              objectFit="contain"
+              priority
+            />
+          </div>
         </div>
       </div>
     </div>

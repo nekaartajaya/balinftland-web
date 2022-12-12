@@ -2,15 +2,14 @@ import Subtitle from '@components/global/Subtitle';
 
 const ProfileVisionSection = () => {
   return (
-    <div className="py-10">
-      <div className="relative mb-8 border-t border-dark-blue bg-[url('/images/pages/profile/dummy-2.png')] bg-top bg-cover bg-no-repeat md:min-h-[1000px] min-h-[500px]">
-        <Subtitle
-          text="Vision"
-          classes="absolute md:top-6 top-1 left-[50%] translate-x-[-50%]"
-        />
-      </div>
+    <div className="border-t border-dark-blue">
+      <Subtitle
+        text="Vision"
+        classes="!text-left md:px-24 px-6 bg-[#F3F4F3] md:pt-10 pt-4"
+      />
+      <div className="relative  bg-[url('/images/pages/profile/dummy-2.png')] bg-top bg-cover bg-no-repeat md:min-h-[1000px] min-h-[500px]"></div>
 
-      <div className="md:text-[32px] text-xl text-blue text-center px-4">
+      <div className="md:text-[32px] text-xl text-blue text-center bg-[#F3F4F3] md:bg-[#f9f9f9] md:px-24 px-6 md:py-16 py-10">
         We <span className="font-bold">Build</span> The Property Together, We{' '}
         <span className="font-bold">Own</span> The Property Together.
       </div>
