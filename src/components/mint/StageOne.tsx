@@ -334,7 +334,7 @@ const StageOne = () => {
               )}
             </div>
 
-            <div className="flex flex-col items-center justify-center text-blue bg-white mb-8">
+            <div className="flex flex-col items-center justify-center text-blue bg-white mb-8 md:hidden">
               {loading ? (
                 <div className="w-[80%]">
                   <Skeleton height={50} variant="rectangular" />
